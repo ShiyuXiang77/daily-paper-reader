@@ -1,0 +1,724 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-06T09:59:18.461464+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 16,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 21,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "2605.30311v1",
+      "source": "arxiv",
+      "title": "Archon: A Unified Multimodal Model for Holistic Digital Human Generation",
+      "abstract": "Digital humans are fundamental to immersive interaction, yet creating a unified model for holistic modalities, including text, audio, motion, and visual content, remains an open challenge. In this paper, we present Archon, a fully pretrained, human-centric unified multimodal model for holistic avatar generation. Archon unifies seven modalities with modality-specific tokenizers, and a native autoregressive unified multimodal model pretrained on synchronized modalities and 72 diverse tasks to model holistic joint distributions. To address the token explosion challenge in high-fidelity talking videos, we introduce a memory-efficient semantic video reparameterization, achieving 4x token reduction while preserving fine-grained dynamics, coupled with a semantic-driven video diffusion decoder. We further propose a \"Thinking in Modality\" that decomposes ambiguous cross-modal tasks into stepwise thinking in an alternative chain of modality, progressively enhancing fidelity and controllability. Extensive experiments demonstrate that Archon achieves superior or comparable performance across diverse digital human generation tasks, validating the effectiveness of our unified framework. Project page: https://zju3dv.github.io/archon/.",
+      "authors": [
+        "Chong Bao",
+        "Shichen Liu",
+        "Lijun Yu",
+        "David Futschik",
+        "Stylianos Moschoglou",
+        "Shefali Srivastava",
+        "Ziqian Bai",
+        "Feitong Tan",
+        "Guofeng Zhang",
+        "Zhaopeng Cui",
+        "Sean Fanello",
+        "Yinda Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-28T17:53:27+00:00",
+      "link": "https://arxiv.org/pdf/2605.30311v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified multimodal model for holistic digital human generation",
+      "llm_evidence_cn": "用于全息数字人生成的统一多模态模型",
+      "llm_evidence": "用于全息数字人生成的统一多模态模型",
+      "canonical_evidence": "用于全息数字人生成的统一多模态模型",
+      "llm_tldr_en": "Archon is a fully pretrained unified multimodal model that handles text, audio, motion, and visual for holistic digital human generation.",
+      "llm_tldr_cn": "Archon提出面向全息数字人生的统一多模态模型，融合文本、音频、运动、视觉等七种模态。采用模态专用分词器和自回归统一模型，在72个任务上预训练。通过语义视频重参数化实现4倍token压缩，在质量与效率上取得突破。",
+      "llm_tldr": "Archon提出面向全息数字人生的统一多模态模型，融合文本、音频、运动、视觉等七种模态。采用模态专用分词器和自回归统一模型，在72个任务上预训练。通过语义视频重参数化实现4倍token压缩，在质量与效率上取得突破。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.31604v1",
+      "source": "arxiv",
+      "title": "Representation Forcing for Bottleneck-Free Unified Multimodal Models",
+      "abstract": "Unified multimodal models (UMMs) aim to handle perception and generation in a single model. Yet existing UMMs still rely on a frozen, separately pretrained VAE for image generation, imposing a structural bottleneck. Naively removing it introduces a quality gap, as the model must learn both high-level structure and low-level details from raw pixels. In this paper, we propose Representation Forcing (RF), a technique that closes this gap by making representation prediction a native capability of the model. Concretely, RF forces the decoder to autoregressively predict visual representations as intermediate tokens before pixels; these tokens then stay in context to guide pixel diffusion within the same backbone. By turning representations from perception outputs into generation targets, RF eliminates the need for any external generative latent space. We find that RF benefits both understanding and generation. On image generation, our pixel-space model with RF matches state-of-the-art VAE-based unified models. On image understanding, pixel-space RF generally outperforms its VAE-based variant. Together, these results offer an effective step toward end-to-end, bottleneck-free UMMs.",
+      "authors": [
+        "Yuqing Wang",
+        "Zhijie Lin",
+        "Ceyuan Yang",
+        "Yang Zhao",
+        "Fei Xiao",
+        "Hao He",
+        "Qi Zhao",
+        "Zihan Ding",
+        "Fuyun Wang",
+        "Shuai Wang",
+        "Youliang Zhang",
+        "Haoqi Fan",
+        "Xihui Liu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-29T17:59:55+00:00",
+      "link": "https://arxiv.org/pdf/2605.31604v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Directly addresses bottleneck-free unified multimodal models with representation forcing",
+      "llm_evidence_cn": "直接研究无瓶颈的统一多模态模型，提出表征强制技术",
+      "llm_evidence": "直接研究无瓶颈的统一多模态模型，提出表征强制技术",
+      "canonical_evidence": "直接研究无瓶颈的统一多模态模型，提出表征强制技术",
+      "llm_tldr_en": "Representation Forcing closes the quality gap when removing the VAE bottleneck from unified multimodal models by making representation prediction native to the model.",
+      "llm_tldr_cn": "现有统一多模态模型依赖单独预训练的VAE进行图像生成，形成结构性瓶颈。本文提出表征强制（RF）技术，通过让模型原生预测表征作为中间令牌，再引导像素扩散，从而在移除VAE后缩小质量差距。实验证明RF能有效消除瓶颈，提升统一模型的感知和生成能力。",
+      "llm_tldr": "现有统一多模态模型依赖单独预训练的VAE进行图像生成，形成结构性瓶颈。本文提出表征强制（RF）技术，通过让模型原生预测表征作为中间令牌，再引导像素扩散，从而在移除VAE后缩小质量差距。实验证明RF能有效消除瓶颈，提升统一模型的感知和生成能力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2605.31604v2",
+      "source": "arxiv",
+      "title": "Representation Forcing for Bottleneck-Free Unified Multimodal Models",
+      "abstract": "Unified multimodal models (UMMs) aim to handle perception and generation in a single model. Yet existing UMMs still rely on a frozen, separately pretrained VAE for image generation, imposing a structural bottleneck. Naively removing it introduces a quality gap, as the model must learn both high-level structure and low-level details from raw pixels. In this paper, we propose Representation Forcing (RF), a technique that closes this gap by making representation prediction a native capability of the model. Concretely, RF forces the decoder to autoregressively predict visual representations as intermediate tokens before pixels; these tokens then stay in context to guide pixel diffusion within the same backbone. By turning representations from perception outputs into generation targets, RF eliminates the need for any external generative latent space. We find that RF benefits both understanding and generation. On image generation, our pixel-space model with RF matches state-of-the-art VAE-based unified models. On image understanding, pixel-space RF generally outperforms its VAE-based variant. Together, these results offer an effective step toward end-to-end, bottleneck-free UMMs.",
+      "authors": [
+        "Yuqing Wang",
+        "Zhijie Lin",
+        "Ceyuan Yang",
+        "Yang Zhao",
+        "Fei Xiao",
+        "Hao He",
+        "Qi Zhao",
+        "Zihan Ding",
+        "Fuyun Wang",
+        "Shuai Wang",
+        "Youliang Zhang",
+        "Haoqi Fan",
+        "Xihui Liu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-29T17:59:55+00:00",
+      "link": "https://arxiv.org/pdf/2605.31604v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "bottleneck-free unified multimodal model with representation forcing",
+      "llm_evidence_cn": "无瓶颈的统一多模态模型及表示强迫技术",
+      "llm_evidence": "无瓶颈的统一多模态模型及表示强迫技术",
+      "canonical_evidence": "无瓶颈的统一多模态模型及表示强迫技术",
+      "llm_tldr_en": "Representation Forcing enables unified multimodal models to predict visual representations as intermediate tokens, removing VAE bottleneck and improving generation quality.",
+      "llm_tldr_cn": "针对统一多模态模型依赖冻结VAE造成的瓶颈问题，提出表示强迫（RF）技术。该方法让解码器自回归预测视觉表示作为中间token，然后引导像素扩散。实验表明RF消除了瓶颈，在图像生成质量上大幅提升。",
+      "llm_tldr": "针对统一多模态模型依赖冻结VAE造成的瓶颈问题，提出表示强迫（RF）技术。该方法让解码器自回归预测视觉表示作为中间token，然后引导像素扩散。实验表明RF消除了瓶颈，在图像生成质量上大幅提升。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.04264v1",
+      "source": "arxiv",
+      "title": "UniCanvas: A Diffusion-base Unified Model for Text-in-Image Joint Generation",
+      "abstract": "Recent years have seen remarkable progress in unified vision-language models handling both multimodal understanding and generation within a single architecture. While autoregressive VLMs can reason across modalities, they fail to generate high-quality images. In contrast, diffusion models produce photorealistic visuals yet struggle to generate coherent text, making it challenging to develop a single unified model that can seamlessly handle both visual and text generation. Recent advances suggest that language can be effectively embedded within visual representations, allowing models to reason about textual semantics directly from images. To this end, we propose UniCanvas, a first attempt that unifies diffusion models to generate interleaved multimodal contents through text-in-image generation. Diffusion models naturally capture transformations on a shared pixel canvas, which can be viewed as world models of visual change. Instead of producing discrete text tokens, the model learns to represent language as visual patterns inside images, leveraging its inherent multimodal embedding space. This design allows the model to \"draw\" text naturally within a single pixel canvas during image synthesis, achieving seamless multimodal generation. Experiments demonstrate that UniCanvas improves performance over previous unified models, positioning text-in-image generation with diffusion models as a promising unified multimodal generation paradigm.",
+      "authors": [
+        "Zeyuan Yang",
+        "Hao-Wei Chen",
+        "Xueyang Yu",
+        "Yuncong Yang",
+        "Haoyu Zhen",
+        "Ziqiao Ma",
+        "Maohao Shen",
+        "Chuang Gan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-02T22:30:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.04264v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified diffusion model for text and image joint generation",
+      "llm_evidence_cn": "用于文本和图像联合生成的统一扩散模型",
+      "llm_evidence": "用于文本和图像联合生成的统一扩散模型",
+      "canonical_evidence": "用于文本和图像联合生成的统一扩散模型",
+      "llm_tldr_en": "UniCanvas proposes a unified diffusion model that can generate interleaved text and images, addressing limitations of autoregressive VLMs and pure diffusion models.",
+      "llm_tldr_cn": "现有统一视觉语言模型在图像生成或文本生成上各有缺陷。UniCanvas首次提出统一的扩散模型，能够同时生成高质量图像和连贯文本，实现交错多模态内容的生成。实验表明该方法有效融合了视觉和语言能力，为统一多模态生成提供了新范式。",
+      "llm_tldr": "现有统一视觉语言模型在图像生成或文本生成上各有缺陷。UniCanvas首次提出统一的扩散模型，能够同时生成高质量图像和连贯文本，实现交错多模态内容的生成。实验表明该方法有效融合了视觉和语言能力，为统一多模态生成提供了新范式。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.06042v1",
+      "source": "arxiv",
+      "title": "LoomVideo: Unifying Multimodal Inputs into Video Generation and Editing",
+      "abstract": "Developing unified video generation and editing models capable of interpreting interleaved multimodal inputs is a promising yet challenging frontier field. Existing unified frameworks predominantly rely on massive models (typically 13B parameters or more) and incorporate source video conditions for editing by concatenating sequence tokens. This concatenation inevitably doubles the sequence length, quadrupling the computational complexity of the self-attention mechanism and introducing prohibitive overhead. To address these bottlenecks, we present LoomVideo, a highly efficient 5B-parameter unified architecture for both video generation and editing. LoomVideo replaces the standard text encoder with a Multimodal Large Language Model (MLLM) and employs Deepstack injection mechanism to align multi-layer MLLM features with the Diffusion Transformer (DiT). Crucially, we introduce a zero-overhead Scale-and-Add conditioning approach for video editing. By scaling and directly adding the clean source video latent to the noised target latent, this elegant design eliminates the need for token concatenation, drastically reducing computational cost while maintaining robust capabilities for complex, non-rigid edits. Furthermore, a Negative Temporal RoPE strategy is seamlessly integrated to handle multiple reference images. Extensive experiments demonstrate that our compact 5B model achieves state-of-the-art or highly competitive performance across comprehensive benchmarks, exhibiting exceptional superiority in e-commerce and fashion generation scenarios. Benefiting from the zero-overhead conditioning mechanism, LoomVideo achieves at least a 5.41x acceleration in inference speed compared to models of similar capabilities, paving the way for highly practical and efficient video foundation models.",
+      "authors": [
+        "Jianzong Wu",
+        "Hao Lian",
+        "Jiongfan Yang",
+        "Dachao Hao",
+        "Ye Tian",
+        "Yunhai Tong",
+        "Jingyuan Zhu",
+        "Biaolong Chen",
+        "Qiaosong Qi",
+        "Aixi Zhang",
+        "Wanggui He",
+        "Mushui Liu",
+        "Jinlong Liu",
+        "Hao Jiang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-04T11:35:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.06042v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified architecture for video generation and editing with interleaved multimodal inputs",
+      "llm_evidence_cn": "统一架构处理交错多模态输入进行视频生成与编辑",
+      "llm_evidence": "统一架构处理交错多模态输入进行视频生成与编辑",
+      "canonical_evidence": "统一架构处理交错多模态输入进行视频生成与编辑",
+      "llm_tldr_en": "LoomVideo presents a 5B-parameter unified architecture for both video generation and editing that handles interleaved multimodal inputs efficiently, replacing text encoder with MLLM and using decomposed attention.",
+      "llm_tldr_cn": "现有统一视频生成编辑模型参数庞大且计算开销高。本文提出LoomVideo，一个5B参数的高效统一架构，用多模态大语言模型替换文本编码器，并采用分解注意力机制，减少自注意力计算复杂度，实现交错多模态输入下的视频生成与编辑。",
+      "llm_tldr": "现有统一视频生成编辑模型参数庞大且计算开销高。本文提出LoomVideo，一个5B参数的高效统一架构，用多模态大语言模型替换文本编码器，并采用分解注意力机制，减少自注意力计算复杂度，实现交错多模态输入下的视频生成与编辑。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.06485v1",
+      "source": "arxiv",
+      "title": "PAR3D: A Unified 3D-MLLM with Part-Aware Representation for Scene Understanding",
+      "abstract": "Recent advances in 3D multimodal large language models (3D-MLLMs) have enabled unified solutions for 3D scene understanding tasks, including visual question answering, captioning, and referring segmentation. However, existing 3D-MLLMs remain largely object-centric, limiting their ability to model fine-grained part structures that are essential for embodied interaction with 3D environments. In this work, we present PAR3D, a unified part-aware 3D-MLLM framework that enables models to understand, reason about, and ground both objects and their parts in 3D scenes. To enable training and evaluation of part-aware 3D scene understanding, we introduce ScenePart, a synthetic 3D scene dataset with part-level annotations and language instructions. We further develop Part-Aware 3D Representation Learning to enrich 3D visual representations with fine-grained part-level semantics, and propose Hierarchical Segmentation Query Generation to ground part targets via hierarchical object-part queries. Extensive experiments show that our method substantially improves part-level question answering and referring segmentation, while also achieving strong performance across object-level vision-language tasks.",
+      "authors": [
+        "Shaohui Dai",
+        "Yansong Qu",
+        "You Shen",
+        "Shengchuan Zhang",
+        "Liujuan Cao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-04T17:59:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.06485v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Unified 3D multimodal large language model with part-aware representation",
+      "llm_evidence_cn": "统一的三维多模态大语言模型，具有部件感知表征",
+      "llm_evidence": "统一的三维多模态大语言模型，具有部件感知表征",
+      "canonical_evidence": "统一的三维多模态大语言模型，具有部件感知表征",
+      "llm_tldr_en": "PAR3D proposes a unified part-aware 3D-MLLM for scene understanding, enabling fine-grained reasoning about objects and their parts.",
+      "llm_tldr_cn": "现有3D多模态大语言模型（3D-MLLM）局限于物体级理解，缺乏部件级细粒度。本文提出PAR3D，一个统一的部件感知3D-MLLM框架，能理解、推理并定位物体及其部件。同时构建ScenePart数据集用于训练和评估。实验证明，PAR3D在多种3D场景任务上表现优异。",
+      "llm_tldr": "现有3D多模态大语言模型（3D-MLLM）局限于物体级理解，缺乏部件级细粒度。本文提出PAR3D，一个统一的部件感知3D-MLLM框架，能理解、推理并定位物体及其部件。同时构建ScenePart数据集用于训练和评估。实验证明，PAR3D在多种3D场景任务上表现优异。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2605.29287v1",
+      "source": "arxiv",
+      "title": "UniNote: A Unified Embedding Model for Multimodal Representation and Ranking",
+      "abstract": "Item-to-Item (I2I) retrieval is a fundamental part of modern content platforms, supporting critical industrial workflows from recommendation engines to content auditing. While multimodal embedding methods have advanced general retrieval, they often falter in I2I scenarios due to the challenges of balancing global content representation with fine-grained local retrieval, the systemic inefficiency of decoupled embedding-and-ranking pipelines, and the inherent trade-offs between model precision and serving latency. To solve these issues, we propose \\textbf{UniNote}, a unified embedding model designed for industrial I2I retrieval. Tailored retrieval strategies are introduced to support representation learning over complex, multimodal content at varying granularities. To operationalize these strategies, UniNote employs a two-stage training paradigm: the first stage leverages contrastive SFT to establish robust base embeddings, while the second stage refines ranking quality through a reinforcement learning (RL) process that aligns the model with content relevance. Our results show that UniNote achieves SOTA performance across diverse I2I tasks. Deployed at Xiaohongshu and integrated with Matryoshka Representation Learning (MRL), UniNote achieved significant improvements in retrieval quality and cost efficiency in large-scale applications.",
+      "authors": [
+        "Jinghan Zhao",
+        "Wenwei Jin",
+        "Anqi Li",
+        "Jintao Tong",
+        "Luya Mo",
+        "Jiawei Li",
+        "Bin Li",
+        "Yao Hu"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR",
+        "cs.CV"
+      ],
+      "published": "2026-05-28T03:11:54+00:00",
+      "link": "https://arxiv.org/pdf/2605.29287v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified multimodal embedding model for representation and ranking",
+      "llm_evidence_cn": "统一多模态嵌入模型用于表示和排序",
+      "llm_evidence": "统一多模态嵌入模型用于表示和排序",
+      "canonical_evidence": "统一多模态嵌入模型用于表示和排序",
+      "llm_tldr_en": "UniNote proposes a unified embedding model for industrial I2I retrieval, balancing global and local representation with tailored retrieval strategies.",
+      "llm_tldr_cn": "UniNote面向工业物品间检索，提出统一多模态嵌入模型。它通过定制化检索策略平衡全局与局部表示，解决了解耦流水线效率低和精度延迟权衡问题。实验证明该方法在复杂多模态内容上有效。",
+      "llm_tldr": "UniNote面向工业物品间检索，提出统一多模态嵌入模型。它通过定制化检索策略平衡全局与局部表示，解决了解耦流水线效率低和精度延迟权衡问题。实验证明该方法在复杂多模态内容上有效。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.29488v2",
+      "source": "arxiv",
+      "title": "AnyMo: Scaling Any-Modality Conditional Motion Generation with Masked Modeling",
+      "abstract": "Conditional human motion generation remains a fundamental challenge in computer vision and robotics. Despite significant progress, current methods are often constrained by fixed modality configurations and task-specific architectures, leaving cross-modal interactions and the scaling laws of multimodal-conditioned synthesis largely underexplored. A key bottleneck is the scarcity of large-scale modality-aligned motion data, limiting generalization across diverse control signals. In this work, we introduce OmniHuMo, a large-scale, high-quality dataset comprising over 5,000 hours of motion and 3.2 million sequences with precisely aligned multimodal annotations (e.g., text, speech, music, and trajectory). Leveraging OmniHuMo, we propose AnyMo, a unified multimodal framework combining a Residual FSQ-based motion tokenizer with a scalable masked modeling transformer, enabling high-quality motion synthesis under arbitrary modality combinations. Extensive experiments show that AnyMo achieves high-fidelity synthesis while offering flexible control over both spatial and stylistic attributes.",
+      "authors": [
+        "Yiheng Li",
+        "Zhuo Li",
+        "Ruibing Hou",
+        "Yingjie Chen",
+        "Hong Chang",
+        "Hao Liu",
+        "Shiguang Shan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-28T07:15:19+00:00",
+      "link": "https://arxiv.org/pdf/2605.29488v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified model for any-modality conditional motion generation",
+      "llm_evidence_cn": "任意模态条件运动生成的统一模型",
+      "llm_evidence": "任意模态条件运动生成的统一模型",
+      "canonical_evidence": "任意模态条件运动生成的统一模型",
+      "llm_tldr_en": "AnyMo introduces a unified model for conditional motion generation from any modality (text, speech, music, trajectory) using masked modeling and a large-scale dataset.",
+      "llm_tldr_cn": "现有运动生成模型受限于固定模态配置和任务特定架构。本文构建大规模多模态对齐数据集OmniHuMo，并提出AnyMo统一模型，通过掩码建模实现任意模态条件下的运动生成，显著提升跨模态泛化能力。",
+      "llm_tldr": "现有运动生成模型受限于固定模态配置和任务特定架构。本文构建大规模多模态对齐数据集OmniHuMo，并提出AnyMo统一模型，通过掩码建模实现任意模态条件下的运动生成，显著提升跨模态泛化能力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.30168v1",
+      "source": "arxiv",
+      "title": "OmniCD: A Foundational Framework for Remote Sensing Image Change Detection Guided by Multimodal Semantics",
+      "abstract": "Change detection (CD) in remote sensing is vital for applications such as urban monitoring and disaster assessment, yet traditional methods struggle with generalization across diverse scenarios. We present OmniCD, a foundational framework that unifies and enhances remote sensing CD through multimodal semantic guidance. OmniCD incorporates image and text prompts -- such as textual descriptions, semantic maps, and geospatial metadata -- into a unified architecture, supporting tasks from binary CD to zero-shot semantic change understanding. The framework integrates a hierarchical scene retrieval module and a change detection module, reinforced by a style disentanglement mechanism for improved cross-domain robustness. We further introduce RSITCD, a large-scale multimodal dataset with 300K+ annotated image-text pairs. Extensive experiments show that OmniCD achieves state-of-the-art performance across benchmarks, demonstrating strong adaptability and setting a solid foundation for general-purpose CD systems in remote sensing.",
+      "authors": [
+        "Chenhao Sun"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-28T16:20:18+00:00",
+      "link": "https://arxiv.org/pdf/2605.30168v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified architecture for remote sensing change detection with multimodal semantic guidance",
+      "llm_evidence_cn": "多模态语义引导的遥感变化检测统一架构",
+      "llm_evidence": "多模态语义引导的遥感变化检测统一架构",
+      "canonical_evidence": "多模态语义引导的遥感变化检测统一架构",
+      "llm_tldr_en": "OmniCD presents a foundational framework for remote sensing change detection that unifies image and text prompts, enabling tasks from binary to zero-shot semantic change understanding.",
+      "llm_tldr_cn": "遥感变化检测面临场景多样、泛化困难的问题。OmniCD提出统一的多模态语义引导框架，整合图像和文本提示，支持从二分类到零样本语义变化的多种任务。通过层次场景检索和风格解耦机制，提升了跨域鲁棒性。该框架为遥感变化检测提供了基础性的统一方案。",
+      "llm_tldr": "遥感变化检测面临场景多样、泛化困难的问题。OmniCD提出统一的多模态语义引导框架，整合图像和文本提示，支持从二分类到零样本语义变化的多种任务。通过层次场景检索和风格解耦机制，提升了跨域鲁棒性。该框架为遥感变化检测提供了基础性的统一方案。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.29287v2",
+      "source": "arxiv",
+      "title": "UniNote: A Unified Embedding Model for Multimodal Representation and Ranking",
+      "abstract": "Item-to-Item (I2I) retrieval is a fundamental part of modern content platforms, supporting critical industrial workflows from recommendation engines to content auditing. While multimodal embedding methods have advanced general retrieval, they often falter in I2I scenarios due to the challenges of balancing global content representation with fine-grained local retrieval, the systemic inefficiency of decoupled embedding-and-ranking pipelines, and the inherent trade-offs between model precision and serving latency. To solve these issues, we propose \\textbf{UniNote}, a unified embedding model designed for industrial I2I retrieval. Tailored retrieval strategies are introduced to support representation learning over complex, multimodal content at varying granularities. To operationalize these strategies, UniNote employs a two-stage training paradigm: the first stage leverages contrastive SFT to establish robust base embeddings, while the second stage refines ranking quality through a reinforcement learning (RL) process that aligns the model with content relevance. Our results show that UniNote achieves SOTA performance across diverse I2I tasks. Deployed at Xiaohongshu and integrated with Matryoshka Representation Learning (MRL), UniNote achieved significant improvements in retrieval quality and cost efficiency in large-scale applications.",
+      "authors": [
+        "Jinghan Zhao",
+        "Wenwei Jin",
+        "Anqi Li",
+        "Jintao Tong",
+        "Luya Mo",
+        "Jiawei Li",
+        "Bin Li",
+        "Yao Hu"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR",
+        "cs.CV"
+      ],
+      "published": "2026-05-28T03:11:54+00:00",
+      "link": "https://arxiv.org/pdf/2605.29287v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified multimodal embedding model for representation and ranking",
+      "llm_evidence_cn": "统一多模态嵌入模型用于表示和排序",
+      "llm_evidence": "统一多模态嵌入模型用于表示和排序",
+      "canonical_evidence": "统一多模态嵌入模型用于表示和排序",
+      "llm_tldr_en": "UniNote proposes a unified embedding model for industrial I2I retrieval, balancing global and local representation with tailored retrieval strategies.",
+      "llm_tldr_cn": "UniNote面向工业物品间检索，提出统一多模态嵌入模型。它通过定制化检索策略平衡全局与局部表示，解决了解耦流水线效率低和精度延迟权衡问题。实验证明该方法在复杂多模态内容上有效。",
+      "llm_tldr": "UniNote面向工业物品间检索，提出统一多模态嵌入模型。它通过定制化检索策略平衡全局与局部表示，解决了解耦流水线效率低和精度延迟权衡问题。实验证明该方法在复杂多模态内容上有效。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.31041v1",
+      "source": "arxiv",
+      "title": "Does Visual Information Play a Decisive Role in Vision-Language-Action Model Driving Behavior?",
+      "abstract": "Vision-Language-Action (VLA) models have demonstrated promising capability in autonomous driving, highlighting the potential of unified multimodal architectures for jointly modeling perception and planning. However, how current VLA-based driving behavior is grounded in visual information remains poorly understood. Existing evaluation protocols mainly focus on aggregate performance metrics, lacking structured and practical diagnostics to quantify visual-behavior dependency. In this work, we introduce a structured multi-level visual perturbation framework to analyze visual-behavior dependency in VLA-based driving models systematically. The framework organizes controlled visual perturbations along three complementary dimensions: channellevel degradation, information-level disruption, and structurelevel modification. We apply it to VLA-based driving systems and evaluate behavioral responses under both open-loop trajectory prediction and interactive closed-loop safety evaluation. Experimental results reveal evaluation-dependent dependency patterns and uneven visual grounding across abstraction levels. These findings call for more structured analyses and principled design of VLA driving models to better understand how visual information shapes behavior and develop safer, more robust systems.",
+      "authors": [
+        "Jingtao He",
+        "Hongliang Lu",
+        "Xiaoyun Qiu",
+        "Yixuan Wang",
+        "Xinhu Zheng"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T09:18:32+00:00",
+      "link": "https://arxiv.org/pdf/2605.31041v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Studies unified multimodal VLA models for driving, provides analysis framework",
+      "llm_evidence_cn": "研究统一多模态VLA驾驶模型，提供分析框架",
+      "llm_evidence": "研究统一多模态VLA驾驶模型，提供分析框架",
+      "canonical_evidence": "研究统一多模态VLA驾驶模型，提供分析框架",
+      "llm_tldr_en": "Introduces a multi-level visual perturbation framework to analyze visual-behavior dependency in VLA driving models, highlighting unified multimodal architectures.",
+      "llm_tldr_cn": "视觉-语言-动作（VLA）模型展示了统一多模态架构在自动驾驶中的潜力，但视觉信息的影响尚不明确。本文提出一个多级视觉扰动框架，系统分析VLA模型对视觉信息的依赖。通过三个维度的扰动，揭示了视觉在行为决策中的作用，为统一模型的可解释性提供工具。",
+      "llm_tldr": "视觉-语言-动作（VLA）模型展示了统一多模态架构在自动驾驶中的潜力，但视觉信息的影响尚不明确。本文提出一个多级视觉扰动框架，系统分析VLA模型对视觉信息的依赖。通过三个维度的扰动，揭示了视觉在行为决策中的作用，为统一模型的可解释性提供工具。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2605.30968v1",
+      "source": "arxiv",
+      "title": "Variational Adapter for Cross-modal Similarity Representation",
+      "abstract": "The core of vision-language models lies in measuring cross-modal similarity within a unified representation space. However, most image-text matching or multi-class image classification datasets lack fine-grained cross-modal matching annotations, forcing the continuous similarity space into binary classification boundaries. This compression induces false negative samples and significantly impairs the generalization performance of cross-modal tasks. While prior research has attempted to mitigate this by modeling intra-modal ambiguity, it often overlooks inherent annotation flaws, leading to suboptimal uncertainty allocation. To address these challenges, we propose a Variational Adapter for Cross-modal Similarity Representation (VACSR). This approach reformulates image-text matching with fine-grained semantic scarcity as a variational inference problem. It constructs a latent space for cross-modal similarity and uses regularization techniques to mitigate overfitting to binary annotations. Experiments on image-text retrieval, domain generalization, and base-to-novel generalization demonstrate the proposed method's effectiveness and robust generalization ability.",
+      "authors": [
+        "WenZhang Wei",
+        "Zhipeng Gui",
+        "Dehua Peng",
+        "Tiandi Ye",
+        "Huayi Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T08:08:15+00:00",
+      "link": "https://arxiv.org/pdf/2605.30968v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Variational Adapter for cross-modal similarity in unified representation space",
+      "llm_evidence_cn": "用于统一表示空间中跨模态相似性的变分适配器",
+      "llm_evidence": "用于统一表示空间中跨模态相似性的变分适配器",
+      "canonical_evidence": "用于统一表示空间中跨模态相似性的变分适配器",
+      "llm_tldr_en": "Proposes VACSR, a variational adapter that models ambiguity in cross-modal similarity within a unified representation space to mitigate false negatives.",
+      "llm_tldr_cn": "跨模态相似性学习受限于二分类标注，导致假阴性。本文提出VACSR，一种变分适配器，在统一表示空间中建模不确定性。该方法将连续相似性空间从硬边界中解放，优化不确定性分配，在多个跨模态任务上提升泛化性能。",
+      "llm_tldr": "跨模态相似性学习受限于二分类标注，导致假阴性。本文提出VACSR，一种变分适配器，在统一表示空间中建模不确定性。该方法将连续相似性空间从硬边界中解放，优化不确定性分配，在多个跨模态任务上提升泛化性能。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2605.29488v1",
+      "source": "arxiv",
+      "title": "AnyMo: Scaling Any-Modality Conditional Motion Generation with Masked Modeling",
+      "abstract": "Conditional human motion generation remains a fundamental challenge in computer vision and robotics. Despite significant progress, current methods are often constrained by fixed modality configurations and task-specific architectures, leaving cross-modal interactions and the scaling laws of multimodal-conditioned synthesis largely underexplored. A key bottleneck is the scarcity of large-scale modality-aligned motion data, limiting generalization across diverse control signals. In this work, we introduce OmniHuMo, a large-scale, high-quality dataset comprising over 5,000 hours of motion and 3.2 million sequences with precisely aligned multimodal annotations (e.g., text, speech, music, and trajectory). Leveraging OmniHuMo, we propose AnyMo, a unified multimodal framework combining a Residual FSQ-based motion tokenizer with a scalable masked modeling transformer, enabling high-quality motion synthesis under arbitrary modality combinations. Extensive experiments show that AnyMo achieves high-fidelity synthesis while offering flexible control over both spatial and stylistic attributes.",
+      "authors": [
+        "Yiheng Li",
+        "Zhuo Li",
+        "Ruibing Hou",
+        "Yingjie Chen",
+        "Hong Chang",
+        "Hao Liu",
+        "Shiguang Shan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-28T07:15:19+00:00",
+      "link": "https://arxiv.org/pdf/2605.29488v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Unified any-modality conditional motion generation framework with masked modeling",
+      "llm_evidence_cn": "统一任意模态条件运动生成框架，使用掩码建模",
+      "llm_evidence": "统一任意模态条件运动生成框架，使用掩码建模",
+      "canonical_evidence": "统一任意模态条件运动生成框架，使用掩码建模",
+      "llm_tldr_en": "AnyMo proposes a unified any-modality conditional motion generation framework using masked modeling, enabling generalization across diverse control signals.",
+      "llm_tldr_cn": "现有条件运动生成方法受限于固定模态配置和任务特定架构，缺乏跨模态交互和规模扩展。本文提出OmniHuMo大规模多模态对齐运动数据集，以及AnyMo统一框架，采用掩码建模实现任意模态条件生成（如文本、语音、轨迹）。实验证明，AnyMo有效缩放，支持多样化的控制信号。",
+      "llm_tldr": "现有条件运动生成方法受限于固定模态配置和任务特定架构，缺乏跨模态交互和规模扩展。本文提出OmniHuMo大规模多模态对齐运动数据集，以及AnyMo统一框架，采用掩码建模实现任意模态条件生成（如文本、语音、轨迹）。实验证明，AnyMo有效缩放，支持多样化的控制信号。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.31177v1",
+      "source": "arxiv",
+      "title": "Vanilla ViT for Automotive Point Cloud Semantic Segmentation",
+      "abstract": "Plain Transformers have become the de-facto architecture for processing text, audio, image, and video, offering a unified backbone for multimodal learning. However, state-of-the-art architectures for point cloud semantic segmentation remain dominated by U-Nets architectures where convolutions are interleaved with local or windowed attentions. In this work, we show how to effectively leverage vanilla, non-hierarchical ViTs for segmentation of large-scale automotive lidar scenes. We bridge the performance gap thanks to a carefully designed tokenizer, a lightweight decoder segmentation head, and tailored data augmentations. Our approach, VaViT for Vanilla ViT, matches or exceeds the performance of state-of-the-art methods while maintaining the simplicity of ViT architecture. We provide extensive evaluations on nuScenes, SemanticKITTI, and Waymo Open Dataset to validate the efficiency of our method. Code and models are available at https://github.com/valeoai/VaViT.",
+      "authors": [
+        "Gilles Puy",
+        "Nermin Samet",
+        "Alexandre Boulch",
+        "Spyros Gidaris",
+        "Tuan-Hung VU",
+        "Renaud Marlet"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-29T11:47:02+00:00",
+      "link": "https://arxiv.org/pdf/2605.31177v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Uses vanilla ViT as unified backbone for point cloud segmentation, relates to transformer fusion",
+      "llm_evidence_cn": "使用原始ViT作为点云分割的统一骨干，涉及Transformer融合",
+      "llm_evidence": "使用原始ViT作为点云分割的统一骨干，涉及Transformer融合",
+      "canonical_evidence": "使用原始ViT作为点云分割的统一骨干，涉及Transformer融合",
+      "llm_tldr_en": "VaViT shows that vanilla ViT with careful tokenization can match state-of-the-art on point cloud segmentation, advocating unified transformer backbones.",
+      "llm_tldr_cn": "Transformer已成为多模态学习的统一骨干，但点云分割仍以U-Net为主。本文证明，通过精心设计的分词器和轻量解码器，原始非层次ViT也能在大规模激光雷达点云上超越或匹配现有最优方法。这验证了统一Transformer架构在点云任务中的潜力。",
+      "llm_tldr": "Transformer已成为多模态学习的统一骨干，但点云分割仍以U-Net为主。本文证明，通过精心设计的分词器和轻量解码器，原始非层次ViT也能在大规模激光雷达点云上超越或匹配现有最优方法。这验证了统一Transformer架构在点云任务中的潜力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.00170v1",
+      "source": "arxiv",
+      "title": "UF-AMA: A unified framework for cross-domain emotion recognition via adaptive multimodal alignment",
+      "abstract": "In recent years, emotion recognition based on physiological signals such as electroencephalogram (EEG) has gained considerable attention, as internal physiological data offer greater objectivity and reliability compared to external behavioral data like facial expressions. However, due to distribution shifts caused by individual and contextual differences, along with variations in sample quality across modalities, constructing a cross-domain multimodal emotion recognition model with high generalization and robustness remains a key challenge. In this study, we propose a Unified Framework with Adaptive Multimodal Alignment (UF-AMA) to address cross-subject and cross-session emotion recognition using multimodal physiological signals. First, we construct a cross-modal feature fusion network comprising Transformer encoders and multi-head cross-attention modules, enabling the deep integration of EEG signals and eye-tracking data. Subsequently, we introduce a confidence-aware screening mechanism that dynamically assesses the predictive reliability of each modality branch on target domain samples, partitions samples into different quality subsets, and accordingly applies global consistency alignment and cross-modal distillation. Finally, we propose a multi-level domain adaptation framework that jointly optimizes the marginal and conditional distributions of both local modality-specific and global fusion features, thereby reducing cross-domain distribution shifts at multiple granularities. Extensive experiments on the SEED and SEED-IV datasets demonstrate that UF-AMA achieves state-of-the-art (SOTA) performance in both cross-subject and cross-session tasks. The source code is available at: https://github.com/BetterCoderLab/UF-AMA.",
+      "authors": [
+        "Zheng Wang",
+        "Shuo Wang",
+        "Junhong Wang"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-05-29T12:56:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.00170v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified framework with adaptive multimodal alignment for cross-domain emotion recognition",
+      "llm_evidence_cn": "面向跨域情感识别的统一自适应多模态对齐框架",
+      "llm_evidence": "面向跨域情感识别的统一自适应多模态对齐框架",
+      "canonical_evidence": "面向跨域情感识别的统一自适应多模态对齐框架",
+      "llm_tldr_en": "UF-AMA proposes a unified framework for cross-domain emotion recognition using multimodal physiological signals, with adaptive multimodal alignment to handle distribution shifts.",
+      "llm_tldr_cn": "跨域情感识别面临个体差异和模态质量变化导致的分布偏移。本文提出UF-AMA统一框架，通过自适应多模态对齐，在跨被试和跨session场景下实现鲁棒的情感识别，利用多模态生理信号。",
+      "llm_tldr": "跨域情感识别面临个体差异和模态质量变化导致的分布偏移。本文提出UF-AMA统一框架，通过自适应多模态对齐，在跨被试和跨session场景下实现鲁棒的情感识别，利用多模态生理信号。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.00477v1",
+      "source": "arxiv",
+      "title": "Do Text Edits Generalize to Visual Generation? Benchmarking Cross-Modal Knowledge Editing in UMMs",
+      "abstract": "Unified multimodal models (UMMs) have emerged as a promising paradigm for general-purpose multimodal intelligence. As they are deployed in real-world applications, effectively updating internal knowledge becomes critical. While knowledge editing has matured for text-only models, it remains unclear whether edits that successfully modify textual outputs also transfer to image generation in UMMs. To study this question, we introduce UniKE, the first benchmark for cross-modality knowledge editing in UMMs, comprising 2,971 edit subjects spanning attribute and relation edits. Using VQA-based visual verification, we reveal a striking modality gap: text-side efficacy can reach approximately 92%, whereas the best overall VQA accuracy under direct image generation is only 18.5%. We further propose Reasoning-augmented Parameter Editing, which explicitly activates edited knowledge before generation and improves overall VQA accuracy for all evaluated model-editor pairs, with gains up to 18.6 percentage points. Mechanistic analysis shows that this gap is associated with partial alignment between edited textual representations and the conditioning pathways for visual generation, where edits sufficient for text outputs may remain too weak or misaligned to steer image synthesis. These findings show that textual knowledge edits do not guarantee reliable cross-modality transfer and motivate modality-aware editing methods. Our code and data are available at https://github.com/gxx27/UniKE.",
+      "authors": [
+        "Xin Gao",
+        "Cheng Yang",
+        "Chufan Shi",
+        "Taylor Berg-Kirkpatrick"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.CV"
+      ],
+      "published": "2026-05-30T02:09:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.00477v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "cross-modal knowledge editing benchmark for unified multimodal models",
+      "llm_evidence_cn": "面向统一多模态模型的跨模态知识编辑基准",
+      "llm_evidence": "面向统一多模态模型的跨模态知识编辑基准",
+      "canonical_evidence": "面向统一多模态模型的跨模态知识编辑基准",
+      "llm_tldr_en": "UniKE is the first benchmark for cross-modality knowledge editing in UMMs, revealing a modality gap where text edits do not transfer to visual generation.",
+      "llm_tldr_cn": "针对统一多模态模型（UMM）的知识编辑问题，构建UniKE基准，包含2971个编辑样本。通过VQA验证发现文本侧编辑成功率达92%，但在图像生成任务中严重下降。揭示了UMM中显著的模态差距。",
+      "llm_tldr": "针对统一多模态模型（UMM）的知识编辑问题，构建UniKE基准，包含2971个编辑样本。通过VQA验证发现文本侧编辑成功率达92%，但在图像生成任务中严重下降。揭示了UMM中显著的模态差距。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2606.00351v2",
+      "source": "arxiv",
+      "title": "UniVerse: A Unified Modulation Framework for Segmentation-Free,Disentangled Multi-Concept Personalization",
+      "abstract": "Personalized visual understanding has advanced significantly, yet existing approaches struggle to localize and extract specific concepts when input images contain multiple objects. Many prior methods rely heavily on segmentation-based supervision or exhibit poor compositional generalization, limiting their ability to accurately disentangle and manipulate individual concepts. In this work, we propose UniVerse, a Unified Modulation Framework for segmentation-free, disentangled multi-concept personalization in diffusion transformers. Our method allows for composable and decomposable concept extraction, enabling fine-grained localization and representation of target objects without explicit segmentation masks. UniVerse learns to decompose complex scenes into concept-specific representations and then compose them in a unified manner, enabling robust personalization across diverse visual contexts. Through extensive experiments on multiple benchmarks, we demonstrate that UniVerse significantly outperforms state-of-the-art baselines in both localization accuracy and visual fidelity. Qualitative and quantitative results show that our approach can precisely extract target concepts in cluttered scenes, paving the way for more flexible, interpretable, and personalized visual generation and understanding.",
+      "authors": [
+        "Quynh Phung",
+        "Sandesh Ghimire",
+        "Minsi Hu",
+        "Chung-Chi Tsai",
+        "Jia-Bin Huang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-29T20:45:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.00351v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Unified modulation framework for multi-concept personalization in diffusion transformers",
+      "llm_evidence_cn": "统一调制框架用于扩散Transformer中的多概念个性化",
+      "llm_evidence": "统一调制框架用于扩散Transformer中的多概念个性化",
+      "canonical_evidence": "统一调制框架用于扩散Transformer中的多概念个性化",
+      "llm_tldr_en": "UniVerse proposes a unified modulation framework for segmentation-free, disentangled multi-concept personalization in diffusion transformers, enabling fine-grained localization without masks.",
+      "llm_tldr_cn": "针对现有方法在含多对象图片中难以定位和提取特定概念的问题，本文提出UniVerse，一个统一调制框架，在扩散Transformer中实现无需分割的多概念解耦个性化。该方法通过可组合和可分解的概念提取，无需显式分割掩码即可精准定位目标对象。实验表明，UniVerse在多个概念上实现了细粒度控制，为个性化图像生成提供了新思路。",
+      "llm_tldr": "针对现有方法在含多对象图片中难以定位和提取特定概念的问题，本文提出UniVerse，一个统一调制框架，在扩散Transformer中实现无需分割的多概念解耦个性化。该方法通过可组合和可分解的概念提取，无需显式分割掩码即可精准定位目标对象。实验表明，UniVerse在多个概念上实现了细粒度控制，为个性化图像生成提供了新思路。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
