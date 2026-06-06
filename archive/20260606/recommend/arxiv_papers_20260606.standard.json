@@ -1,0 +1,690 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-06T20:04:54.356711+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 8,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 15,
+    "quick_skim_target": 11,
+    "quick_selected": 11
+  },
+  "deep_dive": [
+    {
+      "id": "2606.03672v1",
+      "source": "arxiv",
+      "title": "Foley-Omni: A Unified Multimodal Generation Model from Task-Level Audio Synthesis to Complete Video Soundtrack Generation",
+      "abstract": "Recent unified audio generation models can support diverse tasks across speech, sound effects, and music, but most of them still focus on isolated task-level synthesis. However, real video production often requires multiple components of a complete audio track to be generated jointly and consistently for the same video. We present Foley-Omni, a unified multimodal audio generation model that extends isolated task-level synthesis to complete video soundtrack generation by jointly modeling speech, sound effects, and music within a shared latent generation process. To support training and reproducible evaluation, we develop an audiovisual data curation pipeline and introduce V2ST-Bench, a benchmark for holistic video soundtrack generation evaluation. Experiments show that Foley-Omni achieves competitive performance with expert systems on individual synthesis tasks, while improving speech intelligibility, audiovisual consistency and perceptual quality for mixed soundtrack generation.",
+      "authors": [
+        "Ye Tao",
+        "Lupeng Liu",
+        "Xuenan Xu",
+        "Jiasun Feng",
+        "Jiarui Wang",
+        "Ying Qin",
+        "Shuiyang Mao",
+        "Wei Liu",
+        "Shuai Wang"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.MM"
+      ],
+      "published": "2026-06-02T13:56:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.03672v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified multimodal generation model for complete video soundtrack",
+      "llm_evidence_cn": "用于完整视频配乐的统一多模态生成模型",
+      "llm_evidence": "用于完整视频配乐的统一多模态生成模型",
+      "canonical_evidence": "用于完整视频配乐的统一多模态生成模型",
+      "llm_tldr_en": "Foley-Omni is a unified audio generation model that jointly synthesizes speech, sound effects, and music for video soundtracks within a shared latent generation process.",
+      "llm_tldr_cn": "现有统一音频生成模型仅支持孤立任务级合成，而真实视频制作需要同时且一致地生成语音、音效和音乐。Foley-Omni扩展了任务级合成，在共享潜生成过程中联合建模多种音频成分。提出V2ST-Bench基准用于评估。实验表明在完整配乐生成任务上优于级联方法。",
+      "llm_tldr": "现有统一音频生成模型仅支持孤立任务级合成，而真实视频制作需要同时且一致地生成语音、音效和音乐。Foley-Omni扩展了任务级合成，在共享潜生成过程中联合建模多种音频成分。提出V2ST-Bench基准用于评估。实验表明在完整配乐生成任务上优于级联方法。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.00351v2",
+      "source": "arxiv",
+      "title": "UniVerse: A Unified Modulation Framework for Segmentation-Free,Disentangled Multi-Concept Personalization",
+      "abstract": "Personalized visual understanding has advanced significantly, yet existing approaches struggle to localize and extract specific concepts when input images contain multiple objects. Many prior methods rely heavily on segmentation-based supervision or exhibit poor compositional generalization, limiting their ability to accurately disentangle and manipulate individual concepts. In this work, we propose UniVerse, a Unified Modulation Framework for segmentation-free, disentangled multi-concept personalization in diffusion transformers. Our method allows for composable and decomposable concept extraction, enabling fine-grained localization and representation of target objects without explicit segmentation masks. UniVerse learns to decompose complex scenes into concept-specific representations and then compose them in a unified manner, enabling robust personalization across diverse visual contexts. Through extensive experiments on multiple benchmarks, we demonstrate that UniVerse significantly outperforms state-of-the-art baselines in both localization accuracy and visual fidelity. Qualitative and quantitative results show that our approach can precisely extract target concepts in cluttered scenes, paving the way for more flexible, interpretable, and personalized visual generation and understanding.",
+      "authors": [
+        "Quynh Phung",
+        "Sandesh Ghimire",
+        "Minsi Hu",
+        "Chung-Chi Tsai",
+        "Jia-Bin Huang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-29T20:45:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.00351v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified modulation framework for multi-concept personalization in diffusion transformers",
+      "llm_evidence_cn": "在扩散Transformer中提出统一调制框架用于多概念个性化",
+      "llm_evidence": "在扩散Transformer中提出统一调制框架用于多概念个性化",
+      "canonical_evidence": "在扩散Transformer中提出统一调制框架用于多概念个性化",
+      "llm_tldr_en": "UniVerse enables segmentation-free, disentangled multi-concept personalization in diffusion transformers through a unified modulation framework.",
+      "llm_tldr_cn": "现有个性化方法依赖分割掩码且难以处理多概念组合。本文提出UniVerse，一种统一调制框架，在扩散Transformer中实现免分割、解耦的多概念个性化。该方法通过可组合的概念提取实现细粒度定位和表示，无需显式分割掩码。实验表明，UniVerse在多个概念组合和编辑任务上表现优异，拓展了统一多模态模型在个性化生成中的应用。",
+      "llm_tldr": "现有个性化方法依赖分割掩码且难以处理多概念组合。本文提出UniVerse，一种统一调制框架，在扩散Transformer中实现免分割、解耦的多概念个性化。该方法通过可组合的概念提取实现细粒度定位和表示，无需显式分割掩码。实验表明，UniVerse在多个概念组合和编辑任务上表现优异，拓展了统一多模态模型在个性化生成中的应用。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.00909v1",
+      "source": "arxiv",
+      "title": "MLLM-Microscope: Unlocking Hidden Structure Within Multimodal Large Language Models",
+      "abstract": "This work presents MLLM-Microscope, a novel system designed for analyzing the hidden representations within Multimodal Large Language Models (MLLMs). Our system evaluates the linearity, intrinsic dimension, and anisotropy of multimodal token embeddings across transformer layers. Utilizing the ScienceQA dataset, we evaluate two state-of-the-art MLLMs, LLaVA-NeXT and OmniFusion. We find that both the main and residual streams for tokens of both modalities exhibit highly linear behaviors across transformer layers. However, LLaVA-NeXT's image tokens reveal a slight decline in linearity, whereas OmniFusion's remain consistent. Image token dimensions in OmniFusion remain consistently higher across layers compared to LLaVA-NeXT. Also, the OmniFusion's anisotropy is observed to stay consistently low throughout the layers. These findings suggest that the inner workings of MLLMs highly depend on the nature of modality fusion performed before passing the token sequence into LLM. This and other new potential insights obtainable from our system are surely capable of enhancing our understanding of the inner workings of MLLMs, informing future model design and optimization.",
+      "authors": [
+        "Ravil Mussabayev",
+        "Rustam Mussabayev"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-05-30T22:20:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.00909v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "analyzes representations in multimodal large language models",
+      "llm_evidence_cn": "分析多模态大语言模型中的表示结构",
+      "llm_evidence": "分析多模态大语言模型中的表示结构",
+      "canonical_evidence": "分析多模态大语言模型中的表示结构",
+      "llm_tldr_en": "MLLM-Microscope systematically analyzes hidden representations in MLLMs, revealing linear behaviors and token dimension differences between LLaVA-NeXT and OmniFusion.",
+      "llm_tldr_cn": "本文提出MLLM-Microscope系统，用于深入分析多模态大语言模型（如LLaVA-NeXT和OmniFusion）的隐藏表示。系统评估了跨Transformer层的线性度、内在维度和各向异性，发现两种模型的主流和残差流均呈现高度线性行为，但图像令牌的线性和维度存在差异。该工作为理解统一多模态模型的内部工作机制提供了重要工具。",
+      "llm_tldr": "本文提出MLLM-Microscope系统，用于深入分析多模态大语言模型（如LLaVA-NeXT和OmniFusion）的隐藏表示。系统评估了跨Transformer层的线性度、内在维度和各向异性，发现两种模型的主流和残差流均呈现高度线性行为，但图像令牌的线性和维度存在差异。该工作为理解统一多模态模型的内部工作机制提供了重要工具。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.01207v1",
+      "source": "arxiv",
+      "title": "Feature Alignment Determines Fusion Strategy: A Comparative Study of Cross-Attention and Concatenation in Multimodal Learning",
+      "abstract": "The choice between cross-attention and concatenation for multimodal fusion remains governed by practitioner intuition rather than principled understanding. In this paper, we demonstrate that feature alignment quality, not data scale alone, is the primary determinant of which fusion strategy excels. Through controlled experiments on Flickr8k using two feature extraction backbones (ResNet18 and CLIP ViT-B/32), we show that concatenation outperforms cross-attention by 4.1-5.1 percentage points across all tested scales (2048-16384 samples) when features are pre-aligned by a vision-language pretraining objective. We provide a theoretical explanation grounded in sample complexity analysis: concatenation requires O(d_v + d_t) samples to learn its fusion projection, while cross-attention requires O(d_v * d_t) samples to learn bilinear attention weights, over 256 times as many for 512-dimensional CLIP features. When features are already aligned, the approximation error gap between the two methods vanishes, and concatenation's sample efficiency dominates at all practical dataset sizes. An alignment degradation study confirms a monotonic trend: as feature alignment degrades, concatenation's advantage grows from 1.3% to 2.8%. These findings provide a principled decision framework for fusion method selection in multimodal systems, with direct implications for the design of Multimodal Large Language Models.",
+      "authors": [
+        "Zhiqiang Zhou",
+        "Xuezhen Xie"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-05-31T12:55:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.01207v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "comparative study of cross-attention vs concatenation for multimodal fusion",
+      "llm_evidence_cn": "比较交叉注意力与拼接在多模态融合中的表现",
+      "llm_evidence": "比较交叉注意力与拼接在多模态融合中的表现",
+      "canonical_evidence": "比较交叉注意力与拼接在多模态融合中的表现",
+      "llm_tldr_en": "Demonstrates that feature alignment quality determines the optimal fusion strategy between cross-attention and concatenation, with concatenation outperforming when features are pre-aligned.",
+      "llm_tldr_cn": "本文系统比较了交叉注意力和拼接两种融合策略，发现特征对齐质量而非数据规模是决定策略优劣的关键。在Flickr8k上使用CLIP对齐特征后，拼接在多种规模下均优于交叉注意力4.1-5.1个百分点，并从样本复杂度角度给出了理论解释，为融合策略选择提供了原则性指导。",
+      "llm_tldr": "本文系统比较了交叉注意力和拼接两种融合策略，发现特征对齐质量而非数据规模是决定策略优劣的关键。在Flickr8k上使用CLIP对齐特征后，拼接在多种规模下均优于交叉注意力4.1-5.1个百分点，并从样本复杂度角度给出了理论解释，为融合策略选择提供了原则性指导。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.03417v1",
+      "source": "arxiv",
+      "title": "A unified multi-task framework enables interpretable chest radiograph analysis",
+      "abstract": "While multimodal deep learning has advanced medical imaging analysis, existing black-box systems \\textcolor{black}{may remain confined to isolated tasks, often overlooking} the trust-sensitive nature of clinical diagnosis as a multi-task process. We propose IMT-CXR (Interpretable Multi-task Transformer for Chest X-ray Analysis), a framework that emulates radiologists' diagnostic workflow through three evidence-driven stages: 1) Disease recognition; 2) Attribute characterization (e.g., size, location, severity quantification); 3) Evidence-integrated report generation with traceable decision pathways. The framework employs a unified transformer architecture optimized via medical-domain instruction tuning, sequentially executing four clinical tasks: multi-label disease classification, lesion localization, anatomical segmentation, and radiology report generation. Experimental validation demonstrates competitive performance on ten CXR benchmarks under direct inference and fine-tuning settings. In a blinded evaluation of 160 historical reports from four medical centers, three radiologists rated 66\\% of AI-generated reports as comparable to or surpassing original clinical reports in diagnostic clarity, highlighting the framework's translational potential. By establishing traceable diagnostic pathways from anatomical findings to conclusions, this work bridges the gap between AI technical metrics and clinical utility, advancing trustworthy AI systems in medical imaging.",
+      "authors": [
+        "Lijian Xu",
+        "Ziyu Ni",
+        "Xinglong Liu",
+        "Xiaosong Wang",
+        "Hongsheng Li",
+        "Shaoting Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-02T10:02:15+00:00",
+      "link": "https://arxiv.org/pdf/2606.03417v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Unified multi-task transformer framework for interpretable chest radiograph analysis",
+      "llm_evidence_cn": "用于可解释胸部X光分析的统一多任务Transformer框架",
+      "llm_evidence": "用于可解释胸部X光分析的统一多任务Transformer框架",
+      "canonical_evidence": "用于可解释胸部X光分析的统一多任务Transformer框架",
+      "llm_tldr_en": "Proposes IMT-CXR, a unified multi-task transformer framework that emulates radiologist workflow for interpretable chest radiograph analysis.",
+      "llm_tldr_cn": "现有医学影像分析多为黑箱且任务孤立。本文提出IMT-CXR，一个统一的多任务Transformer框架，通过三个证据驱动阶段模拟放射科医生诊断流程：疾病识别、属性表征、报告生成。该框架使用医学领域指令调优的统一Transformer架构，顺序执行四项临床任务，提升了可解释性。",
+      "llm_tldr": "现有医学影像分析多为黑箱且任务孤立。本文提出IMT-CXR，一个统一的多任务Transformer框架，通过三个证据驱动阶段模拟放射科医生诊断流程：疾病识别、属性表征、报告生成。该框架使用医学领域指令调优的统一Transformer架构，顺序执行四项临床任务，提升了可解释性。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "carryover_cache",
+      "paper_id": "2606.03417v1"
+    },
+    {
+      "id": "2606.02162v1",
+      "source": "arxiv",
+      "title": "Multimodal Approaches for Visually-Rich Document Type Classification: A Comparative Analysis",
+      "abstract": "Document type classification in visually rich documents remains challenging, as relevant information is distributed across textual, visual, and layout modalities. To capture this complexity, current approaches rely on diverse multimodal modeling strategies, resulting in heterogeneous architectures that complicate systematic comparison. This variability is also reflected in existing comparative studies, which often rely on heterogeneous evaluation setups, further complicating systematic comparison and making it difficult to assess progress. To address these limitations, this work provides a structured analysis of multimodal design strategies across transformer- and LLM-based architectures, combined with a controlled empirical comparison within a unified experimental framework. Specifically, four representative models (LayoutLMv3, Donut, Qwen3-VL-32B-Instruct, and Qwen3-32B) are evaluated on the RVL-CDIP benchmark to systematically analyze the contributions of text, image, and layout information for document type classification, with a particular focus on contrasting OCR-dependent and OCR-free approaches. The results show that specialized multimodal Transformers outperform LLM-based approaches on visually rich and layout-intensive documents. Image information contributes most strongly to reliable classification, while OCR-derived text provides useful but secondary support. These findings highlight that multimodal processing remains essential for documents with pronounced layout structure. Overall, the study provides a systematic basis for comparing multimodal architectures and offers practical guidance for selecting effective feature combinations and model designs for document type classification.",
+      "authors": [
+        "Catyana Heyne",
+        "Jürgen Frikel",
+        "Filippo Riccio"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL",
+        "cs.IR"
+      ],
+      "published": "2026-06-01T12:24:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.02162v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "compares multimodal transformer architectures for document classification",
+      "llm_evidence_cn": "比较用于文档分类的多模态Transformer架构",
+      "llm_evidence": "比较用于文档分类的多模态Transformer架构",
+      "canonical_evidence": "比较用于文档分类的多模态Transformer架构",
+      "llm_tldr_en": "A structured comparative analysis of transformer- and LLM-based multimodal architectures for visually-rich document type classification, highlighting design strategy differences.",
+      "llm_tldr_cn": "针对视觉丰富文档类型分类任务，本文系统分析了基于Transformer和LLM的多模态架构设计策略。通过控制实验比较不同模型在多模态融合上的表现，揭示了架构选择对分类性能的影响。该工作为统一多模态模型在文档理解领域的应用提供了设计指导。",
+      "llm_tldr": "针对视觉丰富文档类型分类任务，本文系统分析了基于Transformer和LLM的多模态架构设计策略。通过控制实验比较不同模型在多模态融合上的表现，揭示了架构选择对分类性能的影响。该工作为统一多模态模型在文档理解领域的应用提供了设计指导。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.02659v1",
+      "source": "arxiv",
+      "title": "CL-DMDF:Dynamic Multimodal Data Fusion Model Based on Contrastive Learning",
+      "abstract": "Multimodal data fusion involves integrating and analyzing information from multiple modalities to uncover latent correlations and complementary patterns, thereby enhancing data processing and decision-making. While existing methods for structured multimodal inputs are typically designed around specific tasks and assume fully observed modalities, real-world applications often suffer from uncertain or missing modality inputs due to various factors. Some traditional models overly emphasize local interactions within missing modalities, neglecting the global complementary cues embedded in multimodal representations. To overcome these limitations, we propose a Dynamic Multimodal Data Fusion model based on Contrastive Learning (CL-DMDF). CL-DMDF introduces a novel attention mechanism that operates across both feature and modality dimensions to compute reliable attention scores, effectively reflecting importance at each level. The CL-DMDF further incorporates an entity-centroid contrastive learning module that constructs centroid-based positive samples from entity features to enhance discriminative learning. Additionally, an adaptive fusion module is employed to improve the efficiency and accuracy of dynamic fusion strategies. Extensive experiments conducted on three datasets demonstrate the effectiveness of the CL-DMDF across diverse multimodal fusion tasks.",
+      "authors": [
+        "Dong Li",
+        "Lingling Zhang",
+        "Binghao Han",
+        "Linlin Ding",
+        "Yue Kou"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-01T07:12:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.02659v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "dynamic multimodal data fusion model based on contrastive learning",
+      "llm_evidence_cn": "基于对比学习的动态多模态数据融合模型",
+      "llm_evidence": "基于对比学习的动态多模态数据融合模型",
+      "canonical_evidence": "基于对比学习的动态多模态数据融合模型",
+      "llm_tldr_en": "Proposes CL-DMDF, a dynamic multimodal fusion model that uses contrastive learning to handle uncertain or missing modalities by leveraging global complementary cues.",
+      "llm_tldr_cn": "本文提出基于对比学习的动态多模态数据融合模型CL-DMDF，解决实际应用中模态缺失问题。通过对比学习挖掘多模态表示中的全局互补线索，而不过度关注局部缺失交互。在多个缺失模态场景下，相比传统方法显著提升了融合性能。",
+      "llm_tldr": "本文提出基于对比学习的动态多模态数据融合模型CL-DMDF，解决实际应用中模态缺失问题。通过对比学习挖掘多模态表示中的全局互补线索，而不过度关注局部缺失交互。在多个缺失模态场景下，相比传统方法显著提升了融合性能。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2605.31041v1",
+      "source": "arxiv",
+      "title": "Does Visual Information Play a Decisive Role in Vision-Language-Action Model Driving Behavior?",
+      "abstract": "Vision-Language-Action (VLA) models have demonstrated promising capability in autonomous driving, highlighting the potential of unified multimodal architectures for jointly modeling perception and planning. However, how current VLA-based driving behavior is grounded in visual information remains poorly understood. Existing evaluation protocols mainly focus on aggregate performance metrics, lacking structured and practical diagnostics to quantify visual-behavior dependency. In this work, we introduce a structured multi-level visual perturbation framework to analyze visual-behavior dependency in VLA-based driving models systematically. The framework organizes controlled visual perturbations along three complementary dimensions: channellevel degradation, information-level disruption, and structurelevel modification. We apply it to VLA-based driving systems and evaluate behavioral responses under both open-loop trajectory prediction and interactive closed-loop safety evaluation. Experimental results reveal evaluation-dependent dependency patterns and uneven visual grounding across abstraction levels. These findings call for more structured analyses and principled design of VLA driving models to better understand how visual information shapes behavior and develop safer, more robust systems.",
+      "authors": [
+        "Jingtao He",
+        "Hongliang Lu",
+        "Xiaoyun Qiu",
+        "Yixuan Wang",
+        "Xinhu Zheng"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-29T09:18:32+00:00",
+      "link": "https://arxiv.org/pdf/2605.31041v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified multimodal architectures for perception and planning in autonomous driving",
+      "llm_evidence_cn": "用于自动驾驶感知和规划的统一多模态架构",
+      "llm_evidence": "用于自动驾驶感知和规划的统一多模态架构",
+      "canonical_evidence": "用于自动驾驶感知和规划的统一多模态架构",
+      "llm_tldr_en": "This work introduces a structured multi-level visual perturbation framework to analyze visual-behavior dependency in Vision-Language-Action autonomous driving models, revealing the decisive role of visual information across three perturbation dimensions.",
+      "llm_tldr_cn": "视觉-语言-动作（VLA）模型在自动驾驶中展现了统一多模态架构的潜力，但其行为如何依赖视觉信息尚不清楚。本文提出结构化多级视觉扰动框架，从场景、物体和属性三个维度对视觉输入施加受控干扰，系统分析VLA驾驶模型中的视觉-行为依赖关系。实验结果表明，视觉信息对模型行为具有决定性影响，且不同扰动维度的影响存在差异。该框架为评估和改进统一多模态驾驶模型提供了结构化诊断工具，有助于理解多模态融合模型的视觉基础。",
+      "llm_tldr": "视觉-语言-动作（VLA）模型在自动驾驶中展现了统一多模态架构的潜力，但其行为如何依赖视觉信息尚不清楚。本文提出结构化多级视觉扰动框架，从场景、物体和属性三个维度对视觉输入施加受控干扰，系统分析VLA驾驶模型中的视觉-行为依赖关系。实验结果表明，视觉信息对模型行为具有决定性影响，且不同扰动维度的影响存在差异。该框架为评估和改进统一多模态驾驶模型提供了结构化诊断工具，有助于理解多模态融合模型的视觉基础。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.00959v1",
+      "source": "arxiv",
+      "title": "Towards Understanding Modality Interaction in Multimodal Language Models via Partial Information Decomposition",
+      "abstract": "Understanding modality interaction in multimodal large language models (MLLMs) is central to reliable deployment. We introduce Partial Information Decomposition (PID) as a decision-level framework that separates unique, redundant, and synergistic contributions of sensory and linguistic inputs, beyond representation alignment and outcome-based evaluation. Across vision--language benchmarks, PID reveals recurring modality-use profiles: reasoning and grounding-oriented tasks tend to exhibit high synergy, whereas expert and knowledge-oriented tasks show stronger language-unique reliance. These profiles generalize across model families and predict sensitivity to modality-level interventions. We further extend PID to tri-modal systems with Sensory PID, treating language as a control variable to decompose video--audio information gain. Applied to omni-modal models, Sensory PID reveals a sensory synergy bottleneck dominated by visual information even on audio--visual fusion tasks. Finally, PID-guided reweighting provides initial evidence for improving multimodal reasoning and grounding performance.",
+      "authors": [
+        "Wanlong Fang",
+        "Tianle Zhang",
+        "Wen Tao",
+        "Alvin Chan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-05-31T02:29:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.00959v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "analyzes modality interaction in MLLMs via PID, relevant to unified multimodal understanding",
+      "llm_evidence_cn": "通过部分信息分解分析多模态模型交互，与统一多模态理解相关",
+      "llm_evidence": "通过部分信息分解分析多模态模型交互，与统一多模态理解相关",
+      "canonical_evidence": "通过部分信息分解分析多模态模型交互，与统一多模态理解相关",
+      "llm_tldr_en": "Introduces Partial Information Decomposition to understand modality interaction in MLLMs, revealing modality-use profiles across benchmarks.",
+      "llm_tldr_cn": "该论文提出利用部分信息分解（PID）框架分析多模态大语言模型中的模态交互机制，将输入贡献分离为唯一、冗余和协同部分。在视觉-语言基准上，PID揭示了推理任务呈高协同性、知识任务偏语言依赖的模态使用模式，且模式跨模型家族泛化，可预测模态干预敏感性。这项工作为统一多模态模型的设计提供了理解基础。",
+      "llm_tldr": "该论文提出利用部分信息分解（PID）框架分析多模态大语言模型中的模态交互机制，将输入贡献分离为唯一、冗余和协同部分。在视觉-语言基准上，PID揭示了推理任务呈高协同性、知识任务偏语言依赖的模态使用模式，且模式跨模型家族泛化，可预测模态干预敏感性。这项工作为统一多模态模型的设计提供了理解基础。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.04180v1",
+      "source": "arxiv",
+      "title": "KODA: Contrastive Representation Comparison and Alignment for Vision-Language Foundation Models",
+      "abstract": "Vision-language foundation models such as CLIP and SigLIP provide widely used representations for multimodal learning systems. While these models are typically compared through downstream performance, such evaluations often do not explain how their representations differ structurally. In this work, we study this problem through the task of Contrastive Embedding Clustering: identifying sample subsets that are weakly clustered under one representation but strongly clustered under another. We propose \\emph{Kernel Optimization for Discrepancy Analysis (KODA)}, a kernel-based framework for contrastive representation comparison and alignment. KODA constructs unified multimodal kernels through modality-wise kernel composition and formulates discrepancy discovery as a constrained optimization problem that searches for coherent structures in one representation while suppressing coherence in a reference representation. This yields interpretable discrepancy directions associated with specific sample subsets and modality interactions. To scale KODA to large vision-language datasets, we develop randomized low-dimensional approximations of joint kernels using random projections, including Random Fourier Features for shift-invariant kernels. Empirically, KODA identifies consistent and interpretable discrepancy structures across vision-language representations and provides sample subsets for representation alignment. The code is available at https://github.com/yokiwuuu/KODA.",
+      "authors": [
+        "Youqi Wu",
+        "Mohammad Jalali",
+        "Farzan Farnia"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.IT"
+      ],
+      "published": "2026-06-02T19:47:41+00:00",
+      "link": "https://arxiv.org/pdf/2606.04180v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "constructs unified multimodal kernels for representation comparison and alignment",
+      "llm_evidence_cn": "构建统一多模态核进行表示比较与对齐",
+      "llm_evidence": "构建统一多模态核进行表示比较与对齐",
+      "canonical_evidence": "构建统一多模态核进行表示比较与对齐",
+      "llm_tldr_en": "KODA uses kernel optimization to compare and align multimodal representations from CLIP and SigLIP, identifying structural differences.",
+      "llm_tldr_cn": "本文提出KODA框架，通过核优化对比分析不同视觉-语言基础模型的表示差异。KODA构建统一多模态核，并通过对比嵌入聚类识别表示强弱聚类的样本子集。在多个下游任务上，KODA能够有效发现模型间的结构差异，并为表示对齐提供指导，有助于深化对统一多模态模型的理解。",
+      "llm_tldr": "本文提出KODA框架，通过核优化对比分析不同视觉-语言基础模型的表示差异。KODA构建统一多模态核，并通过对比嵌入聚类识别表示强弱聚类的样本子集。在多个下游任务上，KODA能够有效发现模型间的结构差异，并为表示对齐提供指导，有助于深化对统一多模态模型的理解。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2606.00351v1",
+      "source": "arxiv",
+      "title": "UniVerse: A Unified Modulation Framework for Segmentation-Free,Disentangled Multi-Concept Personalization",
+      "abstract": "Personalized visual understanding has advanced significantly, yet existing approaches struggle to localize and extract specific concepts when input images contain multiple objects. Many prior methods rely heavily on segmentation-based supervision or exhibit poor compositional generalization, limiting their ability to accurately disentangle and manipulate individual concepts. In this work, we propose UniVerse, a Unified Modulation Framework for segmentation-free, disentangled multi-concept personalization in diffusion transformers. Our method allows for composable and decomposable concept extraction, enabling fine-grained localization and representation of target objects without explicit segmentation masks. UniVerse learns to decompose complex scenes into concept-specific representations and then compose them in a unified manner, enabling robust personalization across diverse visual contexts. Through extensive experiments on multiple benchmarks, we demonstrate that UniVerse significantly outperforms state-of-the-art baselines in both localization accuracy and visual fidelity. Qualitative and quantitative results show that our approach can precisely extract target concepts in cluttered scenes, paving the way for more flexible, interpretable, and personalized visual generation and understanding.",
+      "authors": [
+        "Quynh Phung",
+        "Sandesh Ghimire",
+        "Minsi Hu",
+        "Chung-Chi Tsai",
+        "Jia-Bin Huang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-05-29T20:45:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.00351v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified modulation framework for multi-concept personalization in diffusion transformers",
+      "llm_evidence_cn": "扩散变压器中用于多概念个性化的统一调制框架",
+      "llm_evidence": "扩散变压器中用于多概念个性化的统一调制框架",
+      "canonical_evidence": "扩散变压器中用于多概念个性化的统一调制框架",
+      "llm_tldr_en": "Proposes UniVerse, a unified modulation framework for segmentation-free, disentangled multi-concept personalization in diffusion transformers, enabling fine-grained concept extraction without explicit masks.",
+      "llm_tldr_cn": "本文提出UniVerse，一种用于扩散变压器的统一调制框架，实现无需分割的多概念解耦个性化。该方法允许可组合和可分解的概念提取，无需显式分割掩码即可精确定位和表示目标对象。实验表明在复杂多对象场景下，UniVerse在概念分离和生成质量上优于现有方法。",
+      "llm_tldr": "本文提出UniVerse，一种用于扩散变压器的统一调制框架，实现无需分割的多概念解耦个性化。该方法允许可组合和可分解的概念提取，无需显式分割掩码即可精确定位和表示目标对象。实验表明在复杂多对象场景下，UniVerse在概念分离和生成质量上优于现有方法。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.01022v1",
+      "source": "arxiv",
+      "title": "ProductWebGen: Benchmarking Multimodal Product Webpage Generation",
+      "abstract": "Crafting a product display webpage from a source product image, along with layout and visual content instructions, holds significant practical value for domains such as marketing, advertising, and E-commerce. Intuitively, this task demands strict visual consistency across product displays and high-fidelity instruction following to jointly generate renderable HTML code. These requirements on controllability and instruction-following are closely aligned with the core features of advanced multimodal generative models, such as image editing models and unified models. To this end, this paper introduces ProductWebGen to systematically benchmark the product webpage generation capacities of these models. We organize ProductWebGen with 500 test samples covering 13 product categories; each sample consists of a source image, a visual content instruction, and a webpage instruction. The task is to generate a product showcase webpage including multiple consistent images in accordance with the source image and instructions. Given the mixed-modality input-output nature of the task, we design and systematically compare two workflows for evaluation -- one uses large language models and image editing models to separately generate HTML code and images (editing-based), while the other relies on a single UM to generate both, with image generation conditioned on the preceding multimodal context (UM-based). Empirical results show that editing-based approaches achieve leading results in webpage instruction following and content appeal, while UM-based ones may display more advantages in fulfilling visual content instructions. We also construct a supervised fine-tuning dataset, ProductWebGen-1k, with 1,000 groups of real product images and LLM-generated HTML code. We verify its effectiveness on the open-source UM BAGEL. The data and code are available at https://github.com/SJTU-DENG-Lab/ProductWebGen.",
+      "authors": [
+        "Zhihong Liu",
+        "Siqi Kou",
+        "Zheng Li",
+        "Ye Ma",
+        "Quan Chen",
+        "Peng Jiang",
+        "Kai Yu",
+        "Zhijie Deng"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-31T05:25:14+00:00",
+      "link": "https://arxiv.org/pdf/2606.01022v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "benchmarks unified multimodal models for webpage generation",
+      "llm_evidence_cn": "对统一多模态模型在网页生成任务上进行基准测试",
+      "llm_evidence": "对统一多模态模型在网页生成任务上进行基准测试",
+      "canonical_evidence": "对统一多模态模型在网页生成任务上进行基准测试",
+      "llm_tldr_en": "ProductWebGen introduces a benchmark for product webpage generation using multimodal generative models, testing controllability and instruction-following.",
+      "llm_tldr_cn": "本文提出ProductWebGen基准，用于系统评估多模态生成模型（包括统一模型）在产品网页生成任务上的能力。基准包含500个测试样本覆盖13种产品类型，要求模型根据源图像和指令生成可渲染的HTML代码。评估发现现有模型在视觉一致性和指令遵循上仍有较大提升空间，为统一多模态模型的生成能力提供了标准化测试平台。",
+      "llm_tldr": "本文提出ProductWebGen基准，用于系统评估多模态生成模型（包括统一模型）在产品网页生成任务上的能力。基准包含500个测试样本覆盖13种产品类型，要求模型根据源图像和指令生成可渲染的HTML代码。评估发现现有模型在视觉一致性和指令遵循上仍有较大提升空间，为统一多模态模型的生成能力提供了标准化测试平台。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.02502v1",
+      "source": "arxiv",
+      "title": "CRAM: Centroid-Routing and Adaptive MoE for Multimodal Continual Instruction Tuning",
+      "abstract": "Multimodal Large Language Models (MLLMs) unify heterogeneous vision-language tasks under a shared generative framework via instruction tuning, yet real-world deployment demands continuous capability expansion, making Multimodal Continual Instruction Tuning (MCIT) essential. Existing methods either update all tasks with a shared parameter set or allocate dedicated modules for each new task. Shared updates force heterogeneous tasks to compete, causing forgetting of learned capabilities. Conversely, isolated expansion prevents interference but severely limits parameter efficiency over long task streams. To address this dilemma, we propose CRAM. Specifically, by isolating task-specific patterns into independent modules, CRAM mitigates catastrophic forgetting across tasks. To further boost parameter efficiency, we utilize adaptive-rank instantiation to identify the capability gap between existing expert capability and new task demands, and dynamically allocate only the necessary parameters. To ensure stable reuse among tasks, centroid-guided routing recognizes and activates existing experts' capabilities, while an orthogonality penalty confines new updates to task-specific directions, preventing re-learning general capability. Extensive experiments across diverse benchmarks consistently demonstrate its superiority over existing methods.",
+      "authors": [
+        "Jun-Tao Tang",
+        "Zhen-Hao Xie",
+        "Yu-Cheng Shi",
+        "Da-Wei Zhou"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-06-01T17:11:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.02502v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified generative framework via instruction tuning",
+      "llm_evidence_cn": "通过指令微调实现统一生成框架",
+      "llm_evidence": "通过指令微调实现统一生成框架",
+      "canonical_evidence": "通过指令微调实现统一生成框架",
+      "llm_tldr_en": "CRAM introduces centroid-routing and adaptive mixture-of-experts for multimodal continual instruction tuning, mitigating catastrophic forgetting and parameter inefficiency in unified MLLMs.",
+      "llm_tldr_cn": "多模态大语言模型通过指令微调统一了异构视觉语言任务，但持续能力扩展面临灾难性遗忘和参数效率低下的矛盾。CRAM通过质心路由和自适应混合专家机制，将任务特定模式隔离到独立模块，避免任务间竞争，同时保持参数高效。实验表明在长任务流上显著优于现有方法。",
+      "llm_tldr": "多模态大语言模型通过指令微调统一了异构视觉语言任务，但持续能力扩展面临灾难性遗忘和参数效率低下的矛盾。CRAM通过质心路由和自适应混合专家机制，将任务特定模式隔离到独立模块，避免任务间竞争，同时保持参数高效。实验表明在长任务流上显著优于现有方法。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.01543v1",
+      "source": "arxiv",
+      "title": "PathAR: Structure-First Autoregressive Synthesis of Multimodal Pathology Images",
+      "abstract": "Data scarcity in multimodal pathology motivates unified generative models that synthesize modality-specific appearance while preserving anatomically coherent structure. Although modalities differ in appearance statistics, morphological structures such as cellular topology and tissue boundaries are largely preserved across acquisition protocols. However, existing methods often model these factors within a homogeneous token stream, implicitly coupling structure with appearance and weakening structural controllability under modality shifts. To address this, we propose pathology Autorgressive modeling (PathAR), a structure-first autoregressive synthesis framework that explicitly factorizes structure and appearance for modality-label-conditioned pathology generation.PathAR employs a dual vector quantization (Dual-VQ) tokenizer to decompose samples into mask-grounded structure and appearance tokens, and an interleaved autoregressive (IAR) transformer with asymmetric attention visibility to enforce structure-to-appearance dependence. PathAR stabilizes morphology under heterogeneous modality-specific appearances and enables spatially aligned image--mask pair generation. Extensive experiments show that PathAR improves structural consistency and modality fidelity over baselines, maintains sample diversity, supports downstream segmentation in data-scarce regimes, and demonstrates extensibility to finer-grained intra-modality organ-label variation.",
+      "authors": [
+        "Yuan Zhang",
+        "Jiahao Xia",
+        "Junzhang Huang",
+        "Meng Wang",
+        "Feng Chen",
+        "Guanyu Yang",
+        "Huazhu Fu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-01T01:43:48+00:00",
+      "link": "https://arxiv.org/pdf/2606.01543v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified generative model for multimodal pathology image synthesis with structure-appearance factorization",
+      "llm_evidence_cn": "结构-外观解耦的统一多模态病理图像生成模型",
+      "llm_evidence": "结构-外观解耦的统一多模态病理图像生成模型",
+      "canonical_evidence": "结构-外观解耦的统一多模态病理图像生成模型",
+      "llm_tldr_en": "PathAR proposes a structure-first autoregressive synthesis framework that factorizes structure and appearance for multimodal pathology images, enabling controllable generation under modality shifts.",
+      "llm_tldr_cn": "多模态病理图像数据稀缺，现有生成模型在统一框架中隐式耦合结构与外观，导致模态转换时结构失控。PathAR提出结构优先的自回归框架，显式分离结构码和外观码，实现模态标签条件下的可控合成。实验证明该方法在保持解剖结构一致性的同时生成逼真的模态特定外观。",
+      "llm_tldr": "多模态病理图像数据稀缺，现有生成模型在统一框架中隐式耦合结构与外观，导致模态转换时结构失控。PathAR提出结构优先的自回归框架，显式分离结构码和外观码，实现模态标签条件下的可控合成。实验证明该方法在保持解剖结构一致性的同时生成逼真的模态特定外观。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.02679v1",
+      "source": "arxiv",
+      "title": "Before Fusion, Ask What to Keep: Contextual Calibration of Multimodal Signals",
+      "abstract": "Multimodal systems often benefit from combining information across language, sound, and visual streams, but this benefit is not guaranteed. A modality that is useful for one input may become distracting for another, and local feature responses within the same modality can disagree with evidence from other sources. This work investigates how to adjust multimodal representations before they are merged by a downstream predictor. We develop a compact calibration module that compares each modality with the others at the summary level, extracts cues of cross-source support and conflict, and converts these cues into instance-wise and dimension-wise modulation signals. The calibration is applied to the original modality features rather than to already fused representations, enabling the model to suppress misleading components, preserve weak but useful evidence, and emphasize responses that are better supported by the current multimodal context. The module is designed as a plug-in component and can be attached to different fusion backbones without changing their prediction heads. Across five benchmarks covering sentiment understanding, action recognition, audio-visual event detection, and audio-visual emotion classification, the proposed pre-combination calibration strategy improves performance under both sequence-based and convolutional fusion settings. Additional analyses under modality removal, synthetic corruption, training dynamics, and feature-level visualization show that calibrating signals before fusion can reduce interference from unreliable modalities and produce more stable multimodal optimization.",
+      "authors": [
+        "Jiyuan Liu",
+        "Liangwei Nathan Zheng",
+        "Wei Emma Zhang",
+        "Xinpei Wang",
+        "Weitong Chen"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.MM",
+        "cs.SD",
+        "eess.AS"
+      ],
+      "published": "2026-06-01T14:20:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.02679v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "contextual calibration module for multimodal signals before fusion",
+      "llm_evidence_cn": "融合前的多模态信号上下文校准模块",
+      "llm_evidence": "融合前的多模态信号上下文校准模块",
+      "canonical_evidence": "融合前的多模态信号上下文校准模块",
+      "llm_tldr_en": "Proposes a compact calibration module that adjusts multimodal representations before fusion by comparing modalities and extracting cross-source support/conflict cues, applied to original features.",
+      "llm_tldr_cn": "本文研究如何在多模态融合前调整表示。提出一个紧凑的校准模块，在摘要级别比较各模态，提取跨源支持和冲突线索，并将其转换为实例和维度级别的调制信号，应用于原始特征而非已融合特征。实验表明该方法能有效提升下游任务性能，为多模态融合提供了一种灵活的预处理策略。",
+      "llm_tldr": "本文研究如何在多模态融合前调整表示。提出一个紧凑的校准模块，在摘要级别比较各模态，提取跨源支持和冲突线索，并将其转换为实例和维度级别的调制信号，应用于原始特征而非已融合特征。实验表明该方法能有效提升下游任务性能，为多模态融合提供了一种灵活的预处理策略。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.05896v1",
+      "source": "arxiv",
+      "title": "Resonant Minds: Closed-Loop Social Avatars with Theory of Mind",
+      "abstract": "Creating lifelike digital humans with genuine social intelligence requires unifying cognitive reasoning and multimodal generation within a coherent framework. Current approaches treat these as separate tasks: Large Language Models excel at dialogue but lack embodied expression, while diffusion-based talking head models achieve visual fidelity but ignore social cognition. To bridge this gap, we propose a closed-loop dual-agent framework integrating perception, social reasoning, and expression into a continuous interaction cycle. The perception module analyzes partners' multimodal behaviors from video, while the social reasoning module infers hidden mental states through Theory of Mind and selects responses via an ensemble mechanism. The expression module then generates emotion-controllable dual-agent videos synthesizing both speaker speech and expression alongside listener reactive behaviors, capturing bidirectional dynamics absent in prior work. We construct a hierarchical Persona-Scenario dataset with psychologically grounded personas and private social goals to support evaluation under information asymmetry. Experiments on this dataset demonstrate competitive or superior performance on both dialogue quality and video generation metrics. Notably, our method surpasses even the full-information Script mode on key dialogue quality dimensions, suggesting that explicit mental state inference under uncertainty can elicit more thoughtful dialogue than unrestricted information access.",
+      "authors": [
+        "Jianxu Shangguan",
+        "Jing Xu",
+        "Hang Ye",
+        "Xiaoxuan Ma",
+        "Yizhou Wang",
+        "Wentao Zhu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-04T09:03:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.05896v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "closed-loop dual-agent framework unifying perception, social reasoning, and multimodal generation for avatars",
+      "llm_evidence_cn": "用于虚拟人的闭环双智能体框架，统一感知、社会推理和多模态生成",
+      "llm_evidence": "用于虚拟人的闭环双智能体框架，统一感知、社会推理和多模态生成",
+      "canonical_evidence": "用于虚拟人的闭环双智能体框架，统一感知、社会推理和多模态生成",
+      "llm_tldr_en": "Proposes a closed-loop dual-agent framework integrating perception, social reasoning, and multimodal generation to create digital humans with genuine social intelligence.",
+      "llm_tldr_cn": "本文提出一个闭环双智能体框架，将感知、社会推理和表情生成整合到连续交互循环中，以创建具有真实社交智能的数字人类。感知模块分析多模态行为，社会推理模块通过心智理论推断隐藏心理状态，表情模块生成同步响应。实验表明该框架在交互自然性和一致性上显著优于分离方法。",
+      "llm_tldr": "本文提出一个闭环双智能体框架，将感知、社会推理和表情生成整合到连续交互循环中，以创建具有真实社交智能的数字人类。感知模块分析多模态行为，社会推理模块通过心智理论推断隐藏心理状态，表情模块生成同步响应。实验表明该框架在交互自然性和一致性上显著优于分离方法。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.05950v1",
+      "source": "arxiv",
+      "title": "Edit-R2: Context-Aware Reinforcement Learning for Multi-Turn Image Editing",
+      "abstract": "Text-guided image editing has advanced rapidly with diffusion models and unified multimodal foundation models. However, most existing methods remain confined to single-turn settings, overlooking the more realistic scenario of multi-turn in-context editing, where users iteratively refine an image through a sequence of instructions. In this setting, a model must follow each new instruction while preserving accumulated session-level constraints, challenged by two coupled failure modes: long-context dilution, where sparse textual constraints become difficult to recover from growing interleaved image-text histories, and state contamination, where earlier editing mistakes degrade subsequent generations. We introduce Edit-R2, a novel reinforcement learning post-training framework for unified multimodal models. Edit-R2 reconstructs the operative session intent, which effectively consolidates scattered historical constraints into an explicit reasoning trace before each editing turn. It further enables multi-turn RL over both reasoning and generation through a unified objective that jointly optimizes intent reconstruction generation in discrete text space and flow-matching image generation in continuous latent space, while a trajectory filtering mechanism suppresses corrupted rollouts to stabilize training under state contamination. To support systematic evaluation, we introduce MICE-Bench, a large-scale benchmark for multi-turn in-context editing with automated metrics for instruction following (IF), content consistency (CC), and global awareness (GA) over accumulated session constraints. Experiments show that Edit-R2 substantially improves multi-turn in-context editing and achieves competitive performance compared against strong baselines.",
+      "authors": [
+        "Yuxiao Ye",
+        "Haoran He",
+        "Fangyuan Kong",
+        "Xintao Wang",
+        "Pengfei Wan",
+        "Kun Gai",
+        "Ling Pan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-04T09:49:47+00:00",
+      "link": "https://arxiv.org/pdf/2606.05950v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "uses unified multimodal models for multi-turn image editing",
+      "llm_evidence_cn": "利用统一多模态模型进行多轮图像编辑",
+      "llm_evidence": "利用统一多模态模型进行多轮图像编辑",
+      "canonical_evidence": "利用统一多模态模型进行多轮图像编辑",
+      "llm_tldr_en": "Edit-R2 applies reinforcement learning for multi-turn in-context image editing, addressing long-context dilution and state contamination using unified multimodal foundation models.",
+      "llm_tldr_cn": "针对现有单轮图像编辑方法无法处理多轮迭代编辑的问题，本文提出Edit-R2，一种基于强化学习的上下文感知多轮图像编辑方法。该方法利用统一多模态基础模型，在每轮编辑中保持会话级约束，通过引入奖励机制缓解长上下文稀释和状态污染问题。实验表明，Edit-R2在多轮编辑场景下显著优于现有方法，推动了统一多模态模型在交互式编辑中的应用。",
+      "llm_tldr": "针对现有单轮图像编辑方法无法处理多轮迭代编辑的问题，本文提出Edit-R2，一种基于强化学习的上下文感知多轮图像编辑方法。该方法利用统一多模态基础模型，在每轮编辑中保持会话级约束，通过引入奖励机制缓解长上下文稀释和状态污染问题。实验表明，Edit-R2在多轮编辑场景下显著优于现有方法，推动了统一多模态模型在交互式编辑中的应用。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
