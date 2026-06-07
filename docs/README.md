@@ -6,71 +6,71 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-06
-- 运行时间：2026-06-06 20:17:25 UTC
+- 最新运行日期：2026-06-07
+- 运行时间：2026-06-07 20:28:53 UTC
 - 运行状态：成功
 - 本次总论文数：17
 - 精读区：6
 - 速读区：11
 
 ### 今日简报（AI）
-今日分析17篇论文，精读6篇，速读11篇。最值得关注的是高分研究Foley-Omni（统一多模态生成模型，9分）与UniVerse（无分割多概念个性化框架，8分）。建议优先精读这两篇，并留意CL-DMDF和KODA在对比学习与多模态融合方向的新探索。
-- 详情：[/202606/06/README](/202606/06/README)
+今日收录17篇论文，精读6篇，最高分10/0来自多模态CAD统一基准《UniCAD》和MLLMs智能体框架《MUSE》。最值得细读的是《UniCAD》提出的多模态多任务统一模型，以及《MUSE》对多模态大语言模型智能体的系统性评估。建议优先关注统一模型和智能体框架方向，后续可跟进3D识别与轻量化推理研究。
+- 详情：[/202606/07/README](/202606/07/README)
 
 ### 精读区论文标签
-1. [Foley-Omni: A Unified Multimodal Generation Model from Task-Level Audio Synthesis to Complete Video Soundtrack Generation](/202606/06/2606.03672v1-foley-omni-a-unified-multimodal-generation-model-from-task-level-audio-synthesis-to-complete-video-soundtrack-generation)  
+1. [UniCAD: A Unified Benchmark and Universal Model for Multi-Modal Multi-Task CAD](/202606/07/2606.05058v1-unicad-a-unified-benchmark-and-universal-model-for-multi-modal-multi-task-cad)  
+   标签：评分：10.0/10、query:um
+   evidence：统一多模态模型应用于CAD多任务
+2. [MUSE: A Unified Agentic Harness for MLLMs](/202606/07/2606.03005v1-muse-a-unified-agentic-harness-for-mllms)  
    标签：评分：9.0/10、query:um
-   evidence：用于完整视频配乐的统一多模态生成模型
-2. [UniVerse: A Unified Modulation Framework for Segmentation-Free,Disentangled Multi-Concept Personalization](/202606/06/2606.00351v2-universe-a-unified-modulation-framework-for-segmentation-freedisentangled-multi-concept-personalization)  
+   evidence：MLLMs的统一代理框架，包含可组合模块
+3. [UAT: Unified Audio-Text Diffusion for Audio Generation, Editing, and Captioning](/202606/07/2606.04939v1-uat-unified-audio-text-diffusion-for-audio-generation-editing-and-captioning)  
+   标签：评分：9.0/10、query:um
+   evidence：统一音频-文本扩散模型，支持生成、编辑和字幕
+4. [Beyond Generative Decoding: Discriminative Hidden-State Readout from a Native Omni-Modal LLM for Multimodal Sentiment Analysis](/202606/07/2606.05713v1-beyond-generative-decoding-discriminative-hidden-state-readout-from-a-native-omni-modal-llm-for-multimodal-sentiment-analysis)  
+   标签：评分：9.0/10、query:um
+   evidence：基于原生全模态大语言模型的判别式情感分析
+5. [GRAMformer: Any-Order Modality Interactions via Volumetric Multimodal Cross-Attention](/202606/07/2606.06249v1-gramformer-any-order-modality-interactions-via-volumetric-multimodal-cross-attention)  
+   标签：评分：9.0/10、query:um
+   evidence：面向Transformer多模态融合的新型交叉注意力
+6. [MMDG-Bench: A Benchmark for Multimodal Domain Generalization](/202606/07/2606.00891v1-mmdg-bench-a-benchmark-for-multimodal-domain-generalization)  
    标签：评分：8.0/10、query:um
-   evidence：在扩散Transformer中提出统一调制框架用于多概念个性化
-3. [MLLM-Microscope: Unlocking Hidden Structure Within Multimodal Large Language Models](/202606/06/2606.00909v1-mllm-microscope-unlocking-hidden-structure-within-multimodal-large-language-models)  
-   标签：评分：8.0/10、query:um
-   evidence：分析多模态大语言模型中的表示结构
-4. [Feature Alignment Determines Fusion Strategy: A Comparative Study of Cross-Attention and Concatenation in Multimodal Learning](/202606/06/2606.01207v1-feature-alignment-determines-fusion-strategy-a-comparative-study-of-cross-attention-and-concatenation-in-multimodal-learning)  
-   标签：评分：8.0/10、query:um
-   evidence：比较交叉注意力与拼接在多模态融合中的表现
-5. [Multimodal Approaches for Visually-Rich Document Type Classification: A Comparative Analysis](/202606/06/2606.02162v1-multimodal-approaches-for-visually-rich-document-type-classification-a-comparative-analysis)  
-   标签：评分：8.0/10、query:um
-   evidence：比较用于文档分类的多模态Transformer架构
-6. [A unified multi-task framework enables interpretable chest radiograph analysis](/202606/06/2606.03417v1-a-unified-multi-task-framework-enables-interpretable-chest-radiograph-analysis)  
-   标签：评分：8.0/10、query:um
-   evidence：用于可解释胸部X光分析的统一多任务Transformer框架
+   evidence：多模态域泛化的统一实验协议与框架
 
 ### 速读区论文标签
-1. [CL-DMDF:Dynamic Multimodal Data Fusion Model Based on Contrastive Learning](/202606/06/2606.02659v1-cl-dmdfdynamic-multimodal-data-fusion-model-based-on-contrastive-learning)  
+1. [Wavelet as Tokenizer: Preliminary Results on a Shared Wavelet Token Schema for Natural Signals](/202606/07/2606.02631v1-wavelet-as-tokenizer-preliminary-results-on-a-shared-wavelet-token-schema-for-natural-signals)  
    标签：评分：8.0/10、query:um
-   evidence：基于对比学习的动态多模态数据融合模型
-2. [KODA: Contrastive Representation Comparison and Alignment for Vision-Language Foundation Models](/202606/06/2606.04180v1-koda-contrastive-representation-comparison-and-alignment-for-vision-language-foundation-models)  
-   标签：评分：8.0/10、query:um
-   evidence：构建统一多模态核进行表示比较与对齐
-3. [Does Visual Information Play a Decisive Role in Vision-Language-Action Model Driving Behavior?](/202606/06/2605.31041v1-does-visual-information-play-a-decisive-role-in-vision-language-action-model-driving-behavior)  
+   evidence：音频、图像、视频的共享小波标记方案
+2. [HOLA: Holistic Multi-Modal Alignment for Open-Set 3D Recognition](/202606/07/2606.01334v1-hola-holistic-multi-modal-alignment-for-open-set-3d-recognition)  
    标签：评分：7.0/10、query:um
-   evidence：用于自动驾驶感知和规划的统一多模态架构
-4. [UniVerse: A Unified Modulation Framework for Segmentation-Free,Disentangled Multi-Concept Personalization](/202606/06/2606.00351v1-universe-a-unified-modulation-framework-for-segmentation-freedisentangled-multi-concept-personalization)  
+   evidence：利用多图多文本进行整体多模态对齐用于3D识别
+3. [Spectral-Progressive Thought Flow for Lightweight Multimodal Reasoning](/202606/07/2606.02842v1-spectral-progressive-thought-flow-for-lightweight-multimodal-reasoning)  
    标签：评分：7.0/10、query:um
-   evidence：扩散变压器中用于多概念个性化的统一调制框架
-5. [CRAM: Centroid-Routing and Adaptive MoE for Multimodal Continual Instruction Tuning](/202606/06/2606.02502v1-cram-centroid-routing-and-adaptive-moe-for-multimodal-continual-instruction-tuning)  
+   evidence：基于谱渐进思维流的轻量级多模态推理框架
+4. [Cross-Modality Feature Fusion Based on Structured State Space Duality for Multimodal Image Registration Network](/202606/07/2606.03341v1-cross-modality-feature-fusion-based-on-structured-state-space-duality-for-multimodal-image-registration-network)  
    标签：评分：7.0/10、query:um
-   evidence：通过指令微调实现统一生成框架
-6. [Before Fusion, Ask What to Keep: Contextual Calibration of Multimodal Signals](/202606/06/2606.02679v1-before-fusion-ask-what-to-keep-contextual-calibration-of-multimodal-signals)  
+   evidence：利用结构化状态空间对偶性进行跨模态特征融合用于多模态图像配准
+5. [SMAC: Spatial-Modal Joint Modeling and Adaptive Representation Collapse for Multimodal Object Tracking](/202606/07/2606.03370v1-smac-spatial-modal-joint-modeling-and-adaptive-representation-collapse-for-multimodal-object-tracking)  
    标签：评分：7.0/10、query:um
-   evidence：融合前的多模态信号上下文校准模块
-7. [Resonant Minds: Closed-Loop Social Avatars with Theory of Mind](/202606/06/2606.05896v1-resonant-minds-closed-loop-social-avatars-with-theory-of-mind)  
+   evidence：空间-模态卷积融合与自适应多模态融合用于目标跟踪
+6. [Mixed-Modality Dual Face-Hair Retrieval](/202606/07/2606.03470v1-mixed-modality-dual-face-hair-retrieval)  
    标签：评分：7.0/10、query:um
-   evidence：用于虚拟人的闭环双智能体框架，统一感知、社会推理和多模态生成
-8. [Edit-R2: Context-Aware Reinforcement Learning for Multi-Turn Image Editing](/202606/06/2606.05950v1-edit-r2-context-aware-reinforcement-learning-for-multi-turn-image-editing)  
+   evidence：混合模态双重检索，需要统一嵌入空间进行跨模态组合
+7. [MorphoQuant: Modality-Aware Quantization for Omni-modal Large Language Models](/202606/07/2606.04349v1-morphoquant-modality-aware-quantization-for-omni-modal-large-language-models)  
    标签：评分：7.0/10、query:um
-   evidence：利用统一多模态模型进行多轮图像编辑
-9. [Towards Understanding Modality Interaction in Multimodal Language Models via Partial Information Decomposition](/202606/06/2606.00959v1-towards-understanding-modality-interaction-in-multimodal-language-models-via-partial-information-decomposition)  
+   evidence：全模态大语言模型的模态感知量化
+8. [Query-based Cross-Modal Projector Bolstering Mamba Multimodal LLM](/202606/07/2606.04719v1-query-based-cross-modal-projector-bolstering-mamba-multimodal-llm)  
+   标签：评分：7.0/10、query:um
+   evidence：基于Mamba的多模态LLM的跨模态投影器
+9. [ProductWebGen: Benchmarking Multimodal Product Webpage Generation](/202606/07/2606.01022v1-productwebgen-benchmarking-multimodal-product-webpage-generation)  
    标签：评分：6.0/10、query:um
-   evidence：通过部分信息分解分析多模态模型交互，与统一多模态理解相关
-10. [ProductWebGen: Benchmarking Multimodal Product Webpage Generation](/202606/06/2606.01022v1-productwebgen-benchmarking-multimodal-product-webpage-generation)  
+   evidence：利用统一模型基准测试多模态产品网页生成
+10. [PRISM: Synergizing Vision Foundation Models via Self-organized Expert Specialization](/202606/07/2606.03444v1-prism-synergizing-vision-foundation-models-via-self-organized-expert-specialization)  
    标签：评分：6.0/10、query:um
-   evidence：对统一多模态模型在网页生成任务上进行基准测试
-11. [PathAR: Structure-First Autoregressive Synthesis of Multimodal Pathology Images](/202606/06/2606.01543v1-pathar-structure-first-autoregressive-synthesis-of-multimodal-pathology-images)  
+   evidence：通过自组织专家特化统一视觉基础模型
+11. [Disentangled Fine-Grained Prototype Learning for Incomplete Image-Tabular Classification](/202606/07/2606.05455v1-disentangled-fine-grained-prototype-learning-for-incomplete-image-tabular-classification)  
    标签：评分：6.0/10、query:um
-   evidence：结构-外观解耦的统一多模态病理图像生成模型
+   evidence：用于不完整图像表格分类的解缠细粒度原型学习
 
 
 <div class="dpr-home-promo-card">
