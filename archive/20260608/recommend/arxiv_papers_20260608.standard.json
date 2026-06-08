@@ -1,0 +1,389 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-08T21:12:11.818285+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.06042v2",
+      "source": "arxiv",
+      "title": "LoomVideo: Unifying Multimodal Inputs into Video Generation and Editing",
+      "abstract": "Developing unified video generation and editing models capable of interpreting interleaved multimodal inputs is a promising yet challenging frontier field. Existing unified frameworks predominantly rely on massive models (typically 13B parameters or more) and incorporate source video conditions for editing by concatenating sequence tokens. This concatenation inevitably doubles the sequence length, quadrupling the computational complexity of the self-attention mechanism and introducing prohibitive overhead. To address these bottlenecks, we present LoomVideo, a highly efficient 5B-parameter unified architecture for both video generation and editing. LoomVideo replaces the standard text encoder with a Multimodal Large Language Model (MLLM) and employs Deepstack injection mechanism to align multi-layer MLLM features with the Diffusion Transformer (DiT). Crucially, we introduce a zero-overhead Scale-and-Add conditioning approach for video editing. By scaling and directly adding the clean source video latent to the noised target latent, this elegant design eliminates the need for token concatenation, drastically reducing computational cost while maintaining robust capabilities for complex, non-rigid edits. Furthermore, a Negative Temporal RoPE strategy is seamlessly integrated to handle multiple reference images. Extensive experiments demonstrate that our compact 5B model achieves state-of-the-art or highly competitive performance across comprehensive benchmarks, exhibiting exceptional superiority in e-commerce and fashion generation scenarios. Benefiting from the zero-overhead conditioning mechanism, LoomVideo achieves at least a 5.41x acceleration in inference speed compared to models of similar capabilities, paving the way for highly practical and efficient video foundation models.",
+      "authors": [
+        "Jianzong Wu",
+        "Hao Lian",
+        "Jiongfan Yang",
+        "Dachao Hao",
+        "Ye Tian",
+        "Yunhai Tong",
+        "Jingyuan Zhu",
+        "Biaolong Chen",
+        "Qiaosong Qi",
+        "Aixi Zhang",
+        "Wanggui He",
+        "Mushui Liu",
+        "Jinlong Liu",
+        "Pipei Huang",
+        "Hao Jiang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-04T11:35:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.06042v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unifying multimodal inputs into video generation and editing with efficient architecture",
+      "llm_evidence_cn": "统一多模态输入的视频生成与编辑高效架构",
+      "llm_evidence": "统一多模态输入的视频生成与编辑高效架构",
+      "canonical_evidence": "统一多模态输入的视频生成与编辑高效架构",
+      "llm_tldr_en": "Presents LoomVideo, a 5B-parameter unified architecture for video generation and editing that interprets interleaved multimodal inputs, replacing text encoder with MLLM and using decomposed attention to reduce complexity.",
+      "llm_tldr_cn": "现有统一视频生成与编辑模型依赖数十亿参数，且通过拼接序列导致计算量激增。本文提出LoomVideo，仅5B参数，通过多模态大语言模型替代文本编码器并采用分解注意力机制，高效地处理交错多模态输入。在多项基准上，LoomVideo以更低成本达到或超越大模型性能，为统一多模态生成框架提供了轻量级方案。",
+      "llm_tldr": "现有统一视频生成与编辑模型依赖数十亿参数，且通过拼接序列导致计算量激增。本文提出LoomVideo，仅5B参数，通过多模态大语言模型替代文本编码器并采用分解注意力机制，高效地处理交错多模态输入。在多项基准上，LoomVideo以更低成本达到或超越大模型性能，为统一多模态生成框架提供了轻量级方案。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.06743v1",
+      "source": "arxiv",
+      "title": "HybridCodec: Fast Dual-Stream, Semantically Enhanced Neural Audio Codec",
+      "abstract": "The popularity of neural audio codecs as speech tokenizers has surged with the advent of Multimodal Large Language Models. New codec architectures with semantic and acoustic disentanglement have emerged. There are two main approaches to introduce semantic information into codec models: one distills semantic information from SSL representations into the first RVQ layer, while the other maintains separate streams for semantic and acoustic features. We propose HybridCodec, a unified architecture that combines both paradigms. It employs separate semantic and acoustic branches while distilling SSL representations into the semantic stream. This design ensures strong disentanglement without requiring an SSL model during inference. HybridCodec shows superior semantic specialization (RVQ-1) on in-domain test set and competitive reconstruction (RVQ-all). We demonstrate its robustness in out-of-domain and zero-shot cross-lingual settings, achieving a 3x speedup over existing dual-stream models.",
+      "authors": [
+        "Arjun Gangwar",
+        "S Umesh"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-04T21:57:18+00:00",
+      "link": "https://arxiv.org/pdf/2606.06743v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified dual-stream architecture for neural audio codec",
+      "llm_evidence_cn": "统一的音频编解码器双流架构",
+      "llm_evidence": "统一的音频编解码器双流架构",
+      "canonical_evidence": "统一的音频编解码器双流架构",
+      "llm_tldr_en": "Proposes HybridCodec, a unified architecture combining semantic and acoustic branches with SSL distillation, enabling strong disentanglement without SSL model at inference.",
+      "llm_tldr_cn": "针对多模态大语言模型中神经音频编解码器语义与声学解耦的需求，提出HybridCodec统一架构。该架构包含独立的语义和声学分流，同时将自监督学习表示蒸馏到语义流中，实现强解耦且推理时不依赖自监督模型。实验表明HybridCodec在语义保留和重建质量上优于现有方法，为多模态语音分词提供了高效统一方案。",
+      "llm_tldr": "针对多模态大语言模型中神经音频编解码器语义与声学解耦的需求，提出HybridCodec统一架构。该架构包含独立的语义和声学分流，同时将自监督学习表示蒸馏到语义流中，实现强解耦且推理时不依赖自监督模型。实验表明HybridCodec在语义保留和重建质量上优于现有方法，为多模态语音分词提供了高效统一方案。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.07015v1",
+      "source": "arxiv",
+      "title": "Towards Unified Song Generation and Singing Voice Conversion with Accompaniment Co-Generation",
+      "abstract": "While song generation and singing voice conversion (SVC) have evolved significantly, they have long been developed isolated: the former lacks zero-shot speaker cloning, while the latter overlooks vocal-accompaniment synergy. To bridge this gap, we propose UniSinger, the first end-to-end framework unifying speaker cloning song generation and accompaniment co-generation SVC. Building on the multimodal diffusion transformer, we construct a unified speaker embedding space transferring speaker representation from SVC to song generation, endowing fine-grained cross-task timbre control. To mitigate multi-task optimization conflicts, we design a curriculum learning strategy using task-specific modality masking to guide the model to gradually master the generative mechanisms among semantic content, vocal timbre, and accompaniment. Experiments show state-of-the-art performance on both tasks and realizes complementary benefits, offering new possibilities for intelligent music production.",
+      "authors": [
+        "Ziyu Zhang",
+        "Chunyu Qiang",
+        "Xiaopeng Wang",
+        "Yuxin Guo",
+        "Kang Yin",
+        "Wenjie Tian",
+        "Jingbin Hu",
+        "Tianlun Zuo",
+        "Zhao Guo",
+        "Teng Ma",
+        "Yuzhe Liang",
+        "Chen Zhang",
+        "Lei Xie"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI"
+      ],
+      "published": "2026-06-05T07:59:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.07015v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Unified end-to-end framework for song generation and SVC using multimodal diffusion transformer",
+      "llm_evidence_cn": "基于多模态扩散Transformer的统一端到端歌曲生成与歌声转换框架",
+      "llm_evidence": "基于多模态扩散Transformer的统一端到端歌曲生成与歌声转换框架",
+      "canonical_evidence": "基于多模态扩散Transformer的统一端到端歌曲生成与歌声转换框架",
+      "llm_tldr_en": "Proposes UniSinger, the first unified framework for speaker-cloning song generation and accompaniment co-generation SVC using multimodal diffusion transformer.",
+      "llm_tldr_cn": "针对歌曲生成和歌声转换长期孤立开发的问题，提出UniSinger统一框架，基于多模态扩散Transformer构建统一说话人嵌入空间，实现跨任务音色控制，并设计课程学习策略缓解多任务优化冲突。",
+      "llm_tldr": "针对歌曲生成和歌声转换长期孤立开发的问题，提出UniSinger统一框架，基于多模态扩散Transformer构建统一说话人嵌入空间，实现跨任务音色控制，并设计课程学习策略缓解多任务优化冲突。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.04880v1",
+      "source": "arxiv",
+      "title": "MAOAM: Unified Object and Material Selection with Vision-Language Models",
+      "abstract": "Selection is a core operation in interactive image editing. To be practical, a user should be able to specify and disambiguate the desired selection region through either text or click-based interactions, and the system should support selecting not only objects but also other criteria, such as materials. Material-based selection is valuable for tasks like re-texturing surfaces or editing instances of a specific material. However, existing vision-language-model (VLM) based selection methods are object-centric and typically support a single interaction modality, limiting their applicability. In this work, we thus present Mask Any Object And Material (MAOAM), a unified selection framework that enables precise object and material-level selection across both text- and click-based interactions. MAOAM leverages a VLM with a segmentation head to produce pixel-accurate masks from user prompts: the VLM interprets the user's selection intent (object or material-level) and encodes visual entities, attributes, and spatial relations, while the segmentation head decodes the output token into a mask. A key challenge is the lack of material selection datasets with text annotations. We propose a scalable data generation pipeline: we collect real and synthetic images with material masks, and leverage VLMs to generate material descriptions with rich visual-semantics. We train MAOAM with a multi-task objective over click and text-based selection, along with an auxiliary VQA task derived from the material descriptions to facilitate deeper material understanding. Despite being trained with uni-modal prompts, our model exhibits an emergent improvement in selection when combining text and clicks at inference, enabling flexible image editing workflows. Experiments demonstrate accurate and coherent selections across diverse objects, materials, and interaction scenarios, highlighting robustness in practice.",
+      "authors": [
+        "Jaden Park",
+        "Valentin Deschaintre",
+        "Jason Kuen",
+        "Kangning Liu",
+        "Iliyan Georgiev",
+        "Krishna Kumar Singh",
+        "Yong Jae Lee",
+        "Michael Fischer"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-02T17:59:57+00:00",
+      "link": "https://arxiv.org/pdf/2606.04880v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Unified object and material selection using vision-language models",
+      "llm_evidence_cn": "统一的对象与材质选择框架，基于视觉语言模型",
+      "llm_evidence": "统一的对象与材质选择框架，基于视觉语言模型",
+      "canonical_evidence": "统一的对象与材质选择框架，基于视觉语言模型",
+      "llm_tldr_en": "MAOAM is a unified selection framework that enables both object and material selection using vision-language models with text or click interactions.",
+      "llm_tldr_cn": "MAOAM提出统一的图像选择框架，基于视觉语言模型（VLM）同时支持对象和材质级别的选择，用户可通过文本或点击方式指定选区。该方法克服了现有方法仅面向对象且支持单一交互模态的局限，适用于重新纹理、特定材质编辑等任务。实验表明其在多种选择场景下均达到了高精度。",
+      "llm_tldr": "MAOAM提出统一的图像选择框架，基于视觉语言模型（VLM）同时支持对象和材质级别的选择，用户可通过文本或点击方式指定选区。该方法克服了现有方法仅面向对象且支持单一交互模态的局限，适用于重新纹理、特定材质编辑等任务。实验表明其在多种选择场景下均达到了高精度。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.06875v1",
+      "source": "arxiv",
+      "title": "Unified Safe In-context Image Generation in Multimodal Diffusion Transformers via Restricting Unsafe Information Flows",
+      "abstract": "Diffusion transformers (DiTs) equipped with multimodal attention (MM-Attn) have become a dominant paradigm for image generation. However, preventing the generation of harmful content remains a critical challenge, particularly in image-to-image (I2I) editing tasks. Existing safety mechanisms are primarily designed for text-to-image (T2I) synthesis or U-Net-based architectures, which limits their effectiveness for unified safety mitigation in DiT-based frameworks. To bridge this gap, we propose Unified Visual Safety Regulator (UVR), a training-free safe generation framework that regulates unsafe semantics in generated images. UVR is grounded in an analysis of attention dynamics from the perspective of information flow in MM-Attn. We identify a task-independent start-up stage, during which unsafe semantics in output patches rapidly emerge and can be accurately localized, followed by task-specific semantic amplification and interference stages, where harmful signals are further propagated and entangled with benign content. Based on these observations, UVR mitigates unsafe generation through unified, targeted attention modulation and explicit restriction of harmful information flow over the identified unsafe output patches. Experiments across various concepts show that UVR achieves state-of-the-art safety performance by achieving 91% and 77% erase rate in image synthesis and editing tasks, while preserving visual quality and fidelity with minimal degradation. Code is available at https://github.com/deng12yx/UVR.",
+      "authors": [
+        "Xiang Yang",
+        "Feifei Li",
+        "Mi Zhang",
+        "Geng Hong",
+        "Xiaoyu You",
+        "Mi Wen",
+        "Min Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.CR"
+      ],
+      "published": "2026-06-05T03:43:04+00:00",
+      "link": "https://arxiv.org/pdf/2606.06875v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified safe generation framework for multimodal diffusion transformers",
+      "llm_evidence_cn": "面向多模态扩散Transformer的统一安全生成框架",
+      "llm_evidence": "面向多模态扩散Transformer的统一安全生成框架",
+      "canonical_evidence": "面向多模态扩散Transformer的统一安全生成框架",
+      "llm_tldr_en": "Proposes UVR, a training-free safe generation framework that restricts unsafe information flows in multimodal diffusion transformers for unified image generation and editing.",
+      "llm_tldr_cn": "现有安全机制主要针对文本生成或U-Net架构，缺乏对多模态扩散Transformer（DiT）的统一安全防护。本文提出UVR，通过分析注意力动力学，从信息流角度限制不安全语义，在无需训练的情况下统一调控图像生成与编辑中的安全内容。实验表明UVR有效降低有害内容生成率，且不影响生成质量。",
+      "llm_tldr": "现有安全机制主要针对文本生成或U-Net架构，缺乏对多模态扩散Transformer（DiT）的统一安全防护。本文提出UVR，通过分析注意力动力学，从信息流角度限制不安全语义，在无需训练的情况下统一调控图像生成与编辑中的安全内容。实验表明UVR有效降低有害内容生成率，且不影响生成质量。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.01022v1",
+      "source": "arxiv",
+      "title": "ProductWebGen: Benchmarking Multimodal Product Webpage Generation",
+      "abstract": "Crafting a product display webpage from a source product image, along with layout and visual content instructions, holds significant practical value for domains such as marketing, advertising, and E-commerce. Intuitively, this task demands strict visual consistency across product displays and high-fidelity instruction following to jointly generate renderable HTML code. These requirements on controllability and instruction-following are closely aligned with the core features of advanced multimodal generative models, such as image editing models and unified models. To this end, this paper introduces ProductWebGen to systematically benchmark the product webpage generation capacities of these models. We organize ProductWebGen with 500 test samples covering 13 product categories; each sample consists of a source image, a visual content instruction, and a webpage instruction. The task is to generate a product showcase webpage including multiple consistent images in accordance with the source image and instructions. Given the mixed-modality input-output nature of the task, we design and systematically compare two workflows for evaluation -- one uses large language models and image editing models to separately generate HTML code and images (editing-based), while the other relies on a single UM to generate both, with image generation conditioned on the preceding multimodal context (UM-based). Empirical results show that editing-based approaches achieve leading results in webpage instruction following and content appeal, while UM-based ones may display more advantages in fulfilling visual content instructions. We also construct a supervised fine-tuning dataset, ProductWebGen-1k, with 1,000 groups of real product images and LLM-generated HTML code. We verify its effectiveness on the open-source UM BAGEL. The data and code are available at https://github.com/SJTU-DENG-Lab/ProductWebGen.",
+      "authors": [
+        "Zhihong Liu",
+        "Siqi Kou",
+        "Zheng Li",
+        "Ye Ma",
+        "Quan Chen",
+        "Peng Jiang",
+        "Kai Yu",
+        "Zhijie Deng"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-05-31T05:25:14+00:00",
+      "link": "https://arxiv.org/pdf/2606.01022v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Benchmarking multimodal generative models including unified models for product webpage generation",
+      "llm_evidence_cn": "对包括统一模型在内的多模态生成模型进行网页生成基准测试",
+      "llm_evidence": "对包括统一模型在内的多模态生成模型进行网页生成基准测试",
+      "canonical_evidence": "对包括统一模型在内的多模态生成模型进行网页生成基准测试",
+      "llm_tldr_en": "Introduces ProductWebGen benchmark for multimodal product webpage generation, assessing controllability and instruction-following of unified models.",
+      "llm_tldr_cn": "面向产品网页生成任务，提出ProductWebGen基准，包含500个测试样本覆盖13种产品，系统评估统一多模态模型的指令跟随和可控生成能力。",
+      "llm_tldr": "面向产品网页生成任务，提出ProductWebGen基准，包含500个测试样本覆盖13种产品，系统评估统一多模态模型的指令跟随和可控生成能力。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.05833v1",
+      "source": "arxiv",
+      "title": "Learning Geometric Representations from Videos for Spatial Intelligent Multimodal Large Language Models",
+      "abstract": "Multimodal Large Language Models (MLLMs) excel at 2D semantic understanding but lack intrinsic 3D awareness, resulting in representations that fail to maintain geometric and spatial consistency across video frames. Given the scarcity of large-scale 3D data, we present GeoVR, a novel framework that learns geometric representations using purely 2D video sequences. This approach effectively restructures the semantic latent space within MLLMs to unlock spatial intelligence. Rather than employing superficial feature mixing, GeoVR reshapes the internal representations of the MLLM by distilling geometry knowledge from pre-trained 3D foundation models. This is accomplished through a multi-objective learning strategy driven by four complementary geometric targets: (1) estimating inter-frame camera poses to embed varying viewpoint dynamics, (2) regressing dense depth maps to anchor physical distances, (3) predicting a metric scale factor for real-world calibration, and (4) distilling multi-scale 3D features to align the intermediate feature space. Guided by these explicit physical and geometric constraints, the model's internal representations naturally develop strong 3D awareness. Extensive experiments on spatial reasoning benchmarks demonstrate that GeoVR achieves state-of-the-art performance, establishing a new paradigm for endowing foundation models with spatial intelligence.",
+      "authors": [
+        "Haibo Wang",
+        "Lifu Huang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-04T08:11:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.05833v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Geometric representation learning for spatial intelligence in MLLMs",
+      "llm_evidence_cn": "面向MLLM空间智能的几何表示学习",
+      "llm_evidence": "面向MLLM空间智能的几何表示学习",
+      "canonical_evidence": "面向MLLM空间智能的几何表示学习",
+      "llm_tldr_en": "GeoVR learns geometric representations from 2D videos to instill 3D awareness into MLLMs using knowledge distillation from 3D foundation models.",
+      "llm_tldr_cn": "针对多模态大模型缺乏3D空间感知的问题，提出GeoVR框架，仅利用2D视频序列通过知识蒸馏从预训练3D基础模型中学习几何表示，重塑MLLM的语义潜空间以解锁空间智能。多目标学习策略驱动了该过程，实验表明该框架显著提升了MLLM在空间理解任务上的性能。",
+      "llm_tldr": "针对多模态大模型缺乏3D空间感知的问题，提出GeoVR框架，仅利用2D视频序列通过知识蒸馏从预训练3D基础模型中学习几何表示，重塑MLLM的语义潜空间以解锁空间智能。多目标学习策略驱动了该过程，实验表明该框架显著提升了MLLM在空间理解任务上的性能。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.03868v1",
+      "source": "arxiv",
+      "title": "Unified Video-Action Joint Denoising for Dexterous Action and Data Generation",
+      "abstract": "Recent world action models leverage video foundation models by aligning broad visual-dynamics priors with executable robot actions. We revisit this alignment from a distributional perspective. Existing formulations typically narrow the aligned prior into an observation-conditioned policy distribution over future actions. In contrast, we keep the distribution broader by modeling the joint space of interaction videos and executable hand trajectories under multiple conditioning regimes. We propose Donk, a unified video-action denoising model for dexterous hands. With language, an initial image, and the initial hand state, Donk samples future videos and bimanual MANO trajectories as an action policy. Without the image condition, the same denoising architecture samples paired video-action rollouts from a text-conditioned distribution, turning the aligned video prior into a data engine. Across action, video, and text-only generation evaluations, Donk improves dexterous trajectory accuracy, preserves strong video fidelity, and produces smooth text-conditioned action rollouts under the same unified training recipe.",
+      "authors": [
+        "Dingrui Wang",
+        "YuAn Wang",
+        "Jinkun Liu",
+        "Yue Zhang",
+        "Mattia Piccinini",
+        "Yu Sun",
+        "Johannes Betz"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-02T16:39:23+00:00",
+      "link": "https://arxiv.org/pdf/2606.03868v1",
+      "tags": [
+        "keyword:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified video-action denoising model for dexterous hands",
+      "llm_evidence_cn": "统一视频-动作去噪模型用于灵巧手操作",
+      "llm_evidence": "统一视频-动作去噪模型用于灵巧手操作",
+      "canonical_evidence": "统一视频-动作去噪模型用于灵巧手操作",
+      "llm_tldr_en": "Proposes Donk, a unified video-action denoising model that jointly models videos and hand trajectories for dexterous action generation and data generation.",
+      "llm_tldr_cn": "当前世界动作模型将视频先验缩窄为条件策略分布，限制了泛化性。本文提出Donk，从分布角度建模交互视频与手部轨迹的联合空间，支持多种条件模式。Donk在动作生成和数据生成任务上均表现出色，展示了统一多模态生成框架的潜力。",
+      "llm_tldr": "当前世界动作模型将视频先验缩窄为条件策略分布，限制了泛化性。本文提出Donk，从分布角度建模交互视频与手部轨迹的联合空间，支持多种条件模式。Donk在动作生成和数据生成任务上均表现出色，展示了统一多模态生成框架的潜力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.07053v1",
+      "source": "arxiv",
+      "title": "TrioPose: Native Triple-Stream Diffusion Transformers for Pose-Guided Text-to-Image Generation",
+      "abstract": "Pose-guided text-to-image generation often suffers from limb distortions and feature crosstalk in complex multi-person scenarios. While existing UNet-based adapters struggle with long-range spatial dependencies, emerging Multimodal Diffusion Transformers (MM-DiTs) offer superior global modeling. However, naive signal concatenation in MM-DiTs severely disrupts pre-trained latent distributions. To address this, we propose TrioPose, a native pose-driven framework built upon the SD3.5M architecture. Specifically, we introduce a Triple-Stream Pose-Aware DiT (TSPA-DiT) that treats pose as an independent modality. It employs layer-wise activation and zero-initialized dual-residual injection to smoothly enforce geometric constraints while preserving pre-trained latent stability. To resolve severe multi-instance occlusions, we design a Learnable Relational Bias Mask that categorizes topological connectivity into fine-grained physical states, mapping them into continuous attention soft constraints to effectively decouple inter-instance interference. Furthermore, a Pose-Guided Spatial Loss Weighting strategy modulates the native diffusion objective using heatmap-derived error maps, focusing anatomical supervision strictly on distortion-prone regions. Extensive experiments demonstrate that TrioPose achieves state-of-the-art performance across challenging benchmarks, including Human-Art, CrowdPose, and OCHuman. Notably, it attains an AP of $64.33$ on Human-Art, representing a $30\\%$ improvement over prior arts, while setting new standards for visual fidelity and text-image semantic alignment in complex multi-human generation.",
+      "authors": [
+        "Dian Gu",
+        "Zhengyi Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-05T08:54:28+00:00",
+      "link": "https://arxiv.org/pdf/2606.07053v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Triple-stream diffusion transformer for pose and image fusion",
+      "llm_evidence_cn": "用于姿态与图像融合的三流扩散Transformer",
+      "llm_evidence": "用于姿态与图像融合的三流扩散Transformer",
+      "canonical_evidence": "用于姿态与图像融合的三流扩散Transformer",
+      "llm_tldr_en": "Proposes TrioPose, a native triple-stream pose-aware diffusion transformer that treats pose as separate modality for pose-guided text-to-image generation, improving limb control.",
+      "llm_tldr_cn": "针对姿态引导文生图任务中肢体扭曲和特征串扰问题，提出TrioPose框架，基于SD3.5M构建三流姿态感知DiT，将姿态作为独立模态通过层激活和零初始化双残差注入施加几何约束，在复杂多人场景下显著提升生成质量。",
+      "llm_tldr": "针对姿态引导文生图任务中肢体扭曲和特征串扰问题，提出TrioPose框架，基于SD3.5M构建三流姿态感知DiT，将姿态作为独立模态通过层激活和零初始化双残差注入施加几何约束，在复杂多人场景下显著提升生成质量。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
