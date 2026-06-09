@@ -6,49 +6,48 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-08
-- 运行时间：2026-06-08 21:16:58 UTC
+- 最新运行日期：2026-06-09
+- 运行时间：2026-06-09 21:06:22 UTC
 - 运行状态：成功
-- 本次总论文数：9
+- 本次总论文数：8
 - 精读区：5
-- 速读区：4
+- 速读区：3
 
 ### 今日简报（AI）
-今日更新9篇论文，精读5篇，聚焦多模态视频生成与语义音频编解码两大前沿方向。  
-最值得精读的是《LoomVideo》统一多模态输入的视频生成与编辑和《HybridCodec》双流语义增强音频编解码，均获9.0高分。  
-建议后续关注视频生成与音频编码的交叉应用，以及产品级网页生成、灵巧操作数据生成等实用方向。
-- 详情：[/202606/08/README](/202606/08/README)
+今日共处理8篇论文，精读5篇、速读3篇，重点聚焦视频编辑与统一生成、全模态嵌入表示两大方向。
+
+最值得关注的两项工作：TIDE提出任务隔离扩散实现视频编辑与生成的统一框架，Conan-embedding-v3通过融合模态特定模型构建全模态嵌入，均获9.0高分。
+
+建议普通读者优先精读这两篇高分论文，把握视频多任务统一建模与多模态表征融合的前沿思路，其余论文可速读辅助理解。
+- 详情：[/202606/09/README](/202606/09/README)
 
 ### 精读区论文标签
-1. [LoomVideo: Unifying Multimodal Inputs into Video Generation and Editing](/202606/08/2606.06042v2-loomvideo-unifying-multimodal-inputs-into-video-generation-and-editing)  
+1. [TIDE: Task-Isolated Diffusion for Unified Video Editing and Generation](/202606/09/2606.08260v1-tide-task-isolated-diffusion-for-unified-video-editing-and-generation)  
    标签：评分：9.0/10、query:um
-   evidence：统一多模态输入的视频生成与编辑高效架构
-2. [HybridCodec: Fast Dual-Stream, Semantically Enhanced Neural Audio Codec](/202606/08/2606.06743v1-hybridcodec-fast-dual-stream-semantically-enhanced-neural-audio-codec)  
+   evidence：通过任务隔离扩散实现统一视频编辑和生成
+2. [Conan-embedding-v3: Fusing Modality-Specific Models for Omni-Modal Embedding](/202606/09/2606.09331v1-conan-embedding-v3-fusing-modality-specific-models-for-omni-modal-embedding)  
    标签：评分：9.0/10、query:um
-   evidence：统一的音频编解码器双流架构
-3. [Towards Unified Song Generation and Singing Voice Conversion with Accompaniment Co-Generation](/202606/08/2606.07015v1-towards-unified-song-generation-and-singing-voice-conversion-with-accompaniment-co-generation)  
-   标签：评分：9.0/10、query:um
-   evidence：基于多模态扩散Transformer的统一端到端歌曲生成与歌声转换框架
-4. [MAOAM: Unified Object and Material Selection with Vision-Language Models](/202606/08/2606.04880v1-maoam-unified-object-and-material-selection-with-vision-language-models)  
+   evidence：通过解耦专家融合实现全模态统一嵌入
+3. [Look Less, Reason More: Block-wise Attention Skipping for Efficient Multimodal LLMs](/202606/09/2606.08511v1-look-less-reason-more-block-wise-attention-skipping-for-efficient-multimodal-llms)  
    标签：评分：8.0/10、query:um
-   evidence：统一的对象与材质选择框架，基于视觉语言模型
-5. [Unified Safe In-context Image Generation in Multimodal Diffusion Transformers via Restricting Unsafe Information Flows](/202606/08/2606.06875v1-unified-safe-in-context-image-generation-in-multimodal-diffusion-transformers-via-restricting-unsafe-information-flows)  
+   evidence：通过注意力跳跃实现统一多模态大语言模型的高效推理
+4. [Late-Layer Fusion is Enough: Dual-Path Vision Token Routing for Multimodal Large Language Models under Visual Saturation](/202606/09/2606.09131v1-late-layer-fusion-is-enough-dual-path-vision-token-routing-for-multimodal-large-language-models-under-visual-saturation)  
    标签：评分：8.0/10、query:um
-   evidence：面向多模态扩散Transformer的统一安全生成框架
+   evidence：多模态大模型中的晚期融合与视觉标记路由
+5. [IMUG-Bench: Benchmarking Unified Multimodal Models on Interleaved Understanding and Generation](/202606/09/2606.09169v1-imug-bench-benchmarking-unified-multimodal-models-on-interleaved-understanding-and-generation)  
+   标签：评分：8.0/10、query:um
+   evidence：针对统一多模态模型的交错理解与生成基准
 
 ### 速读区论文标签
-1. [ProductWebGen: Benchmarking Multimodal Product Webpage Generation](/202606/08/2606.01022v1-productwebgen-benchmarking-multimodal-product-webpage-generation)  
+1. [Explicit Representation Alignment for Multimodal Sentiment Analysis](/202606/09/2606.09148v1-explicit-representation-alignment-for-multimodal-sentiment-analysis)  
    标签：评分：7.0/10、query:um
-   evidence：对包括统一模型在内的多模态生成模型进行网页生成基准测试
-2. [Unified Video-Action Joint Denoising for Dexterous Action and Data Generation](/202606/08/2606.03868v1-unified-video-action-joint-denoising-for-dexterous-action-and-data-generation)  
-   标签：评分：7.0/10、query:um
-   evidence：统一视频-动作去噪模型用于灵巧手操作
-3. [TrioPose: Native Triple-Stream Diffusion Transformers for Pose-Guided Text-to-Image Generation](/202606/08/2606.07053v1-triopose-native-triple-stream-diffusion-transformers-for-pose-guided-text-to-image-generation)  
-   标签：评分：7.0/10、query:um
-   evidence：用于姿态与图像融合的三流扩散Transformer
-4. [Learning Geometric Representations from Videos for Spatial Intelligent Multimodal Large Language Models](/202606/08/2606.05833v1-learning-geometric-representations-from-videos-for-spatial-intelligent-multimodal-large-language-models)  
+   evidence：使用视觉语言模型对齐的统一多模态情感分析框架
+2. [Unpaired RGB-Thermal Gaussian-Splatting Using Visual Geometric Transformers](/202606/09/2606.05491v1-unpaired-rgb-thermal-gaussian-splatting-using-visual-geometric-transformers)  
    标签：评分：6.0/10、query:um
-   evidence：面向MLLM空间智能的几何表示学习
+   evidence：使用视觉几何变换器（VGGT）进行多模态位姿估计与融合
+3. [Mechanistic Insights into Functional Sparsity in Multimodal LLMs via CoRe Heads](/202606/09/2606.05843v1-mechanistic-insights-into-functional-sparsity-in-multimodal-llms-via-core-heads)  
+   标签：评分：6.0/10、query:um
+   evidence：多模态大语言模型功能稀疏性的机制研究
 
 
 <div class="dpr-home-promo-card">

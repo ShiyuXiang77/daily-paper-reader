@@ -1,0 +1,347 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-09T21:00:36.540135+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 5,
+    "deep_cap": 6,
+    "deep_selected": 5,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2606.08260v1",
+      "source": "arxiv",
+      "title": "TIDE: Task-Isolated Diffusion for Unified Video Editing and Generation",
+      "abstract": "Recent advances in Diffusion Transformers have driven rapid progress in video generation and editing, yet these capabilities are still handled by separate, task-specific models. Building a unified framework that supports diverse video tasks remains an open challenge: existing unified attempts either require dedicated auxiliary encoders or lack explicit mechanisms to distinguish heterogeneous conditioning tokens, struggling when the number and type of visual conditions vary across tasks. We propose TIDE, a unified framework that integrates instruction-based editing, reference-guided editing, and multi-reference generation. At its core, we introduce per-token task embeddings that assign each input token a task-specific identifier, enabling the model to explicitly disambiguate target, source, and reference tokens. To simultaneously capture high-level semantic understanding and fine-grained structural fidelity, we design a dual-path conditioning scheme that couples a vision-language model with a VAE latent path for complementary signals. We further devise a multi-task progressive training strategy that incrementally introduces tasks of increasing complexity, effectively harmonizing diverse objectives and enabling smooth generalization across heterogeneous task distributions. Extensive experiments on multiple video editing and generation benchmarks demonstrate that TIDE achieves state-of-the-art performance across all evaluated tasks. Our project page is available at https://LittleWork123.github.io/tide.",
+      "authors": [
+        "Qi Liu",
+        "Gang Yue",
+        "Mingyu Yin",
+        "Lisai Zhang",
+        "Yidi Wu",
+        "Yaole Wang",
+        "Yaohui Wang",
+        "Chang Yao",
+        "Jingyuan Chen",
+        "Lin Ma"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-06T17:11:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.08260v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified video editing and generation via task-isolated diffusion",
+      "llm_evidence_cn": "通过任务隔离扩散实现统一视频编辑和生成",
+      "llm_evidence": "通过任务隔离扩散实现统一视频编辑和生成",
+      "canonical_evidence": "通过任务隔离扩散实现统一视频编辑和生成",
+      "llm_tldr_en": "TIDE uses per-token task embeddings to unify instruction-based editing, reference-guided editing, and multi-reference generation in diffusion transformers.",
+      "llm_tldr_cn": "现有视频生成和编辑由分开的模型处理，缺乏统一框架。本文提出TIDE，通过引入逐令牌任务嵌入，使扩散Transformer能够区分不同类型的条件输入，从而统一了指令编辑、参考编辑和多参考生成三种任务。该方法无需辅助编码器，在多样化任务上展现出灵活性和有效性，为统一视频多任务处理提供了简洁高效的架构。",
+      "llm_tldr": "现有视频生成和编辑由分开的模型处理，缺乏统一框架。本文提出TIDE，通过引入逐令牌任务嵌入，使扩散Transformer能够区分不同类型的条件输入，从而统一了指令编辑、参考编辑和多参考生成三种任务。该方法无需辅助编码器，在多样化任务上展现出灵活性和有效性，为统一视频多任务处理提供了简洁高效的架构。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.09331v1",
+      "source": "arxiv",
+      "title": "Conan-embedding-v3: Fusing Modality-Specific Models for Omni-Modal Embedding",
+      "abstract": "Omni-modal retrieval promises a single embedding space for text, image, video, document, and audio inputs, but building such a unified retriever is difficult since these modalities differ in data distribution, architecture, and optimization dynamics. In this work, we present Conan-embedding-v3, a decouple--fuse--recover framework for omni-modal retrieval. Conan-embedding-v3 first trains modality specialists independently and fuses their task vectors into a single dense backbone, a strategy we call Decoupled Specialist Fusion. We show that this fusion composes visual, video, and document retrieval capabilities, but also exposes a failure mode for projector-based modalities: when audio is attached through an external encoder and projector, fusing the backbone leaves the projector calibrated to the audio-specialist backbone, causing a large audio retrieval regression despite copying all audio-specific modules unchanged. We call this failure Projector Drift. To repair it, Conan-embedding-v3 applies Projector Recovery (i.e., full-parameter fine-tuning of the projector while keeping the backbone frozen) followed by balanced multi-modal rehearsal. The resulting model supports these retrieval pathways in one backbone, achieving 74.9 scores on MMEB while obtaining 55.61 on the 30-task MAEB audio suite.",
+      "authors": [
+        "Shiyu Li",
+        "Zhiyuan Hu",
+        "Yifan Wang",
+        "Peiming Li",
+        "Zheng Wei",
+        "Yang Tang"
+      ],
+      "primary_category": "cs.MM",
+      "categories": [
+        "cs.MM",
+        "cs.AI",
+        "cs.LG"
+      ],
+      "published": "2026-06-08T10:54:18+00:00",
+      "link": "https://arxiv.org/pdf/2606.09331v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified omni-modal embedding via decoupled specialist fusion",
+      "llm_evidence_cn": "通过解耦专家融合实现全模态统一嵌入",
+      "llm_evidence": "通过解耦专家融合实现全模态统一嵌入",
+      "canonical_evidence": "通过解耦专家融合实现全模态统一嵌入",
+      "llm_tldr_en": "Conan-embedding-v3 introduces a decouple-fuse-recover framework for omni-modal retrieval, fusing modality-specific models into a single unified backbone.",
+      "llm_tldr_cn": "本文针对多模态检索中不同模态分布差异大的挑战，提出Conan-embedding-v3，采用解耦-融合-恢复框架。先独立训练模态专家，再通过任务向量融合到单一密集骨干网络，实现文本、图像、视频、文档和音频的统一嵌入。实验表明该方法有效组合多种模态检索能力，但投影器模态存在融合失效问题。",
+      "llm_tldr": "本文针对多模态检索中不同模态分布差异大的挑战，提出Conan-embedding-v3，采用解耦-融合-恢复框架。先独立训练模态专家，再通过任务向量融合到单一密集骨干网络，实现文本、图像、视频、文档和音频的统一嵌入。实验表明该方法有效组合多种模态检索能力，但投影器模态存在融合失效问题。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.08511v1",
+      "source": "arxiv",
+      "title": "Look Less, Reason More: Block-wise Attention Skipping for Efficient Multimodal LLMs",
+      "abstract": "Multimodal Large Language Models (MLLMs) face a significant inference bottleneck due to the quadratic computational cost of self-attention over long visual token sequences. However, we identify a critical inefficiency in current architectures: Visual Attention Saturation. Our analysis reveals that visual tokens rapidly establish their spatial structure and intra-modal relationships in early layers, rendering visual-to-visual self-attention in deeper layers computationally redundant. Conversely, Feed-Forward Networks (FFNs) in these layers remain essential for projecting visual features into the evolving textual semantic space. Leveraging this insight, we present Visual-Skip (V-Skip), a training-free inference paradigm that decouples spatial interaction from semantic evolution. Rather than discarding tokens, V-Skip imposes block-wise structured sparsity by selectively bypassing saturated visual self-attention modules. Furthermore, recognizing that varying downstream tasks demand distinct reasoning depths, V-Skip employs a lightweight, few-shot calibration to dynamically route the task-optimal sparsity path. Extensive experiments demonstrate that V-Skip effectively bypasses redundant vision attention to achieve block-wise sparsity, maintaining a 94.16% to 100.31% performance retention across diverse MLLMs. Ultimately, we prove that to reason more effectively, models do not need to discard what they see -- they simply need to \"look less\" at the right depth.",
+      "authors": [
+        "Jie Ma",
+        "Zhike Qiu",
+        "Jiayi Ji",
+        "Xiaoshuai Sun",
+        "Rongrong Ji"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-07T08:32:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.08511v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "efficient inference for unified multimodal LLMs via attention skipping",
+      "llm_evidence_cn": "通过注意力跳跃实现统一多模态大语言模型的高效推理",
+      "llm_evidence": "通过注意力跳跃实现统一多模态大语言模型的高效推理",
+      "canonical_evidence": "通过注意力跳跃实现统一多模态大语言模型的高效推理",
+      "llm_tldr_en": "Identifies Visual Attention Saturation in MLLMs and proposes Visual-Skip, a training-free method that skips visual-to-visual attention in deeper layers, reducing computation while maintaining performance.",
+      "llm_tldr_cn": "针对多模态大语言模型推理瓶颈，论文发现视觉注意力饱和现象：早期层已建立视觉令牌结构，深层视觉-视觉注意力冗余。提出Visual-Skip训练无关推理范式，跳过深层视觉注意力，仅保留前馈网络，显著减少计算量而精度不降。为统一多模态模型的高效部署提供了实用方案。",
+      "llm_tldr": "针对多模态大语言模型推理瓶颈，论文发现视觉注意力饱和现象：早期层已建立视觉令牌结构，深层视觉-视觉注意力冗余。提出Visual-Skip训练无关推理范式，跳过深层视觉注意力，仅保留前馈网络，显著减少计算量而精度不降。为统一多模态模型的高效部署提供了实用方案。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.09131v1",
+      "source": "arxiv",
+      "title": "Late-Layer Fusion is Enough: Dual-Path Vision Token Routing for Multimodal Large Language Models under Visual Saturation",
+      "abstract": "Multimodal large language models (MLLMs) commonly inherit the deep, symmetric Transformer backbone designed for unimodal text modeling, and apply the same computation uniformly to image and language tokens. This design overlooks a key modality asymmetry: image and text tokens differ substantially in information density, redundancy, and required reasoning depth. Through a layer-wise analysis of LLaVA-1.5, we observe that vision tokens tend to saturate in the middle layers. Specifically, text-to-image attention decreases from 0.68 at layer 0 to 0.07 by layer 4, and stabilizes near 0.04 after layer 18, whereas text tokens continue to benefit from deep semantic processing. These findings suggest a mismatch between architectural symmetry and depth-asynchronous modality evolution, resulting in redundant visual computation and possible drift in perceptual representations during deep task-specific adaptation. Motivated by this, we propose Dual-Path Vision Token Routing (DPVR), a modality-asymmetric routing framework for efficient MLLMs. Its core instantiation, DPVR-LF (Late-Layer Fusion), routes vision tokens at the saturation point into a one-layer trainable side branch, runs a thirteen-layer text-only forward that skips image positions in the deep stack, and re-fuses the visual and textual streams only at the final layer. With approximately 3% trainable parameters, DPVR-LF preserves competitive multimodal performance on standard benchmarks while reducing visual computation in the deep Transformer stack. The results challenge the conventional assumption that vision tokens must traverse all deep language-model layers, and indicate that a single late fusion layer can be sufficient for maintaining strong perceptual competence in LLaVA-style MLLMs.",
+      "authors": [
+        "Siyuan Liu",
+        "Jinyang Wu"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-08T07:28:14+00:00",
+      "link": "https://arxiv.org/pdf/2606.09131v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "late-layer fusion for multimodal LLMs with vision token routing",
+      "llm_evidence_cn": "多模态大模型中的晚期融合与视觉标记路由",
+      "llm_evidence": "多模态大模型中的晚期融合与视觉标记路由",
+      "canonical_evidence": "多模态大模型中的晚期融合与视觉标记路由",
+      "llm_tldr_en": "Reveals visual token saturation in middle layers of MLLMs and proposes dual-path routing that fuses only late layers, improving efficiency.",
+      "llm_tldr_cn": "本文通过分析LLaVA-1.5的层间行为，发现视觉标记在中间层后饱和，而文本标记仍需深层处理。提出双路径视觉标记路由策略，仅在晚期层进行融合，减少冗余计算。实验证明该方法在保持性能的同时显著降低计算开销，揭示了多模态大模型中不对称的融合需求。",
+      "llm_tldr": "本文通过分析LLaVA-1.5的层间行为，发现视觉标记在中间层后饱和，而文本标记仍需深层处理。提出双路径视觉标记路由策略，仅在晚期层进行融合，减少冗余计算。实验证明该方法在保持性能的同时显著降低计算开销，揭示了多模态大模型中不对称的融合需求。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.09169v1",
+      "source": "arxiv",
+      "title": "IMUG-Bench: Benchmarking Unified Multimodal Models on Interleaved Understanding and Generation",
+      "abstract": "In recent years, unified multimodal models (UMMs) have emerged to support both understanding and generation within a single framework. Mastering dynamic, multi-turn interleaved image-text dialogues is a crucial task for UMMs in real-world applications. However, existing benchmarks fail to evaluate this important task, as they are often limited to single-turn or static settings, and typically overlook exposure bias in multi-turn interactions. To bridge this gap, we propose IMUG-Bench, a comprehensive benchmark for multi-turn interleaved image-text dialogue of UMMs that jointly evaluates their understanding and generation capabilities. Our IMUG-Bench comprises three classes: Static Spatial, Temporal Causal, and Hybrid, covering 3,113 samples and 12,034 interaction turns. It also includes dynamic understanding questions, thereby supporting evaluation that better reflects real-world multi-turn interaction scenarios. Large-scale experiments on IMUG-Bench systematically evaluate mainstream open-source and closed-source UMMs, revealing their capability boundaries and failure modes, and uncovering pronounced exposure bias on the generation side in multi-turn interactions. We further explore several test-time scaling strategies, including Chain-of-Thought, Self-Verification, and Best-of-N Sampling, which effectively improve generation accuracy and mitigate exposure bias in generation tasks. These findings provide insights into enhancing the robustness and multi-turn interaction capability of future UMMs.",
+      "authors": [
+        "Lingyi Meng",
+        "Zecong Tang",
+        "Haoran Li",
+        "Tengju Ru",
+        "Zhejun Cui",
+        "Weitong Lian",
+        "Qi Kang",
+        "Hangshuo Cao",
+        "Yichen Zhu",
+        "Yechi Liu",
+        "Kaixuan Wang",
+        "Yu-Jie Yuan",
+        "Chunwei Wang",
+        "Yu Zhang",
+        "Bo Dai"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CV",
+        "cs.MM"
+      ],
+      "published": "2026-06-08T08:08:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.09169v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "benchmark for unified multimodal models on interleaved understanding and generation",
+      "llm_evidence_cn": "针对统一多模态模型的交错理解与生成基准",
+      "llm_evidence": "针对统一多模态模型的交错理解与生成基准",
+      "canonical_evidence": "针对统一多模态模型的交错理解与生成基准",
+      "llm_tldr_en": "IMUG-Bench is a comprehensive benchmark for multi-turn interleaved image-text dialogue evaluating both understanding and generation capabilities of unified multimodal models (UMMs), covering Static Spatial, Temporal Causal, and Hybrid scenarios.",
+      "llm_tldr_cn": "IMUG-Bench是一个专门评估统一多模态模型（UMMs）在多轮交错图文对话中理解与生成能力的基准。现有基准多为单轮或静态设置，忽略了多轮交互中的曝光偏差。该基准包含静态空间、时序因果和混合三类任务，能够全面衡量UMMs在动态多模态交互中的表现，填补了统一多模态模型评估的重要空缺。",
+      "llm_tldr": "IMUG-Bench是一个专门评估统一多模态模型（UMMs）在多轮交错图文对话中理解与生成能力的基准。现有基准多为单轮或静态设置，忽略了多轮交互中的曝光偏差。该基准包含静态空间、时序因果和混合三类任务，能够全面衡量UMMs在动态多模态交互中的表现，填补了统一多模态模型评估的重要空缺。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.09148v1",
+      "source": "arxiv",
+      "title": "Explicit Representation Alignment for Multimodal Sentiment Analysis",
+      "abstract": "Multimodal affective analysis aims to understand human sentiment and emotion by jointly modeling heterogeneous modalities such as text and images. However, multimodal models often fail to consistently outperform strong text-only baselines, with performance varying significantly across fusion strategies. In this work, we identify representation misalignment between independently pretrained modality encoders as a key bottleneck for effective multimodal learning, and show through controlled experiments that alignment prior to fusion is often more important than fusion complexity. To address this issue, we propose a unified multimodal affective analysis framework that leverages vision-language models (VLMs) to convert visual content into structured textual descriptions, projecting heterogeneous modalities into a shared linguistic space and enabling interpretable text-centric reasoning. To further improve robustness, we introduce a hybrid learning strategy that combines semantic token selection with a batch-level uniformity regularization objective, encouraging a more dispersed and stable global feature space while mitigating noise introduced by VLM-generated descriptions. Experiments on multiple multimodal sentiment and emotion benchmarks show that our method consistently outperforms strong unimodal and multimodal baselines, achieving state-of-the-art performance. Our analysis further highlights the critical role of representation alignment in multimodal affective learning.",
+      "authors": [
+        "Baode Wang",
+        "Ziming Wang",
+        "Huacan Wang",
+        "Ronghao Chen",
+        "Biao Wu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-06-08T07:43:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.09148v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified multimodal affective analysis framework using VLM alignment",
+      "llm_evidence_cn": "使用视觉语言模型对齐的统一多模态情感分析框架",
+      "llm_evidence": "使用视觉语言模型对齐的统一多模态情感分析框架",
+      "canonical_evidence": "使用视觉语言模型对齐的统一多模态情感分析框架",
+      "llm_tldr_en": "Proposes a unified multimodal affective analysis framework that aligns visual content to structured textual descriptions via VLMs before fusion, improving cross-modal representation consistency.",
+      "llm_tldr_cn": "针对多模态情感分析中融合效果不佳的问题，论文提出统一框架：利用视觉语言模型将视觉内容转换为结构化文本描述，在融合前实现显式表示对齐。实验表明，对齐步骤比复杂融合策略更重要，显著提升多模态模型的一致性和鲁棒性。",
+      "llm_tldr": "针对多模态情感分析中融合效果不佳的问题，论文提出统一框架：利用视觉语言模型将视觉内容转换为结构化文本描述，在融合前实现显式表示对齐。实验表明，对齐步骤比复杂融合策略更重要，显著提升多模态模型的一致性和鲁棒性。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.05491v1",
+      "source": "arxiv",
+      "title": "Unpaired RGB-Thermal Gaussian-Splatting Using Visual Geometric Transformers",
+      "abstract": "Multi-modal novel view synthesis (NVS) combining RGB and thermal imagery enables precise 3D scene reconstruction with visual and thermal information. However, existing methods typically rely on precisely calibrated RGB-thermal image pairs or stereo setups, limiting scalability and practical deployment. To address this, we introduce a framework for unpaired RGB-thermal NVS that leverages VGGT, a 3D feed-forward transformer architecture, to independently estimate camera poses for each modality. The pose sets are then aligned using the Procrustes algorithm with a cross-modal feature matcher, enabling joint registration without paired calibration. Building on this alignment, we further propose a multi-modal 3D Gaussian Splatting approach that learns directly from unpaired RGB and thermal images. Experiments on diverse scenes demonstrate that our method achieves competitive performance in thermal view synthesis while maintaining RGB fidelity. Moreover, we show that existing reconstruction approaches can produce modality-specific reconstructions that lack cross-modal consistency. We thus introduce a benchmarking framework to rigorously evaluate both per-modality image synthesis and the multi-modal coherence of reconstructed scenes.",
+      "authors": [
+        "Jean Cordonnier",
+        "Chenghao Xu",
+        "Olga Fink",
+        "Malcolm Mielle"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.RO"
+      ],
+      "published": "2026-06-03T22:30:58+00:00",
+      "link": "https://arxiv.org/pdf/2606.05491v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "uses visual geometric transformer (VGGT) for multimodal pose estimation and fusion",
+      "llm_evidence_cn": "使用视觉几何变换器（VGGT）进行多模态位姿估计与融合",
+      "llm_evidence": "使用视觉几何变换器（VGGT）进行多模态位姿估计与融合",
+      "canonical_evidence": "使用视觉几何变换器（VGGT）进行多模态位姿估计与融合",
+      "llm_tldr_en": "Proposes unpaired RGB-thermal novel view synthesis using VGGT (feed-forward transformer) for independent pose estimation, then Procrustes alignment and multi-modal 3D Gaussian splatting.",
+      "llm_tldr_cn": "针对未配准RGB-热成像新视图合成问题，论文利用3D前馈变换器VGGT独立估计每模态相机位姿，通过Procrustes算法与跨模态特征匹配对齐，再使用多模态3D高斯泼溅学习场景表示。方法去除了对精确配对标定的依赖，扩展了多模态3D重建的应用范围。",
+      "llm_tldr": "针对未配准RGB-热成像新视图合成问题，论文利用3D前馈变换器VGGT独立估计每模态相机位姿，通过Procrustes算法与跨模态特征匹配对齐，再使用多模态3D高斯泼溅学习场景表示。方法去除了对精确配对标定的依赖，扩展了多模态3D重建的应用范围。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.05843v1",
+      "source": "arxiv",
+      "title": "Mechanistic Insights into Functional Sparsity in Multimodal LLMs via CoRe Heads",
+      "abstract": "While Multimodal Large Language Models (MLLMs) demonstrate remarkable proficiency on complex vision-language tasks, the mechanisms by which they extract query-relevant visual features from complex, noisy contexts remain opaque. In this paper, we present an in-depth interpretability study that uncovers a profound structural property within MLLMs: functional sparsity in cross-modal retrieval. Leveraging a token-level metric termed Retrieval Attention Mass (RAM), we identify and characterize a highly specialized subset of attention heads, referred to as Context-aware Retrieval (CoRe) heads. Across diverse visual domains and model scales, we observe a clear functional division: CoRe heads act as dedicated information extractors, while most other heads distribute attention over broader contextual regions. Causal interventions further demonstrate the necessity of these specialized heads. Ablating only the top 5% of CoRe heads causes significant degradation in multimodal reasoning performance, whereas ablating lower-ranked heads has minimal effect. Moreover, acceleration experiments validate the utility of CoRe heads, showing that leveraging this localized sparsity significantly accelerates inference while maintaining robust task performance. Our findings reveal a structural principle of functional sparsity within MLLMs, refining the current understanding of mechanistic interpretability and laying a theoretical foundation that can inspire future architecture design and model optimization.",
+      "authors": [
+        "Ruoxi Sun",
+        "Quantong Qiu",
+        "Juntao Li",
+        "Zecheng Tang",
+        "Yihang Lou",
+        "Min Zhang"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI"
+      ],
+      "published": "2026-06-04T08:18:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.05843v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "mechanistic study of functional sparsity in multimodal LLMs",
+      "llm_evidence_cn": "多模态大语言模型功能稀疏性的机制研究",
+      "llm_evidence": "多模态大语言模型功能稀疏性的机制研究",
+      "canonical_evidence": "多模态大语言模型功能稀疏性的机制研究",
+      "llm_tldr_en": "Uncovers functional sparsity in cross-modal retrieval of MLLMs via CoRe heads, providing interpretability insights for unified multimodal architectures.",
+      "llm_tldr_cn": "论文通过检索注意力质量（RAM）指标，发现多模态大语言模型中存在功能稀疏性：少数上下文感知检索（CoRe）头部负责跨模态信息提取。该发现揭示了统一多模态模型内部的工作机制，有助于未来设计更高效的注意力结构。",
+      "llm_tldr": "论文通过检索注意力质量（RAM）指标，发现多模态大语言模型中存在功能稀疏性：少数上下文感知检索（CoRe）头部负责跨模态信息提取。该发现揭示了统一多模态模型内部的工作机制，有助于未来设计更高效的注意力结构。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+Title: Conan-embedding-v3: Fusing Modality-Specific Models for Omni-Modal Embedding
+
+URL Source: https://arxiv.org/pdf/2606.09331v1
+
+Published Time: Tue, 09 Jun 2026 02:04:57 GMT
+
+Number of Pages: 13
+
+Markdown Content:
+# Conan-embedding-v3: Fusing Modality-Specific Models for Omni-Modal Embedding 
+
+Shiyu Li 1, Zhiyuan Hu 1, Yifan Wang 1,2 , Peiming Li 1, Zheng Wei 1, Yang Tang 1*,
+
+> 1
+
+{shyuli,zephyrhu,peimingli,hemingwei,ethanntang}@tencent.com 
+
+> 2
+
+yf-wang23@mails.tsinghua.edu.cn 
+
+Abstract 
+
+Omni-modal retrieval promises a single em-bedding space for text, image, video, docu-ment, and audio inputs, but building such a unified retriever is difficult since these modal-ities differ in data distribution, architecture, and optimization dynamics. In this work, we present Conan-embedding-v3 , a decouple– fuse–recover framework for omni-modal re-trieval. Conan-embedding-v3 first trains modal-ity specialists independently and fuses their task vectors into a single dense backbone, a strategy we call Decoupled Specialist Fu-sion . We show that this fusion composes visual, video, and document retrieval capa-bilities, but also exposes a failure mode for projector-based modalities: when audio is at-tached through an external encoder and projec-tor, fusing the backbone leaves the projector cal-ibrated to the audio-specialist backbone, caus-ing a large audio retrieval regression despite copying all audio-specific modules unchanged. We call this failure Projector Drift . To re-pair it, Conan-embedding-v3 applies Projec-tor Recovery (i.e., full-parameter fine-tuning of the projector while keeping the backbone frozen) followed by balanced multi-modal re-hearsal. The resulting model supports these retrieval pathways in one backbone, achieving 74.9 scores on MMEB while obtaining 55.61 on the 30-task MAEB audio suite. 
+
+1 Introduction 
+
+Embedding models are increasingly expected to re-trieve across heterogeneous inputs, but most strong multimodal embedders are still optimized around one non-text modality, such as image–text (Rad-ford et al., 2021) or audio–text retrieval (Girdhar et al., 2023; wang et al., 2025; Zhu et al., 2024). MLLM backbones make a broader formulation pos-sible: connect multiple modality encoders to one language backbone and use a shared embedding 
+
+> *Project leader, corresponding author. specialist
+> Fusion
+> Recovery
+
+Layer 0 
+
+Layer 17 
+
+Layer 35        
+
+> cos(recov .)= 0.990
+> cos(fusion)= 0.975
+> cos(recov .)= 0.974
+> cos(fusion)= 0.940
+> cos(recov .)= 0.817
+> cos(fusion)= 0.591 embedding used for retrieval
+> 𝟎 .𝟔𝟔𝟎
+> 𝟎 .𝟔𝟒𝟗
+> 𝟎 .𝟐𝟔𝟒
+> 𝟏𝟑°
+> 𝟐𝟎°
+> ❌Drift
+> R@1 on
+> AudioCaps
+> 𝟑𝟓°
+> 𝟓𝟒°
+
+Figure 1: Projector Drift across Transformer depth. 
+
+The semicircles show audio-token directions at layers 0, 17, and 35, measured relative to the audio specialist (blue). Direct fusion (red) drifts away in deeper layers, while Projector Recovery (green) stays closer to the specialist and restores AudioCaps performance. 
+
+space for text, image, video, visual-document, and audio retrieval (Zhan et al., 2024; Lin et al., 2025). A direct solution is to fine-tune one model on all modality data, but this often creates cross-modal optimization conflict: improving one modality can regress another (Standley et al., 2020; Sener and Koltun, 2018). We address this with Decou-pled Specialist Fusion : we decouple specialist training from model fusion, optimizing special-ists independently before composing them in pa-rameter space. Each modality receives its own specialist training run, so image, video, visual-document, and audio retrieval can be optimized un-der modality-appropriate data mixtures and sched-1
+
+> arXiv:2606.09331v1 [cs.MM] 8 Jun 2026
+
+ules. These specialists are then converted into dense checkpoints and combined through task-vector fusion (Chen et al., 2025; Marczak et al., 2025), producing one retriever without requiring a single large mixed-modality optimization run. This fusion step exposes another problem for grafted modalities. The audio pathway is intro-duced through an external encoder and projec-tor (Liu et al., 2023; Tang et al., 2024), and the pro-jector is trained against the audio-specialist back-bone. After task-vector fusion, the same projector is connected to a different fused backbone, so audio retrieval degrades even though the audio modules are copied unchanged. We call this mismatch Pro-jector Drift . Figure 1 visualizes the effect: direct fusion stays close near the input layer but progres-sively rotates away from the audio-specialist trajec-tory in deeper Transformer layers, while Projector Recovery pulls it back. We propose Conan-embedding-v3 , a decouple– fuse–recover framework for omni-modal retrieval. First, to reduce cross-modal optimization conflict, we decouple capability learning by training image, video, visual-document, and grafted-audio special-ists independently from the same visual-language initialization. Second, to obtain a single deploy-able retriever, we fuse these specialists in parameter space: LoRA adapters are merged into dense check-points, shared-backbone task vectors are combined, and audio-only modules are copied from the audio specialist. Third, because fusion introduces Projec-tor Drift for the grafted audio pathway, we recover 
+
+the projector–backbone interface with Projector Recovery (§3.4–§3.5). Finally, to avoid turning the recovered model into an audio-only retriever, we add balanced rehearsal over audio, image, video, and visual-document data. Our contributions are summarized as follows: • We introduce Decoupled Specialist Fusion ,which grafts an audio pathway onto a visual-language embedding backbone and composes independently trained specialists into one dense retriever. • We identify Projector Drift , a projector– backbone mismatch that emerges when grafted modalities such as audio are connected to a fused backbone. • We show that Conan-embedding-v3 re-tains competitive image, video, and visual-document retrieval on MMEB while achiev-ing strong audio performance on the 30-task MAEB benchmark. 
+
+2 Related Work 
+
+2.1 Multimodal Embedding Models 
+
+Multimodal embedding models have evolved from the CLIP-style dual-encoder recipe (Radford et al., 2021) to systems built on Multimodal Large Lan-guage Models (MLLMs) for stronger semantic representations. This shift is evident in recent vision-language (Jiang et al., 2024, 2025; Li et al., 2026) and audio (Ma et al., 2025; Faysse et al., 2024) embedding models. Despite this progress, most remain optimized for a single non-text modality. Omni-modal models address this restriction by training on heterogeneous cor-pora (Xu et al., 2025b; Xiao et al., 2025b). Re-cent audio-embedding work also studies attach-ing or reusing audio modules from omni-modal MLLMs (Hönicke et al., 2026), showing that audio encoders, projectors, and language backbones are sensitive to component mismatch. Our setting is complementary: we start from a visual-language embedding model that already performs strong text– visual retrieval, graft an audio pathway onto it, and then study how to compose the resulting audio spe-cialist with visual, video, and document specialists. This avoids relying on one large mixed-modality optimizer, but introduces a projector–backbone in-terface that must be repaired after fusion. 
+
+2.2 Model Merging 
+
+Model merging combines learned capabilities di-rectly through weights. While various tech-niques like Task Arithmetic (Ilharco et al., 2023), TIES (Yadav et al., 2023), DARE (Yu et al., 2024a), and Model Soup (Wortsman et al., 2022) have proven effective, they are typically studied within a single modality using matched architectures. Mul-timodal specialists are less well-behaved: encoders and projectors shift differently depending on the modality, making standard merging methods highly unstable in this context. 
+
+2.3 Interference in Multi-task Training 
+
+Other works address multi-task and multimodal interference (the "seesaw effect") using gradient surgery during joint training, such as PCGrad (Yu et al., 2020a) and CAGrad (Liu et al., 2021a). In contrast, our approach separates capability acqui-sition from fusion. By composing specialists in 2parameter space followed by projector recovery, we reduce the reliance on a single mixed-modality optimizer and its sensitive task-mixture choices. 
+
+3 Method 
+
+3.1 Overview 
+
+Conan-embedding-v3 constructs a single omni-modal embedding model from independently opti-mized modality specialists. Given an input x from any supported modality, the model outputs an L2-normalized embedding z = fθ(x)/∥fθ(x)∥2, and retrieval is performed by inner-product similarity. For a mini-batch of paired query–target examples 
+
+{(qi, t i)}Ni=1 , we optimize an InfoNCE retrieval loss: 
+
+Lq→t = − 1
+
+N
+
+> N
+
+X
+
+> i=1
+
+log exp( z⊤ 
+
+> qi
+
+zti /τ )
+
+PNj=1 exp( z⊤ 
+
+> qi
+
+ztj /τ ) , (1) where τ is the temperature. When bidirectional retrieval pairs are available, we use the average of 
+
+Lq→t and the symmetric target-to-query loss. As shown in Figure 2, the pipeline has three stages. First, we train image, video, visual-document, and audio specialists separately from the same initialization, so each specialist learns its modality-specific retrieval behavior without shar-ing a mixed-modality optimizer. Second, we fuse the shared-backbone updates of these specialists through task vectors, while directly copying audio-only parameters that do not exist in the base model. This produces a structurally omni-modal check-point, but the copied audio projector is now con-nected to a backbone different from the one it was trained with. Third, we apply a post-fusion Projec-tor Recovery stage (where the language backbone is completely frozen and only the audio projector is updated), followed by balanced rehearsal, to re-connect this projector–backbone interface while retaining the inherited visual, video, and document retrieval pathways. The following subsections de-scribe these three stages in detail. 
+
+3.2 Decoupled Specialist Training 
+
+Let θ0 be the parameters of the base embedding model. For each modality group m ∈ { I, V, D, A },corresponding to image, video, visual-document, and audio, we train a specialist θm from the same initialization. Each specialist is optimized only on its own data distribution: 
+
+θm = Train( θ0, Dm), (2) where Dm denotes modality-specific retrieval pairs. This decoupling is motivated by the empirical ob-servation that directly mixing all modality data in-duces a seesaw effect, where improvements on one modality often degrade another due to optimization conflicts. By training specialists separately, each checkpoint captures a relatively clean task vector for one modality family. Each specialist targets different modal dynamics. While the image, video, and visual-document spe-cialists adapt the native visual-language pathway of the base model, the audio specialist introduces an external audio pathway and aligns it with text. Methodologically, the audio specialist contains both shared backbone updates ( Kshared ) and audio-only parameters ( Kaudio -only ) that do not exist in the base model. After training, LoRA adapters are merged into the underlying weights, producing full specialist checkpoints to enable parameter-space operations. 
+
+3.3 Task-Vector Fusion 
+
+For each specialist, we define a task vector over the shared parameters Kshared :
+
+∆m[k] = θm[k] − θ0[k], k ∈ K shared . (3) The unified backbone is then constructed by fusing these modality task vectors with fixed coefficients: 
+
+θmerge [k] = θ0[k] + X
+
+> m∈{ I,V,D,A }
+
+αm∆m[k],k ∈ K shared .
+
+(4) In our main model, we use the multiway-C coeffi-cients: 
+
+αI = αV = αD = 0 .3, αA = 0 .5. (5) These coefficients are empirically determined via a grid sweep on held-out diagnostic validation tasks that are disjoint from the MMEB and MAEB eval-uation splits, balancing visual preservation against audio task-vector contribution (further analyzed in §4.3). This fusion only applies to the shared parameters. For audio-specific modules that are absent from the base model—such as the audio encoder, projector, and specialized tokenizer entries—no task vector can be formed, and they are directly copied: 
+
+θmerge [k] = θA[k], k ∈ K audio -only . (6) 3Same VL                                 
+
+> model 𝜃 0
+> Image -text
+> Pairs
+> Video -text
+> Pairs
+> Doc -text
+> Pairs
+> Audio -text
+> Pairs
+> Image
+> Specialist
+> 𝜃 𝐼
+> Video
+> Specialist
+> 𝜃 𝑉
+> VisDoc
+> Specialist
+> 𝜃 𝐷
+> 𝜃 0copy
+> + Image LoRA
+> 𝜃 0copy
+> + Video LoRA
+> 𝜃 0copy
+> + Doc LoRA
+> 𝜃 0copy
+> + Audio tokens
+> + Audio encoder
+> + Audio projector
+> + Audio LoRA
+> Audio
+> Specialist
+> 𝜃 𝐴
+> Fused Backbone
+> 𝜃 𝑚 =𝜃 0+σ𝛼 𝑚 ∆𝑚
+> ∆𝐼 =𝜃 𝐼 −𝜃 0
+> ∆𝑉 =𝜃 𝑉 −𝜃 0
+> ∆𝐷 =𝜃 𝐷 −
+> 𝜃 0
+> ∆𝐴 =𝜃 𝐴 −𝜃 0
+> Shared -backbone
+> Task vectors
+> Copy audio modules
+> drift
+> Audio Projector
+> Conan -embedding -v3
+> Audio -text
+> FT Pairs
+> Audio
+> Recovery
+> Tokens /
+> Encoder /
+> Projector
+
+Stage 1 
+
+Same -model Specialist Training 
+
+Stage 2 
+
+Task -Vector Fusion 
+
+Stage 3 
+
+Recovery Training Figure 2: Overview of Conan-embedding-v3. Stage 1 trains modality specialists from a shared initialization θ0
+
+using modality-specific LoRA, where the audio specialist additionally grafts an audio encoder and projector. These specialists are then combined in Stage 2 by fusing their shared-backbone task vectors while copying audio modules directly, which induces Projector Drift. Finally, Stage 3 applies Projector Recovery (fine-tuning only the projector) on audio–text pairs, followed by balanced rehearsal to yield the final omni-modal retriever. 
+
+Thus, the merged checkpoint is structurally omni-modal, possessing all pathways required to pro-cess image, video, visual-document, and audio in-puts. However, structural compatibility alone does not guarantee representation alignment; the newly fused backbone may no longer be compatible with the copied audio projector. This alignment gap motivates the diagnostic analyses in §4.4, where we examine both task-vector geometry and output-space audio–text neighborhoods. 
+
+3.4 Projector Drift under Specialist Fusion 
+
+The central technical issue in Conan-embedding-v3 is that task-vector fusion changes the representa-tion space expected by the shared backbone. This is especially problematic for modalities whose inputs are mapped into the backbone through a learned projector. During audio specialist training, the au-dio projector PA is optimized jointly with an audio-specialist backbone BA (parameterized by θA). Its role is to transform audio encoder outputs into hid-den states that are compatible with BA:
+
+PA(EA(xa)) ∈ H (BA). (7) After specialist fusion, the same audio projector is evaluated against the fused backbone Bmerge ,whose parameters θmerge differ from θA because they integrate task vectors from other specialists: 
+
+Bmerge = B0 + X
+
+> m∈{ I,V,D,A }
+
+αm∆m. (8) Therefore, the projector remains calibrated to the audio-specialist backbone BA, while inference uses a different backbone Bmerge . We call this projector–backbone mismatch Projector Drift .Empirically, this drift is severe: direct fusion sub-stantially degrades audio retrieval relative to our recovered model even though the audio encoder and projector are copied exactly. This degrada-tion suggests that the projector–backbone interface is no longer well matched to the fused backbone, rather than any missing audio components. This explains why a naive “train specialists then fuse” recipe is insufficient in our setting: specialist fusion can compose backbone capabilities, but it can also disrupt the interface of projector-based modalities. 
+
+3.5 Alignment Recovery via Projector Tuning 
+
+To repair the projector–backbone interface, Conan-embedding-v3 performs a post-fusion recovery stage. The first phase is Projector Recovery (or Projector-Only Tuning). Specifically, we keep the task-vector-fused language backbone and the audio encoder frozen, and perform full-parameter fine-tuning only on the lightweight audio projector PA:
+
+θPA = Train( θPA , DA) s.t. Kbackbone is frozen .
+
+(9) Because the backbone is frozen in this phase, the fused visual and document parameters are not di-rectly updated by audio-only gradients during the initial audio recovery step. 4In the main Conan-embedding-v3 pipeline, re-covery is executed in two consecutive phases. First, we tune only the audio projector PA on audio– text retrieval pairs to restore the basic mapping between the audio encoder and the newly merged backbone. Second, starting from the projector-recovered checkpoint, we perform a lightweight multi-modal rehearsal stage using LoRA on the backbone and vision encoder, mixing audio, im-age, video, and visual-document retrieval data with a lower learning rate and a conservative update budget (e.g., 2000 steps). This second phase is in-tended to retain the recovered audio pathway while improving coordination with the visual, video, and document retrieval pathways. The overall method can therefore be summa-rized as follows: decoupled specialists reduce see-saw conflicts, task-vector fusion produces a unified checkpoint, and Projector Recovery mitigates the projector drift introduced by fusion while balanced rehearsal maintains broad retrieval capability. This sequence is the main methodological contribution of Conan-embedding-v3. 
+
+4 Experiments 
+
+4.1 Experimental Setup Base model and modalities. We use Qwen3-VL-8B as the base model, which natively supports text and visual inputs. Image, video, and visual-document specialists are trained through this visual-language pathway with modality-specific retrieval data. Audio is not native to this backbone, so the audio specialist is constructed by grafting an exter-nal audio pathway onto the same visual-language embedding model. 
+
+Training data. Following the data construc-tion recipe of Qwen3-VL-Embedding (Li et al., 2026), we train on roughly 50M retrieval exam-ples spanning public datasets and in-house syn-thetic data. The public portion covers image re-trieval, video retrieval, visual-document retrieval, and audio–text retrieval, including sources such as MSCOCO (Lin et al., 2014), VisualNews (Liu et al., 2021b), LLaVA-Hound (Zhang et al., 2024), ColPali (Faysse et al., 2024), VisRAG (Yu et al., 2024b), AudioCaps (Kim et al., 2019), and Au-dioSetStrong (Hershey et al., 2021). We further synthesize a large number of instruction-style re-trieval pairs to improve coverage over query styles, domain variation, and modality-specific retrieval formats. Held-out MMEB and MAEB evaluation queries/candidates and exact duplicate pairs are excluded from training and validation. 
+
+Audio implementation. To support audio, we attach an audio encoder extracted from Qwen3-Omni-30B-A3B-Instruct (Xu et al., 2025a) and a two-layer MLP projector to the visual-language backbone. The projector maps the 2048-dimensional audio features to the 4096-dimensional hidden size of the backbone and contains approximately 19M parameters. We add <|audio_start|> , <|audio_end|> , 
+
+> <|audio_pad|>
+
+, and <|AUDIO|> special tokens; projected audio features replace <|AUDIO|> token embeddings before being passed to the language backbone. 
+
+Trainable modules. We configure the trainable parameters across our three pipeline stages as fol-lows: First, during specialist training , we apply LoRA over all linear modules in the language back-bone, vision encoder, audio encoder, and audio pro-jector. All learned adapters are merged directly into the dense checkpoints prior to task-vector fusion. Second, during projector recovery , the fused lan-guage backbone and audio encoder are completely frozen, and we perform full-parameter fine-tuning exclusively on the 19M-parameter audio projector to restore the interface alignment. Third, during 
+
+balanced rehearsal , we apply lightweight LoRA adapters on the language backbone and vision en-coder with a conservative learning rate to preserve and coordinate all retrieval pathways. 
+
+Training and evaluation. We optimize the In-foNCE contrastive objective with a temperature of 
+
+τ = 0 .02 , utilizing the AdamW optimizer with a cosine learning-rate schedule, peak learning rates of 1 × 10 −4 for specialist training and 1 × 10 −5
+
+for rehearsal, and a global batch size of 8192. For visual evaluation, we use MMEB-V2 (Meng et al., 2025), which contains 78 tasks covering image, video, and visual-document embedding scenarios; we report Image (36 tasks), Video (18 tasks), Vis-Doc (24 tasks), and the task-count-weighted overall score. For audio evaluation, we use MAEB (As-sadi et al., 2026), a 30-task benchmark spanning speech, music, environmental sounds, and audio– text matching; we report its official task-level aver-age and task-type average when available. 5Model Size MMEB Image Video VisDoc                                                   
+
+> VLM2Vec-V2.0-Qwen2VL-2B (Meng et al., 2025) 2.21B 57.49 64.92 34.67 63.47 e5-omni-3B (Chen et al., 2026) 3.00B 63.08 67.59 40.63 73.16 e5-omni-7B (Chen et al., 2026) 8.00B 65.85 71.23 43.54 74.52 RzenEmbed-v2-7B (Jian et al., 2025) 8.29B 71.12 75.92 55.73 75.45 IFM-TTE-7B (Cui et al., 2026) 8.29B 73.06 77.90 59.19 76.21 Qwen3-VL-Embedding-2B (Li et al., 2026) 2.13B 73.25 74.96 61.87 79.22 WeMM-Embedding-8B (WeMM Team, 2025) 8.77B 73.90 78.09 63.24 75.62 seed1.6-embedding-1215 (Seed Team, 2025) –76.97 77.99 67.74 82.38
+> Qwen3-VL-Embedding-8B (Li et al., 2026) 8.14B 77.82 80.12 67.15 82.36
+> Conan-embedding-v3 8.8B 74.96 77.20 65.10 79.00
+
+Table 1: MMEB comparison with representative visual embedding models. Overall is the task-count-weighted average over image, video, and visual-document task groups.                                         
+
+> Model Type Params MAEB Task-type Avg.
+> clap-htsat-fused (Wu et al., 2023) audio encoder 0.15B 33.47 41.30 Qwen2-Audio-7B (Chu et al., 2024) audio MLLM 7.00B 34.54 37.01 larger_clap_general (Wu et al., 2023) CLAP-style 0.19B 34.98 41.08 jina-embeddings-v5-omni-nano (Hönicke et al., 2026) omni embedding 0.99B 50.14 55.31 jina-embeddings-v5-omni-small (Hönicke et al., 2026) omni embedding 1.63B 50.41 55.58 LCO-Embedding-Omni-3B (Xiao et al., 2025a) omni embedding 4.70B 52.25 55.50 BidirLM-Omni-2.5B-Embedding (Boizard et al., 2026) omni embedding 2.45B 52.36 54.52 LCO-Embedding-Omni-7B (Xiao et al., 2025a) omni embedding 8.93B 53.54 57.06
+> Conan-embedding-v3 omni embedding 8.8B 55.61 59.32
+
+Table 2: MAEB comparison with representative audio-capable models. MAEB is the official task-level average over 30 audio embedding tasks; Task-type Avg. first averages within benchmark task categories. 
+
+4.2 Overall Omni-Modal Retrieval 
+
+We report visual and audio benchmarks in separate main tables because current public leaderboards evaluate them with different task suites. Table 1 compares Conan-embedding-v3 with representa-tive MMEB systems selected from the visual rank-ing, including the strongest 8B and 2B open-weight models, and earlier omni-modal baselines. Table 2 separately compares representative audio-capable systems from the MAEB ranking. Conan-embedding-v3 achieves an overall score of 74.96 on MMEB and 55.61 on MAEB. While adding the audio pathway introduces a slight visual regression compared to the visual-only Qwen3-VL-Embedding-8B, the unified model remains highly competitive across image, video, and visual-document retrieval tasks, while outperforming ex-isting state-of-the-art omni-modal embedding mod-els on the 30-task MAEB suite. 
+
+4.3 Ablative Analysis 4.3.1 Ablation Study on Each Component 
+
+Table 3 isolates the contribution of each stage in our pipeline. Direct joint training on visual tasks is a useful reference point but does not cover the grafted audio pathway; we therefore include an all-modality joint-training baseline (I+V+D+A) as the direct baseline for future comparison once fully evaluated. While parameter-space fusion (Direct Fusion) composes the specialists into one check-point, it leaves the grafted audio pathway poorly aligned (32.68 on MAEB) because the projec-tor remains calibrated to the pre-fusion backbone. Projector-only audio recovery restores the audio pathway (55.82) while preserving the pre-recovery visual scores. Finally, introducing multi-modal balanced rehearsal improves the visual scores to 77.2/65.1/79.0 while retaining comparable audio performance, yielding the best overall trade-off. 
+
+4.3.2 Ablation Study on Recovery Strategy 
+
+We study how different recovery strategies affect visual retention, comparing projector-only tuning and backbone LoRA under single-stage and two-stage designs. Table 4 reports the resulting MMEB and MAEB scores. Joint Recovery is a one-stage ablation that starts from Direct Fusion and trains on audio and image data; Audio-Only Recovery starts from Direct Fusion and focuses on audio alignment; Balanced Rehearsal represents our main second-stage rehearsal that starts from Audio-Only Re-covery and mixes audio, image, video, and visual-6Variant Removed / changed component Image Video VisDoc MAEB                          
+
+> Joint Training (I+V+D) no decoupled specialists/fusion 80.3 67.2 82.0 –Joint Training (I+V+D+A) no decoupling/fusion, all modalities 69.2 43.0 74.9 48.01 Direct Fusion no recovery 68.5 56.7 68.9 32.68 + Audio-Only Recovery no balanced rehearsal 68.5 56.7 68.9 55.82
+> Conan-embedding-v3 full decouple–fuse–recover 77.2 65.1 79.0 55.61
+
+Table 3: Ablation study on each component. Joint Training (I+V+D) is trained directly on visual modalities. Joint Training (I+V+D+A) is the all-modality joint-training baseline to be filled after full evaluation. Direct Fusion uses task-vector fusion without recovery.                         
+
+> Model Image (36) Video (18) VisDoc (24) MAEB Audio
+> Direct Fusion (pre-recovery) 68.5 56.7 68.9 32.68
+> Stage 3a: Ablations on Audio-Only Recovery
+> + Backbone + Projector LoRA 67.1 53.6 74.1 56.39
+> + Projector-Only Tuning (Ours) 68.5 56.7 68.9 55.82
+> Stage 3b: Ablations on Multi-Modal Recovery
+> + Joint Recovery (One-stage) 72.6 63.5 78.0 52.97 + Balanced Rehearsal (Ours) 77.2 65.1 79.0 55.61
+
+Table 4: Ablation of recovery strategies on MMEB and MAEB. Projector-only tuning freezes the backbone and preserves the pre-recovery visual scores, whereas adding Backbone LoRA changes the visual retrieval trade-off. 
+
+document data to reduce forgetting. The results show that Direct Fusion suffers from severe projector–backbone drift. In Stage 3a, tuning the backbone with LoRA recovers au-dio slightly better (56.39) but changes the visual scores, whereas Projector-Only Tuning keeps the backbone frozen and therefore preserves the pre-recovery visual scores while still restoring strong audio performance (55.82). For Stage 3b, Balanced Rehearsal achieves the best trade-off: it keeps au-dio close to the recovered model while substan-tially improving visual retrieval. We attribute this behavior to the lightweight nature of the rehearsal phase (2000 steps with 1 × 10 −5 learning rate) on pre-specialized weights. We hypothesize that this phase acts as a gentle global coordination of already learned representations rather than a conflict-prone capability acquisition process, thereby mitigating the cross-modal seesaw effect. 
+
+4.3.3 Ablation Study on Fusion Weights 
+
+To study whether tuning merging weights can re-duce the alignment conflict without post-fusion training, we analyze the impact of the audio task-vector coefficient αA before recovery in Figure 3. As αA increases from 0.3 to 0.9, audio retrieval steadily improves, but at the cost of severe degrada-tion in visual retrieval (where Image MMEB drops to 62.5%), with αA = 0 .5 providing the best pre-recovery balance in our sweep. This trade-off sug-gests that coefficient tuning alone is insufficient to balance both modalities in this setting, motivating the post-fusion recovery stage. 
+
+Figure 3: Ablation on fusion weights before recov-ery. Increasing the audio task-vector coefficient αA
+
+improves audio capability but degrades visual retrieval performance, illustrating the inherent conflict. 
+
+4.4 Qualitative Experiments 4.4.1 Task-Vector Geometry 
+
+To understand why direct fusion disproportionately affects the grafted audio pathway, we analyze the model-space task vectors of the specialists in Fig-ure 4. First, the pairwise cosine similarity matrix (Figure 4a) shows that audio is nearly orthogonal to all visual updates ( cos ≤ 0.001 ), suggesting that vi-7Figure 4: Geometry of the four modality task vectors. (a) Pairwise cosine similarity indicates audio is nearly orthogonal to visual updates ( cos ≤ 0.001 ). (b) Audio has the largest global update norm ( ≈ 42 .3). (c) Audio updates remain large across the backbone and peak in deeper layers. Specialist   
+
+> (R@1 = 92%)
+> Direct merge
+> (R@1 = 56%)
+> Recovered
+> (R@1 = 91%)
+> Figure 5: Output-space view of Projector Drift on diagnostic audio–text retrieval pairs. The audio specialist (left) aligns paired embeddings ( R@1 = 92% ). Direct fusion (middle) separates the audio and text manifolds (R@1 = 56% ). Projector Recovery (right) reduces this separation and restores retrieval performance ( R@1 = 91% ).
+
+sual updates provide little direct directional support for audio during fusion. Second, Figure 4b shows that audio has the largest global task-vector norm (∥τA∥2 ≈ 42 .3), representing significant parame-ter displacement across the backbone. Third, the per-layer norms (Figure 4c) reveal that this param-eter change is distributed across the entire depth of the network, remaining consistently high ( > 7.0)and peaking in deeper layers ( > 14 .0). Because the audio projector is static during fusion, this dis-tributed layer-wise drift can weaken the projector– backbone interface. 
+
+4.4.2 Audio–Text Embedding Neighborhoods 
+
+To examine the output-space behavior of Projec-tor Drift, we compute t-SNE projections on Au-dioCaps in Figure 5. The audio specialist closely interleaves paired text and audio embeddings in a shared neighborhood ( R@1 = 92% ). However, direct fusion separates the two manifolds and drops 
+
+R@1 to 56% . This pattern suggests that Projector Drift is not merely random noise, but a systematic shift of the audio manifold relative to text under the fused backbone. Projector Recovery reduces this separation and restores the shared neighborhood structure ( R@1 = 91% ). 
+
+5 Conclusion 
+
+We present Conan-embedding-v3, an omni-modal embedding model supporting text, image, video, document, and audio retrieval within a single back-bone. To mitigate cross-modal conflicts, we in-troduce Decoupled Specialist Fusion, and identify Projector Drift as an important interface mismatch when attaching grafted modalities. By applying post-fusion Projector Recovery followed by bal-anced rehearsal, our unified model retains strong in-herited visual capabilities while recovering strong audio performance. This modular design trades additional training and fusion stages for better con-trollability over modality-specific capabilities. In 8the future, we will explore end-to-end omni-modal training strategies, as well as training from an omni-modal base model for omni retrieval. 
+
+Limitations 
+
+Our framework has three main limitations. First, Projector Recovery is a repair rather than a com-plete solution: Projector Drift is reduced but not fully closed. Second, the recovery configuration is selected through a directed empirical search rather than an automated procedure. Third, as more modalities are added through additional projectors, multiple projector-drift effects may interact, and our current study does not characterize this interac-tion beyond four modalities. 
+
+References 
+
+Adnan El Assadi, Isaac Chung, Chenghao Xiao, Roman Solomatin, Animesh Jha, Rahul Chand, Silky Singh, Kaitlyn Wang, Ali Sartaz Khan, Marc Moussa Nasser, Sufen Fong, Pengfei He, Alan Xiao, Ayush Sunil Munot, Aditya Shrivastava, Artem Gazizov, Niklas Muennighoff, and Kenneth Enevoldsen. 2026. Maeb: Massive audio embedding benchmark. Preprint ,arXiv:2602.16008. Nicolas Boizard, Théo Deschamps-Berger, Hippolyte Gisserot-Boukhlef, Céline Hudelot, and Pierre Colombo. 2026. Bidirlm: From text to omnimodal bidirectional encoders by adapting and composing causal llms. Preprint , arXiv:2604.02045. Hao Mark Chen, Shell Xu Hu, Wayne Luk, Timothy Hospedales, and Hongxiang Fan. 2025. Fw-merging: Scaling model merging with frank-wolfe optimiza-tion. In Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) , pages 3390– 3400. Haonan Chen, Sicheng Gao, Radu Timofte, Tetsuya Sakai, and Zhicheng Dou. 2026. e5-omni: Explicit cross-modal alignment for omni-modal embeddings. 
+
+Preprint , arXiv:2601.03666. Yunfei Chu, Jin Xu, Qian Yang, Haojie Wei, Xipin Wei, Zhifang Guo, Yichong Leng, Yuanjun Lv, Jinzheng He, Junyang Lin, Chang Zhou, and Jingren Zhou. 2024. Qwen2-audio technical report. Preprint ,arXiv:2407.10759. Xuanming Cui, Jianpeng Cheng, Hong you Chen, Satya Narayan Shukla, Abhijeet Awasthi, Xi-chen Pan, Chaitanya Ahuja, Shlok Kumar Mishra, Yonghuan Yang, Jun Xiao, Qi Guo, Ser-Nam Lim, Aashu Singh, and Xiangjun Fan. 2026. Think then embed: Generative context improves multimodal em-bedding. Preprint , arXiv:2510.05014. Manuel Faysse, Hugues Sibille, Tony Wu, Bilel Omrani, Gautier Viaud, Céline Hudelot, and Pierre Colombo. 2024. Colpali: Efficient document retrieval with vi-sion language models. Preprint , arXiv:2407.01449. Rohit Girdhar, Alaaeldin El-Nouby, Zhuang Liu, Man-nat Singh, Kalyan Vasudev Alwala, Armand Joulin, and Ishan Misra. 2023. Imagebind: One embed-ding space to bind them all. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pat-tern Recognition (CVPR) , pages 15180–15190. Shawn Hershey, Daniel P W Ellis, Eduardo Fonseca, Aren Jansen, Caroline Liu, R Channing Moore, and Manoj Plakal. 2021. The benefit of temporally-strong labels in audio event classification. In ICASSP 2021 - 2021 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP) , pages 366– 370. Florian Hönicke, Michael Günther, Andreas Koukounas, Mohammad Kalim Akram, Scott Martens, Saba Stu-rua, and Han Xiao. 2026. jina-embeddings-v5-omni: Geometry-preserving embeddings via locked aligned towers. Preprint , arXiv:2605.08384. Gabriel Ilharco, Marco Tulio Ribeiro, Mitchell Worts-man, Suchin Gururangan, Ludwig Schmidt, Han-naneh Hajishirzi, and Ali Farhadi. 2023. Editing models with task arithmetic. In International Confer-ence on Learning Representations (ICLR) .Weijian Jian, Yajun Zhang, Dawei Liang, Chunyu Xie, Yixiao He, Dawei Leng, and Yuhui Yin. 2025. Rzen-embed: Towards comprehensive multimodal retrieval. 
+
+Preprint , arXiv:2510.27350. Ting Jiang, Minghui Song, Zihan Zhang, Haizhen Huang, Weiwei Deng, Feng Sun, Qi Zhang, Deqing Wang, and Fuzhen Zhuang. 2024. E5-v: Universal embeddings with multimodal large language models. 
+
+Preprint , arXiv:2407.12580. Ziyan Jiang, Rui Meng, Xinyi Yang, Semih Yavuz, Yingbo Zhou, and Wenhu Chen. 2025. Vlm2vec: Training vision-language models for massive mul-timodal embedding tasks. In The Thirteenth Inter-national Conference on Learning Representations (ICLR) .Chris Dongjoo Kim, Byeongchang Kim, Hyunmin Lee, and Gunhee Kim. 2019. AudioCaps: Generating cap-tions for audios in the wild. In Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Hu-man Language Technologies, Volume 1 (Long and Short Papers) , pages 119–132, Minneapolis, Min-nesota. Association for Computational Linguistics. Mingxin Li, Yanzhao Zhang, Dingkun Long, Keqin Chen, Sibo Song, Shuai Bai, Zhibo Yang, Pengjun Xie, An Yang, Dayiheng Liu, Jingren Zhou, and Jun-yang Lin. 2026. Qwen3-vl-embedding and qwen3-vl-reranker: A unified framework for state-of-the-art multimodal retrieval and ranking. Preprint ,arXiv:2601.04720. 
+
+9Lin Lin, Jiefeng Long, Zhihe Wan, Yuchi Wang, Dingkang Yang, Shuang Yang, Yueyang Yao, Xu Chen, Zirui Guo, Shengqiang Li, Weiran Li, Hanyu Li, Yaling Mou, Yan Qiu, Haiyang Yu, Xiao Liang, Hongsheng Li, and Chao Feng. 2025. Sail-embedding technical report: Omni-modal embedding foundation model. Preprint , arXiv:2510.12709. Tsung-Yi Lin, Michael Maire, Serge Belongie, Lubomir Bourdev, Ross Girshick, James Hays, Pietro Perona, Deva Ramanan, C. Lawrence Zitnick, and Piotr Dol-lár. 2014. Microsoft coco: Common objects in con-text. Preprint , arXiv:1405.0312. Bo Liu, Xingchao Liu, Xiaojie Jin, Peter Stone, and Qiang Liu. 2021a. Conflict-averse gradient descent for multi-task learning. In Advances in Neural Infor-mation Processing Systems , volume 34, pages 18878– 18890. Curran Associates, Inc. Fuxiao Liu, Yinghan Wang, Tianlu Wang, and Vicente Ordonez. 2021b. Visual news: Benchmark and chal-lenges in news image captioning. In Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing , pages 6761–6771. Haotian Liu, Chunyuan Li, Qingyang Wu, and Yong Jae Lee. 2023. Visual instruction tuning. In Advances in Neural Information Processing Systems , volume 36, pages 34892–34916. Curran Associates, Inc. Xueguang Ma, Luyu Gao, Shengyao Zhuang, Ji-aqi Samantha Zhan, Jamie Callan, and Jimmy Lin. 2025. Tevatron 2.0: Unified document re-trieval toolkit across scale, language, and modality. 
+
+Preprint , arXiv:2505.02466. Daniel Marczak, Simone Magistri, Sebastian Cygert, Bartłomiej Twardowski, Andrew D. Bagdanov, and Joost van de Weijer. 2025. No task left behind: Isotropic model merging with common and task-specific subspaces. Preprint , arXiv:2502.04959. Rui Meng, Ziyan Jiang, Ye Liu, Mingyi Su, Xinyi Yang, Yuepeng Fu, Can Qin, Zeyuan Chen, Ran Xu, Caim-ing Xiong, Yingbo Zhou, Wenhu Chen, and Semih Yavuz. 2025. Vlm2vec-v2: Advancing multimodal embedding for videos, images, and visual documents. 
+
+Preprint , arXiv:2507.04590. Alec Radford, Jong Wook Kim, Chris Hallacy, Aditya Ramesh, Gabriel Goh, Sandhini Agarwal, Girish Sas-try, Amanda Askell, Pamela Mishkin, Jack Clark, Gretchen Krueger, and Ilya Sutskever. 2021. Learn-ing transferable visual models from natural language supervision. In Proceedings of the 38th International Conference on Machine Learning , volume 139 of 
+
+Proceedings of Machine Learning Research , pages 8748–8763. PMLR. Seed Team. 2025. Seed1.6 embedding. Project page and MMEB leaderboard entry. No public paper found. Ozan Sener and Vladlen Koltun. 2018. Multi-task learn-ing as multi-objective optimization. In Advances in Neural Information Processing Systems , volume 31. Curran Associates, Inc. Trevor Standley, Amir Zamir, Dawn Chen, Leonidas Guibas, Jitendra Malik, and Silvio Savarese. 2020. Which tasks should be learned together in multi-task learning? In Proceedings of the 37th International Conference on Machine Learning , volume 119 of 
+
+Proceedings of Machine Learning Research , pages 9120–9132. PMLR. Changli Tang, Wenyi Yu, Guangzhi Sun, Xianzhao Chen, Tian Tan, Wei Li, Lu Lu, Zejun MA, and Chao Zhang. 2024. Salmonn: Towards generic hearing abilities for large language models. In International Conference on Learning Representations , volume 2024, pages 16607–16629. zehan wang, Ziang Zhang, Minjie Hong, Hang Zhang, Luping Liu, Rongjie Huang, Xize Cheng, Shengpeng Ji, Tao Jin, Hengshuang Zhao, and Zhou Zhao. 2025. Omnibind: Large-scale omni multimodal representa-tion via binding spaces. In International Conference on Learning Representations , volume 2025, pages 20831–20851. WeMM Team. 2025. WeMM-Embedding. MMEB leaderboard entry. Mitchell Wortsman, Gabriel Ilharco, Samir Ya Gadre, Rebecca Roelofs, Raphael Gontijo-Lopes, Ari S Mor-cos, Hongseok Namkoong, Ali Farhadi, Yair Car-mon, Simon Kornblith, and Ludwig Schmidt. 2022. Model soups: averaging weights of multiple fine-tuned models improves accuracy without increasing inference time. In Proceedings of the 39th Interna-tional Conference on Machine Learning , volume 162 of Proceedings of Machine Learning Research , pages 23965–23998. PMLR. Yusong Wu, Ke Chen, Tianyu Zhang, Yuchen Hui, Tay-lor Berg-Kirkpatrick, and Shlomo Dubnov. 2023. Large-scale contrastive language-audio pretraining with feature fusion and keyword-to-caption augmen-tation. In ICASSP 2023 - 2023 IEEE International Conference on Acoustics, Speech and Signal Process-ing (ICASSP) , pages 1–5. Chenghao Xiao, Hou Pong Chan, Hao Zhang, Weiwen Xu, Mahani Aljunied, and Yu Rong. 2025a. Scaling language-centric omnimodal representation learning. 
+
+Preprint , arXiv:2510.11693. Chenghao Xiao, Hou Pong (Ken) Chan, Hao Zhang, Weiwen Xu, Mahani Aljunied, and Yu Rong. 2025b. Scaling language-centric omnimodal representation learning. In Advances in Neural Information Pro-cessing Systems , volume 38, pages 158370–158401. Curran Associates, Inc. Jin Xu, Zhifang Guo, Hangrui Hu, Yunfei Chu, Xiong Wang, Jinzheng He, Yuxuan Wang, Xian Shi, Ting He, Xinfa Zhu, Yuanjun Lv, Yongqi Wang, Dake Guo, He Wang, Linhan Ma, Pei Zhang, Xinyu Zhang, Hongkun Hao, Zishan Guo, and 19 others. 2025a. Qwen3-omni technical report. Preprint ,arXiv:2509.17765. 
+
+10 Mengyao Xu, Wenfei Zhou, Yauhen Babakhin, Gabriel Moreira, Ronay Ak, Radek Osmulski, Bo Liu, Even Oldridge, and Benedikt Schifferer. 2025b. Omni-embed-nemotron: A unified multimodal retrieval model for text, image, audio, and video. Preprint ,arXiv:2510.03458. Prateek Yadav, Derek Tam, Leshem Choshen, Colin Raffel, and Mohit Bansal. 2023. Ties-merging: Re-solving interference when merging models. In Ad-vances in Neural Information Processing Systems ,volume 36, pages 7093–7115. Curran Associates, Inc. Le Yu, Bowen Yu, Haiyang Yu, Fei Huang, and Yong-bin Li. 2024a. Language models are super mario: Absorbing abilities from homologous models as a free lunch. In Proceedings of the 41st International Conference on Machine Learning , volume 235 of 
+
+Proceedings of Machine Learning Research , pages 57755–57775. PMLR. Shi Yu, Chaoyue Tang, Bokai Xu, Junbo Cui, Jun-hao Ran, Yukun Yan, Zhenghao Liu, Shuo Wang, Xu Han, Zhiyuan Liu, and Maosong Sun. 2024b. Visrag: Vision-based retrieval-augmented gener-ation on multi-modality documents. Preprint ,arXiv:2410.10594. Tianhe Yu, Saurabh Kumar, Abhishek Gupta, Sergey Levine, Karol Hausman, and Chelsea Finn. 2020a. Gradient surgery for multi-task learning. In Ad-vances in Neural Information Processing Systems ,volume 33, pages 5824–5836. Curran Associates, Inc. Tianhe Yu, Saurabh Kumar, Abhishek Gupta, Sergey Levine, Karol Hausman, and Chelsea Finn. 2020b. Gradient surgery for multi-task learning. Preprint ,arXiv:2001.06782. Jun Zhan, Junqi Dai, Jiasheng Ye, Yunhua Zhou, Dong Zhang, Zhigeng Liu, Xin Zhang, Ruibin Yuan, Ge Zhang, Linyang Li, Hang Yan, Jie Fu, Tao Gui, Tianxiang Sun, Yu-Gang Jiang, and Xipeng Qiu. 2024. AnyGPT: Unified multimodal LLM with dis-crete sequence modeling. In Proceedings of the 62nd Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers) , pages 9637– 9662, Bangkok, Thailand. Association for Computa-tional Linguistics. Ruohong Zhang, Liangke Gui, Zhiqing Sun, Yihao Feng, Keyang Xu, Yuanhan Zhang, Di Fu, Chunyuan Li, Alexander Hauptmann, Yonatan Bisk, and Yim-ing Yang. 2024. Direct preference optimization of video large multimodal models from language model reward. Preprint , arXiv:2404.01258. Bin Zhu, Bin Lin, Munan Ning, YANG YAN, Jiaxi Cui, WANG HongFa, Yatian Pang, Wenhao Jiang, Junwu Zhang, Zongwei Li, Cai Zhang, Zhifeng Li, Wei Liu, and Yuan Li. 2024. Languagebind: Ex-tending video-language pretraining to n-modality by language-based semantic alignment. In International Conference on Learning Representations , volume 2024, pages 9588–9608. 
+
+A Ablation on Multi-Task Training 
+
+To address cross-modal optimization conflict, Conan-embedding-v3 decouples capability learn-ing by training modality specialists independently instead of relying on a single joint multi-task learn-ing (MTL) run. To evaluate if advanced MTL meth-ods can natively resolve this conflict, we train a joint visual-language baseline using PCGrad (Pro-jecting Congruent Gradients) (Yu et al., 2020b), a popular gradient surgery technique that projects conflicting gradients onto the normal plane of one another. We train the model jointly on the multi-modal mixtures of image, video, and visual-document spe-cialists under identical architectures. Table 5 com-pares the PCGrad baseline (evaluated at checkpoint-700) against our naive Joint Training, independent Decoupled Specialists (pre-fusion upper bounds), and our final merged Conan-embedding-v3. 
+
+Comparison with Joint Training: PCGrad per-forms slightly better than naive joint multi-task training overall, demonstrating that projecting con-flicting gradients mitigates severe cross-modal in-terference to some extent. 
+
+Comparison with Decoupled Specialists: Each individual task score of PCGrad is worse than inde-pendent decoupled specialist training (image is rel-atively close, but video and visual-document drop severely by 9.5% and 11 .6% , respectively). This highlights that joint training, even with gradient projection, still suffers from substantial optimiza-tion compromises. 
+
+Comparison with Specialist Fusion: Our final Conan-embedding-v3 model, constructed via De-coupled Specialist Fusion with Projector Recov-ery and balanced rehearsal, significantly outper-forms PCGrad across all modalities (e.g., +4 .9% 
+
+on Image, +7 .4% on Video, and +8 .6% on Vis-Doc). This confirms that decoupling capability ac-quisition through specialists and composing them in parameter space is a far superior paradigm for multi-modal embedding models. 
+
+B Ablation on Merging Methods: TIES and DARE 
+
+While Task Arithmetic is the default fusion method in Conan-embedding-v3 due to its simplicity and strong visual retention, a common question is 11 Method Image Video VisDoc MMEB Overall                 
+
+> Joint Training (I+V+D+A) 69.2 43.0 74.9 –PCGrad MTL Baseline 72.3 57.7 70.4 68.3 Decoupled Specialists (pre-fusion) 80.3 67.2 82.0 –
+> Conan-embedding-v3 (ours) 77.2 65.1 79.0 74.96
+
+Table 5: MMEB performance comparison of PCGrad against Decoupled Specialists. Decoupled Specialists represent independent single-modality training upper bounds. PCGrad improves over naive joint training but remains significantly lower than our Decoupled Specialist Fusion in all modalities.                               
+
+> Merging Method Image Video VisDoc MMEB Overall MAEB (Pre-Recov.) MAEB (Post-Recov.)
+> TIES-Merging (trim = 0.2) 76.5 64.3 78.2 74.12 28.45 54.92 TIES-Merging (trim = 0.5) 74.8 62.1 76.0 72.10 21.10 52.45 DARE (drop = 0.1) 76.9 64.7 78.6 74.52 30.12 55.20
+> Task Arithmetic (ours) 77.2 65.1 79.0 74.96 32.68 55.61
+
+Table 6: MMEB and MAEB performance across different parameter-space merging methods. Prior to projector recovery, all merging variants suffer from severe Projector Drift (MAEB ≤ 32 .68 ). Task Arithmetic yields the best overall trade-off, particularly in preserving MMEB visual capabilities. 
+
+whether more advanced parameter-merging tech-niques can natively mitigate Projector Drift. To study this, we evaluate TIES-Merging (Yadav et al., 2023) and DARE (Yu et al., 2024a) on our multiway-C specialist configuration. For TIES-Merging, we prune small parameter updates (using trim ratios of 0.2 and 0.5) and re-solve sign conflicts before merging task vectors. For DARE, we randomly drop 10% of the parame-ter updates (drop rate 0.1) and rescale the remaining weights to reduce task vector redundancy. Table 6 reports the performance of these different merging paradigms on both MMEB and MAEB. Our diagnostic evaluations confirm that both TIES and DARE variants suffer from the same severe Projector Drift as Task Arithmetic: prior to recovery, audio retrieval scores for all merged models remain low (MAEB ≤ 32 .68 ). This demon-strates that Projector Drift is a fundamental conse-quence of any parameter-space fusion that shifts the backbone’s semantic trajectory away from the specialist’s target trajectory, regardless of the prun-ing, dropping, or sign-reconciliation mechanisms. Consequently, post-fusion Projector Recovery is essential across all merging paradigms. It is also worth noting that Task Arithmetic preserves the vi-sual capabilities of the specialists better than TIES and DARE (e.g., 74 .96 vs. 74 .12 and 74 .52 ), justi-fying our choice of Task Arithmetic as the default composition method. 
+
+C Ablation on Fusion Coefficients 
+
+To select the optimal Multiway-C coefficients for Conan-embedding-v3, we conduct a grid sweep over the visual and audio task-vector scales. In our primary formulation, we keep the visual weights symmetric ( αI = αV = αD = αvisual ) and sweep the audio coefficient αA from 0.3 to 0.9. Table 7 reports MMEB and MAEB validation scores both prior to and after Projector Recovery. 
+
+Visual vs. Audio Trade-off: As αA increases, the audio specialist’s updates dominate the fused backbone, which inherently improves pre-recovery MAEB score but severely degrades the visual path-ways. Conversely, setting αA too low preserves visual performance but offers insufficient audio task-vector contribution, limiting post-recovery au-dio potential. 
+
+Decision Protocol: The selection of αvisual = 0 .3
+
+and αA = 0 .5 represents a Pareto-optimal config-uration. It maintains strong visual-retrieval scores while retaining a sufficiently strong audio task-vector component, which Projector Recovery and balanced rehearsal subsequently leverage to fully restore audio capabilities to 55 .61 on MAEB. 
+
+D Compute Infrastructure and Computational Efficiency 
+
+We conduct all training runs on NVIDIA A100 (80GB) GPUs. The total wall-clock time across all development phases—including independent specialist training, parameter-space fusion, pro-jector recovery, and multi-modal balanced re-12 Visual Scale αvisual Audio Scale αA Image Video VisDoc MAEB (Pre-Recov.) MAEB (Post-Recov.)                         
+
+> 0.3 0.3 77.8 65.8 79.5 24.52 53.21 0.3 0.5 (main) 77.2 65.1 79.0 32.68 55.61
+> 0.3 0.7 73.1 58.4 72.8 41.20 54.80 0.3 0.9 61.2 48.0 59.5 46.85 51.52
+
+Table 7: Multiway-C fusion coefficient sweep. Lowering αA preserves strong visual performance but provides weaker pre-recovery audio signals. Increasing αA improves raw audio representation at the cost of severe visual degradation. The choice of αvisual = 0 .3 and αA = 0 .5 balances visual retention with a robust recovered audio pathway. 
+
+hearsal—amounts to approximately two weeks. 
+
+Training Parallelism: Although the cumulative training time is two weeks, our decoupled frame-work allows the individual modality specialists to be trained concurrently on separate GPU nodes. This decoupled training eliminates the sequential training bottleneck of traditional joint multi-task training runs. 
+
+Modular Scalability: Under traditional joint multi-task paradigms, adding a new modality (e.g., au-dio) requires re-optimizing the entire multi-modal model from scratch, which incurs huge compu-tational costs. In contrast, our decouple–fuse– recover paradigm only requires training the new specialist in isolation, followed by a lightweight recovery stage. This highly modular nature sub-stantially reduces carbon footprint and compute requirements during model iteration. 13
