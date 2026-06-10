@@ -1,0 +1,305 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-10T22:13:07.539690+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [
+    {
+      "id": "2606.11188v1",
+      "source": "arxiv",
+      "title": "ARM: An AutoRegressive Large Multimodal Model with Unified Discrete Representations",
+      "abstract": "This paper introduces ARM, a discrete representation-based AutoRegressive Model that unifies image understanding, generation, and editing within a next-token prediction framework. ARM is built on three efforts: first, we train a discrete semantic visual tokenizer that maps images into compact token sequences. Our tokenizer is supervised with multiple objectives that jointly promote semantic discriminability, language alignment and faithful reconstruction, thereby supporting diverse tasks in a shared latent space. With this, we train a 7B autoregressive model over large-scale text and image token sequences, seamlessly developing vision-language perception and generation capabilities. Finally, to further improve preference-aligned behavior for text-to-image generation and instruction-guided editing, ARM applies reinforcement learning (RL) to optimize task-level objectives such as visual quality, instruction adherence, and edit consistency. Surprisingly, the results show that RL not only substantially improves performance on the target tasks (e.g., raising WISE overall from 0.50 to 0.56, GEdit-Bench-EN G_O from 5.75 to 6.68), but also induces cross-task synergy between text-to-image generation and editing. Collectively, these findings highlight autoregressive modeling, when paired with strong representations and preference optimization, as a scalable foundation for multimodal intelligence. Code: https://github.com/wdrink/ARM.",
+      "authors": [
+        "Junke Wang",
+        "Xiao Wang",
+        "Jiacheng Pan",
+        "Xuefeng Hu",
+        "Feng Li",
+        "Jingxiang Sun",
+        "Chaorui Deng",
+        "Zilong Chen",
+        "Yunpeng Chen",
+        "Kaibin Tian",
+        "Matthew Gwilliam",
+        "Hao Chen",
+        "Danhui Guan",
+        "Kun Xu",
+        "Weilin Huang",
+        "Zuxuan Wu",
+        "Haoqi Fan",
+        "Yu-Gang Jiang",
+        "Zhenheng Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-09T17:59:28+00:00",
+      "link": "https://arxiv.org/pdf/2606.11188v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "autoregressive unified multimodal model",
+      "llm_evidence_cn": "自回归统一多模态模型",
+      "llm_evidence": "自回归统一多模态模型",
+      "canonical_evidence": "自回归统一多模态模型",
+      "llm_tldr_en": "ARM is an autoregressive large multimodal model unifying image understanding, generation, and editing via discrete representations and next-token prediction.",
+      "llm_tldr_cn": "现有统一多模态模型难以在同一框架高效支持多种视觉任务。本文提出ARM，基于离散语义视觉分词器和自回归模型，将图像理解、生成与编辑统一到下一个词预测框架中。通过多目标监督训练分词器，实现语义区分、语言对齐和重建的平衡。7B参数模型在多种任务上取得优异性能，展示了统一离散表示的潜力。",
+      "llm_tldr": "现有统一多模态模型难以在同一框架高效支持多种视觉任务。本文提出ARM，基于离散语义视觉分词器和自回归模型，将图像理解、生成与编辑统一到下一个词预测框架中。通过多目标监督训练分词器，实现语义区分、语言对齐和重建的平衡。7B参数模型在多种任务上取得优异性能，展示了统一离散表示的潜力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.09156v1",
+      "source": "arxiv",
+      "title": "OmniGen-AR: AutoRegressive Any-to-Image Generation",
+      "abstract": "Autoregressive (AR) models have demonstrated strong potential in visual generation, offering superior performance with simple architectures and optimization objectives. However, existing methods are typically limited to single-modality conditions, e.g., text, restricting their applicability in real-world scenarios that demand image synthesis from diverse controls. In this work, we present OmniGen-AR, a unified autoregressive framework for Any-to-Image generation. By discretizing various visual conditions through a shared visual tokenizer and text prompts with a text tokenizer, OmniGen-AR supports a broad spectrum of conditional inputs within a single model, including text (text-to-image generation), spatial signals (segmentation-to-image and depth-to-image), and visual context (image editing, frame prediction, and text-to-video generation). To mitigate the risk of information leakage from condition tokens to content tokens, we introduce Disentangled Causal Attention (DCA), which separates the full-sequence causal mask into condition causal attention and content causal attention. It serves as a training-time regularizer without affecting the standard next-token prediction during inference. With this design, OmniGen-AR achieves new state-of-the-art or at least competitive results across a range of benchmark, e.g., 0.63 on GenEval and 80.02 on VBench, demonstrating its effectiveness in flexible and high-fidelity visual generation.",
+      "authors": [
+        "Junke Wang",
+        "Xun Wang",
+        "Qiushan Guo",
+        "Peize Sun",
+        "Weilin Huang",
+        "Zuxuan Wu",
+        "Yu-Gang Jiang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-08T07:47:53+00:00",
+      "link": "https://arxiv.org/pdf/2606.09156v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified autoregressive framework for any-to-image generation",
+      "llm_evidence_cn": "统一自回归多模态生成框架",
+      "llm_evidence": "统一自回归多模态生成框架",
+      "canonical_evidence": "统一自回归多模态生成框架",
+      "llm_tldr_en": "Presents OmniGen-AR, a unified autoregressive framework for Any-to-Image generation from diverse conditional inputs.",
+      "llm_tldr_cn": "现有自回归模型通常限于单模态条件，限制实际应用。本文提出OmniGen-AR统一自回归框架，通过共享视觉分词器处理多种视觉条件，支持文本、空间信号、视觉等多样输入生成图像。单一模型实现从任意控制条件到图像的生成，扩展了生成式多模态模型的统一性。",
+      "llm_tldr": "现有自回归模型通常限于单模态条件，限制实际应用。本文提出OmniGen-AR统一自回归框架，通过共享视觉分词器处理多种视觉条件，支持文本、空间信号、视觉等多样输入生成图像。单一模型实现从任意控制条件到图像的生成，扩展了生成式多模态模型的统一性。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.11186v1",
+      "source": "arxiv",
+      "title": "AnyMod-LLVE: Low-Light Video Enhancement with Modality-Agnostic Inference",
+      "abstract": "Low-light video enhancement (LLVE) remains a challenging task due to severe information degradation under low-illumination conditions. Recent multimodal approaches have significantly improved enhancement performance by incorporating auxiliary modalities, such as event streams and infrared images. However, these methods typically assume the availability of these modalities at inference, which is often not feasible in real-world scenarios. To solve this problem, in this work, we propose AMNet, a unified multimodal framework for LLVE, to support flexible modality-agnostic inference, where auxiliary modalities may be unavailable. To address the issue of modality absence, we introduce a Spatial-Spectral Dual-Gated Translator that learns the correspondence between auxiliary modalities and RGB inputs, producing implicit auxiliary representations to support the robust enhancement. Additionally, to fully facilitate the learning of cross-modal correspondence, we conduct large-scale multimodal pretraining based on the RGB-only dataset with synthetic auxiliary modalities. Extensive experiments demonstrate that AMNet could handle arbitrary inference-time modality combinations and exhibits superior performance for LLVE under modality absence conditions. Code and models are available on the project page.",
+      "authors": [
+        "Hangfeng Liang",
+        "Yutao Hu",
+        "Yanhan Hu",
+        "Xiaohan Wu",
+        "Wenqi Shao",
+        "Ying Fu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-09T17:59:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.11186v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified multimodal framework for low-light video enhancement with modality-agnostic inference",
+      "llm_evidence_cn": "统一多模态框架用于低光视频增强，支持模态无关推理",
+      "llm_evidence": "统一多模态框架用于低光视频增强，支持模态无关推理",
+      "canonical_evidence": "统一多模态框架用于低光视频增强，支持模态无关推理",
+      "llm_tldr_en": "AMNet is a unified multimodal framework for low-light video enhancement that flexibly handles missing auxiliary modalities via a translator, enabling robust inference.",
+      "llm_tldr_cn": "针对低光视频增强中辅助模态缺失问题，本文提出AMNet统一多模态框架，通过空间-光谱双门控转换器学习缺失模态的对应关系，实现模态无关推理。实验表明，该框架在不同模态可用性下均能保持优异增强效果，展示了统一多模态架构的鲁棒性。",
+      "llm_tldr": "针对低光视频增强中辅助模态缺失问题，本文提出AMNet统一多模态框架，通过空间-光谱双门控转换器学习缺失模态的对应关系，实现模态无关推理。实验表明，该框架在不同模态可用性下均能保持优异增强效果，展示了统一多模态架构的鲁棒性。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.08231v1",
+      "source": "arxiv",
+      "title": "Test-Time Scaling in Multimodal Foundation Models: A Comprehensive Survey of Generation and Reasoning",
+      "abstract": "Test-time Scaling (TTS) has emerged as a pivotal research direction for enhancing model performance by dynamically allocating computational resources during inference. Recent advancements have adapted this paradigm to Multimodal Foundation Models (MFMs), unlocking their potential in multimodal reasoning and generation. Despite rapid progress, the field lacks a systematic survey and unified theoretical framework to delineate the developmental landscape of multimodal TTS. To bridge this gap, we present the first comprehensive review of TTS research for MFMs, proposing a unified taxonomic framework that categorizes existing methodologies into three distinct strategies: sampling-based, feedback-based, and search-based approaches. We further summarize representative applications and benchmarks commonly utilized to evaluate multimodal TTS capabilities in generation and reasoning tasks. Finally, this survey discusses open challenges and outlines future research directions, providing a systematic roadmap for subsequent studies in this rapidly evolving field.",
+      "authors": [
+        "Cong Wan",
+        "Ying He",
+        "Zhongzhan Huang",
+        "Hefeng Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-06T15:39:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.08231v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "comprehensive survey on test-time scaling for multimodal foundation models, proposing unified taxonomic framework",
+      "llm_evidence_cn": "关于多模态基础模型测试时缩放的综述，提出统一分类框架",
+      "llm_evidence": "关于多模态基础模型测试时缩放的综述，提出统一分类框架",
+      "canonical_evidence": "关于多模态基础模型测试时缩放的综述，提出统一分类框架",
+      "llm_tldr_en": "First comprehensive survey on test-time scaling for multimodal foundation models, providing a unified taxonomic framework of three strategies.",
+      "llm_tldr_cn": "本文首次对多模态基础模型中的测试时缩放（TTS）进行了全面综述。该领域缺乏系统梳理和统一理论框架，本文提出一个统一的分类法，将现有方法归纳为采样、反馈和搜索三种策略。该综述不仅总结了当前进展，还指出了未来方向，为多模态推理与生成中的动态资源分配研究奠定了基础。",
+      "llm_tldr": "本文首次对多模态基础模型中的测试时缩放（TTS）进行了全面综述。该领域缺乏系统梳理和统一理论框架，本文提出一个统一的分类法，将现有方法归纳为采样、反馈和搜索三种策略。该综述不仅总结了当前进展，还指出了未来方向，为多模态推理与生成中的动态资源分配研究奠定了基础。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.10147v1",
+      "source": "arxiv",
+      "title": "From Senses to Decisions: The Information Flow of Auditory and Visual Perception in Multimodal LLMs",
+      "abstract": "Multimodal Large Language Models (MLLMs) can listen and see, but how do audio and visual signals actually travel through the network to shape an answer? Despite their growing role in research and real-world applications, the internal pathways through which audio and visual tokens influence the final prediction remain poorly understood. In this study, we examine audio-visual information flow inside Audio-Visual Large Language Models (AVLLMs), tracing how AVLLMs route, utilize, and integrate audio and visual information across two input configurations, audio-visual video and multiple interleaved audio-visual items. We find that for audio-visual video, AVLLMs follow the sequential information flow pathway established for VLMs and VideoLLMs, with audio and visual contribution flowing along this pathway in proportion to the task's reliance on each modality. In settings with multiple interleaved audio-visual items, this routing shifts to different parallel streams. Furthermore, we demonstrate that audio-visual and other token types can be discarded once their information is transferred to LLM, with minimal impact on the model's prediction or even slight improvement, generalizing across multiple tasks and datasets, enabling more efficient inference. These findings hold across multiple models and scales, Qwen2.5-Omni and Video-SALMONN2 Plus at 3B and 7B scales, leading to hypotheses on why these flow structures emerge. Together, these results deliver the first coherent picture of how AVLLMs orchestrate sound and sight inside the network and lay the groundwork for the next wave of interpretability, design, and efficiency advances in audio-visual and broader MLLMs.",
+      "authors": [
+        "Wish Suharitdamrong",
+        "Muhammad Awais",
+        "Xiatian Zhu",
+        "Sara Atito"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI",
+        "cs.CL",
+        "cs.CV",
+        "cs.SD"
+      ],
+      "published": "2026-06-08T20:26:09+00:00",
+      "link": "https://arxiv.org/pdf/2606.10147v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "analyzes fusion pathways in multimodal LLMs",
+      "llm_evidence_cn": "分析多模态大语言模型中的融合路径",
+      "llm_evidence": "分析多模态大语言模型中的融合路径",
+      "canonical_evidence": "分析多模态大语言模型中的融合路径",
+      "llm_tldr_en": "Investigates how audio and visual tokens flow and fuse inside Audio-Visual LLMs, revealing sequential information pathways.",
+      "llm_tldr_cn": "多模态大语言模型内部音频和视觉信息如何流动与融合尚不明确。本文通过追踪AVLLM中的令牌路径，发现对音视频输入存在顺序信息流模式，类似已建立的视觉语言模型路径。揭示了融合机制，为改进融合设计提供见解。",
+      "llm_tldr": "多模态大语言模型内部音频和视觉信息如何流动与融合尚不明确。本文通过追踪AVLLM中的令牌路径，发现对音视频输入存在顺序信息流模式，类似已建立的视觉语言模型路径。揭示了融合机制，为改进融合设计提供见解。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.08906v1",
+      "source": "arxiv",
+      "title": "DifferSeg: Towards Diverse Multimodal Binary Segmentation via Differential Perception and Frequency Guidance",
+      "abstract": "In many binary segmentation tasks, most multimodal methods rely on fixed feature concatenation for cross-modal interaction and straightforward decoder designs dominated by low-frequency semantics. %ToDO: % However, they ignore two key challenges: one is the lack of an adaptive mechanism to handle modality discrepancies and complementarity, and the other is the absence of an efficient decoding strategy to balance both high- and low-frequency representations. % In this work, we propose a simple yet general multimodal binary segmentation framework, termed DifferSeg, to address both problems simultaneously. With the help of the differential perception fusion (DPF) module, DifferSeg employs learnable differential operators to adaptively align multimodal features and enhance their complementarity through residual fusion, effectively mitigating modality mismatch and fusion redundancy. % In addition, we design a frequency-guided decoder (FGD) that builds cross-frequency interactions and multi-path upsampling to maintain consistency between detailed high-frequency structures and semantic low-frequency representations, ensuring fine-grained boundary recovery and noise suppression. % Benefiting from these designs, DifferSeg can be easily generalized to diverse binary segmentation tasks, including both natural and medical modalities. Without bells and whistles, it consistently surpasses 67 state-of-the-art methods across 29 public datasets involving 18 downstream tasks, demonstrating superior generalization and segmentation accuracy.Code and pretrained models will be available at the Link.",
+      "authors": [
+        "Qiangqiang Zhou",
+        "Jiawei Xu",
+        "Yong Chen",
+        "Dandan Zhu",
+        "Yugen Yi",
+        "Xiaoqi Zhao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-08T01:10:36+00:00",
+      "link": "https://arxiv.org/pdf/2606.08906v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "general multimodal segmentation framework",
+      "llm_evidence_cn": "通用多模态分割框架",
+      "llm_evidence": "通用多模态分割框架",
+      "canonical_evidence": "通用多模态分割框架",
+      "llm_tldr_en": "Proposes DifferSeg, a general multimodal binary segmentation framework using differential perception fusion.",
+      "llm_tldr_cn": "多模态二值分割中固定特征拼接忽视模态差异与互补性。本文提出DifferSeg通用框架，通过差分感知融合模块学习可微操作自适应融合，并引入频率引导解码平衡高低频表示。实验表明该方法有效处理模态差异并提升分割性能。",
+      "llm_tldr": "多模态二值分割中固定特征拼接忽视模态差异与互补性。本文提出DifferSeg通用框架，通过差分感知融合模块学习可微操作自适应融合，并引入频率引导解码平衡高低频表示。实验表明该方法有效处理模态差异并提升分割性能。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.09907v1",
+      "source": "arxiv",
+      "title": "LongMoE: Longitudinal Multimodal Learning via Trajectory-Aware Mixture-of-Experts",
+      "abstract": "Multimodal clinical learning is increasingly important for integrating diverse patient data, including imaging, text, and personalised health records. However, it faces two fundamental challenges: i) modality missingness, where arbitrary subsets of modalities are unavailable at a given patient visit, ii) longitudinal dynamics, where the diagnostic significance of an observation depends on the patient's evolving disease trajectory over time. Existing methods address these challenges in isolation: missing-modality frameworks treat each visit as an independent static snapshot and discard temporal context, while longitudinal models often assume complete modality availability and degrade under systematic modality incompleteness. We propose LongMoE (Longitudinal Mixture-of-Experts), the unified framework to jointly address both challenges. LongMoE combines a context-aware imputation module with an attentional tokenization module that captures frequency-domain temporal patterns across irregular visit sequences, a trajectory-aware encoder for modeling disease progression, and context-conditioned Sparse MoE routing for patient-specific expert selection. Experiments on ADNI, OASIS-3, and MIMIC-IV show that LongMoE improves robustness under missing or weak contemporaneous modalities and remains competitive in full-modality settings, establishing a strong foundation for longitudinally-aware multimodal clinical learning.",
+      "authors": [
+        "Maxx Richard Rahman",
+        "Prakhar Kumar",
+        "Wolfgang Maass"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-06T07:50:41+00:00",
+      "link": "https://arxiv.org/pdf/2606.09907v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "longitudinal multimodal learning with trajectory-aware MoE, addresses fusion under missing modalities",
+      "llm_evidence_cn": "纵向多模态学习结合轨迹感知专家混合，处理缺失模态下的融合",
+      "llm_evidence": "纵向多模态学习结合轨迹感知专家混合，处理缺失模态下的融合",
+      "canonical_evidence": "纵向多模态学习结合轨迹感知专家混合，处理缺失模态下的融合",
+      "llm_tldr_en": "LongMoE proposes a trajectory-aware Mixture-of-Experts framework for longitudinal multimodal clinical learning, handling both modality missingness and temporal dynamics.",
+      "llm_tldr_cn": "针对临床多模态数据中的模态缺失和时序动态挑战，本文提出LongMoE框架，利用轨迹感知的混合专家模型统一处理静态和纵向信息。方法在多个医疗数据集上有效提升了诊断准确性，展示了统一多模态框架在动态缺失场景下的实用性。",
+      "llm_tldr": "针对临床多模态数据中的模态缺失和时序动态挑战，本文提出LongMoE框架，利用轨迹感知的混合专家模型统一处理静态和纵向信息。方法在多个医疗数据集上有效提升了诊断准确性，展示了统一多模态框架在动态缺失场景下的实用性。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
