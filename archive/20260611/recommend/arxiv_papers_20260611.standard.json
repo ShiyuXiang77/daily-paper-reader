@@ -1,0 +1,483 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-11T20:56:35.110588+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 9,
+    "quick_skim_target": 11,
+    "quick_selected": 9
+  },
+  "deep_dive": [
+    {
+      "id": "2606.09186v1",
+      "source": "arxiv",
+      "title": "DuplexOmni: Real-Time Listening, Seeing, Thinking, and Speaking for Full-Duplex Interaction",
+      "abstract": "Human interaction is continuous, multimodal, and full-duplex by nature. Although recent omni models have made substantial progress in unified speech, vision, and text modeling, combining seamless real-time interaction with complex reasoning and tool use remains challenging. We present DuplexOmni, a method for real-time multimodal full-duplex interaction. DuplexOmni separates model capability into an interaction layer and a thinking layer, which collaborate asynchronously in parallel. The interaction layer is implemented by the DuplexOmni model, an end-to-end system that processes streaming audio and video inputs while generating text and speech responses in real time. The thinking layer is a pluggable module that provides complex reasoning and tool-use capabilities. To support this method, we further develop a Writer-Director pipeline for constructing continuous-interaction training data. Experiments show that DuplexOmni achieves strong performance on multiple public benchmarks and exhibits natural full-duplex interaction ability.",
+      "authors": [
+        "Muye Huang",
+        "Lingling Zhang",
+        "Xingyu Yu",
+        "Lei Shi",
+        "Zhanyu Ma",
+        "Jun Xu",
+        "Jiuchong Gao",
+        "Jinghua Hao",
+        "Renqing He",
+        "Jun Liu"
+      ],
+      "primary_category": "cs.HC",
+      "categories": [
+        "cs.HC"
+      ],
+      "published": "2026-06-08T08:23:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.09186v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified multimodal real-time interaction framework",
+      "llm_evidence_cn": "统一多模态实时交互框架",
+      "llm_evidence": "统一多模态实时交互框架",
+      "canonical_evidence": "统一多模态实时交互框架",
+      "llm_tldr_en": "DuplexOmni presents an end-to-end system for real-time full-duplex multimodal interaction, separating interaction and thinking layers, unifying speech, vision, and text.",
+      "llm_tldr_cn": "DuplexOmni提出了一个端到端的系统，用于实时全双工多模态交互。它通过将模型能力分离为交互层和思考层，实现了异步并行协作。交互层处理流式音视频输入并实时生成文本和语音响应，思考层提供复杂推理。该方法统一了语音、视觉和文本建模，实现了连续多模态交互。",
+      "llm_tldr": "DuplexOmni提出了一个端到端的系统，用于实时全双工多模态交互。它通过将模型能力分离为交互层和思考层，实现了异步并行协作。交互层处理流式音视频输入并实时生成文本和语音响应，思考层提供复杂推理。该方法统一了语音、视觉和文本建模，实现了连续多模态交互。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.10819v1",
+      "source": "arxiv",
+      "title": "Earth-OneVision: Extending Remote Sensing Multimodal Large Language Models to More Sensor Modalities and Tasks",
+      "abstract": "RS-MLLMs enable natural-language understanding and spatial reasoning over earth observation imagery. However, existing models support only a narrow range of sensor types and tasks, yielding a fragmented view of the earth and leaving cross-modal geoscientific knowledge largely unexploited. This work presents Earth-OneVision, a 2B RS-MLLM that unifies six sensor modalities (i.e., optical, SAR, infrared, multispectral, temporal, and video) and cross-sensor fusion across 9 task categories within a single autoregressive framework. Three dedicated mechanisms address three bottlenecks. Full-Granularity Vision-Language Alignment (FGVLA) aligns multi-level visual features with the multi-dimensional language space. Spatial-Linguistic Isomorphic Serialization (SLIS) unifies heterogeneous spatial outputs as autoregressive tokens. Progressive Cross-Modality Adaptation (PCMA) decomposes the compound domain gap into sequential stages, tackling the viewpoint and imaging physics gaps in turn. To support joint training, MMRS-OneVision is constructed with ~34M QA pairs spanning all six sensor modalities and cross-sensor fusion across 9 task categories, substantially exceeding existing RS multimodal instruction datasets. With only 2B parameters, Earth-OneVision achieves competitive or state-of-the-art results across extensive benchmarks, consistently matching or outperforming 4B-72B RS-MLLMs. It achieves 87.52% P@0.5 on the OPT-RSVG testset for optical visual grounding and 80.68% on the SAR VQA benchmark SARLANG-Bench, exceeding 7B models by over 7%. It further achieves 75.74% recall on the BigEarthNet-MS testset for multispectral classification, and 81.94% MCQ accuracy on EarthMind-Bench for cross-modality reasoning.",
+      "authors": [
+        "Miaoxin Cai",
+        "Guanqun Wang",
+        "Wei Zhang",
+        "Guangyao Zhou",
+        "Yin Zhuang",
+        "Tong Zhang",
+        "Hao Wang",
+        "He Chen",
+        "Jun Li"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-09T13:01:51+00:00",
+      "link": "https://arxiv.org/pdf/2606.10819v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unifies six sensor modalities within a single autoregressive framework for remote sensing",
+      "llm_evidence_cn": "在单个自回归框架内统一六种遥感传感器模态",
+      "llm_evidence": "在单个自回归框架内统一六种遥感传感器模态",
+      "canonical_evidence": "在单个自回归框架内统一六种遥感传感器模态",
+      "llm_tldr_en": "Earth-OneVision unifies six sensor modalities and cross-sensor fusion across 9 tasks in a single 2B autoregressive framework, addressing fragmented earth observation with three dedicated alignment mechanisms.",
+      "llm_tldr_cn": "现有遥感多模态大模型仅支持少数传感器类型，导致地球观测碎片化。本文提出Earth-OneVision，一个2B参数的自回归模型，统一光学、SAR、红外、多光谱、时序和视频六种模态，并支持9类任务跨传感器融合。通过全粒度视觉语言对齐等三个机制解决瓶颈。该工作显著扩展了多模态大模型的传感器范围，为综合地球观测提供了统一架构。",
+      "llm_tldr": "现有遥感多模态大模型仅支持少数传感器类型，导致地球观测碎片化。本文提出Earth-OneVision，一个2B参数的自回归模型，统一光学、SAR、红外、多光谱、时序和视频六种模态，并支持9类任务跨传感器融合。通过全粒度视觉语言对齐等三个机制解决瓶颈。该工作显著扩展了多模态大模型的传感器范围，为综合地球观测提供了统一架构。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.05896v1",
+      "source": "arxiv",
+      "title": "Resonant Minds: Closed-Loop Social Avatars with Theory of Mind",
+      "abstract": "Creating lifelike digital humans with genuine social intelligence requires unifying cognitive reasoning and multimodal generation within a coherent framework. Current approaches treat these as separate tasks: Large Language Models excel at dialogue but lack embodied expression, while diffusion-based talking head models achieve visual fidelity but ignore social cognition. To bridge this gap, we propose a closed-loop dual-agent framework integrating perception, social reasoning, and expression into a continuous interaction cycle. The perception module analyzes partners' multimodal behaviors from video, while the social reasoning module infers hidden mental states through Theory of Mind and selects responses via an ensemble mechanism. The expression module then generates emotion-controllable dual-agent videos synthesizing both speaker speech and expression alongside listener reactive behaviors, capturing bidirectional dynamics absent in prior work. We construct a hierarchical Persona-Scenario dataset with psychologically grounded personas and private social goals to support evaluation under information asymmetry. Experiments on this dataset demonstrate competitive or superior performance on both dialogue quality and video generation metrics. Notably, our method surpasses even the full-information Script mode on key dialogue quality dimensions, suggesting that explicit mental state inference under uncertainty can elicit more thoughtful dialogue than unrestricted information access.",
+      "authors": [
+        "Jianxu Shangguan",
+        "Jing Xu",
+        "Hang Ye",
+        "Xiaoxuan Ma",
+        "Yizhou Wang",
+        "Wentao Zhu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-04T09:03:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.05896v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "closed-loop framework unifying cognitive reasoning and multimodal generation for social avatars",
+      "llm_evidence_cn": "统一认知推理与多模态生成的闭环社交化身框架",
+      "llm_evidence": "统一认知推理与多模态生成的闭环社交化身框架",
+      "canonical_evidence": "统一认知推理与多模态生成的闭环社交化身框架",
+      "llm_tldr_en": "Presents a closed-loop dual-agent framework that integrates perception, theory-of-mind reasoning, and multimodal generation to create lifelike social avatars with social intelligence.",
+      "llm_tldr_cn": "当前数字人对话和表情生成分离，缺乏社交认知。本文提出闭环双智能体框架，将感知、心理理论推理和多模态表达集成到连续交互循环中。通过分析对方行为、推断心理状态并生成回应，该框架使数字人具备真正的社交智能，为统一多模态认知与生成提供了范例。",
+      "llm_tldr": "当前数字人对话和表情生成分离，缺乏社交认知。本文提出闭环双智能体框架，将感知、心理理论推理和多模态表达集成到连续交互循环中。通过分析对方行为、推断心理状态并生成回应，该框架使数字人具备真正的社交智能，为统一多模态认知与生成提供了范例。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.04604v1",
+      "source": "arxiv",
+      "title": "COMBINER: Composed Image Retrieval Guided by Attribute-based Neighbor Relations",
+      "abstract": "Composed Image Retrieval (CIR) represents a challenging retrieval task that targets locating specific images through multimodal inputs. Despite recent progress in CIR techniques, prior approaches often overlook cases where images appear visually alike yet differ in attributes, potentially undermining both multimodal feature fusion and similarity modeling. To mitigate this limitation, we design a unified representation of cross-modal features based on attribute prototypes. Nevertheless, the task is far from straightforward, owing to three core issues: (1) entanglement in attribute-level semantics, (2) inconsistency across modalities, and (3) supervised signal missing. To tackle the above obstacles, we introduce a COMposed image retrieval network guided By attrIbute-based NEighbor Relations (COMBINER). Specifically, we first design an Adaptive Semantic Disentanglement module, which is capable of disentangling attribute features based on multimodal primitive features. Secondly, we propose a Unified Prototype-based Composition module, which can construct cross-modal unified prototypes (CUP) and facilitate multimodal feature composition. Finally, we introduce a Dual Relations Modeling module, which can mine pairwise and neighbor relations based on attribute similarity. Compared to traditional neighbor relations modeling CIR methods, COMBINER represents the first study addressing the phenomenon of visually similar but attribute-unrelated samples. It achieves a more accurate understanding of the semantic relations among samples by employing an attribute prototype-based similarity metric. Comprehensive experiments conducted on three benchmark datasets confirm the effectiveness of our proposed COMBINER. The implementation of our method will be accessed at https://github.com/Lee-zixu/COMBINER",
+      "authors": [
+        "Zixu Li",
+        "Yupeng Hu",
+        "Zhiwei Chen",
+        "Haokun Wen",
+        "Xuemeng Song",
+        "Liqiang Nie"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-03T08:43:51+00:00",
+      "link": "https://arxiv.org/pdf/2606.04604v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified cross-modal representation for composed image retrieval",
+      "llm_evidence_cn": "用于组合图像检索的统一跨模态表示",
+      "llm_evidence": "用于组合图像检索的统一跨模态表示",
+      "canonical_evidence": "用于组合图像检索的统一跨模态表示",
+      "llm_tldr_en": "COMBINER addresses composed image retrieval by learning a unified representation of cross-modal features based on attribute prototypes.",
+      "llm_tldr_cn": "针对组合图像检索中跨模态特征融合和属性级语义不一致的问题，本文提出COMBINER，基于属性原型学习统一的跨模态特征表示，并设计网络解决属性语义纠缠、模态不一致和监督信号缺失三大挑战。实验证明该方法在检索相似但属性不同的图像时表现优异。",
+      "llm_tldr": "针对组合图像检索中跨模态特征融合和属性级语义不一致的问题，本文提出COMBINER，基于属性原型学习统一的跨模态特征表示，并设计网络解决属性语义纠缠、模态不一致和监督信号缺失三大挑战。实验证明该方法在检索相似但属性不同的图像时表现优异。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.05950v1",
+      "source": "arxiv",
+      "title": "Edit-R2: Context-Aware Reinforcement Learning for Multi-Turn Image Editing",
+      "abstract": "Text-guided image editing has advanced rapidly with diffusion models and unified multimodal foundation models. However, most existing methods remain confined to single-turn settings, overlooking the more realistic scenario of multi-turn in-context editing, where users iteratively refine an image through a sequence of instructions. In this setting, a model must follow each new instruction while preserving accumulated session-level constraints, challenged by two coupled failure modes: long-context dilution, where sparse textual constraints become difficult to recover from growing interleaved image-text histories, and state contamination, where earlier editing mistakes degrade subsequent generations. We introduce Edit-R2, a novel reinforcement learning post-training framework for unified multimodal models. Edit-R2 reconstructs the operative session intent, which effectively consolidates scattered historical constraints into an explicit reasoning trace before each editing turn. It further enables multi-turn RL over both reasoning and generation through a unified objective that jointly optimizes intent reconstruction generation in discrete text space and flow-matching image generation in continuous latent space, while a trajectory filtering mechanism suppresses corrupted rollouts to stabilize training under state contamination. To support systematic evaluation, we introduce MICE-Bench, a large-scale benchmark for multi-turn in-context editing with automated metrics for instruction following (IF), content consistency (CC), and global awareness (GA) over accumulated session constraints. Experiments show that Edit-R2 substantially improves multi-turn in-context editing and achieves competitive performance compared against strong baselines.",
+      "authors": [
+        "Yuxiao Ye",
+        "Haoran He",
+        "Fangyuan Kong",
+        "Xintao Wang",
+        "Pengfei Wan",
+        "Kun Gai",
+        "Ling Pan"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-04T09:49:47+00:00",
+      "link": "https://arxiv.org/pdf/2606.05950v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "reinforcement learning for multi-turn image editing leveraging unified multimodal foundation models",
+      "llm_evidence_cn": "利用统一多模态基础模型进行多轮图像编辑的强化学习方法",
+      "llm_evidence": "利用统一多模态基础模型进行多轮图像编辑的强化学习方法",
+      "canonical_evidence": "利用统一多模态基础模型进行多轮图像编辑的强化学习方法",
+      "llm_tldr_en": "Introduces Edit-R2, a reinforcement learning framework for multi-turn in-context image editing that addresses long-context dilution and state contamination using a session-level reward.",
+      "llm_tldr_cn": "现有图像编辑方法局限于单轮，难以应对多轮迭代细化中的长期上下文稀释和状态污染问题。本文提出Edit-R2，利用强化学习框架，通过会话级奖励和状态回滚机制，在统一多模态模型上实现多轮编辑中的约束保持与错误恢复。实验证明，该方法显著提升了多轮编辑的一致性和质量。",
+      "llm_tldr": "现有图像编辑方法局限于单轮，难以应对多轮迭代细化中的长期上下文稀释和状态污染问题。本文提出Edit-R2，利用强化学习框架，通过会话级奖励和状态回滚机制，在统一多模态模型上实现多轮编辑中的约束保持与错误恢复。实验证明，该方法显著提升了多轮编辑的一致性和质量。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.07433v1",
+      "source": "arxiv",
+      "title": "Watch, Remember, Reason: Human-View Video Understanding with MLLMs",
+      "abstract": "Video understanding is being rapidly transformed by multimodal large language models (MLLMs), as research moves from short clips to long, multimodal, and knowledge-intensive video scenarios. These scenarios require models to handle sparse evidence, long-range dependencies, multimodal alignment, and reliable inference under limited computational budgets. This work presents a human-view perspective on LLM-based video understanding, organized around three functional abilities: watching, remembering, and reasoning. Rather than treating video tasks as isolated benchmarks, this view provides a unified structure for analyzing how video MLLMs acquire evidence, preserve context, and produce grounded outputs. We introduce a formulation that characterizes video understanding systems by their perceptual representations, memory states, reasoning traces, and final predictions. Based on this formulation, we identify challenges in spatio-temporal perception, efficient long-video processing, memory modeling, streaming understanding, and faithful reasoning. Representative methods are organized by their roles in video MLLM systems. Watching covers fine-grained, comprehensive, audio-visual, and efficient perception. Remembering includes offline and streaming memory, while reasoning covers text-only reasoning and thinking with videos. We further examine application domains such as egocentric, sports, instructional, medical, and narrative videos, and cover training datasets and evaluation benchmarks across task types, supervision formats, modalities, and capability dimensions. Finally, we outline open problems and future directions for scalable, memory-aware, and evidence-grounded video intelligence. Related works will be continuously traced at https://github.com/marinero4972/Awesome-HumanView-VideoUnderstanding.",
+      "authors": [
+        "Jiahao Meng",
+        "Yue Tan",
+        "Qi Xu",
+        "Kuan Gao",
+        "Weisong Liu",
+        "Yanwei Li",
+        "Jason Li",
+        "Lingdong Kong",
+        "Haochen Wang",
+        "Qianyu Zhou",
+        "Jiangning Zhang",
+        "Guangliang Cheng",
+        "Yunhai Tong",
+        "Lu Qi",
+        "Minghsuan Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.MM"
+      ],
+      "published": "2026-06-05T16:29:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.07433v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified structure for analyzing video MLLMs in terms of watching, remembering, reasoning",
+      "llm_evidence_cn": "从观看、记忆、推理三个能力提供视频MLLM的统一分析结构",
+      "llm_evidence": "从观看、记忆、推理三个能力提供视频MLLM的统一分析结构",
+      "canonical_evidence": "从观看、记忆、推理三个能力提供视频MLLM的统一分析结构",
+      "llm_tldr_en": "Presents a human-view perspective on video MLLMs, organizing around watching, remembering, and reasoning to provide a unified structure for analyzing long, multimodal video understanding.",
+      "llm_tldr_cn": "本文提出从人类视角审视视频多模态大语言模型，将其能力组织为观看、记忆、推理三个功能。该统一结构有助于分析长视频、多模态、知识密集型场景中的证据获取、上下文保持和接地输出。为视频理解研究提供了概念框架，但并非具体模型架构。",
+      "llm_tldr": "本文提出从人类视角审视视频多模态大语言模型，将其能力组织为观看、记忆、推理三个功能。该统一结构有助于分析长视频、多模态、知识密集型场景中的证据获取、上下文保持和接地输出。为视频理解研究提供了概念框架，但并非具体模型架构。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.08231v1",
+      "source": "arxiv",
+      "title": "Test-Time Scaling in Multimodal Foundation Models: A Comprehensive Survey of Generation and Reasoning",
+      "abstract": "Test-time Scaling (TTS) has emerged as a pivotal research direction for enhancing model performance by dynamically allocating computational resources during inference. Recent advancements have adapted this paradigm to Multimodal Foundation Models (MFMs), unlocking their potential in multimodal reasoning and generation. Despite rapid progress, the field lacks a systematic survey and unified theoretical framework to delineate the developmental landscape of multimodal TTS. To bridge this gap, we present the first comprehensive review of TTS research for MFMs, proposing a unified taxonomic framework that categorizes existing methodologies into three distinct strategies: sampling-based, feedback-based, and search-based approaches. We further summarize representative applications and benchmarks commonly utilized to evaluate multimodal TTS capabilities in generation and reasoning tasks. Finally, this survey discusses open challenges and outlines future research directions, providing a systematic roadmap for subsequent studies in this rapidly evolving field.",
+      "authors": [
+        "Cong Wan",
+        "Ying He",
+        "Zhongzhan Huang",
+        "Hefeng Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-06T15:39:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.08231v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "comprehensive survey on test-time scaling for multimodal foundation models, proposing unified taxonomy",
+      "llm_evidence_cn": "多模态基础模型测试时扩展综述，提出统一分类法",
+      "llm_evidence": "多模态基础模型测试时扩展综述，提出统一分类法",
+      "canonical_evidence": "多模态基础模型测试时扩展综述，提出统一分类法",
+      "llm_tldr_en": "First comprehensive survey of test-time scaling in multimodal foundation models, categorizing methods into sampling-based, feedback-based, and search-based, providing a unified taxonomy and future directions.",
+      "llm_tldr_cn": "测试时扩展是提升多模态基础模型生成与推理能力的新范式。本文首次系统综述该领域，提出统一分类框架，将现有方法分为采样基、反馈基和搜索基三类，总结各策略优缺点，并展望未来方向。该工作有助于学者快速把握研究进展，推动多模态模型动态推理的发展。",
+      "llm_tldr": "测试时扩展是提升多模态基础模型生成与推理能力的新范式。本文首次系统综述该领域，提出统一分类框架，将现有方法分为采样基、反馈基和搜索基三类，总结各策略优缺点，并展望未来方向。该工作有助于学者快速把握研究进展，推动多模态模型动态推理的发展。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.09393v1",
+      "source": "arxiv",
+      "title": "CapRL++: Unified Reinforcement Learning with Verifiable Rewards for Dense Image and Video Captioning",
+      "abstract": "Image and video captioning are fundamental tasks that bridge the visual and linguistic domains, playing a critical role in pre-training Large Vision-Language Models (LVLMs). Current state-of-the-art captioning models are typically trained with Supervised Fine-Tuning (SFT), a paradigm that relies on expensive, non-scalable annotations and often causes models to memorize specific ground-truth answers, limiting their generality and ability to generate diverse, creative descriptions. To overcome these limitations, we propose applying Reinforcement Learning with Verifiable Rewards (RLVR) to the open-ended task of multimodal captioning. We introduce Captioning Reinforcement Learning++ (CapRL++), a novel reference-free training framework that redefines caption quality through its utility: a high-quality caption should enable a non-visual language model to accurately answer questions about the corresponding visual content. CapRL++ employs a decoupled two-stage pipeline where an LVLM generates a caption, and the objective reward is derived from the accuracy of a separate, vision-free LLM answering Multiple-Choice Questions based solely on that caption. Evaluations on more than 20 image and video benchmarks show that CapRL++ improves dense caption quality and strengthens caption-based pretraining across tasks such as spatial and temporal understanding. Pretraining on scalable image and video caption datasets annotated by CapRL++ yields substantial downstream gains. Furthermore, within the Prism Framework for caption quality evaluation, compact models trained with CapRL++ achieve dense captioning performance comparable to substantially larger models such as Qwen2.5-VL-72B and Qwen3-VL-235B-A22B. These results validate that CapRL++ effectively trains models to produce generalizable, high-fidelity descriptions, establishing a robust foundation beyond the limitations of traditional SFT.",
+      "authors": [
+        "Penghui Yang",
+        "Long Xing",
+        "Xiaoyi Dong",
+        "Yuhang Zang",
+        "Yuhang Cao",
+        "Yibin Wang",
+        "Yujie Zhou",
+        "Jiazi Bu",
+        "Jianze Liang",
+        "Qidong Huang",
+        "Jiaqi Wang",
+        "Feng Wu",
+        "Dahua Lin"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-08T12:09:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.09393v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified reinforcement learning with verifiable rewards for dense image and video captioning",
+      "llm_evidence_cn": "统一强化学习与可验证奖励用于密集图像和视频描述",
+      "llm_evidence": "统一强化学习与可验证奖励用于密集图像和视频描述",
+      "canonical_evidence": "统一强化学习与可验证奖励用于密集图像和视频描述",
+      "llm_tldr_en": "Applies RL with verifiable rewards to multimodal captioning; proposes CapRL++ reference-free training framework that avoids expensive annotations and memorization, enabling diverse generations.",
+      "llm_tldr_cn": "现有图像视频描述依赖监督微调，代价高且缺乏多样性。本文提出CapRL++，将可验证奖励强化学习应用于多模态描述，实现无参考训练框架。该框架统一了图像和视频描述的训练方式，避免了模型记忆固定答案，生成更丰富多样的描述。实验表明超越有监督方法。",
+      "llm_tldr": "现有图像视频描述依赖监督微调，代价高且缺乏多样性。本文提出CapRL++，将可验证奖励强化学习应用于多模态描述，实现无参考训练框架。该框架统一了图像和视频描述的训练方式，避免了模型记忆固定答案，生成更丰富多样的描述。实验表明超越有监督方法。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.10759v1",
+      "source": "arxiv",
+      "title": "miniReranker: Efficient Multimodal Reranking through Visual Cache Reuse and Interaction Sparsity",
+      "abstract": "Multimodal large language models (MLLMs) have recently shown strong potential as point-wise rerankers by directly modeling query--document relevance through next-token prediction. However, point-wise reranking suffers from substantial repeated computation across query--document pairs, while the causal structure of transformers allows only prefix segments to be reused via pre-caching. To address the misalignment of existing query-first and document-first formats with both VQA-style prompting and computation-aware reuse, we propose a \\textit{vision-first} formulation that improves both cache reuse efficiency and reranking performance. However, the remaining cost is still considerable and stems from three main sources: (1) \\textit{model depth}, for which we reduce active parameters via early exit; (2) \\textit{cross-segment attention}, which we restrict to a narrow interaction band across a few layers; and (3) \\textit{visual tokens}, where we reduce the number of tokens via embedder-guided pruning. Together, these designs form miniReranker, which reduces reranking runtime to <1% of the dense implementation under high-reuse settings for a single query, while preserving >96% of the dense model performance.",
+      "authors": [
+        "Yingqi Fan",
+        "Xuan Lu",
+        "Anhao Zhao",
+        "Junlong Tong",
+        "Ping Nie",
+        "Kai Zou",
+        "Yunpu Ma",
+        "Wei Zhang",
+        "Xiaoyu Shen"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR"
+      ],
+      "published": "2026-06-09T12:11:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.10759v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "efficient multimodal reranking using MLLM with cache reuse and sparsity",
+      "llm_evidence_cn": "利用MLLM结合缓存重用和稀疏性的高效多模态重排序",
+      "llm_evidence": "利用MLLM结合缓存重用和稀疏性的高效多模态重排序",
+      "canonical_evidence": "利用MLLM结合缓存重用和稀疏性的高效多模态重排序",
+      "llm_tldr_en": "Proposes miniReranker, an efficient multimodal reranker using vision-first formulation and interaction sparsity to reduce computation while maintaining reranking performance.",
+      "llm_tldr_cn": "多模态大语言模型作为点式重排序器存在重复计算问题。本文提出miniReranker，采用视觉优先的格式提高缓存重利用率，并利用交互稀疏性进一步降低计算成本。在保持重排序效果的同时大幅提升效率，为多模态检索提供了实用解决方案。",
+      "llm_tldr": "多模态大语言模型作为点式重排序器存在重复计算问题。本文提出miniReranker，采用视觉优先的格式提高缓存重利用率，并利用交互稀疏性进一步降低计算成本。在保持重排序效果的同时大幅提升效率，为多模态检索提供了实用解决方案。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.11107v2",
+      "source": "arxiv",
+      "title": "Multimodal Brain Tumour Classification Using Feature Fusion",
+      "abstract": "Clinicians diagnose brain tumors by synthesizing patient symptoms, medical history, and quantitative imaging data from modalities such as MRI and CT scans into a unified clinical judgement. However, most deep learning models rely on MRI/CT images alone, failing to replicate the clinicians multimodal reasoning. We explore a two-branch multimodal network combining raw MRI scans with 91 extracted radiomic features (intensity, texture, shape, and boundary descriptors) to classify brain tumors into glioma, meningioma, pituitary, and no-tumor. A pre-trained CNN backbone encodes the image stream, whereas a dedicated MLP encodes the radiomic stream. Both streams are fused via concatenation, gated, or bidirectional cross-modal attention strategies. Across nine experimental runs on a balanced 7,200 image dataset, all multimodal configurations outperform unimodal baselines with gated fusion achieving the best accuracy of 96.13%.",
+      "authors": [
+        "Wajih ul Islam",
+        "Muhammad Yaqoob",
+        "Javed Ali Khan",
+        "Volker Steuber"
+      ],
+      "primary_category": "eess.IV",
+      "categories": [
+        "eess.IV",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-09T17:03:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.11107v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multimodal feature fusion with cross-modal attention for brain tumor classification",
+      "llm_evidence_cn": "使用交叉注意力融合多模态特征进行脑肿瘤分类",
+      "llm_evidence": "使用交叉注意力融合多模态特征进行脑肿瘤分类",
+      "canonical_evidence": "使用交叉注意力融合多模态特征进行脑肿瘤分类",
+      "llm_tldr_en": "Explores a two-branch multimodal network fusing MRI scans and radiomic features via concatenation, gated, or bidirectional cross-modal attention for brain tumor classification, achieving improved performance.",
+      "llm_tldr_cn": "现有深度学习模型仅依赖MRI/CT图像，未能模拟临床医生的多模态推理。本文提出双分支网络，将原始MRI与91种影像组学特征通过拼接、门控或双向交叉注意力融合，用于脑肿瘤四分类。实验表明，多模态融合方法提升了分类准确率，验证了特征融合在医学图像分析中的有效性。",
+      "llm_tldr": "现有深度学习模型仅依赖MRI/CT图像，未能模拟临床医生的多模态推理。本文提出双分支网络，将原始MRI与91种影像组学特征通过拼接、门控或双向交叉注意力融合，用于脑肿瘤四分类。实验表明，多模态融合方法提升了分类准确率，验证了特征融合在医学图像分析中的有效性。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.11190v1",
+      "source": "arxiv",
+      "title": "When to Align, When to Predict: A Phase Diagram for Multimodal Learning",
+      "abstract": "Cross-modal alignment (CA) and cross-modal prediction (CP) are the dominant paradigms for multimodal representation learning, yet there is no systematic understanding of when each succeeds, when each fails, and when cross-modal training helps at all -- a gap that leaves practitioners, especially in scientific domains like biomedicine or astrophysics, with heterogeneous instruments and multiple levels of organization and measurement, unable to diagnose why standard methods underperform the best single modality. We develop a unified linear framework that addresses both questions. Under a spiked signal-plus-noise model with structured cross-modal nuisance correlation, we derive separation ratios for both objectives that expose complementary failure modes: alignment whitens each modality and fails when nuisance is strongly correlated across views; prediction encodes whatever is cross-predictable through a one-sided whitening, with recovery governed by source-modality quality. The resulting phase diagram partitions multimodal problems into four regimes: Both, CA only, CP only, and Neither. We present a data-driven procedure to locate real-world datasets in this diagram using a small labeled subsample, identifying the preferred objective and prediction direction before any cross-modal training. Experiments on synthetic data, stereo-vision benchmarks, image-caption pairs, and real astrophysical data validate the predictions in the nonlinear regime, including the Neither regime where cross-modal training is actively harmful. Our framework lets practitioners diagnose their multimodal problem and choose the right objective before committing to training. Code to reproduce the results is available at https://github.com/IlayMalinyak/mm_align_vs_pred.",
+      "authors": [
+        "Ilay Kamai",
+        "Hugues Van Assel",
+        "Aviv Regev",
+        "Hagai B. Perets",
+        "Randall Balestriero"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-09T17:59:58+00:00",
+      "link": "https://arxiv.org/pdf/2606.11190v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified linear framework analyzing when cross-modal alignment vs prediction succeeds in multimodal learning",
+      "llm_evidence_cn": "统一线性框架分析多模态学习中对齐与预测何时成功",
+      "llm_evidence": "统一线性框架分析多模态学习中对齐与预测何时成功",
+      "canonical_evidence": "统一线性框架分析多模态学习中对齐与预测何时成功",
+      "llm_tldr_en": "Develops a unified linear framework with spiked signal-plus-noise model to derive separation ratios for cross-modal alignment and prediction, revealing complementary failure modes.",
+      "llm_tldr_cn": "本文提出统一线性框架，基于尖峰信号加噪声模型推导跨模态对齐和预测的分离比，揭示两者的互补失效模式。该框架系统回答了何时对齐、何时预测、何时跨模态训练有效的问题，为科学领域多模态学习提供诊断工具。虽然理论性强，但直接关联用户对统一架构的需求。",
+      "llm_tldr": "本文提出统一线性框架，基于尖峰信号加噪声模型推导跨模态对齐和预测的分离比，揭示两者的互补失效模式。该框架系统回答了何时对齐、何时预测、何时跨模态训练有效的问题，为科学领域多模态学习提供诊断工具。虽然理论性强，但直接关联用户对统一架构的需求。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
