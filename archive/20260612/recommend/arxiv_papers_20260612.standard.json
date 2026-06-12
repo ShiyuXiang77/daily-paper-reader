@@ -1,0 +1,251 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-12T20:52:22.022546+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 4,
+    "quick_skim_target": 11,
+    "quick_selected": 4
+  },
+  "deep_dive": [
+    {
+      "id": "2606.08204v1",
+      "source": "arxiv",
+      "title": "Neural Field Tokenizations with Hierarchy and Spatial Locality Priors",
+      "abstract": "Neural fields parameterize data as functions from coordinates to values, providing a unified framework for representation learning across modalities. Existing approaches are dominated by per-sample meta-learning, which scales poorly due to memory-intensive inner-loop optimization. The natural alternative -- feed-forward encoding -- typically introduces modality-specific assumptions, sacrificing the generality that makes learning with neural fields attractive. We argue that locality and hierarchy are useful priors for learning field representations that can be injected without compromising modality-agnosticism. We propose LH-NeF, a framework to learn general-purpose tokenized representations of continuous signals. A locality-preserving hierarchical encoder maps raw coordinate-value field observations to structured tokens, from which the field is reconstructed during training. By replacing meta-learning's inner loop with a single forward pass, LH-NeF uses 42$\\times$ less memory and supports 133$\\times$ larger batches than the strongest modality-agnostic baseline. Across images, 3D shapes, and climate fields, our learned representations match or exceed performance of modality-agnostic, modality-specific, and specialized generative neural field baselines on both reconstruction and downstream tasks.",
+      "authors": [
+        "Alonso Urbano",
+        "David W. Romero",
+        "Max Zimmer",
+        "Sebastian Pokutta"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.CV"
+      ],
+      "published": "2026-06-06T14:43:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.08204v1",
+      "tags": [
+        "keyword:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified tokenized representation for continuous signals across modalities using neural fields",
+      "llm_evidence_cn": "使用神经场为跨模态连续信号提供统一的令牌化表示",
+      "llm_evidence": "使用神经场为跨模态连续信号提供统一的令牌化表示",
+      "canonical_evidence": "使用神经场为跨模态连续信号提供统一的令牌化表示",
+      "llm_tldr_en": "Proposes LH-NeF, a framework for learning general-purpose tokenized representations of continuous signals using locality-preserving hierarchical encoding, enabling modality-agnostic representation learning.",
+      "llm_tldr_cn": "针对现有神经场表示学习方法在跨模态通用性上的不足，提出LH-NeF框架。它利用层次化空间编码学习通用令牌化表示，保持局部性和层次结构，无需模态特定假设，为统一多模态表示提供了新范式。",
+      "llm_tldr": "针对现有神经场表示学习方法在跨模态通用性上的不足，提出LH-NeF框架。它利用层次化空间编码学习通用令牌化表示，保持局部性和层次结构，无需模态特定假设，为统一多模态表示提供了新范式。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.12303v1",
+      "source": "arxiv",
+      "title": "From 2D Grids to 1D Tokens: Reforming Shared Representations for Multimodal Image Fusion",
+      "abstract": "Multimodal image fusion aims to integrate complementary information from different modalities into a fused image that preserves rich local details while maintaining globally consistent appearance. Existing approaches build shared representations on 2D feature grids, which excel at modeling local structures but offer limited leverage over image-level global appearance factors. To balance these objectives, we introduce a compact 1D token interface based on a frozen pretrained image tokenizer for modeling non-local appearance/base factors. Rather than using the tokenizer as a reconstruction backbone, our design uses the 1D token space as a global carrier while retaining the 2D spatial pathway for local structure restoration. Specifically, we introduce Selective Token Editing (STE), which sparsely updates/replaces a small set of critical tokens, providing a lightweight mechanism to steer global appearance coherence while keeping the fusion backbone unchanged and avoiding extra losses. Experiments on four commonly used benchmarks show that our method achieves the best overall performance, with consistent, multi-metric improvements in both global coherence and local fidelity. Project page: https://zju-xyc.github.io/1D-Fusion-Project-Page/",
+      "authors": [
+        "Yuchen Xian",
+        "Yunqiu Xu",
+        "Yang He",
+        "Yi Yang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-10T16:40:18+00:00",
+      "link": "https://arxiv.org/pdf/2606.12303v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "reforming shared representations for multimodal image fusion using 1D tokens",
+      "llm_evidence_cn": "使用1D token改革多模态图像融合的共享表示",
+      "llm_evidence": "使用1D token改革多模态图像融合的共享表示",
+      "canonical_evidence": "使用1D token改革多模态图像融合的共享表示",
+      "llm_tldr_en": "Introduces a compact 1D token interface for multimodal image fusion, balancing local detail and global appearance using a frozen pretrained tokenizer.",
+      "llm_tldr_cn": "多模态图像融合需同时保留局部细节和全局外观，现有2D特征网格擅长局部但全局不足。本文提出基于冻结预训练图像分词器的紧凑1D token接口，作为全局外观载体，同时保留2D空间路径恢复局部结构，实现了更平衡的融合。",
+      "llm_tldr": "多模态图像融合需同时保留局部细节和全局外观，现有2D特征网格擅长局部但全局不足。本文提出基于冻结预训练图像分词器的紧凑1D token接口，作为全局外观载体，同时保留2D空间路径恢复局部结构，实现了更平衡的融合。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.08231v1",
+      "source": "arxiv",
+      "title": "Test-Time Scaling in Multimodal Foundation Models: A Comprehensive Survey of Generation and Reasoning",
+      "abstract": "Test-time Scaling (TTS) has emerged as a pivotal research direction for enhancing model performance by dynamically allocating computational resources during inference. Recent advancements have adapted this paradigm to Multimodal Foundation Models (MFMs), unlocking their potential in multimodal reasoning and generation. Despite rapid progress, the field lacks a systematic survey and unified theoretical framework to delineate the developmental landscape of multimodal TTS. To bridge this gap, we present the first comprehensive review of TTS research for MFMs, proposing a unified taxonomic framework that categorizes existing methodologies into three distinct strategies: sampling-based, feedback-based, and search-based approaches. We further summarize representative applications and benchmarks commonly utilized to evaluate multimodal TTS capabilities in generation and reasoning tasks. Finally, this survey discusses open challenges and outlines future research directions, providing a systematic roadmap for subsequent studies in this rapidly evolving field.",
+      "authors": [
+        "Cong Wan",
+        "Ying He",
+        "Zhongzhan Huang",
+        "Hefeng Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-06T15:39:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.08231v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified taxonomic framework for test-time scaling in multimodal foundation models",
+      "llm_evidence_cn": "为多模态基础模型的测试时缩放提出统一分类框架",
+      "llm_evidence": "为多模态基础模型的测试时缩放提出统一分类框架",
+      "canonical_evidence": "为多模态基础模型的测试时缩放提出统一分类框架",
+      "llm_tldr_en": "First comprehensive survey on test-time scaling for multimodal foundation models, proposing a unified taxonomy covering sampling, feedback, and search strategies.",
+      "llm_tldr_cn": "测试时缩放（TTS）在推理时动态分配计算资源，对多模态基础模型潜力巨大，但缺乏系统性综述。本文首次全面综述多模态TTS研究，提出统一的分类框架，将现有方法分为采样、反馈和搜索三类策略，为该领域提供了理论指导。",
+      "llm_tldr": "测试时缩放（TTS）在推理时动态分配计算资源，对多模态基础模型潜力巨大，但缺乏系统性综述。本文首次全面综述多模态TTS研究，提出统一的分类框架，将现有方法分为采样、反馈和搜索三类策略，为该领域提供了理论指导。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.05677v1",
+      "source": "arxiv",
+      "title": "LongSpace: Exploring Long-Horizon Spatial Memory from Perception to Recall in Video",
+      "abstract": "Multimodal Large Language Models (MLLMs) have advanced image and video understanding and can increasingly handle longer visual inputs. Long-horizon tasks such as autonomous driving and robotic navigation require more than recognizing the current view, as models must remember and retrieve previously observed spatial layouts, routes, viewpoint changes, and object states. To evaluate this capability, we introduce LongSpace-Bench, a room-tour video benchmark for long-horizon spatial memory, covering scene perception, spatial relations, and spatial memory. In this work, we further propose LongSpace, a memory framework for long-video spatial reasoning. LongSpace models long videos as sequential chunks, incorporates 3D structural cues into early decoder layers, and constructs layer-aware memory for question-guided retrieval. Experiments on multiple spatial reasoning benchmarks show that LongSpace improves long-video spatial understanding, further demonstrating explicit spatial memory as a key capability for long-horizon video MLLMs.",
+      "authors": [
+        "Shiqiang Lang",
+        "Jing Liu",
+        "Haoyang He",
+        "Peiwen Sun",
+        "Yuanteng Chen",
+        "Tao Liu",
+        "Lan Yang",
+        "Longteng Guo",
+        "Honggang Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-04T04:00:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.05677v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Spatial memory framework for long-video reasoning, relevant to multimodal understanding",
+      "llm_evidence_cn": "长视频空间推理的记忆框架，与多模态理解相关",
+      "llm_evidence": "长视频空间推理的记忆框架，与多模态理解相关",
+      "canonical_evidence": "长视频空间推理的记忆框架，与多模态理解相关",
+      "llm_tldr_en": "LongSpace proposes a memory framework for long-video spatial reasoning, incorporating 3D structural cues and sequential chunking to improve multimodal spatial memory.",
+      "llm_tldr_cn": "针对长时序空间记忆任务中模型难以记住和检索之前观察视野的问题，LongSpace提出一种记忆框架，将长视频建模为连续块，并在早期融入3D结构线索。该方法在房间漫游视频基准上提升了场景感知和空间关系推理能力，为多模态空间理解提供了新的架构思路。",
+      "llm_tldr": "针对长时序空间记忆任务中模型难以记住和检索之前观察视野的问题，LongSpace提出一种记忆框架，将长视频建模为连续块，并在早期融入3D结构线索。该方法在房间漫游视频基准上提升了场景感知和空间关系推理能力，为多模态空间理解提供了新的架构思路。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.11682v1",
+      "source": "arxiv",
+      "title": "Parameter-Efficient Adapter Tuning for Tabular-Image Multimodal Learning",
+      "abstract": "Tabular-image multimodal learning aims to improve predictive modeling by jointly using structured tabular attributes and visual data. Although pretrained encoders provide strong modality-specific representations, full fine-tuning can be computationally expensive, while keeping encoders frozen may limit task-specific adaptation. We propose the Tabular-Image Adapter (TI-Adapter), a modality-specific adapter-based fine-tuning framework for efficient multimodal adaptation. TI-Adapter freezes the pretrained tabular encoder and learns an adapter after the extracted tabular embedding, while adapting the image branch with embedding-level and bottleneck-level adapters instead of full fine-tuning. Experiments on 20 tabular-image datasets show that TI-Adapter achieves competitive or better predictive performance than full fine-tuning while using substantially fewer trainable parameters. Ablation studies further demonstrate the importance of adapter placement for balancing performance and practical efficiency.",
+      "authors": [
+        "Jiaqi Luo"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-10T05:52:12+00:00",
+      "link": "https://arxiv.org/pdf/2606.11682v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "modality-specific adapter tuning for tabular-image multimodal learning",
+      "llm_evidence_cn": "表格-图像多模态学习的模态特定适配器微调",
+      "llm_evidence": "表格-图像多模态学习的模态特定适配器微调",
+      "canonical_evidence": "表格-图像多模态学习的模态特定适配器微调",
+      "llm_tldr_en": "Proposes TI-Adapter, a parameter-efficient fine-tuning framework for tabular-image multimodal learning using adapters on pretrained encoders.",
+      "llm_tldr_cn": "针对表格-图像多模态学习全微调成本高且冻结编码器限制适应性的问题，提出TI-Adapter。它在表格分支学习后置适配器，在图像分支使用嵌入级和瓶颈级适配器，实现了参数高效的多模态适应，在20个数据集上取得优异效果。",
+      "llm_tldr": "针对表格-图像多模态学习全微调成本高且冻结编码器限制适应性的问题，提出TI-Adapter。它在表格分支学习后置适配器，在图像分支使用嵌入级和瓶颈级适配器，实现了参数高效的多模态适应，在20个数据集上取得优异效果。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.12294v1",
+      "source": "arxiv",
+      "title": "Bridging the Modality Gap in Forensic Image Retrieval",
+      "abstract": "Automated image retrieval plays an increasingly critical role in modern forensic analysis, supporting investigative workflows that rely on efficient comparison of visual evidence. While prior work has focused primarily on developing and optimizing multimodal retrieval systems, limited attention has been paid to evaluating the forensic applicability of these technologies across diverse real-world scenarios. In this study, we present a unified retrieval framework adapted to four key forensic tasks: (1) tattoo image retrieval given a tattoo query image; (2) tattoo retrieval guided by human-expert textual descriptions, modelling the common situation where a witness verbally describes a tattoo; (3) tattoo retrieval from hand-drawn sketches; and (4) face retrieval from forensic face sketches. Our system leverages a multimodal large language model (MLLM) to automatically generate structured textual descriptions for all queries and gallery images, followed by sentence-transformer embedding for text-based comparison. We evaluate retrieval using visual-only embeddings, text-only embeddings and a multimodal fusion strategy that combines text- and image-based similarity scores derived from state-of-the-art visual feature extractors relevant to each task. The fusion of modalities consistently improves retrieval precision and robustness, especially in scenarios where visual information is limited or noisy (e.g., sketches, partial tattoos, or fragmented witness statements). This work highlights the forensic value of a unified multimodal retrieval pipeline and demonstrates how modern MLLMs can operationalize challenging forensic tasks that traditionally rely on manual expert analysis. Our results position multimodal retrieval as a promising tool for supporting investigative workflows involving tattoos, facial composites, and witness descriptions.",
+      "authors": [
+        "Ricardo González-Gazapo",
+        "Annette Morales-González",
+        "Yoanna Martínez-Díaz",
+        "Heydi Méndez-Vázquez",
+        "Milton García-Borroto"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "eess.IV"
+      ],
+      "published": "2026-06-10T16:32:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.12294v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified retrieval framework for multimodal forensic tasks",
+      "llm_evidence_cn": "面向法医多模态任务的统一检索框架",
+      "llm_evidence": "面向法医多模态任务的统一检索框架",
+      "canonical_evidence": "面向法医多模态任务的统一检索框架",
+      "llm_tldr_en": "Proposes a unified multimodal retrieval framework for forensic tasks including tattoo, sketch, and face retrieval, bridging the modality gap.",
+      "llm_tldr_cn": "法医图像检索需处理多种模态（图像、文字描述、手绘草图等），但现有系统缺乏统一评估。本文提出统一的法医多模态检索框架，覆盖四种关键任务（纹身图像/文字/草图检索和人脸检索），验证了跨模态检索在真实场景中的适用性。",
+      "llm_tldr": "法医图像检索需处理多种模态（图像、文字描述、手绘草图等），但现有系统缺乏统一评估。本文提出统一的法医多模态检索框架，覆盖四种关键任务（纹身图像/文字/草图检索和人脸检索），验证了跨模态检索在真实场景中的适用性。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
