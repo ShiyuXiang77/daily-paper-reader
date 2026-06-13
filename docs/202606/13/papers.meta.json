@@ -1,0 +1,69 @@
+{
+  "label": "2026-06-13",
+  "date": "2026-06-13",
+  "generated_at": "2026-06-13T20:48:28",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202606/13/2606.10651v1-kwai-keye-vl-20-technical-report",
+      "section": "deep",
+      "title_en": "Kwai Keye-VL-2.0 Technical Report",
+      "authors": "Kwai Keye Team, Bin Wen, Changyi Liu, Chengru Song, Chongling Rao, Guowang Zhang, Han Li, Haonan Fan, Hengrui Ju, Jiankang Chen, Jiapeng Chen, Jiawei Yuan, Kaixuan Yang, Kaiyu Jiang, Kun Gai, Lingzhi Zhou, Na Nie, Sen Na, Tianke Zhang, Tingting Gao, Xuanyu Zheng, Yulong Chen, Fan Yang, Haixuan Gao, Lele Yang, Mingqiao Liu, Muxi Diao, Qi Zhang, Qile Su, Wei Chen, Wentao Hong, Xingyu Lu, Yancheng Long, Yankai Yang, Yingxin Li, Yiyang Fan, Yu Xia, Yuzhe Chen, Ziliang Lai, Chuan Yi, Haonan Jia, Tianming Liang, Weixin Xu, Xiaoxiao Ma, Yang Tian, Yufei Han, Feng Han, Hang Li, Jing Wang, Jinghui Jia, Junmin Chen, Junyu Shi, Ruilin Zhang",
+      "date": "2026-06-09",
+      "pdf": "https://arxiv.org/pdf/2606.10651v1",
+      "score": "9.0",
+      "evidence": "统一架构的多模态基础模型",
+      "tldr": "长视频理解面临超长上下文、信息冗余和高计算成本挑战。Kwai Keye-VL-2.0-30B-A3B首次将DeepSeek Sparse Attention适配到GQA多模态架构，实现无损256K上下文处理，并通过高效训练推理基础设施提升吞吐量。采用跨模态多教师在线策略蒸馏与上下文/视频强化学习，仅激活3B参数即支持智能体协作与自我修正。在TimeLens、Video-MME-v2等基准上达到同类模型最佳性能，推动可扩展多模态智能体应用。",
+      "tags": "query:um",
+      "abstract_en": "We introduce Kwai Keye-VL-2.0-30B-A3B, an open-source Mixture-of-Experts (MoE) multimodal foundation model designed to advance long-video understanding and agentic intelligence. To address the challenges of ultra-long contexts, information redundancy, and prohibitive computational costs inherent in hour-level videos, Keye-VL-2.0 is the first to adapt DeepSeek Sparse Attention (DSA) to GQA-based multimodal architectures, enabling lossless 256K context processing while capturing critical frames and long-range temporal dependencies. This architecture is underpinned by a highly optimized training and inference infrastructure, including scalable video I/O, heterogeneous ViT-LM parallelism, and custom DSA kernels that significantly maximize throughput and minimize computational overhead. Furthermore, to overcome the algorithmic dilemma of catastrophic forgetting during multi-task alignment, we introduce Cross-Modal Multi-Teacher On-Policy Distillation (MOPD) paired with Context-RL and Video-RL. By distilling dense token-level teacher feedback from on-policy rollouts back into the MoE backbone, which activates only 3B parameters, Keye-VL-2.0 natively empowers advanced agent collaboration across Code, Tool, and Search scenarios with multimodal self-correction. Extensive evaluations across video understanding, temporal grounding, reasoning, STEM, and agent benchmarks demonstrate that Keye-VL-2.0-30B-A3B achieves state-of-the-art performance among models of similar scale, particularly excelling in fine-grained temporal localization on TimeLens and long-video comprehension on Video-MME-v2 and LongVideoBench. We release our model checkpoints to accelerate community progress toward scalable and robust multimodal agentic applications.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/13/2606.12105v1-dam-vla-decoupled-asynchronous-multimodal-vision-language-action-model",
+      "section": "quick",
+      "title_en": "DAM-VLA: Decoupled Asynchronous Multimodal Vision Language Action model",
+      "authors": "Pankhuri Vanjani, Zhuoyue Li, Jakub Suliga, Moritz Reuss, Gianluca Geraci, Xinkai Jiang, Rudolf Lioutikov",
+      "date": "2026-06-10",
+      "pdf": "https://arxiv.org/pdf/2606.12105v1",
+      "score": "7.0",
+      "evidence": "解耦异步多模态VLA架构",
+      "tldr": "现有VLA模型使用同步时钟处理多模态输入，但物理交互中高频模态变化快、视觉变化慢、语言恒定，导致采样失衡。提出DAM-VLA，为每模态维护以传感器速率刷新的潜在缓冲区，通过门控交叉注意力连续读取，实现解耦异步处理。在7个接触丰富操作任务中，平均成功率从40.95%提升至95.2%，并支持100Hz平滑控制。证明解耦异步处理能产生更强表征和更鲁棒控制。",
+      "tags": "query:um",
+      "abstract_en": "Vision-language-action (VLA) models inherit a shared synchronous clock from vision-language pretraining, processing every input at one rate. This is misaligned with physical interaction, where a high-frequency modality changes at hundreds of hertz, vision evolves more slowly, and language stays constant across an episode. A synchronous VLA oversamples slow modalities, undersamples fast ones, and caps action generation at the lowest effective frequency. We hypothesize that decoupling temporal processing per modality, letting each update and retain information at its own sensor rate, yields stronger representations and more robust control. We present DAM-VLA, which maintains per-modality latent buffers refreshed at sensor rates and read continuously by the action head, integrating new high-frequency modalities through gated cross-attention that leaves the pretrained backbone intact. Across seven contact-rich real-world manipulation tasks, DAM-VLA more than doubles the average success rate of the strongest synchronous baseline (95.2\\% vs.\\ 40.95\\%) while sustaining smooth, reactive 100\\,Hz control. Project website: \\href{https://intuitive-robots.github.io/DAM-VLA/}{intuitive-robots.github.io/DAM-VLA/}",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/13/2606.09393v1-caprl-unified-reinforcement-learning-with-verifiable-rewards-for-dense-image-and-video-captioning",
+      "section": "quick",
+      "title_en": "CapRL++: Unified Reinforcement Learning with Verifiable Rewards for Dense Image and Video Captioning",
+      "authors": "Penghui Yang, Long Xing, Xiaoyi Dong, Yuhang Zang, Yuhang Cao, Yibin Wang, Yujie Zhou, Jiazi Bu, Jianze Liang, Qidong Huang, Jiaqi Wang, Feng Wu, Dahua Lin",
+      "date": "2026-06-08",
+      "pdf": "https://arxiv.org/pdf/2606.09393v1",
+      "score": "6.0",
+      "evidence": "统一强化学习框架用于多模态密集字幕生成",
+      "tldr": "针对传统监督微调（SFT）在图像视频字幕任务中依赖昂贵标注、泛化性差的问题，提出CapRL++框架，将强化学习与可验证奖励结合。核心思路是：优质字幕应能让无视觉语言模型仅凭该字幕准确回答视觉内容的相关多选题，以此作为奖励信号。在20余个图像视频基准上，CapRL++显著提升密集字幕质量，并通过预训练增强下游任务性能，紧凑模型达到与Qwen2.5-VL-72B等大模型相当的效果。",
+      "tags": "query:um",
+      "abstract_en": "Image and video captioning are fundamental tasks that bridge the visual and linguistic domains, playing a critical role in pre-training Large Vision-Language Models (LVLMs). Current state-of-the-art captioning models are typically trained with Supervised Fine-Tuning (SFT), a paradigm that relies on expensive, non-scalable annotations and often causes models to memorize specific ground-truth answers, limiting their generality and ability to generate diverse, creative descriptions. To overcome these limitations, we propose applying Reinforcement Learning with Verifiable Rewards (RLVR) to the open-ended task of multimodal captioning. We introduce Captioning Reinforcement Learning++ (CapRL++), a novel reference-free training framework that redefines caption quality through its utility: a high-quality caption should enable a non-visual language model to accurately answer questions about the corresponding visual content. CapRL++ employs a decoupled two-stage pipeline where an LVLM generates a caption, and the objective reward is derived from the accuracy of a separate, vision-free LLM answering Multiple-Choice Questions based solely on that caption. Evaluations on more than 20 image and video benchmarks show that CapRL++ improves dense caption quality and strengthens caption-based pretraining across tasks such as spatial and temporal understanding. Pretraining on scalable image and video caption datasets annotated by CapRL++ yields substantial downstream gains. Furthermore, within the Prism Framework for caption quality evaluation, compact models trained with CapRL++ achieve dense captioning performance comparable to substantially larger models such as Qwen2.5-VL-72B and Qwen3-VL-235B-A22B. These results validate that CapRL++ effectively trains models to produce generalizable, high-fidelity descriptions, establishing a robust foundation beyond the limitations of traditional SFT.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/13/2606.11853v1-task-aware-structured-memory-for-dynamic-multi-modal-in-context-learning",
+      "section": "quick",
+      "title_en": "Task-Aware Structured Memory for Dynamic Multi-modal In-Context Learning",
+      "authors": "Zhirui Chen, Ziwei Chen, Ling Shao",
+      "date": "2026-06-10",
+      "pdf": "https://arxiv.org/pdf/2606.11853v1",
+      "score": "6.0",
+      "evidence": "用于动态多模态上下文学习的任务感知记忆",
+      "tldr": "多模态大模型ICL受限于上下文窗口和KV缓存增长，现有记忆压缩方法引入偏见、破坏语义结构且静态。TASM无训练框架，通过任务向量引导压缩、语义感知令牌合并及分层动态记忆结构，在高压缩下保持高性能，平衡效率与适应性。",
+      "tags": "query:um",
+      "abstract_en": "Multi-modal large language models (MLLMs) depend on in-context learning (ICL) for rapid task adaptation, but their scalability is severely limited by finite context windows and the growing cost of key-value (KV) caches in long multi-modal sequences. Existing memory compression approaches typically rely on rigid token removal or sample-dependent importance estimation, which introduces bias, disrupts semantic structure, particularly for visual representations, and yields static memories that cannot adapt to new queries. We introduce TASM (Task-Aware Structured Memory), a training-free framework that addresses these limitations through task-aware, structure-preserving, and dynamically accessible memory construction. TASM employs task-vector guided compression to replace sample-specific signals with a task-level direction that captures shared relevance across demonstrations. To preserve the underlying manifold, it applies semantics-aware token merging via bipartite graph matching, aggregating tokens without destructive pruning. Finally, TASM structures memory into a hierarchy comprising a compact Core Memory and a Latent Bank, facilitating query-adaptive dynamic retrieval. Evaluations confirm TASM maintains high performance under heavy compression, effectively balancing efficiency with adaptability.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
