@@ -1,0 +1,316 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-14T20:50:44.476088+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [
+    {
+      "id": "2606.13289v1",
+      "source": "arxiv",
+      "title": "HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers",
+      "abstract": "Holistic visual tokenizers are fundamental to unified multimodal models (UMMs) as they map diverse visual inputs into a unified representation space. In this paper, we present HYDRA-X, the first UMM that unifies image and video tokenization within a single Vision Transformer (ViT). Our design is driven by two core challenges: efficiently injecting spatiotemporal reconstruction capability into a native ViT, and embedding image- and video-level semantic awareness into the latent space. To address the first, comprehensive ablations reveal two key findings: (1) frame-level causal temporal attention suffices for visual reconstruction, whereas full spatiotemporal attention degrades it; and (2) hierarchical temporal compression substantially outperforms single-step alternatives. To tackle the second, we propose a lightweight decompressor that upsamples temporally compressed features under joint image-video teacher supervision, thereby enforcing complementary semantic structures within the compact latent space. Building on this holistic tokenizer, we further propose a principled improvement of the editing pipeline: source-target interaction should occur at the latent level inside the tokenizer rather than at the semantic level inside the LLM, substantially improving editing consistency and accelerating convergence. Instantiated at the 7B dense model, HYDRA-X achieves strong performance across image and video understanding and generation tasks, paving the way for future unified-tokenizer UMMs.",
+      "authors": [
+        "Guozhen Zhang",
+        "Xuerui Qiu",
+        "Yutao Cui",
+        "Tianhui Song",
+        "Changlin Li",
+        "Junzhe Li",
+        "Tao Huang",
+        "Xiao Zhang",
+        "Yang Li",
+        "Jianbing Wu",
+        "Miles Yang",
+        "Zhao Zhong",
+        "Liefeng Bo",
+        "Limin Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-11T12:46:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.13289v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Native unified multimodal model with holistic visual tokenizers",
+      "llm_evidence_cn": "具有整体视觉标记器的原生统一多模态模型",
+      "llm_evidence": "具有整体视觉标记器的原生统一多模态模型",
+      "canonical_evidence": "具有整体视觉标记器的原生统一多模态模型",
+      "llm_tldr_en": "HYDRA-X is the first unified multimodal model that unifies image and video tokenization in a single ViT, using causal temporal attention and hierarchical compression.",
+      "llm_tldr_cn": "统一多模态模型需要整体视觉标记器来映射不同视觉输入。本文提出HYDRA-X，首个在单一ViT中统一图像和视频标记化的模型。通过帧级因果时间注意力和层次压缩，实现了高效的视觉重建和语义嵌入。实验表明HYDRA-X在多个多模态理解与生成任务上达到最先进水平。",
+      "llm_tldr": "统一多模态模型需要整体视觉标记器来映射不同视觉输入。本文提出HYDRA-X，首个在单一ViT中统一图像和视频标记化的模型。通过帧级因果时间注意力和层次压缩，实现了高效的视觉重建和语义嵌入。实验表明HYDRA-X在多个多模态理解与生成任务上达到最先进水平。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.12688v1",
+      "source": "arxiv",
+      "title": "M*: A Modular, Extensible, Serving System for Multimodal Models",
+      "abstract": "We are entering a new era of composite model architectures that integrate diverse components such as vision encoders, language backbones, diffusion and flow heads, audio codecs, action generators, and world-model predictors. Such architectures underpin a broad class of multimodal models, including unified multimodal models, omni models, speech-language models, vision-language-action policies, and world models. However, existing model serving frameworks were built on narrow assumptions about model structure, making them ill-suited to accommodate this new architectural diversity. Here we present M*, a universal serving system for efficient serving of composite AI models. M* represents models as dataflow graphs, processing requests spanning diverse modalities and tasks as traversals over these graphs. The core insight is a modular abstraction that supports arbitrary composition of model components, flexible placement onto a physical cluster, and model-agnostic optimizations within a distributed runtime. We call this abstraction the Walk Graph and show how it can concisely capture composite models from a broad range of families. We instantiate M* on representative models and find that it achieves, on average, 20% lower end-to-end latency than vLLM-Omni for text-to-image workloads on BAGEL, while delivering up to 2.9x lower real-time factor and 2.7x higher throughput for text-to-speech workloads on Qwen3-Omni. M* also outperforms the V-JEPA 2-AC rollout baseline for robotic planning by up to 12.5x. Thus, our work paves the road towards more efficient serving of complex models with minimal developer effort.",
+      "authors": [
+        "Atindra Jha",
+        "Naomi Sagan",
+        "Keisuke Kamahori",
+        "Irmak Sivgin",
+        "Rohan Sanda",
+        "Steven Gao",
+        "Mark Horowitz",
+        "Luke Zettlemoyer",
+        "Olivia Hsu",
+        "Jure Leskovec",
+        "Baris Kasikci",
+        "Stephanie Wang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.DC"
+      ],
+      "published": "2026-06-10T21:22:22+00:00",
+      "link": "https://arxiv.org/pdf/2606.12688v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "serving system for unified multimodal models",
+      "llm_evidence_cn": "统一多模态模型的服务系统",
+      "llm_evidence": "统一多模态模型的服务系统",
+      "canonical_evidence": "统一多模态模型的服务系统",
+      "llm_tldr_en": "M* is a universal serving system for efficient deployment of composite multimodal models.",
+      "llm_tldr_cn": "现有模型服务框架难以适应复合多模态架构，本文提出M*，将模型表示为数据流图，高效支持统一多模态模型、全模态模型等多种架构，实现跨模态请求处理。",
+      "llm_tldr": "现有模型服务框架难以适应复合多模态架构，本文提出M*，将模型表示为数据流图，高效支持统一多模态模型、全模态模型等多种架构，实现跨模态请求处理。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.12105v1",
+      "source": "arxiv",
+      "title": "DAM-VLA: Decoupled Asynchronous Multimodal Vision Language Action model",
+      "abstract": "Vision-language-action (VLA) models inherit a shared synchronous clock from vision-language pretraining, processing every input at one rate. This is misaligned with physical interaction, where a high-frequency modality changes at hundreds of hertz, vision evolves more slowly, and language stays constant across an episode. A synchronous VLA oversamples slow modalities, undersamples fast ones, and caps action generation at the lowest effective frequency. We hypothesize that decoupling temporal processing per modality, letting each update and retain information at its own sensor rate, yields stronger representations and more robust control. We present DAM-VLA, which maintains per-modality latent buffers refreshed at sensor rates and read continuously by the action head, integrating new high-frequency modalities through gated cross-attention that leaves the pretrained backbone intact. Across seven contact-rich real-world manipulation tasks, DAM-VLA more than doubles the average success rate of the strongest synchronous baseline (95.2\\% vs.\\ 40.95\\%) while sustaining smooth, reactive 100\\,Hz control. Project website: \\href{https://intuitive-robots.github.io/DAM-VLA/}{intuitive-robots.github.io/DAM-VLA/}",
+      "authors": [
+        "Pankhuri Vanjani",
+        "Zhuoyue Li",
+        "Jakub Suliga",
+        "Moritz Reuss",
+        "Gianluca Geraci",
+        "Xinkai Jiang",
+        "Rudolf Lioutikov"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-10T13:59:07+00:00",
+      "link": "https://arxiv.org/pdf/2606.12105v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "decoupled asynchronous multimodal fusion for VLA",
+      "llm_evidence_cn": "用于视觉语言动作的异步解耦多模态融合",
+      "llm_evidence": "用于视觉语言动作的异步解耦多模态融合",
+      "canonical_evidence": "用于视觉语言动作的异步解耦多模态融合",
+      "llm_tldr_en": "DAM-VLA proposes a decoupled asynchronous multimodal model with per-modality latent buffers at sensor rates, enabling more robust action generation.",
+      "llm_tldr_cn": "针对同步VLA模型在物理交互中采样率不匹配问题，提出DAM-VLA，为每个模态维护独立潜缓冲以传感器频率更新，实现异步融合，在机器人控制任务中提升性能。",
+      "llm_tldr": "针对同步VLA模型在物理交互中采样率不匹配问题，提出DAM-VLA，为每个模态维护独立潜缓冲以传感器频率更新，实现异步融合，在机器人控制任务中提升性能。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.11854v1",
+      "source": "arxiv",
+      "title": "Fine-tuning Multi-modal LLMs with ART: Art-based Reinforcement Training",
+      "abstract": "There are two main Parameter-Efficient Fine-Tuning (PEFT) techniques for Large Language Models (LLMs). While Low-Rank Adaptation (LoRA) introduces additional weights between the LLM layers, Soft Prompting introduces additional fine-tuning-specific raw tokens to an LLM input. However, both require modification to the computational graphs of precompiled, preoptimized LLMs. As a result, neither is fully supported in high-throughput engines like vLLM. We propose fine-tuning with ART (Art-based Reinforcement Training). The method injects information into a frozen Multimodal Large Language Model (MLLM) by optimizing only its raw visual input, thus enabling the soft-token approach on pre-compiled computational graphs. It relies on backpropagation of gradients back into a plain pixel array and thus supports any fine-tuning objective. Moreover, the optimized visual input can be stylized as task-relevant computational artworks. The approach's effectiveness is confirmed for different sizes of a popular open Qwen architecture and for several textual benchmarks. Specifically, ART reaches accuracy competitive with LoRA across mathematics and structured-tool-use benchmarks.",
+      "authors": [
+        "Michal Chudoba",
+        "Sergey Alyaev",
+        "Petra Galuscakova",
+        "Tomasz Wiktorski"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-10T09:30:37+00:00",
+      "link": "https://arxiv.org/pdf/2606.11854v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "fine-tuning multi-modal LLMs via visual input optimization",
+      "llm_evidence_cn": "通过优化视觉输入微调多模态大模型",
+      "llm_evidence": "通过优化视觉输入微调多模态大模型",
+      "canonical_evidence": "通过优化视觉输入微调多模态大模型",
+      "llm_tldr_en": "ART introduces a parameter-efficient fine-tuning method for MLLMs by optimizing raw visual input, enabling soft-prompting on frozen models without graph modification.",
+      "llm_tldr_cn": "针对多模态大模型微调计算图修改受限问题，提出ART方法，仅优化视觉输入实现高效微调，兼容vLLM等推理引擎，实验表明效果与LoRA相当且更高效。",
+      "llm_tldr": "针对多模态大模型微调计算图修改受限问题，提出ART方法，仅优化视觉输入实现高效微调，兼容vLLM等推理引擎，实验表明效果与LoRA相当且更高效。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.12595v1",
+      "source": "arxiv",
+      "title": "Emerging Flexible Designs for Geospatial Multimodal Foundation Models",
+      "abstract": "Foundation models are rapidly transforming Earth observation by enabling scalable pretraining across diverse unlabeled geospatial modalities. However, their architectural diversity ranging from encoder-only to encoder-decoder and masked autoencoding paradigms makes it challenging to assess performance trade offs in a consistent manner. In this work, we present an apples-to-apples comparison of leading FM architectures designed for geospatial multimodal reasoning, with a particular focus on flexibility across varied spectral band configurations. We standardize pretraining using identical self supervised learning objectives and training datasets, and evaluate all models under consistent parameterization on the GEOBench benchmark across classification and segmentation tasks. Our results offer new insights into the design trade-offs between model flexibility, modality alignment, and downstream task performance. By highlighting architectural strengths and limitations under controlled conditions, this study provides practical guidance for building next generation geospatial foundation models capable of robust multimodal reasoning.",
+      "authors": [
+        "Philipe Dias",
+        "Waqwoya Abebe",
+        "Abhishek Potnis",
+        "Aristeidis Tsaris",
+        "Dan Lu",
+        "Xiao Wang",
+        "Dalton Lunga"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-10T18:46:10+00:00",
+      "link": "https://arxiv.org/pdf/2606.12595v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "comparison of multimodal foundation model architectures for geospatial reasoning",
+      "llm_evidence_cn": "地理空间多模态基础模型架构比较",
+      "llm_evidence": "地理空间多模态基础模型架构比较",
+      "canonical_evidence": "地理空间多模态基础模型架构比较",
+      "llm_tldr_en": "Systematic comparison of FM architectures for geospatial multimodal reasoning under standardized settings.",
+      "llm_tldr_cn": "针对地理空间多模态基础模型架构多样难以比较的问题，本文在统一设置下对比了编码器、编码器-解码器等架构，在GEOBench基准上评估了灵活性和性能，为设计提供指导。",
+      "llm_tldr": "针对地理空间多模态基础模型架构多样难以比较的问题，本文在统一设置下对比了编码器、编码器-解码器等架构，在GEOBench基准上评估了灵活性和性能，为设计提供指导。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.13030v1",
+      "source": "arxiv",
+      "title": "A Multi-Modal Framework with Cross-Subject Pseudo-Labeling and Semantic Alignment for Micro-Gesture Recognition",
+      "abstract": "Micro-gestures (MGs) are spontaneous and subtle body movements that frequently convey hidden human emotions. Recognizing MGs in untrimmed videos remains highly challenging due to their extremely low signal-to-noise ratio, severe long-tailed class distribution, and the inherent domain shift encountered in cross-subject evaluation scenarios. In this paper, we propose a comprehensive multi-modal framework for Track 1 of the 4th MiGA-IJCAI Challenge. To capture fine-grained representations, we design a saliency-guided multi-modal extraction pipeline integrating 68-keypoint skeleton joint coordinates, 3D heatmap volumes, and high-resolution RGB visual features. We introduce a gentle square-root smoothed weighting mechanism paired with an Orthogonal Semantic Embedding Loss to protect tail classes without compromising overall recognition capabilities. More importantly, to bridge the cross-subject generalization gap, we propose a Cross-Modal Pseudo-Labeling (CMPL) strategy for unsupervised domain adaptation, which significantly boosts single-modal robustness. A temperature-scaled soft-voting mechanism is finally utilized to alleviate overconfidence during late fusion. Extensive experiments demonstrate that our framework achieves a competitive F1-score of 68.13\\%, securing the 4th place.",
+      "authors": [
+        "Haoran Zhang",
+        "Haokun Zhang",
+        "Pengyu Liu",
+        "Yujia Zhang",
+        "Weibao Xue",
+        "Yanbin Hao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-11T08:04:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.13030v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Multi-modal framework for micro-gesture recognition with fusion",
+      "llm_evidence_cn": "多模态框架用于微手势识别与融合",
+      "llm_evidence": "多模态框架用于微手势识别与融合",
+      "canonical_evidence": "多模态框架用于微手势识别与融合",
+      "llm_tldr_en": "Proposes a comprehensive multi-modal framework integrating skeleton, heatmap, and RGB features for micro-gesture recognition, with pseudo-labeling and semantic alignment.",
+      "llm_tldr_cn": "微手势识别任务面临低信噪比和域偏移等挑战。本文提出一个综合多模态框架，融合骨架、热图和RGB特征，并引入跨主体伪标签和语义对齐策略。在MiGA挑战赛中取得领先性能，验证了多模态融合在细粒度动作识别中的有效性。",
+      "llm_tldr": "微手势识别任务面临低信噪比和域偏移等挑战。本文提出一个综合多模态框架，融合骨架、热图和RGB特征，并引入跨主体伪标签和语义对齐策略。在MiGA挑战赛中取得领先性能，验证了多模态融合在细粒度动作识别中的有效性。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.13381v1",
+      "source": "arxiv",
+      "title": "Hölder++: Improving the Quality-Coherence Trade-off in Multimodal VAEs",
+      "abstract": "Existing approaches for multimodal variational autoencoders (VAEs) face a trade-off between generative quality and coherence-i.e., they struggle to generate realistic and diverse samples that, at the same time, are semantically consistent across modalities. A recent work shows that using a simple approximation to Hölder pooling as an aggregation method improves coherence over the SOTA MMVAE+, despite assuming a single shared representation across all modalities. Yet, it slightly compromises sample diversity. Inspired by this insight, we propose Hölder++, a novel multimodal VAE that improves the generative quality-coherence trade-off through: (i) the first implementation of Hölder pooling without any approximation for multimodal VAEs; (ii) an extended architecture that models distinct shared and private (i.e., modality-specific) representations (Hölder+); and (iii) hierarchical inference that further enhances the disentanglement between the shared and private representations (Hölder++). Our experiments corroborate that Hölder++ consistently improves the generative quality-coherence trade-off, yields more structured latent spaces, and learns shared representations that are informative for downstream tasks.",
+      "authors": [
+        "Huyen Vo",
+        "María Martínez-García",
+        "Isabel Valera"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-11T14:08:32+00:00",
+      "link": "https://arxiv.org/pdf/2606.13381v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Multimodal VAE with improved generation quality and coherence",
+      "llm_evidence_cn": "改进生成质量和连贯性的多模态VAE",
+      "llm_evidence": "改进生成质量和连贯性的多模态VAE",
+      "canonical_evidence": "改进生成质量和连贯性的多模态VAE",
+      "llm_tldr_en": "Proposes Holder++, a multimodal VAE that improves the quality-coherence trade-off via exact Holder pooling and extended aggregation.",
+      "llm_tldr_cn": "多模态VAE面临生成质量与跨模态连贯性之间的权衡。本文提出Holder++，首次实现精确Holder池化，并扩展聚合策略，在不牺牲多样性的情况下提升连贯性。实验证明在多个多模态生成任务上达到新最优，为统一多模态生成模型提供了新思路。",
+      "llm_tldr": "多模态VAE面临生成质量与跨模态连贯性之间的权衡。本文提出Holder++，首次实现精确Holder池化，并扩展聚合策略，在不牺牲多样性的情况下提升连贯性。实验证明在多个多模态生成任务上达到新最优，为统一多模态生成模型提供了新思路。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
