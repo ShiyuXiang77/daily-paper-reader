@@ -6,41 +6,51 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-14
-- 运行时间：2026-06-14 20:54:57 UTC
+- 最新运行日期：2026-06-15
+- 运行时间：2026-06-15 21:41:35 UTC
 - 运行状态：成功
-- 本次总论文数：7
-- 精读区：2
+- 本次总论文数：9
+- 精读区：4
 - 速读区：5
 
 ### 今日简报（AI）
-今日精读两篇高分多模态论文，聚焦统一视觉分词器与模块化服务系统。最值得关注HYDRA-X的全视觉分词器架构与M*的灵活服务框架，速读中DAM-VLA与地理空间模型也值得一瞥。建议普通读者先从HYDRA-X理解多模态原生统一设计，再结合M*探索模型部署的降本增效。
-- 详情：[/202606/14/README](/202606/14/README)
+今日阅读9篇论文，精读4篇，重点关注高效音频生成框架与智能代理交织生成。
+
+最值得精读的是《AudioX-Turbo: Unified Anything-to-Audio Generation》和《InterleaveThinker: Reinforcing Agentic Interleaved Generation》，均为9.0高分。
+
+建议优先精读这两篇论文，速读部分可关注多模态学习中“何时对齐、何时预测”的阶段性结论。
+- 详情：[/202606/15/README](/202606/15/README)
 
 ### 精读区论文标签
-1. [HYDRA-X: Native Unified Multimodal Models with Holistic Visual Tokenizers](/202606/14/2606.13289v1-hydra-x-native-unified-multimodal-models-with-holistic-visual-tokenizers)  
-   标签：评分：10.0/10、query:um
-   evidence：具有整体视觉标记器的原生统一多模态模型
-2. [M*: A Modular, Extensible, Serving System for Multimodal Models](/202606/14/2606.12688v1-m-a-modular-extensible-serving-system-for-multimodal-models)  
+1. [AudioX-Turbo: A Unified Framework for Efficient Anything-to-Audio Generation](/202606/15/2606.12555v1-audiox-turbo-a-unified-framework-for-efficient-anything-to-audio-generation)  
+   标签：评分：9.0/10、query:um
+   evidence：统一多模态音频生成框架，包含多模态扩散Transformer和自适应融合模块
+2. [InterleaveThinker: Reinforcing Agentic Interleaved Generation](/202606/15/2606.13679v1-interleavethinker-reinforcing-agentic-interleaved-generation)  
+   标签：评分：9.0/10、query:um
+   evidence：针对统一多模态模型（UMM）在交错生成中的性能不足
+3. [InterleaveThinker: Reinforcing Agentic Interleaved Generation](/202606/15/2606.13679v2-interleavethinker-reinforcing-agentic-interleaved-generation)  
+   标签：评分：9.0/10、query:um
+   evidence：针对统一多模态模型（UMM）在交错生成中的性能不足
+4. [Bridging Modal Isolation in Interleaved Thinking: Supervising Modality Transitions via Stepwise Reinforcement](/202606/15/2606.12886v1-bridging-modal-isolation-in-interleaved-thinking-supervising-modality-transitions-via-stepwise-reinforcement)  
    标签：评分：8.0/10、query:um
-   evidence：统一多模态模型的服务系统
+   evidence：统一多模态模型用于交错思维，并通过强化学习监督模态转换
 
 ### 速读区论文标签
-1. [DAM-VLA: Decoupled Asynchronous Multimodal Vision Language Action model](/202606/14/2606.12105v1-dam-vla-decoupled-asynchronous-multimodal-vision-language-action-model)  
+1. [When to Align, When to Predict: A Phase Diagram for Multimodal Learning](/202606/15/2606.11190v1-when-to-align-when-to-predict-a-phase-diagram-for-multimodal-learning)  
    标签：评分：7.0/10、query:um
-   evidence：用于视觉语言动作的异步解耦多模态融合
-2. [Emerging Flexible Designs for Geospatial Multimodal Foundation Models](/202606/14/2606.12595v1-emerging-flexible-designs-for-geospatial-multimodal-foundation-models)  
+   evidence：多模态学习中跨模态对齐与预测的统一线性框架
+2. [When to Align, When to Predict: A Phase Diagram for Multimodal Learning](/202606/15/2606.11190v2-when-to-align-when-to-predict-a-phase-diagram-for-multimodal-learning)  
    标签：评分：7.0/10、query:um
-   evidence：地理空间多模态基础模型架构比较
-3. [Hölder++: Improving the Quality-Coherence Trade-off in Multimodal VAEs](/202606/14/2606.13381v1-hlder-improving-the-quality-coherence-trade-off-in-multimodal-vaes)  
+   evidence：多模态学习的统一线性框架
+3. [FloVerse: Floor Plan-Guided Multi-Modal Navigation](/202606/15/2606.14267v1-floverse-floor-plan-guided-multi-modal-navigation)  
    标签：评分：7.0/10、query:um
-   evidence：改进生成质量和连贯性的多模态VAE
-4. [Fine-tuning Multi-modal LLMs with ART: Art-based Reinforcement Training](/202606/14/2606.11854v1-fine-tuning-multi-modal-llms-with-art-art-based-reinforcement-training)  
+   evidence：统一地板规划导航任务，融合PointNav、ObjectNav和ImageNav，基于扩散的多模态推理
+4. [An Attention-based Model for Robust Forecasting with Missing Modality](/202606/15/2606.13970v1-an-attention-based-model-for-robust-forecasting-with-missing-modality)  
    标签：评分：6.0/10、query:um
-   evidence：通过优化视觉输入微调多模态大模型
-5. [A Multi-Modal Framework with Cross-Subject Pseudo-Labeling and Semantic Alignment for Micro-Gesture Recognition](/202606/14/2606.13030v1-a-multi-modal-framework-with-cross-subject-pseudo-labeling-and-semantic-alignment-for-micro-gesture-recognition)  
+   evidence：基于Transformer的注意力模型处理缺失模态下的多模态数据融合
+5. [Context-aware Modality-Topology Co-Alignment for Multimodal Attributed Graphs](/202606/15/2606.14172v1-context-aware-modality-topology-co-alignment-for-multimodal-attributed-graphs)  
    标签：评分：6.0/10、query:um
-   evidence：多模态框架用于微手势识别与融合
+   evidence：多模态属性图的统一骨干网络
 
 
 <div class="dpr-home-promo-card">
