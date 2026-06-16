@@ -6,51 +6,49 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-15
-- 运行时间：2026-06-15 21:41:35 UTC
+- 最新运行日期：2026-06-16
+- 运行时间：2026-06-16 22:01:05 UTC
 - 运行状态：成功
 - 本次总论文数：9
-- 精读区：4
-- 速读区：5
+- 精读区：3
+- 速读区：6
 
 ### 今日简报（AI）
-今日阅读9篇论文，精读4篇，重点关注高效音频生成框架与智能代理交织生成。
-
-最值得精读的是《AudioX-Turbo: Unified Anything-to-Audio Generation》和《InterleaveThinker: Reinforcing Agentic Interleaved Generation》，均为9.0高分。
-
-建议优先精读这两篇论文，速读部分可关注多模态学习中“何时对齐、何时预测”的阶段性结论。
-- 详情：[/202606/15/README](/202606/15/README)
+1) 今日9篇多模态前沿论文中，UniDDT以9.0分登顶，提出解耦扩散Transformer统一理解与生成。  
+2) 最值得关注：UniDDT统一框架与M*模块化服务系统，分别从模型架构与系统部署突破多模态效率瓶颈。  
+3) 建议优先精读UniDDT设计思路，并关注Hölder++、CineOrchestra等改善质量与生成控制的互补工作。
+- 详情：[/202606/16/README](/202606/16/README)
 
 ### 精读区论文标签
-1. [AudioX-Turbo: A Unified Framework for Efficient Anything-to-Audio Generation](/202606/15/2606.12555v1-audiox-turbo-a-unified-framework-for-efficient-anything-to-audio-generation)  
+1. [UniDDT: Unifying Multimodal Understanding and Generation with Decoupled Diffusion Transformer](/202606/16/2606.16255v1-uniddt-unifying-multimodal-understanding-and-generation-with-decoupled-diffusion-transformer)  
    标签：评分：9.0/10、query:um
-   evidence：统一多模态音频生成框架，包含多模态扩散Transformer和自适应融合模块
-2. [InterleaveThinker: Reinforcing Agentic Interleaved Generation](/202606/15/2606.13679v1-interleavethinker-reinforcing-agentic-interleaved-generation)  
-   标签：评分：9.0/10、query:um
-   evidence：针对统一多模态模型（UMM）在交错生成中的性能不足
-3. [InterleaveThinker: Reinforcing Agentic Interleaved Generation](/202606/15/2606.13679v2-interleavethinker-reinforcing-agentic-interleaved-generation)  
-   标签：评分：9.0/10、query:um
-   evidence：针对统一多模态模型（UMM）在交错生成中的性能不足
-4. [Bridging Modal Isolation in Interleaved Thinking: Supervising Modality Transitions via Stepwise Reinforcement](/202606/15/2606.12886v1-bridging-modal-isolation-in-interleaved-thinking-supervising-modality-transitions-via-stepwise-reinforcement)  
+   evidence：统一多模态理解与生成框架UniDDT
+2. [M*: A Modular, Extensible, Serving System for Multimodal Models](/202606/16/2606.12688v2-m-a-modular-extensible-serving-system-for-multimodal-models)  
    标签：评分：8.0/10、query:um
-   evidence：统一多模态模型用于交错思维，并通过强化学习监督模态转换
+   evidence：面向复合多模态模型的通用服务系统，包括统一多模态模型
+3. [Efficient Reinforcement for Visual-Textual Thinking with Discrete Diffusion Model](/202606/16/2606.14792v1-efficient-reinforcement-for-visual-textual-thinking-with-discrete-diffusion-model)  
+   标签：评分：8.0/10、query:um
+   evidence：面向交错视觉-文本推理的统一多模态模型，使用离散扩散提高效率
 
 ### 速读区论文标签
-1. [When to Align, When to Predict: A Phase Diagram for Multimodal Learning](/202606/15/2606.11190v1-when-to-align-when-to-predict-a-phase-diagram-for-multimodal-learning)  
+1. [Hölder++: Improving the Quality-Coherence Trade-off in Multimodal VAEs](/202606/16/2606.13381v1-hlder-improving-the-quality-coherence-trade-off-in-multimodal-vaes)  
    标签：评分：7.0/10、query:um
-   evidence：多模态学习中跨模态对齐与预测的统一线性框架
-2. [When to Align, When to Predict: A Phase Diagram for Multimodal Learning](/202606/15/2606.11190v2-when-to-align-when-to-predict-a-phase-diagram-for-multimodal-learning)  
+   evidence：通过Hölder池化改进多模态VAE生成质量与一致性权衡
+2. [CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation](/202606/16/2606.13768v1-cineorchestra-unified-entity-centric-conditioning-for-cinematic-video-generation)  
    标签：评分：7.0/10、query:um
-   evidence：多模态学习的统一线性框架
-3. [FloVerse: Floor Plan-Guided Multi-Modal Navigation](/202606/15/2606.14267v1-floverse-floor-plan-guided-multi-modal-navigation)  
+   evidence：统一的视频扩散模型，同时控制主体、事件、相机和镜头转换
+3. [Unified Audio Generation and Editing via Joint Condition Modeling and Progressive Training](/202606/16/2606.16435v1-unified-audio-generation-and-editing-via-joint-condition-modeling-and-progressive-training)  
    标签：评分：7.0/10、query:um
-   evidence：统一地板规划导航任务，融合PointNav、ObjectNav和ImageNav，基于扩散的多模态推理
-4. [An Attention-based Model for Robust Forecasting with Missing Modality](/202606/15/2606.13970v1-an-attention-based-model-for-robust-forecasting-with-missing-modality)  
+   evidence：音频生成与编辑的统一模型，无任务特定组件
+4. [MMDiff: Extending Diffusion Transformers for Multi-Modal Generation](/202606/16/2606.16673v1-mmdiff-extending-diffusion-transformers-for-multi-modal-generation)  
+   标签：评分：7.0/10、query:um
+   evidence：扩展扩散Transformer进行多模态生成，是一种基于Transformer的多模态融合方法
+5. [Text-Driven Fusion for Infrared and Visible Images: Achieving Image Scene Adaptation on Hyperbolic Space](/202606/16/2606.15104v1-text-driven-fusion-for-infrared-and-visible-images-achieving-image-scene-adaptation-on-hyperbolic-space)  
    标签：评分：6.0/10、query:um
-   evidence：基于Transformer的注意力模型处理缺失模态下的多模态数据融合
-5. [Context-aware Modality-Topology Co-Alignment for Multimodal Attributed Graphs](/202606/15/2606.14172v1-context-aware-modality-topology-co-alignment-for-multimodal-attributed-graphs)  
+   evidence：文本驱动的红外与可见光融合，使用双曲空间学习
+6. [Unified Motion-Action Modeling for Heterogeneous Robot Learning](/202606/16/2606.16917v1-unified-motion-action-modeling-for-heterogeneous-robot-learning)  
    标签：评分：6.0/10、query:um
-   evidence：多模态属性图的统一骨干网络
+   evidence：利用3D运动作为共享接口的统一机器人学习模型
 
 
 <div class="dpr-home-promo-card">

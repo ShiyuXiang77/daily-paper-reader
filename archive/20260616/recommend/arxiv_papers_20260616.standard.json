@@ -1,0 +1,381 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-16T21:54:59.854222+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 3,
+    "deep_cap": 6,
+    "deep_selected": 3,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2606.16255v1",
+      "source": "arxiv",
+      "title": "UniDDT: Unifying Multimodal Understanding and Generation with Decoupled Diffusion Transformer",
+      "abstract": "Unified Multimodal Models (UMMs) have emerged as a critical direction for general-purpose multimodal intelligence, integrating understanding and generation into a single framework. However, existing UMMs face prominent challenges: (1) the inherent learning conflicts between visual understanding and generation tasks, leading to suboptimal modeling in both tasks; (2) different understanding and generation visual spaces impeding scalability; (3) over-reliance on task-specific data that neglects the duality of text-image understanding and generation. To address these challenges, we propose UniDDT, which leverages a Noisy ViT encoder along with an LLM to unify semantic encoding for visual generation and understanding tasks, while employing a separate diffusion decoder to decouple diffusion decoding from text decoding. With this Noisy ViT encoder, UniDDT is able to leverage the latent space as a unified visual representation, enabling seamless compatibility between understanding and generation tasks. Thus, the scalability within the generation tasks and the semantic expressiveness within understanding tasks can be balanced. Also, we construct dual data structures from the same image-text pairs, fostering interdependence between the generation and understanding data to exploit their inherent duality. Extensive experiments demonstrate that UniDDT achieves effective unification of multimodal understanding and generation with enhanced semantic consistency and scalability. For visual generation tasks, our UniDDT achieves 0.87 GenEval score and 86.9 DPG overall score. For multimodal understanding tasks, our UniDDT achieves 1699.5 score on MME benchmark and 76.5 overall score on SEEDbench.",
+      "authors": [
+        "Shuai Wang",
+        "Liang Li",
+        "Yang Chen",
+        "Ruopeng Gao",
+        "Yao Teng",
+        "Limin Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-15T05:57:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.16255v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Unified multimodal understanding and generation framework UniDDT",
+      "llm_evidence_cn": "统一多模态理解与生成框架UniDDT",
+      "llm_evidence": "统一多模态理解与生成框架UniDDT",
+      "canonical_evidence": "统一多模态理解与生成框架UniDDT",
+      "llm_tldr_en": "UniDDT proposes a decoupled diffusion transformer with Noisy ViT encoder and LLM to unify semantic encoding for visual understanding and generation, addressing learning conflicts and scalability issues.",
+      "llm_tldr_cn": "针对现有统一多模态模型在视觉理解与生成任务中的学习冲突、视觉空间不统一和数据利用不足等问题，本文提出UniDDT，利用带噪声的ViT编码器与大语言模型联合统一语义编码，并采用解耦扩散变压器架构，有效缓解任务矛盾，提升模型的可扩展性和性能，为通用多模态智能提供新范式。",
+      "llm_tldr": "针对现有统一多模态模型在视觉理解与生成任务中的学习冲突、视觉空间不统一和数据利用不足等问题，本文提出UniDDT，利用带噪声的ViT编码器与大语言模型联合统一语义编码，并采用解耦扩散变压器架构，有效缓解任务矛盾，提升模型的可扩展性和性能，为通用多模态智能提供新范式。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.12688v2",
+      "source": "arxiv",
+      "title": "M*: A Modular, Extensible, Serving System for Multimodal Models",
+      "abstract": "We are entering a new era of composite model architectures that integrate diverse components such as vision encoders, language backbones, diffusion and flow heads, audio codecs, action generators, and world-model predictors. Such architectures underpin a broad class of multimodal models, including unified multimodal models, omni models, speech-language models, vision-language-action policies, and world models. However, existing model serving frameworks were built on narrow assumptions about model structure, making them ill-suited to accommodate this new architectural diversity. Here we present M*, a universal serving system for efficient serving of composite AI models. M* represents models as dataflow graphs, processing requests spanning diverse modalities and tasks as traversals over these graphs. The core insight is a modular abstraction that supports arbitrary composition of model components, flexible placement onto a physical cluster, and model-agnostic optimizations within a distributed runtime. We call this abstraction the Walk Graph and show how it can concisely capture composite models from a broad range of families. We instantiate M* on representative models and find that it achieves, on average, 20% lower end-to-end latency than vLLM-Omni for text-to-image workloads on BAGEL, while delivering up to 2.9x lower real-time factor and 2.7x higher throughput for text-to-speech workloads on Qwen3-Omni. M* also outperforms the V-JEPA 2-AC rollout baseline for robotic planning by up to 12.5x. Thus, our work paves the road towards more efficient serving of complex models with minimal developer effort.",
+      "authors": [
+        "Atindra Jha",
+        "Naomi Sagan",
+        "Keisuke Kamahori",
+        "Irmak Sivgin",
+        "Rohan Sanda",
+        "Steven Gao",
+        "Mark Horowitz",
+        "Luke Zettlemoyer",
+        "Olivia Hsu",
+        "Jure Leskovec",
+        "Baris Kasikci",
+        "Stephanie Wang"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI",
+        "cs.DC"
+      ],
+      "published": "2026-06-10T21:22:22+00:00",
+      "link": "https://arxiv.org/pdf/2606.12688v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "universal serving system for composite multimodal models including unified multimodal models",
+      "llm_evidence_cn": "面向复合多模态模型的通用服务系统，包括统一多模态模型",
+      "llm_evidence": "面向复合多模态模型的通用服务系统，包括统一多模态模型",
+      "canonical_evidence": "面向复合多模态模型的通用服务系统，包括统一多模态模型",
+      "llm_tldr_en": "Presents M*, a modular serving system for efficient deployment of diverse composite multimodal models, including unified multimodal models.",
+      "llm_tldr_cn": "现有服务框架基于狭窄的模型结构假设，难以适应日益多样化的复合多模态模型（如统一多模态模型、全模态模型等）。M*将模型表示为数据流图，支持跨模态请求处理，为统一多模态模型的高效部署提供了基础设施支撑。",
+      "llm_tldr": "现有服务框架基于狭窄的模型结构假设，难以适应日益多样化的复合多模态模型（如统一多模态模型、全模态模型等）。M*将模型表示为数据流图，支持跨模态请求处理，为统一多模态模型的高效部署提供了基础设施支撑。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.14792v1",
+      "source": "arxiv",
+      "title": "Efficient Reinforcement for Visual-Textual Thinking with Discrete Diffusion Model",
+      "abstract": "RL-based post-training has been widely adopted to enable interleaved visual and textual reasoning in unified multimodal models capable of both text and image generation. However, most existing approaches are built upon autoregressive (AR) unified models, which require full image regeneration during visual reasoning. In this work, we demonstrate that multimodal discrete diffusion models are effective alternatives to AR models for reinforcement learning in interleaved reasoning, owing to their ability to perform efficient visual rollouts via localized visual editing rather than full image-token regeneration. This reduces rollout computation during GRPO by 26.9\\% compared to AR baselines, with minimal performance drop. Despite the improved efficiency, we find that joint reward assignment, which employs a shared reward signal across modalities, introduces cross-modal interference between unrelated image and text token sequences during RL updates. To address this issue, we propose factorized reward assignment, a strategy that assigns rewards independently to text and vision segments. With factorized reward assignment, our RL approach achieves an 11.2% improvement over joint reward assignment and a 38.04% improvement over the base model.",
+      "authors": [
+        "Yoonjeon Kim",
+        "Yuhta Takida",
+        "Chieh-Hsin Lai",
+        "Eunho Yang",
+        "Yuki Mitsufuji"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-11T07:33:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.14792v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified multimodal models for interleaved visual-textual reasoning with discrete diffusion, improving efficiency",
+      "llm_evidence_cn": "面向交错视觉-文本推理的统一多模态模型，使用离散扩散提高效率",
+      "llm_evidence": "面向交错视觉-文本推理的统一多模态模型，使用离散扩散提高效率",
+      "canonical_evidence": "面向交错视觉-文本推理的统一多模态模型，使用离散扩散提高效率",
+      "llm_tldr_en": "Demonstrates that multimodal discrete diffusion models are effective alternatives to AR models for RL-based post-training in unified multimodal models, reducing rollout computation by 26.9% while maintaining performance.",
+      "llm_tldr_cn": "现有统一多模态模型的后训练采用自回归模型，在视觉推理时需要完全重生成图像。本文证明多模态离散扩散模型可作为高效替代，通过局部视觉编辑实现推理，将GRPO的rollout计算量降低26.9%，且性能损失极小，为统一多模态模型的强化学习训练提供了新思路。",
+      "llm_tldr": "现有统一多模态模型的后训练采用自回归模型，在视觉推理时需要完全重生成图像。本文证明多模态离散扩散模型可作为高效替代，通过局部视觉编辑实现推理，将GRPO的rollout计算量降低26.9%，且性能损失极小，为统一多模态模型的强化学习训练提供了新思路。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.13381v1",
+      "source": "arxiv",
+      "title": "Hölder++: Improving the Quality-Coherence Trade-off in Multimodal VAEs",
+      "abstract": "Existing approaches for multimodal variational autoencoders (VAEs) face a trade-off between generative quality and coherence-i.e., they struggle to generate realistic and diverse samples that, at the same time, are semantically consistent across modalities. A recent work shows that using a simple approximation to Hölder pooling as an aggregation method improves coherence over the SOTA MMVAE+, despite assuming a single shared representation across all modalities. Yet, it slightly compromises sample diversity. Inspired by this insight, we propose Hölder++, a novel multimodal VAE that improves the generative quality-coherence trade-off through: (i) the first implementation of Hölder pooling without any approximation for multimodal VAEs; (ii) an extended architecture that models distinct shared and private (i.e., modality-specific) representations (Hölder+); and (iii) hierarchical inference that further enhances the disentanglement between the shared and private representations (Hölder++). Our experiments corroborate that Hölder++ consistently improves the generative quality-coherence trade-off, yields more structured latent spaces, and learns shared representations that are informative for downstream tasks.",
+      "authors": [
+        "Huyen Vo",
+        "María Martínez-García",
+        "Isabel Valera"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-11T14:08:32+00:00",
+      "link": "https://arxiv.org/pdf/2606.13381v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "improves multimodal VAE generative quality-coherence trade-off via Holder pooling",
+      "llm_evidence_cn": "通过Hölder池化改进多模态VAE生成质量与一致性权衡",
+      "llm_evidence": "通过Hölder池化改进多模态VAE生成质量与一致性权衡",
+      "canonical_evidence": "通过Hölder池化改进多模态VAE生成质量与一致性权衡",
+      "llm_tldr_en": "Proposes Holder++, a novel multimodal VAE that uses exact Holder pooling without approximation to improve both generative quality and cross-modal coherence.",
+      "llm_tldr_cn": "多模态VAE面临生成质量与跨模态一致性的权衡。现有近似方法牺牲了多样性。本文提出Hölder++，首次实现无需近似的精确Hölder池化，并扩展聚合策略，在保持高质量的同时增强一致性。实验表明该方法优于现有多模态VAE。",
+      "llm_tldr": "多模态VAE面临生成质量与跨模态一致性的权衡。现有近似方法牺牲了多样性。本文提出Hölder++，首次实现无需近似的精确Hölder池化，并扩展聚合策略，在保持高质量的同时增强一致性。实验表明该方法优于现有多模态VAE。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.15104v1",
+      "source": "arxiv",
+      "title": "Text-Driven Fusion for Infrared and Visible Images: Achieving Image Scene Adaptation on Hyperbolic Space",
+      "abstract": "Infrared and visible image fusion aims to integrate complementary modalities, while existing Euclidean methods impose rigid distance metrics that distort multi-modal interactions and parent-to-child semantic hierarchies. To overcome these limitations, we introduce a text-driven fusion framework empowered by hyperbolic manifold learning. During training, BLIP-extracted text prompts serve as topological anchors within the hyperbolic space, guiding vision-attribute alignment through hyperbolic embeddings that naturally accommodate varying semantic granularities. By exploiting the exponential volume growth dictated by the Poincaré ball's negative curvature, this approach seamlessly embeds hierarchical trees to encode coarse-to-fine semantics without metric saturation, while the vast peripheral space prevents texture distortion during cross-modal fusion. At inference, the fusion process autonomously adapts to input content using the learned text-attribute priors, completely eliminating the need for textual input. Experimental results show our method outperforms state-of-the-art approaches on benchmark datasets, with code available at https://github.com/Shaoyun2023/TEDFusion.",
+      "authors": [
+        "Huan Kang",
+        "Hui Li",
+        "Tianyang Xu",
+        "Tao Zhou",
+        "Xiao-Jun Wu",
+        "Josef Kittler"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-13T04:33:33+00:00",
+      "link": "https://arxiv.org/pdf/2606.15104v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "text-driven fusion for infrared/visible images using hyperbolic space",
+      "llm_evidence_cn": "文本驱动的红外与可见光融合，使用双曲空间学习",
+      "llm_evidence": "文本驱动的红外与可见光融合，使用双曲空间学习",
+      "canonical_evidence": "文本驱动的红外与可见光融合，使用双曲空间学习",
+      "llm_tldr_en": "Proposes a text-driven fusion framework using hyperbolic manifold learning for infrared and visible images, leveraging text prompts as anchors.",
+      "llm_tldr_cn": "现有欧几里得方法在红外与可见光图像融合中无法处理多模态交互的层次语义。本文引入双曲流形学习，以BLIP提取的文本提示作为拓扑锚点，在双曲空间中引导视觉-属性对齐，天然适应不同语义粒度，实现了场景自适应的融合。",
+      "llm_tldr": "现有欧几里得方法在红外与可见光图像融合中无法处理多模态交互的层次语义。本文引入双曲流形学习，以BLIP提取的文本提示作为拓扑锚点，在双曲空间中引导视觉-属性对齐，天然适应不同语义粒度，实现了场景自适应的融合。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.13768v1",
+      "source": "arxiv",
+      "title": "CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation",
+      "abstract": "Cinematic video depicts multiple subjects acting or interacting at specific moments, captured with deliberate camera movement, and stitched together by shot transitions. Together, these elements demand a level of fine-grained control beyond current text-to-video models. Existing work addresses each axis in isolation: multi-subject personalization, temporal control, multi-shot synthesis, or camera control; no prior framework jointly integrates all four. We present CineOrchestra, a unified video diffusion model that controls subjects, events, cameras, and shot transitions simultaneously. Our key insight is that these heterogeneous cinematic elements share a fundamental structure: each is an entity acting over a specific temporal interval, which can therefore all be expressed through one shared structure of entity-centric conditioning primitives, augmented with reference images for visual entities. This formulation reduces the architectural challenge to a single positional encoding problem, which we solve with two parameter-free coordinated rotary embeddings: (a) an interval-sampled temporal RoPE that yields consistent attention behavior across events of dramatically varying duration, and (b) a 2D entity-temporal cross-attention RoPE that disambiguates per-entity conditions and routes each to its corresponding spatiotemporal region. On two new benchmarks, CineOrchestra outperforms six per-axis specialists on dense caption following and shot-transition timing, with consistent gains in a pairwise user study and component ablations.",
+      "authors": [
+        "Sharath Girish",
+        "Tsai-Shien Chen",
+        "Zhikang Dong",
+        "Mukesh Singhal",
+        "Hao Chen",
+        "Sergey Tulyakov",
+        "Aliaksandr Siarohin"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-11T17:59:10+00:00",
+      "link": "https://arxiv.org/pdf/2606.13768v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified video diffusion model controlling subjects, events, cameras, and shot transitions",
+      "llm_evidence_cn": "统一的视频扩散模型，同时控制主体、事件、相机和镜头转换",
+      "llm_evidence": "统一的视频扩散模型，同时控制主体、事件、相机和镜头转换",
+      "canonical_evidence": "统一的视频扩散模型，同时控制主体、事件、相机和镜头转换",
+      "llm_tldr_en": "CineOrchestra is a unified video diffusion model that jointly controls multiple cinematic elements, relevant to unified multimodal generation.",
+      "llm_tldr_cn": "现有视频生成方法仅独立处理多主体、时间控制、多镜头合成或相机控制之一。本文提出CineOrchestra，一个统一的视频扩散模型，能够同时控制主体、事件、相机和镜头转换，通过将异构元素建模为在特定时间间隔内行动的实体，实现了高度可控的电影级视频生成。",
+      "llm_tldr": "现有视频生成方法仅独立处理多主体、时间控制、多镜头合成或相机控制之一。本文提出CineOrchestra，一个统一的视频扩散模型，能够同时控制主体、事件、相机和镜头转换，通过将异构元素建模为在特定时间间隔内行动的实体，实现了高度可控的电影级视频生成。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.16917v1",
+      "source": "arxiv",
+      "title": "Unified Motion-Action Modeling for Heterogeneous Robot Learning",
+      "abstract": "We present Unified Motion-Action (UMA) Model, an approach that uses 3D object motion trajectories as a shared interface to bridge visuomotor control and dynamics modeling. UMA treats object motion and robot actions as co-evolving variables under a masked generative objective, in which the mask pattern determines both the supervision regime during pretraining and the inference mode at deployment. Using hindsight-relabeled motion contexts and a contrastive objective that disentangles task intent from scene geometry, UMA enables multi-task pretraining across heterogeneous data sources without requiring manually annotated task instructions. At deployment, the same pretrained parameters support motion-conditioned visuomotor control, motion-based dynamics modeling, and task adaptation from few-shot demonstrations. Pretrained on a mixture of robot demonstrations, human videos, and simulated data, UMA consistently outperforms state-of-the-art baselines specialized for each inference mode.",
+      "authors": [
+        "Yunhao Cao",
+        "Shitong Liu",
+        "Chao Feng",
+        "Meryl Zhang",
+        "Xuanchen Lu",
+        "Andrew Owens",
+        "Kuan Fang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-15T16:23:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.16917v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified model using 3D motion as shared interface for robot learning",
+      "llm_evidence_cn": "利用3D运动作为共享接口的统一机器人学习模型",
+      "llm_evidence": "利用3D运动作为共享接口的统一机器人学习模型",
+      "canonical_evidence": "利用3D运动作为共享接口的统一机器人学习模型",
+      "llm_tldr_en": "Proposes Unified Motion-Action (UMA) Model that uses 3D object motion trajectories as a shared interface for visuomotor control and dynamics modeling.",
+      "llm_tldr_cn": "机器人学习异构数据难以统一。本文提出UMA模型，以3D运动轨迹作为共享接口，通过掩码生成目标统一感知与控制。方法支持多任务预训练，无需手动标注任务指令，在多个机器人操作任务中有效。",
+      "llm_tldr": "机器人学习异构数据难以统一。本文提出UMA模型，以3D运动轨迹作为共享接口，通过掩码生成目标统一感知与控制。方法支持多任务预训练，无需手动标注任务指令，在多个机器人操作任务中有效。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.16435v1",
+      "source": "arxiv",
+      "title": "Unified Audio Generation and Editing via Joint Condition Modeling and Progressive Training",
+      "abstract": "With the growing focus on audio in multimedia applications, numerous advanced works on audio generation have emerged. Existing studies typically treat text-to-audio (TTA) and other related audio generation tasks, such as instruction-based audio editing, as independent challenges, adopting task-specific architectures or modules. This absence of a unified modeling paradigm substantially increases the overhead and complexity of building a system for both audio generation and editing, while also leading to limited scalability. To address this issue, we introduce AudioWeave, a unified model for TTA and audio editing without additional task-specific components. Specifically, we propose a joint condition modeling approach with a factorized position embedding, enabling the diffusion transformer backbone to operate under heterogeneous inputs of TTA and audio editing. We further propose a progressive multistage training strategy to mitigate task competition and catastrophic forgetting caused by interference among multiple tasks. This in turn helps maintain the performance of each individual task and may even lead to improvements in certain aspects. Experimental results on TTA task and six audio editing tasks show that our unified model achieves competitive performance with task-specific models, laying a groundwork for further exploration of unified audio generation models.",
+      "authors": [
+        "Haocheng Dong",
+        "Yuheng Lu",
+        "Cheng Gong",
+        "Shansong Liu",
+        "Xiao-Lei Zhang",
+        "Xuelong Li"
+      ],
+      "primary_category": "eess.AS",
+      "categories": [
+        "eess.AS",
+        "cs.SD"
+      ],
+      "published": "2026-06-15T09:06:38+00:00",
+      "link": "https://arxiv.org/pdf/2606.16435v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified model for audio generation and editing without task-specific components",
+      "llm_evidence_cn": "音频生成与编辑的统一模型，无任务特定组件",
+      "llm_evidence": "音频生成与编辑的统一模型，无任务特定组件",
+      "canonical_evidence": "音频生成与编辑的统一模型，无任务特定组件",
+      "llm_tldr_en": "Proposes AudioWeave, a unified model for text-to-audio and audio editing using joint condition modeling and progressive training.",
+      "llm_tldr_cn": "现有方法将文本到音频生成和音频编辑视为独立任务，导致系统复杂且可扩展性差。本文提出AudioWeave，通过联合条件建模和渐进式训练实现统一建模，无需任务特定模块，显著降低了系统复杂度并提升可扩展性。",
+      "llm_tldr": "现有方法将文本到音频生成和音频编辑视为独立任务，导致系统复杂且可扩展性差。本文提出AudioWeave，通过联合条件建模和渐进式训练实现统一建模，无需任务特定模块，显著降低了系统复杂度并提升可扩展性。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.16673v1",
+      "source": "arxiv",
+      "title": "MMDiff: Extending Diffusion Transformers for Multi-Modal Generation",
+      "abstract": "Diffusion transformers have demonstrated remarkable generative capabilities, yet the rich perceptual representations computed across their denoising trajectory are discarded once the content is rendered. We present MMDiff, a framework that transforms a frozen diffusion transformer into a multi-modal generative system that jointly produces images alongside any combination of dense perceptual modalities using lightweight decoder heads. Our central finding is that perceptual information is temporally distributed along the denoising trajectory, and that multi-timestep feature fusion with spatially varying aggregation weights is essential, improving semantic segmentation results by up to 28.7% mIoU over single-timestep extraction. We further adopt concept-driven attention extraction for interpretable spatial guidance, and show that frozen diffusion features are competitive with and complementary to state-of-the-art encoders such as DINOv3. By training only lightweight decoder heads on a frozen backbone, we achieve strong performance in semantic segmentation, salient object detection, and depth estimation, and demonstrate that this framework enables effective synthetic data generation at scale.",
+      "authors": [
+        "Yagmur Akarken",
+        "Orest Kupyn",
+        "Christian Rupprecht"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-15T13:08:06+00:00",
+      "link": "https://arxiv.org/pdf/2606.16673v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "extends diffusion transformers for multi-modal generation, a transformer-based multimodal fusion method",
+      "llm_evidence_cn": "扩展扩散Transformer进行多模态生成，是一种基于Transformer的多模态融合方法",
+      "llm_evidence": "扩展扩散Transformer进行多模态生成，是一种基于Transformer的多模态融合方法",
+      "canonical_evidence": "扩展扩散Transformer进行多模态生成，是一种基于Transformer的多模态融合方法",
+      "llm_tldr_en": "MMDiff transforms a frozen diffusion transformer into a multi-modal generative system using lightweight decoders and multi-timestep feature fusion.",
+      "llm_tldr_cn": "扩散Transformer在生成过程中丢弃了丰富的感知表示。MMDiff利用轻量解码器在多时间步融合特征，将冻结的扩散Transformer转化为多模态生成系统。实验表明多时间步融合可提升语义分割结果28.7% mIoU，为多模态生成任务提供了通用框架。",
+      "llm_tldr": "扩散Transformer在生成过程中丢弃了丰富的感知表示。MMDiff利用轻量解码器在多时间步融合特征，将冻结的扩散Transformer转化为多模态生成系统。实验表明多时间步融合可提升语义分割结果28.7% mIoU，为多模态生成任务提供了通用框架。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}
