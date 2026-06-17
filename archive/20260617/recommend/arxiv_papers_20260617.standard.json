@@ -1,0 +1,462 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-17T20:51:21.235285+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2606.17296v1",
+      "source": "arxiv",
+      "title": "Pareto LoRA: Mitigating Modality Imbalance in Unified Multimodal Models via Pareto-Optimal Gradient Integration",
+      "abstract": "Unified multimodal models (UMMs) have recently emerged as a promising paradigm for integrating multimodal understanding and generation within a single autoregressive transformer. However, during multimodal instruction tuning, these models often exhibit pronounced modality imbalance: language gradients dominate optimization, thus leading to lower image generation quality, especially under parameter-efficient fine-tuning such as LoRA. In this work, we systematically analyze modality imbalance in LoRA-based fine-tuning of UMMs for interleaved text-image generation. We show that vision modality performance degrades substantially more than text modality performance when compared to unimodal counterparts, and that modality-specific gradients can differ by orders of magnitude across various tasks and layers. Motivated by this observation, we reformulate the multimodal instruction tuning as a bi-objective optimization problem and propose Pareto LoRA, a Pareto-optimal gradient integration strategy that balances the text and image objectives by modulating the gradient direction and strength. Experiments on the CoMM benchmark with Emu2 demonstrate that Pareto LoRA consistently improves multimodal generation balance, achieving up to 44.9% gains in perceptual image quality over vanilla LoRA while maintaining comparable text performance.",
+      "authors": [
+        "Xiwen Wei",
+        "Mark Nutter",
+        "Madhusudhanan Srinivasan",
+        "Radu Marculescu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-15T21:05:57+00:00",
+      "link": "https://arxiv.org/pdf/2606.17296v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "mitigating modality imbalance in unified multimodal models via Pareto LoRA",
+      "llm_evidence_cn": "通过Pareto LoRA缓解统一多模态模型中的模态不平衡",
+      "llm_evidence": "通过Pareto LoRA缓解统一多模态模型中的模态不平衡",
+      "canonical_evidence": "通过Pareto LoRA缓解统一多模态模型中的模态不平衡",
+      "llm_tldr_en": "Analyzes modality imbalance in LoRA fine-tuning of UMMs and proposes Pareto LoRA to balance text and image generation quality via Pareto-optimal gradient integration.",
+      "llm_tldr_cn": "统一多模态模型在多模态指令微调时存在模态不平衡，语言梯度主导导致图像生成质量下降。本文系统分析了LoRA微调中的模态不平衡，并提出Pareto LoRA，通过帕累托最优梯度集成动态平衡不同模态的贡献。实验证明Pareto LoRA在保持文本性能的同时显著提升了图像生成质量。该方法为UMM的参数高效微调提供了关键优化。",
+      "llm_tldr": "统一多模态模型在多模态指令微调时存在模态不平衡，语言梯度主导导致图像生成质量下降。本文系统分析了LoRA微调中的模态不平衡，并提出Pareto LoRA，通过帕累托最优梯度集成动态平衡不同模态的贡献。实验证明Pareto LoRA在保持文本性能的同时显著提升了图像生成质量。该方法为UMM的参数高效微调提供了关键优化。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.18249v1",
+      "source": "arxiv",
+      "title": "Unified Multimodal Autoregressive Modeling with Shared Context-Visual Tokenizer is Key to Unification",
+      "abstract": "Unified Multimodal Modeling aims to integrate visual understanding and generation within a single system. However, existing approaches typically rely on two disparate visual tokenizers, which splits the representation space and hinders truly unified modeling. We propose UniAR, a unified autoregressive framework where a single discrete visual tokenizer serves as the key bridge between understanding and generation, enabling a shared context in which the model can directly interpret its own generated visual tokens without additional re-encoding. UniAR adapts a pretrained vision encoder with multi-level feature fusion and a lookup-free bitwise quantization scheme, preserving both high-level semantics and low-level details while scaling the effective visual vocabulary at minimal cost. Building on this, the unified autoregressive model adopts parallel-bitwise-prediction to jointly predict spatially grouped, multi-level visual codes, substantially reducing visual sequence length and accelerating generation. Finally, a diffusion-based visual decoder operates on discrete visual tokens to decode high-fidelity images. Through large-scale pre-training, followed by supervised fine-tuning and reinforcement learning, UniAR achieves state-of-the-art performance on image generation and image editing while remaining competitive on multimodal understanding benchmarks. The project page is available at https://sharelab-sii.github.io/uniar-web.",
+      "authors": [
+        "Wujian Peng",
+        "Lingchen Meng",
+        "Yuxuan Cai",
+        "Xianwei Zhuang",
+        "Yuhuan Yang",
+        "Rongyao Fang",
+        "Chenfei Wu",
+        "Junyang Lin",
+        "Zuxuan Wu",
+        "Shuai Bai"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-16T17:59:22+00:00",
+      "link": "https://arxiv.org/pdf/2606.18249v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "Unified multimodal autoregressive modeling with shared visual tokenizer",
+      "llm_evidence_cn": "统一多模态自回归建模，共享视觉分词器",
+      "llm_evidence": "统一多模态自回归建模，共享视觉分词器",
+      "canonical_evidence": "统一多模态自回归建模，共享视觉分词器",
+      "llm_tldr_en": "UniAR proposes a unified autoregressive framework with a single shared discrete visual tokenizer enabling joint understanding and generation without re-encoding.",
+      "llm_tldr_cn": "UniAR针对现有统一模型使用两个独立视觉分词器导致表示空间割裂的问题，提出单一离散视觉分词器作为桥梁，实现理解与生成共享上下文。采用多级特征融合和无查找位量化方案，保持高层语义和低层细节，在多个基准上达到统一建模的最优性能。",
+      "llm_tldr": "UniAR针对现有统一模型使用两个独立视觉分词器导致表示空间割裂的问题，提出单一离散视觉分词器作为桥梁，实现理解与生成共享上下文。采用多级特征融合和无查找位量化方案，保持高层语义和低层细节，在多个基准上达到统一建模的最优性能。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.14792v1",
+      "source": "arxiv",
+      "title": "Efficient Reinforcement for Visual-Textual Thinking with Discrete Diffusion Model",
+      "abstract": "RL-based post-training has been widely adopted to enable interleaved visual and textual reasoning in unified multimodal models capable of both text and image generation. However, most existing approaches are built upon autoregressive (AR) unified models, which require full image regeneration during visual reasoning. In this work, we demonstrate that multimodal discrete diffusion models are effective alternatives to AR models for reinforcement learning in interleaved reasoning, owing to their ability to perform efficient visual rollouts via localized visual editing rather than full image-token regeneration. This reduces rollout computation during GRPO by 26.9\\% compared to AR baselines, with minimal performance drop. Despite the improved efficiency, we find that joint reward assignment, which employs a shared reward signal across modalities, introduces cross-modal interference between unrelated image and text token sequences during RL updates. To address this issue, we propose factorized reward assignment, a strategy that assigns rewards independently to text and vision segments. With factorized reward assignment, our RL approach achieves an 11.2% improvement over joint reward assignment and a 38.04% improvement over the base model.",
+      "authors": [
+        "Yoonjeon Kim",
+        "Yuhta Takida",
+        "Chieh-Hsin Lai",
+        "Eunho Yang",
+        "Yuki Mitsufuji"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-11T07:33:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.14792v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified multimodal models with discrete diffusion",
+      "llm_evidence_cn": "使用离散扩散模型的统一多模态模型",
+      "llm_evidence": "使用离散扩散模型的统一多模态模型",
+      "canonical_evidence": "使用离散扩散模型的统一多模态模型",
+      "llm_tldr_en": "Demonstrates multimodal discrete diffusion models as effective alternatives to AR models for RL-based interleaved reasoning in unified multimodal models.",
+      "llm_tldr_cn": "现有统一多模态模型在视觉推理中需完整图像重建，计算量大。本文证明多模态离散扩散模型可替代自回归模型，通过局部视觉编辑实现高效推理。在GRPO中计算量减少26.9%且性能损失极小。该工作为统一多模态推理提供了新方向。",
+      "llm_tldr": "现有统一多模态模型在视觉推理中需完整图像重建，计算量大。本文证明多模态离散扩散模型可替代自回归模型，通过局部视觉编辑实现高效推理。在GRPO中计算量减少26.9%且性能损失极小。该工作为统一多模态推理提供了新方向。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.17846v1",
+      "source": "arxiv",
+      "title": "Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robotic Manipulation Foundation Models",
+      "abstract": "Foundation models in language and multimodality achieve strong generalization by aligning heterogeneous data under a unified formulation and training at scale. In this report, we investigate whether this scaling recipe can be applied to robotic manipulation to achieve genuine generalization. This is challenging because, unlike text, manipulation data is heterogeneous by nature, expensive to collect, and narrow in diversity, making alignment and scale simultaneously difficult. We present Qwen-RobotManip, a generalizable Vision-Language-Action foundation model built on Qwen-VL. Qwen-RobotManip introduces a unified alignment framework across the representation, motion, and behavioral dimensions of manipulation, making large-scale multi-source training coherent rather than conflicting. This alignment capability in turn enables Qwen-RobotManip to absorb manipulation data at a scale that prior training regimes could not sustain. A human-to-robot synthesis pipeline converts egocentric hand demonstrations into robot trajectories across 15 platforms, and a rigorous curation pipeline harmonizes heterogeneous datasets. Using only open-source datasets and human videos without proprietary data collection, Qwen-RobotManip constructs a ~38,100-hour pretraining corpus and exhibits emergent generalization capabilities, including zero-shot instruction following, robustness to perturbations, reactive error recovery, and cross-embodiment transfer. We find that standard benchmarks fail to capture pretraining quality and instead adopt OOD settings including RoboCasa365, LIBERO-Plus, EBench, RoboTwin-Clean2Rand, RoboTwin-IF, and RoboTwin-XE. Qwen-RobotManip substantially outperforms prior state-of-the-art models, including $π$0.5, across all OOD settings, ranks 1st in RoboChallenge with a 20% relative improvement, and is validated on real-robot platforms including AgileX ALOHA, Franka, UR, and ARX.",
+      "authors": [
+        "Haoqi Yuan",
+        "Zhixuan Liang",
+        "Anzhe Chen",
+        "Ye Wang",
+        "Haoyang Li",
+        "Pei Lin",
+        "Yiyang Huang",
+        "Zixing Lei",
+        "Tong Zhang",
+        "Jiazhao Zhang",
+        "Jie Zhang",
+        "Jingyang Fan",
+        "Gengze Zhou",
+        "Qihang Peng",
+        "Chenxu Lv",
+        "Xiaoyue Chen",
+        "An Yang",
+        "Fei Huang",
+        "Junyang Lin",
+        "Dayiheng Liu",
+        "Jingren Zhou",
+        "Chenfei Wu",
+        "Xiong-Hui Chen"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-16T12:14:39+00:00",
+      "link": "https://arxiv.org/pdf/2606.17846v1",
+      "tags": [
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified VLA foundation model",
+      "llm_evidence_cn": "统一的视觉-语言-动作基础模型",
+      "llm_evidence": "统一的视觉-语言-动作基础模型",
+      "canonical_evidence": "统一的视觉-语言-动作基础模型",
+      "llm_tldr_en": "Qwen-RobotManip is a unified Vision-Language-Action foundation model that aligns representation, motion, and behavior for robotic manipulation generalization.",
+      "llm_tldr_cn": "机器人操作数据异构且稀缺，难以像语言模型那样规模化。本文提出Qwen-RobotManip，基于Qwen-VL构建统一视觉-语言-动作基础模型，在表示、动作、行为三个维度进行对齐。实验表明该模型在多种操作任务上展现出强大的泛化能力。该工作验证了统一多模态范式在机器人领域的有效性。",
+      "llm_tldr": "机器人操作数据异构且稀缺，难以像语言模型那样规模化。本文提出Qwen-RobotManip，基于Qwen-VL构建统一视觉-语言-动作基础模型，在表示、动作、行为三个维度进行对齐。实验表明该模型在多种操作任务上展现出强大的泛化能力。该工作验证了统一多模态范式在机器人领域的有效性。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.14782v1",
+      "source": "arxiv",
+      "title": "Last But Not Least: Boundary Attention CalibratiON for Multimodal KV Cache Compression",
+      "abstract": "Multimodal Large Language Models (MLLMs) achieve strong vision-language reasoning, but long visual contexts enlarge the KV cache and increase decoding latency. Existing compression methods rely on observation window attention for stable token-importance estimation, yet this aggregation can dilute sparse visual evidence and discard answer-critical tokens under aggressive compression. Therefore, we identify last-query attention as a complementary source for recovering such evidence, but its answer-irrelevant signals can mislead retention. We propose BACON, a plug-and-play method that calibrates observation window attention with last-query evidence and suppresses isolated noise via intra-layer coherence and inter-layer persistence. Across diverse benchmarks, models, budgets, and compression methods, BACON improves multimodal KV compression by 7.5% on average under the most aggressive budget, with gains up to 30.9%.",
+      "authors": [
+        "Tianhao Chen",
+        "Yuheng Wu",
+        "Kelu Yao",
+        "Xiaogang Xu",
+        "Xiaobin Hu",
+        "Dongman Lee"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.CL"
+      ],
+      "published": "2026-06-10T10:09:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.14782v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "multimodal KV cache compression with last-query attention calibration",
+      "llm_evidence_cn": "多模态KV缓存压缩中的最后查询注意力校准",
+      "llm_evidence": "多模态KV缓存压缩中的最后查询注意力校准",
+      "canonical_evidence": "多模态KV缓存压缩中的最后查询注意力校准",
+      "llm_tldr_en": "Proposes BACON, a plug-and-play method that calibrates observation window attention with last-query evidence to improve KV cache compression in MLLMs.",
+      "llm_tldr_cn": "多模态大语言模型在处理长视觉上下文时KV缓存过大，现有压缩方法可能丢失关键证据。本文指出最后查询注意力可作为补充，但包含噪声，因此提出BACON方法，利用层内一致性和层间持续性校准注意力并抑制孤立噪声。实验表明BACON在保持推理质量的同时显著降低了缓存大小，提升了解码效率。该方法无需修改模型结构，可直接应用。",
+      "llm_tldr": "多模态大语言模型在处理长视觉上下文时KV缓存过大，现有压缩方法可能丢失关键证据。本文指出最后查询注意力可作为补充，但包含噪声，因此提出BACON方法，利用层内一致性和层间持续性校准注意力并抑制孤立噪声。实验表明BACON在保持推理质量的同时显著降低了缓存大小，提升了解码效率。该方法无需修改模型结构，可直接应用。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.10759v2",
+      "source": "arxiv",
+      "title": "miniReranker: Efficient Multimodal Reranking through Visual Cache Reuse and Interaction Sparsity",
+      "abstract": "Multimodal large language models (MLLMs) have recently shown strong potential as point-wise rerankers by directly modeling query--document relevance through next-token prediction. However, point-wise reranking suffers from substantial repeated computation across query--document pairs, while the causal structure of transformers allows only prefix segments to be reused via pre-caching. To address the misalignment of existing query-first and document-first formats with both VQA-style prompting and computation-aware reuse, we propose a $\\textit{vision-first}$ formulation that improves both cache reuse efficiency and reranking performance. However, the remaining cost is still considerable and stems from three main sources: (1) $\\textit{model depth}$, for which we reduce active parameters via early exit; (2) $\\textit{cross-segment attention}$, which we restrict to a narrow interaction band across a few layers; and (3) $\\textit{visual tokens}$, where we reduce the number of tokens via embedder-guided pruning. Together, these designs form miniReranker, which reduces reranking runtime to <1% of the dense implementation under high-reuse settings for a single query, while preserving >96% of the dense model performance.",
+      "authors": [
+        "Yingqi Fan",
+        "Xuan Lu",
+        "Anhao Zhao",
+        "Junlong Tong",
+        "Ping Nie",
+        "Kai Zou",
+        "Yunpu Ma",
+        "Wei Zhang",
+        "Xiaoyu Shen"
+      ],
+      "primary_category": "cs.IR",
+      "categories": [
+        "cs.IR"
+      ],
+      "published": "2026-06-09T12:11:02+00:00",
+      "link": "https://arxiv.org/pdf/2606.10759v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "efficient multimodal reranking using MLLMs and vision-first cache reuse",
+      "llm_evidence_cn": "利用MLLM和视觉优先缓存复用的高效多模态重排序",
+      "llm_evidence": "利用MLLM和视觉优先缓存复用的高效多模态重排序",
+      "canonical_evidence": "利用MLLM和视觉优先缓存复用的高效多模态重排序",
+      "llm_tldr_en": "miniReranker proposes a vision-first formulation for multimodal reranking with MLLMs, improving cache reuse efficiency and reducing computation via interaction sparsity.",
+      "llm_tldr_cn": "多模态大模型在点式重排序中重复计算严重。本文提出miniReranker，采用视觉优先格式提升缓存复用效率，并利用交互稀疏性减少计算。在多个多模态检索基准上，该方法在保持性能的同时大幅降低延迟。",
+      "llm_tldr": "多模态大模型在点式重排序中重复计算严重。本文提出miniReranker，采用视觉优先格式提升缓存复用效率，并利用交互稀疏性减少计算。在多个多模态检索基准上，该方法在保持性能的同时大幅降低延迟。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.16917v2",
+      "source": "arxiv",
+      "title": "Unified Motion-Action Modeling for Heterogeneous Robot Learning",
+      "abstract": "We present Unified Motion-Action (UMA) Model, an approach that uses 3D object motion trajectories as a shared interface to bridge visuomotor control and dynamics modeling. UMA treats object motion and robot actions as co-evolving variables under a masked generative objective, in which the mask pattern determines both the supervision regime during pretraining and the inference mode at deployment. Using hindsight-relabeled motion contexts and a contrastive objective that disentangles task intent from scene geometry, UMA enables multi-task pretraining across heterogeneous data sources without requiring manually annotated task instructions. At deployment, the same pretrained parameters support motion-conditioned visuomotor control, motion-based dynamics modeling, and task adaptation from few-shot demonstrations. Pretrained on a mixture of robot demonstrations, human videos, and simulated data, UMA consistently outperforms state-of-the-art baselines specialized for each inference mode.",
+      "authors": [
+        "Yunhao Cao",
+        "Shitong Liu",
+        "Chao Feng",
+        "Meryl Zhang",
+        "Xuanchen Lu",
+        "Andrew Owens",
+        "Kuan Fang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-15T16:23:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.16917v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified motion-action model",
+      "llm_evidence_cn": "统一运动-动作模型",
+      "llm_evidence": "统一运动-动作模型",
+      "canonical_evidence": "统一运动-动作模型",
+      "llm_tldr_en": "UMA uses 3D object motion trajectories as a shared interface for unified visuomotor control and dynamics modeling under a masked generative objective.",
+      "llm_tldr_cn": "机器人学习需要统一控制与动力学建模。本文提出UMA模型，以3D物体运动轨迹为共享接口，通过掩码生成目标统一视觉运动控制和动力学预测。利用回溯标记和对比学习解耦任务意图与场景几何。实验表明UMA支持多任务预训练和零样本迁移。该工作为机器人统一建模提供了新思路。",
+      "llm_tldr": "机器人学习需要统一控制与动力学建模。本文提出UMA模型，以3D物体运动轨迹为共享接口，通过掩码生成目标统一视觉运动控制和动力学预测。利用回溯标记和对比学习解耦任务意图与场景几何。实验表明UMA支持多任务预训练和零样本迁移。该工作为机器人统一建模提供了新思路。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.14957v1",
+      "source": "arxiv",
+      "title": "Learning Sparse Latent Predictive Foundation Model for Multimodal Neuroimaging",
+      "abstract": "Brain MRIs are routinely acquired as multiple complementary sequences with unique contrast weighting, including T1-weighed imaging (T1w) anatomic and fluid-sensitive T2-weighted (T2w) contrasts. However, methods for learning unified representations across the multitude of MRI contrast mechanisms at health-system scale are lacking. In this study, we introduce Neuro-JEPA, a sparse multimodal neuroimaging foundation model that combines a latent predictive objective with a Mixture-of-Experts architecture to encode brain MRI across core T1w, T2w, and fluid-suppressed FLAIR imaging (FLAIR). We further provide a systematic methodological study of architectural, masking, objective, and sparsity design choices beneficial for robust neuroimaging multimodal representation learning. Neuro-JEPA was pretrained on 1,551,862 scans from 428,647 studies after modality-specific preprocessing with data curation across three core structural brain MRI sequences. We evaluated the learned representations across clinical and research settings, including 25 tasks from three health systems: NYU Langone, NYU Long Island, and Massachusetts General Hospital, and 22 tasks from 12 public datasets, covering unimodal, multimodal and cross-domain evaluation configurations. Across these benchmarks, existing neuroimaging foundation models showed inconsistent gains over a simple convolutional neural network (CNN) baseline, whereas Neuro-JEPA achieved stronger and more consistent performance across all evaluated settings. These results establish a scalable methodological framework for multimodal neuroimaging representation learning and highlight the need for foundation model evaluation protocols that include simple baselines, clinically heterogeneous cohorts and controlled multimodal comparisons.",
+      "authors": [
+        "Haoxu Huang",
+        "Long Chen",
+        "Jingyun Chen",
+        "Jinu Hyun",
+        "James Ryan Loftus",
+        "Kara Melmed",
+        "Daniel Orringer",
+        "Jennifer Frontera",
+        "Seena Dehkharghani",
+        "Arjun Masurkar",
+        "Narges Razavian"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-12T21:02:09+00:00",
+      "link": "https://arxiv.org/pdf/2606.14957v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified multimodal neuroimaging foundation model",
+      "llm_evidence_cn": "统一多模态神经影像基础模型",
+      "llm_evidence": "统一多模态神经影像基础模型",
+      "canonical_evidence": "统一多模态神经影像基础模型",
+      "llm_tldr_en": "Neuro-JEPA is a sparse multimodal neuroimaging foundation model combining latent predictive objective with Mixture-of-Experts to learn unified representations across MRI contrasts.",
+      "llm_tldr_cn": "脑MRI有多种对比序列，但缺少统一的表示学习方法。本文提出Neuro-JEPA，结合潜在预测目标和混合专家架构，学习跨T1、T2、FLAIR的统一表示。系统研究了架构、掩码、目标等设计选择。实验表明该模型在分割和分类任务上优于单模态基线。该工作为医学影像统一建模提供了可借鉴方案。",
+      "llm_tldr": "脑MRI有多种对比序列，但缺少统一的表示学习方法。本文提出Neuro-JEPA，结合潜在预测目标和混合专家架构，学习跨T1、T2、FLAIR的统一表示。系统研究了架构、掩码、目标等设计选择。实验表明该模型在分割和分类任务上优于单模态基线。该工作为医学影像统一建模提供了可借鉴方案。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.15932v1",
+      "source": "arxiv",
+      "title": "Beyond NL2Code: A Structured Survey of Multimodal Code Intelligence",
+      "abstract": "While LLMs have substantially advanced text-to-code synthesis, many real programming tasks specify intent through visual artifacts such as screenshots, charts, documents, vector drawings, videos, and interactive states. These tasks require models to connect visual perception to executable programs, because correctness depends not only on syntax but also on layout, geometry, data semantics, editability, interaction behavior, and domain-specific constraints that apply after execution. This survey examines Multimodal Code Intelligence, covering systems that generate, edit, refine, execute, or reason with code under visually grounded inputs and outputs. We first formulate the field by the role that code plays in each task, distinguishing code as a rendered artifact, an editable symbolic structure, a scientific representation, an intermediate reasoning trace, or an executable policy or tool interface. We then organize benchmarks and methods into four domains: Graphical User Interface, Scientific Visualization, Structured Graphics, and Frontier Tasks and Frameworks. This taxonomy connects mature artifact-generation problems to emerging agentic and unified settings and allows us to compare how different tasks treat evidence of correctness. Looking ahead, we argue that future research may benefit from four verification-centered directions. Multi-signal validation can combine complementary evidence of correctness, multi-state verification can test behavior across execution trajectories, cross-task transfer testing can probe reusable visual-code skills, and verifiable agent traces can reveal whether agent actions are grounded in visual evidence. Together, these directions may move multimodal code generation from single-output imitation toward evidence-grounded executable systems.",
+      "authors": [
+        "Xuanle Zhao",
+        "Qiushi Sun",
+        "Jingyu Xiao",
+        "Xuexin Liu",
+        "Haoyue Yang",
+        "Qiaosheng Chen",
+        "Xianzhen Luo",
+        "Jing Huang",
+        "Yufeng Zhong",
+        "Lei Chen",
+        "Shuai Fu",
+        "Zhenlin Wei",
+        "Jinhe Bi",
+        "Lei Jiang",
+        "Haibo Qiu",
+        "Siqi Yang",
+        "Peng Shi",
+        "Jian Hu",
+        "Zhixiong Zeng"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL"
+      ],
+      "published": "2026-06-14T17:21:43+00:00",
+      "link": "https://arxiv.org/pdf/2606.15932v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "survey on multimodal code intelligence using LLMs and transformers",
+      "llm_evidence_cn": "多模态代码智能综述，涉及LLM和Transformer",
+      "llm_evidence": "多模态代码智能综述，涉及LLM和Transformer",
+      "canonical_evidence": "多模态代码智能综述，涉及LLM和Transformer",
+      "llm_tldr_en": "A structured survey of Multimodal Code Intelligence, covering systems that generate, edit, refine, execute, or reason with code under visually grounded inputs and outputs.",
+      "llm_tldr_cn": "该综述系统梳理了多模态代码智能领域，涵盖通过视觉输入（如截图、图表）生成、编辑、执行或推理代码的系统。论文按代码在任务中扮演的角色对现有工作进行分类，并分析了结合视觉感知与代码合成的研究趋势。",
+      "llm_tldr": "该综述系统梳理了多模态代码智能领域，涵盖通过视觉输入（如截图、图表）生成、编辑、执行或推理代码的系统。论文按代码在任务中扮演的角色对现有工作进行分类，并分析了结合视觉感知与代码合成的研究趋势。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.17678v1",
+      "source": "arxiv",
+      "title": "See First, Answer Later: Visual Evidence Pre-Alignment via Sufficiency-Driven RL",
+      "abstract": "Multimodal large language models (MLLMs) integrate strong text reasoning with visual inputs, yet their responses can be inconsistent with the underlying images, indicating ineffective utilization of visual evidence during inference. The prevailing training paradigm relies on large-scale caption-based pretraining for general alignment, followed by supervised fine-tuning and reinforcement learning to enable instruction following and complex reasoning. However, such pretraining provides only weak visual grounding: short, coarse captions bias models toward salient objects while neglecting fine-grained visual evidence. In this paper, we introduce Visual Evidence Pre-Alignment (VEPA), an intermediate stage between pretraining and post-training that explores a novel sufficiency-driven objective with Group Relative Policy Optimization (GRPO) to optimize question-conditioned visual evidence descriptions. Extensive experiments across diverse benchmarks show that our VEPA consistently enhances performance on visually demanding evaluations and complements standard supervised post-training. Further analyses show that the income stems from strengthened, transferable visual grounding, rather than from additional task-specific training.",
+      "authors": [
+        "Yilian Liu",
+        "Sicong Leng",
+        "Guoshun Nan",
+        "Junyi Zhu",
+        "Jiayu Huang",
+        "Minghao Sun",
+        "Xuancheng Zhu",
+        "Yisong Chen",
+        "Zexian Wei",
+        "Xiaofeng Tao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-16T08:45:24+00:00",
+      "link": "https://arxiv.org/pdf/2606.17678v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "visual evidence pre-alignment for multimodal LLMs",
+      "llm_evidence_cn": "多模态大语言模型的视觉证据预对齐",
+      "llm_evidence": "多模态大语言模型的视觉证据预对齐",
+      "canonical_evidence": "多模态大语言模型的视觉证据预对齐",
+      "llm_tldr_en": "Introduces VEPA, an intermediate training stage for MLLMs to improve visual grounding before fine-tuning, using sufficiency-driven RL to focus on fine-grained visual evidence.",
+      "llm_tldr_cn": "现有MLLM预训练依赖粗粒度字幕，导致模型忽略细粒度视觉证据，产生与图像不一致的回答。本文提出VEPA中间训练阶段，在预训练后和指令微调前，通过充分性驱动的强化学习引导模型关注关键视觉细节。实验表明VEPA显著提升了多模态理解的准确性，特别是在需要细粒度视觉推理的任务上。该方法作为一种即插即用的训练模块，可广泛应用于各种MLLM架构。",
+      "llm_tldr": "现有MLLM预训练依赖粗粒度字幕，导致模型忽略细粒度视觉证据，产生与图像不一致的回答。本文提出VEPA中间训练阶段，在预训练后和指令微调前，通过充分性驱动的强化学习引导模型关注关键视觉细节。实验表明VEPA显著提升了多模态理解的准确性，特别是在需要细粒度视觉推理的任务上。该方法作为一种即插即用的训练模块，可广泛应用于各种MLLM架构。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
