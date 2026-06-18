@@ -6,52 +6,55 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-17
-- 运行时间：2026-06-17 21:01:29 UTC
+- 最新运行日期：2026-06-18
+- 运行时间：2026-06-18 21:06:24 UTC
 - 运行状态：成功
-- 本次总论文数：10
-- 精读区：4
-- 速读区：6
+- 本次总论文数：11
+- 精读区：6
+- 速读区：5
 
 ### 今日简报（AI）
-1) 今日推荐10篇多模态前沿论文，聚焦模型统一化与效率优化，两篇满分精读揭示关键突破。  
-2) 最值得关注：帕累托最优梯度整合缓解多模态失衡（《Pareto LoRA》），以及共享上下文-视觉分词器实现统一自回归建模（《Unified Multimodal Autoregressive Modeling》）。  
-3) 建议读者优先精读这两篇满分论文，理解如何通过梯度平衡与分词器设计提升多模态模型性能，速读部分可快速浏览KV缓存压缩与机器人学习等方向。
-- 详情：[/202606/17/README](/202606/17/README)
+1) 今日精读6篇，速读5篇，聚焦多模态统一建模与跨领域应用。
+2) 最值得关注的方向：共享上下文视觉分词器实现多模态自回归统一（满分）、以及MUNI的任意到任意相干生成（9分），均突破多模态融合瓶颈。
+3) 下一步建议：优先精读这两篇高分论文，掌握统一分词与扩散生成的核心思路，再结合速读中医疗、情感、电力等落地场景深化理解。
+- 详情：[/202606/18/README](/202606/18/README)
 
 ### 精读区论文标签
-1. [Pareto LoRA: Mitigating Modality Imbalance in Unified Multimodal Models via Pareto-Optimal Gradient Integration](/202606/17/2606.17296v1-pareto-lora-mitigating-modality-imbalance-in-unified-multimodal-models-via-pareto-optimal-gradient-integration)  
-   标签：评分：10.0/10、query:um
-   evidence：通过Pareto LoRA缓解统一多模态模型中的模态不平衡
-2. [Unified Multimodal Autoregressive Modeling with Shared Context-Visual Tokenizer is Key to Unification](/202606/17/2606.18249v1-unified-multimodal-autoregressive-modeling-with-shared-context-visual-tokenizer-is-key-to-unification)  
+1. [Unified Multimodal Autoregressive Modeling with Shared Context-Visual Tokenizer is Key to Unification](/202606/18/2606.18249v1-unified-multimodal-autoregressive-modeling-with-shared-context-visual-tokenizer-is-key-to-unification)  
    标签：评分：10.0/10、query:um
    evidence：统一多模态自回归建模，共享视觉分词器
-3. [Efficient Reinforcement for Visual-Textual Thinking with Discrete Diffusion Model](/202606/17/2606.14792v1-efficient-reinforcement-for-visual-textual-thinking-with-discrete-diffusion-model)  
+2. [MUNI: Multimodal Unified Latent Diffusion for Coherent Any-to-Any Generation](/202606/18/2606.16408v1-muni-multimodal-unified-latent-diffusion-for-coherent-any-to-any-generation)  
    标签：评分：9.0/10、query:um
-   evidence：使用离散扩散模型的统一多模态模型
-4. [Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robotic Manipulation Foundation Models](/202606/17/2606.17846v1-qwen-robotmanip-technical-report-alignment-unlocks-scale-for-robotic-manipulation-foundation-models)  
+   evidence：多模态统一潜在扩散用于一致的任意到任意生成
+3. [Visual-OPSD: Cross-Modal On-Policy Self-Distillation for Efficient Unified Multimodal Reasoning](/202606/18/2606.18974v1-visual-opsd-cross-modal-on-policy-self-distillation-for-efficient-unified-multimodal-reasoning)  
+   标签：评分：9.0/10、query:um
+   evidence：统一多模态模型及跨模态自蒸馏以提高推理效率
+4. [Bridging Modal Isolation in Interleaved Thinking: Supervising Modality Transitions via Stepwise Reinforcement](/202606/18/2606.12886v1-bridging-modal-isolation-in-interleaved-thinking-supervising-modality-transitions-via-stepwise-reinforcement)  
    标签：评分：8.0/10、query:um
-   evidence：统一的视觉-语言-动作基础模型
+   evidence：解决统一多模态模型中交错思考的模态隔离问题
+5. [Unified Multimodal Model for Brain MRI Imputation and Understanding](/202606/18/2606.16484v1-unified-multimodal-model-for-brain-mri-imputation-and-understanding)  
+   标签：评分：8.0/10、query:um
+   evidence：用于脑MRI补全和理解的统一多模态模型
+6. [Qwen-RobotManip Technical Report: Alignment Unlocks Scale for Robotic Manipulation Foundation Models](/202606/18/2606.17846v2-qwen-robotmanip-technical-report-alignment-unlocks-scale-for-robotic-manipulation-foundation-models)  
+   标签：评分：8.0/10、query:um
+   evidence：面向机器人操作基础模型的统一对齐框架
 
 ### 速读区论文标签
-1. [Last But Not Least: Boundary Attention CalibratiON for Multimodal KV Cache Compression](/202606/17/2606.14782v1-last-but-not-least-boundary-attention-calibration-for-multimodal-kv-cache-compression)  
+1. [Unifying Acoustic Features and Text with Multimodal LLMs for Neurodegenerative Screening](/202606/18/2606.14788v1-unifying-acoustic-features-and-text-with-multimodal-llms-for-neurodegenerative-screening)  
    标签：评分：7.0/10、query:um
-   evidence：多模态KV缓存压缩中的最后查询注意力校准
-2. [Unified Motion-Action Modeling for Heterogeneous Robot Learning](/202606/17/2606.16917v2-unified-motion-action-modeling-for-heterogeneous-robot-learning)  
+   evidence：通过多模态LLM框架统一声学特征与文本
+2. [Data-Driven Decoding of Russell's Circumplex Model of Affect](/202606/18/2606.16843v1-data-driven-decoding-of-russells-circumplex-model-of-affect)  
    标签：评分：7.0/10、query:um
-   evidence：统一运动-动作模型
-3. [miniReranker: Efficient Multimodal Reranking through Visual Cache Reuse and Interaction Sparsity](/202606/17/2606.10759v2-minireranker-efficient-multimodal-reranking-through-visual-cache-reuse-and-interaction-sparsity)  
+   evidence：用于情感解码的多模态Transformer融合
+3. [Multi-Modal Agents for Power Distribution Defect Detection: An Evaluation of Foundation Models](/202606/18/2606.12969v1-multi-modal-agents-for-power-distribution-defect-detection-an-evaluation-of-foundation-models)  
    标签：评分：6.0/10、query:um
-   evidence：利用MLLM和视觉优先缓存复用的高效多模态重排序
-4. [Learning Sparse Latent Predictive Foundation Model for Multimodal Neuroimaging](/202606/17/2606.14957v1-learning-sparse-latent-predictive-foundation-model-for-multimodal-neuroimaging)  
+   evidence：评估多模态基础模型作为统一认知引擎用于缺陷检测
+4. [OneBar: An End-to-End Content-Grounded Generative Query Recommendation Framework for E-Commerce Video Feeds](/202606/18/2606.15330v1-onebar-an-end-to-end-content-grounded-generative-query-recommendation-framework-for-e-commerce-video-feeds)  
    标签：评分：6.0/10、query:um
-   evidence：统一多模态神经影像基础模型
-5. [Beyond NL2Code: A Structured Survey of Multimodal Code Intelligence](/202606/17/2606.15932v1-beyond-nl2code-a-structured-survey-of-multimodal-code-intelligence)  
+   evidence：统一端到端框架，融合多模态视频理解
+5. [SAMA: Semantic Anchor-aligned Augmentation for Unified Low-Resource Multimodal Information Extraction](/202606/18/2606.18780v1-sama-semantic-anchor-aligned-augmentation-for-unified-low-resource-multimodal-information-extraction)  
    标签：评分：6.0/10、query:um
-   evidence：多模态代码智能综述，涉及LLM和Transformer
-6. [See First, Answer Later: Visual Evidence Pre-Alignment via Sufficiency-Driven RL](/202606/17/2606.17678v1-see-first-answer-later-visual-evidence-pre-alignment-via-sufficiency-driven-rl)  
-   标签：评分：6.0/10、query:um
-   evidence：多模态大语言模型的视觉证据预对齐
+   evidence：提出一个统一的多模态数据增强框架用于信息抽取
 
 
 <div class="dpr-home-promo-card">
