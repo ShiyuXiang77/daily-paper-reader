@@ -1,0 +1,69 @@
+{
+  "label": "2026-06-19",
+  "date": "2026-06-19",
+  "generated_at": "2026-06-19T21:21:31",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202606/19/2606.18249v2-unified-multimodal-autoregressive-modeling-with-shared-context-visual-tokenizer-is-key-to-unification",
+      "section": "deep",
+      "title_en": "Unified Multimodal Autoregressive Modeling with Shared Context-Visual Tokenizer is Key to Unification",
+      "authors": "Wujian Peng, Lingchen Meng, Yuxuan Cai, Xianwei Zhuang, Yuhuan Yang, Rongyao Fang, Chenfei Wu, Junyang Lin, Zuxuan Wu, Shuai Bai",
+      "date": "2026-06-16",
+      "pdf": "https://arxiv.org/pdf/2606.18249v2",
+      "score": "10.0",
+      "evidence": "统一多模态建模，共享视觉分词器桥接理解与生成",
+      "tldr": "现有统一多模态建模常依赖两个不同视觉分词器，分裂表示空间，难以真正统一。本文提出UniAR框架，采用单一离散视觉分词器作为理解与生成的桥梁，实现模型直接解读自身生成视觉token的共享上下文。通过适配预训练编码器、多级特征融合和无查找逐位量化，保留高层语义和底层细节并以低成本扩大视觉词汇表。采用并行逐位预测大幅缩短视觉序列长度，结合扩散解码器生成高保真图像。经大规模预训练及监督微调与强化学习，在图像生成与编辑任务上达到最优，同时理解任务保持竞争力。表明共享上下文-视觉分词器是统一多模态建模的关键。",
+      "tags": "query:um",
+      "abstract_en": "Unified Multimodal Modeling aims to integrate visual understanding and generation within a single system. However, existing approaches typically rely on two disparate visual tokenizers, which splits the representation space and hinders truly unified modeling. We propose UniAR, a unified autoregressive framework where a single discrete visual tokenizer serves as the key bridge between understanding and generation, enabling a shared context in which the model can directly interpret its own generated visual tokens without additional re-encoding. UniAR adapts a pretrained vision encoder with multi-level feature fusion and a lookup-free bitwise quantization scheme, preserving both high-level semantics and low-level details while scaling the effective visual vocabulary at minimal cost. Building on this, the unified autoregressive model adopts parallel-bitwise-prediction to jointly predict spatially grouped, multi-level visual codes, substantially reducing visual sequence length and accelerating generation. Finally, a diffusion-based visual decoder operates on discrete visual tokens to decode high-fidelity images. Through large-scale pre-training, followed by supervised fine-tuning and reinforcement learning, UniAR achieves state-of-the-art performance on image generation and image editing while remaining competitive on multimodal understanding benchmarks. The project page is available at https://sharelab-sii.github.io/uniar-web.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/19/2606.14957v2-learning-sparse-latent-predictive-foundation-model-for-multimodal-neuroimaging",
+      "section": "deep",
+      "title_en": "Learning Sparse Latent Predictive Foundation Model for Multimodal Neuroimaging",
+      "authors": "Haoxu Huang, Long Chen, Jingyun Chen, Jinu Hyun, James Ryan Loftus, Kara Melmed, Daniel Orringer, Jennifer Frontera, Seena Dehkharghani, Arjun Masurkar, Narges Razavian",
+      "date": "2026-06-12",
+      "pdf": "https://arxiv.org/pdf/2606.14957v2",
+      "score": "8.0",
+      "evidence": "统一多模态神经影像基础模型与MoE架构",
+      "tldr": "脑部MRI包含多种互补序列（T1w、T2w、FLAIR），但缺乏统一的表示学习方法。本文提出Neuro-JEPA，一种稀疏多模态神经影像基础模型，采用潜在预测目标与混合专家架构，在超155万张扫描上预训练。系统研究了架构设计选择，并在25个临床任务和22个公开数据集任务上评估。结果显示，Neuro-JEPA相比现有基础模型和简单CNN基线，性能更强大且一致。本研究建立了多模态神经影像表示学习的可扩展框架，并强调了基础模型评估应包含简单基线、临床异质队列和控制多模态比较。",
+      "tags": "query:um",
+      "abstract_en": "Brain MRIs are routinely acquired as multiple complementary sequences with unique contrast weighting, including T1-weighed imaging (T1w) anatomic and fluid-sensitive T2-weighted (T2w) contrasts. However, methods for learning unified representations across the multitude of MRI contrast mechanisms at health-system scale are lacking. In this study, we introduce Neuro-JEPA, a sparse multimodal neuroimaging foundation model that combines a latent predictive objective with a Mixture-of-Experts architecture to encode brain MRI across core T1w, T2w, and fluid-suppressed FLAIR imaging (FLAIR). We further provide a systematic methodological study of architectural, masking, objective, and sparsity design choices beneficial for robust neuroimaging multimodal representation learning. Neuro-JEPA was pretrained on 1,551,862 scans from 428,647 studies after modality-specific preprocessing with data curation across three core structural brain MRI sequences. We evaluated the learned representations across clinical and research settings, including 25 tasks from three health systems: NYU Langone, NYU Long Island, and Massachusetts General Hospital, and 22 tasks from 12 public datasets, covering unimodal, multimodal and cross-domain evaluation configurations. Across these benchmarks, existing neuroimaging foundation models showed inconsistent gains over a simple convolutional neural network (CNN) baseline, whereas Neuro-JEPA achieved stronger and more consistent performance across all evaluated settings. These results establish a scalable methodological framework for multimodal neuroimaging representation learning and highlight the need for foundation model evaluation protocols that include simple baselines, clinically heterogeneous cohorts and controlled multimodal comparisons.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/19/2606.13768v2-cineorchestra-unified-entity-centric-conditioning-for-cinematic-video-generation",
+      "section": "quick",
+      "title_en": "CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation",
+      "authors": "Sharath Girish, Tsai-Shien Chen, Zhikang Dong, Mukesh Singhal, Hao Chen, Sergey Tulyakov, Aliaksandr Siarohin",
+      "date": "2026-06-11",
+      "pdf": "https://arxiv.org/pdf/2606.13768v2",
+      "score": "7.0",
+      "evidence": "统一视频扩散模型整合多种电影级控制",
+      "tldr": "现有文本到视频模型无法同时控制主体、事件、相机和镜头切换等电影元素。CineOrchestra提出统一框架，将所有异构元素表示为实体中心条件原语，并引入两种参数无关的旋转位置编码：区间采样时间RoPE和2D实体-时间交叉注意力RoPE，实现精确时空控制。在两个新基准上，该方法在密集字幕跟踪和镜头切换时序上优于六种专门方法。这是首个联合控制多主体、时间、相机和镜头切换的电影视频生成框架。",
+      "tags": "query:um",
+      "abstract_en": "Cinematic video depicts multiple subjects acting or interacting at specific moments, captured with deliberate camera movement, and stitched together by shot transitions. Together, these elements demand a level of fine-grained control beyond current text-to-video models. Existing work addresses each axis in isolation: multi-subject personalization, temporal control, multi-shot synthesis, or camera control; no prior framework jointly integrates all four. We present CineOrchestra, a unified video diffusion model that controls subjects, events, cameras, and shot transitions simultaneously. Our key insight is that these heterogeneous cinematic elements share a fundamental structure: each is an entity acting over a specific temporal interval, which can therefore all be expressed through one shared structure of entity-centric conditioning primitives, augmented with reference images for visual entities. This formulation reduces the architectural challenge to a single positional encoding problem, which we solve with two parameter-free coordinated rotary embeddings: (a) an interval-sampled temporal RoPE that yields consistent attention behavior across events of dramatically varying duration, and (b) a 2D entity-temporal cross-attention RoPE that disambiguates per-entity conditions and routes each to its corresponding spatiotemporal region. On two new benchmarks, CineOrchestra outperforms six per-axis specialists on dense caption following and shot-transition timing, with consistent gains in a pairwise user study and component ablations. Project page: https://snap-research.github.io/CineOrchestra",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/19/2606.20559v1-uniego-proxies-as-mediators-for-unified-egocentric-video-representation-learning",
+      "section": "quick",
+      "title_en": "UNIEGO: Proxies as Mediators for Unified Egocentric Video Representation Learning",
+      "authors": "Wenhao Chi, Arkaprava Sinha, Dominick Reilly, Hieu Le, Srijan Das",
+      "date": "2026-06-18",
+      "pdf": "https://arxiv.org/pdf/2606.20559v1",
+      "score": "7.0",
+      "evidence": "通过多教师蒸馏的统一自我中心编码器",
+      "tldr": "第一人称视频理解受限于单视角、单模态。提出UNIEGO，用代理模型作为中介，层次化蒸馏多教师知识（跨视角、RGB/深度/骨架模态），再经选择性代理蒸馏（SPD）自适应选择可靠监督。在动作识别、检索、分割三项任务上达到最优。表明结构化、代理介导的蒸馏能生成更丰富、判别性的第一人称表示。",
+      "tags": "query:um",
+      "abstract_en": "Egocentric video understanding is inherently limited by the narrow perspective of wearable cameras: a single viewpoint, a single modality, a single model cannot capture the full richness of human action. We argue that a truly expressive egocentric representation must subsume complementary knowledge across viewpoints, modalities, and foundation model representations, yet remain deployable from egocentric video alone. To this end, we introduce a hierarchical multi-teacher distillation framework that produces UNIEGO, a unified egocentric encoder trained with nine teachers spanning ego-exo viewpoints, RGB, depth, and skeleton modalities, and four foundation models. Rather than distilling directly from heterogeneous teachers whose incompatible architectures and feature geometries induce conflicting gradients, our framework interposes a layer of representation-specific Proxy models that translate diverse teacher knowledge into a homogeneous egocentric space. A second distillation stage, Selective Proxy Distillation (SPD), then adaptively selects, for each training sample, the subset of proxies that are both correct and confident, distilling exclusively from reliable supervision and suppressing erroneous signals. SPD is further stabilized by initializing UNIEGO as a learned convex combination of proxy parameters, placing the unified model in a well-conditioned region of the loss landscape before distillation begins. UNIEGO achieves state-of-the-art performance across three egocentric video understanding tasks - action recognition, video retrieval, and action segmentation on three challenging ego-exo benchmarks, outperforming naive multi-teacher distillation baselines and demonstrating that structured, proxy-mediated knowledge transfer yields richer and more discriminative egocentric representations.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
