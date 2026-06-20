@@ -1,0 +1,39 @@
+{
+  "label": "2026-06-20",
+  "date": "2026-06-20",
+  "generated_at": "2026-06-20T21:11:35",
+  "count": 2,
+  "papers": [
+    {
+      "paper_id": "202606/20/2606.19882v1-multimodal-concept-bottleneck-models",
+      "section": "deep",
+      "title_en": "Multimodal Concept Bottleneck Models",
+      "authors": "Tongqing Shi, Ge Yan, Tuomas Oikarinen, Tsui-Wei Weng",
+      "date": "2026-06-18",
+      "pdf": "https://arxiv.org/pdf/2606.19882v1",
+      "score": "8.0",
+      "evidence": "多模态概念瓶颈模型扩展CLIP，实现统一视觉语言表示",
+      "tldr": "概念瓶颈模型通过将图像特征与自然概念对齐提升可解释性，但存在无法泛化到新类别和概念外信息泄露的问题。本文提出多模态概念瓶颈模型，利用双概念瓶颈层对齐图像和文本嵌入，实现可解释的零样本分类和图像检索。在四个基准上平均提升51.26%准确率，保持高精度的同时提供更强可解释性。",
+      "tags": "query:um",
+      "abstract_en": "Concept Bottleneck Models (CBMs) enhance the interpretability of deep learning networks by aligning the features extracted from images with natural concepts. However, existing CBMs are constrained in their ability to generalize beyond a fixed set of predefined classes and the risk of non-concept information leakage, where predictive signals outside the intended concepts are inadvertently exploited. In this paper, we propose Multimodal Concept Bottleneck Model (MM-CBM) to address these issues and extend CBMs into CLIP. MM-CBM utilizes dual Concept Bottleneck Layers (CBLs) to align both the image and text embeddings into interpretable features. This allows us to perform new vision tasks like zero-shot classification or image retrieval in an interpretable way. Compared to existing methods, MM-CBM achieves up to 51.26% accuracy improvement on average across four standard benchmarks. Our method maintains high accuracy, staying within ~5% of black-box performance while offering greater interpretability.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/20/2606.14700v1-repfusion-leveraging-multimodal-priors-for-denoising-in-representation-space",
+      "section": "quick",
+      "title_en": "RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space",
+      "authors": "Xichen Pan, Aashu Singh, Satya Narayan Shukla, Xiangjun Fan, Shlok Kumar Mishra, Saining Xie",
+      "date": "2026-06-12",
+      "pdf": "https://arxiv.org/pdf/2606.14700v1",
+      "score": "6.0",
+      "evidence": "利用多模态先验在表示空间去噪，采用MLLM",
+      "tldr": "在文本到图像生成中，传统方法用LLM编码文本、新训练生成器去噪。受多模态LLM的MLP投影器能将干净视觉表示与LLM对齐启发，本文把MLLM本身用作噪声表示编码器，提出RepFusion。它利用MLLM输出作为扩散Transformer的条件，在同等推理预算下超越新初始化解噪器的基线。表明MLLM为视觉表示去噪提供强先验，且重复利用MLLM条件化能高效利用测试时计算。",
+      "tags": "query:um",
+      "abstract_en": "Large language models (LLMs) are widely used in text-to-image (T2I) systems, but they are typically limited to text encoding, while denoising is handled by newly trained generative backbones. The emergence of representation autoencoders (RAEs) shifts the generation target toward semantically structured visual representations, creating a latent space that is more compatible with pretrained LLM priors. Inspired by multimodal LLMs (MLLMs), where an MLP projector is sufficient to align clean visual representations with a pretrained LLM, we repurpose the MLLM itself as a noisy representation encoder, extending this mechanism from clean to noisy inputs. We present RepFusion, which uses the resulting MLLM outputs as the conditioning signal for a diffusion transformer. In controlled comparisons at similar inference budgets, RepFusion outperforms baselines that devote comparable capacity to newly initialized denoisers. These results demonstrate that MLLMs provide strong priors for denoising visual representations and that, by conditioning on evolving noisy representations, test-time compute can be productively spent on repeated MLLM conditioning in modern T2I systems.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}

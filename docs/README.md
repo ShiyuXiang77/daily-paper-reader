@@ -6,32 +6,30 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-19
-- 运行时间：2026-06-19 21:21:23 UTC
+- 最新运行日期：2026-06-20
+- 运行时间：2026-06-20 21:11:29 UTC
 - 运行状态：成功
-- 本次总论文数：4
-- 精读区：2
-- 速读区：2
+- 本次总论文数：2
+- 精读区：1
+- 速读区：1
 
 ### 今日简报（AI）
-今日精读两篇高分论文聚焦统一多模态自回归建模与神经影像预测模型；建议优先阅读《Unified Multimodal Autoregressive Modeling with Shared Context-Visual Tokenizer》和《Learning Sparse Latent Predictive Foundation Model for Multimodal Neuroimaging》以把握多模态融合与自监督学习前沿。
-- 详情：[/202606/19/README](/202606/19/README)
+今日精读1篇、速读1篇，重点聚焦多模态可解释性与表示学习。
+
+最值得关注的是精读论文《Multimodal Concept Bottleneck Models》（8.0分），其方向为多模态概念瓶颈模型，可用于提升模型可解释性。
+
+建议优先精读该论文，若时间有限可速读《RepFusion》了解多模态先验去噪思路。
+- 详情：[/202606/20/README](/202606/20/README)
 
 ### 精读区论文标签
-1. [Unified Multimodal Autoregressive Modeling with Shared Context-Visual Tokenizer is Key to Unification](/202606/19/2606.18249v2-unified-multimodal-autoregressive-modeling-with-shared-context-visual-tokenizer-is-key-to-unification)  
-   标签：评分：10.0/10、query:um
-   evidence：统一多模态建模，共享视觉分词器桥接理解与生成
-2. [Learning Sparse Latent Predictive Foundation Model for Multimodal Neuroimaging](/202606/19/2606.14957v2-learning-sparse-latent-predictive-foundation-model-for-multimodal-neuroimaging)  
+1. [Multimodal Concept Bottleneck Models](/202606/20/2606.19882v1-multimodal-concept-bottleneck-models)  
    标签：评分：8.0/10、query:um
-   evidence：统一多模态神经影像基础模型与MoE架构
+   evidence：多模态概念瓶颈模型扩展CLIP，实现统一视觉语言表示
 
 ### 速读区论文标签
-1. [CineOrchestra: Unified Entity-Centric Conditioning for Cinematic Video Generation](/202606/19/2606.13768v2-cineorchestra-unified-entity-centric-conditioning-for-cinematic-video-generation)  
-   标签：评分：7.0/10、query:um
-   evidence：统一视频扩散模型整合多种电影级控制
-2. [UNIEGO: Proxies as Mediators for Unified Egocentric Video Representation Learning](/202606/19/2606.20559v1-uniego-proxies-as-mediators-for-unified-egocentric-video-representation-learning)  
-   标签：评分：7.0/10、query:um
-   evidence：通过多教师蒸馏的统一自我中心编码器
+1. [RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space](/202606/20/2606.14700v1-repfusion-leveraging-multimodal-priors-for-denoising-in-representation-space)  
+   标签：评分：6.0/10、query:um
+   evidence：利用多模态先验在表示空间去噪，采用MLLM
 
 
 <div class="dpr-home-promo-card">
