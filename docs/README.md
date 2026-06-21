@@ -6,30 +6,32 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-20
-- 运行时间：2026-06-20 21:11:29 UTC
+- 最新运行日期：2026-06-21
+- 运行时间：2026-06-21 21:06:51 UTC
 - 运行状态：成功
-- 本次总论文数：2
-- 精读区：1
-- 速读区：1
+- 本次总论文数：3
+- 精读区：0
+- 速读区：3
 
 ### 今日简报（AI）
-今日精读1篇、速读1篇，重点聚焦多模态可解释性与表示学习。
-
-最值得关注的是精读论文《Multimodal Concept Bottleneck Models》（8.0分），其方向为多模态概念瓶颈模型，可用于提升模型可解释性。
-
-建议优先精读该论文，若时间有限可速读《RepFusion》了解多模态先验去噪思路。
-- 详情：[/202606/20/README](/202606/20/README)
+今日推荐3篇论文，聚焦遥感VQA统一框架、文本-图像生成微调范式及多视角驾驶视频生成。
+最值得看的是《A Unified Framework...》与《Timage...》两篇7分工作，前者构建了多架构统一的遥感视觉问答方案，后者提出生成式文本-图像微调新范式。
+建议优先精读前两篇高分论文，把握统一框架的设计思路与生成式微调的核心创新。
+- 详情：[/202606/21/README](/202606/21/README)
 
 ### 精读区论文标签
-1. [Multimodal Concept Bottleneck Models](/202606/20/2606.19882v1-multimodal-concept-bottleneck-models)  
-   标签：评分：8.0/10、query:um
-   evidence：多模态概念瓶颈模型扩展CLIP，实现统一视觉语言表示
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [RepFusion: Leveraging Multimodal Priors for Denoising in Representation Space](/202606/20/2606.14700v1-repfusion-leveraging-multimodal-priors-for-denoising-in-representation-space)  
+1. [A Unified Framework for Efficient Remote Sensing Visual Question Answering: Adapting Dual, Hybrid, and Encoder-Decoder Architectures](/202606/21/2606.19277v1-a-unified-framework-for-efficient-remote-sensing-visual-question-answering-adapting-dual-hybrid-and-encoder-decoder-architectures)  
+   标签：评分：7.0/10、query:um
+   evidence：引入针对遥感VQA的统一框架，适配多种VLM架构
+2. [Timage: A Generative Text-in-Image Paradigm for Fine-Tuning Vision-Language Models](/202606/21/2606.19944v1-timage-a-generative-text-in-image-paradigm-for-fine-tuning-vision-language-models)  
+   标签：评分：7.0/10、query:um
+   evidence：生成式文字叠加图像范式用于视觉语言模型微调
+3. [OmniDrive: An LLM-Choreographed Multi-Agent World Model with Unified Latent Co-Compression for Multi-View Driving Video Generation](/202606/21/2606.17536v1-omnidrive-an-llm-choreographed-multi-agent-world-model-with-unified-latent-co-compression-for-multi-view-driving-video-generation)  
    标签：评分：6.0/10、query:um
-   evidence：利用多模态先验在表示空间去噪，采用MLLM
+   evidence：统一潜在协同压缩用于多视角驾驶视频生成
 
 
 <div class="dpr-home-promo-card">

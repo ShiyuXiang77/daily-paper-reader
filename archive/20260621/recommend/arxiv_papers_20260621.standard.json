@@ -1,0 +1,143 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-21T21:05:10.624789+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.19277v1",
+      "source": "arxiv",
+      "title": "A Unified Framework for Efficient Remote Sensing Visual Question Answering: Adapting Dual, Hybrid, and Encoder-Decoder Architectures",
+      "abstract": "Visual Question Answering (VQA) in the Remote Sensing (RS) domain presents unique challenges due to the high resolution, multi scale object distribution, and semantic complexity of aerial imagery. While general domain Foundation Models have achieved remarkable success, their direct application to RSVQA is hindered by massive domain shifts and the computationally prohibitive nature of full fine tuning. This study presents a comparative analysis of RS Adapter, a Parameter Efficient Fine Tuning (PEFT) strategy, applied across three distinct Vision Language Model (VLM) architectures: the Dual Encoder CLIP, the Encoder Decoder BLIP, and the Hybrid FLAVA. We introduce a unified architectural surgery pipeline that injects lightweight bottleneck adapters into the attention and MLP layers of frozen backbones, enabling rapid adaptation with less than 5 percent of trainable parameters. Experimental results on the high resolution RSVQA x dataset demonstrate that while all adapted models achieve convergence, the Hybrid FLAVA architecture offers a superior balance of multimodal reasoning and retrieval capabilities compared to its unimodal counterparts. Our findings establish a new baseline for resource efficient VQA in disaster assessment and urban monitoring.",
+      "authors": [
+        "Timothy Agboada",
+        "Shikha Chandel",
+        "Yadav Raj Ghimire",
+        "Leila Hashemi-Beni"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-17T16:52:26+00:00",
+      "link": "https://arxiv.org/pdf/2606.19277v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "introduces a unified framework adapting multiple VLM architectures for remote sensing VQA",
+      "llm_evidence_cn": "引入针对遥感VQA的统一框架，适配多种VLM架构",
+      "llm_evidence": "引入针对遥感VQA的统一框架，适配多种VLM架构",
+      "canonical_evidence": "引入针对遥感VQA的统一框架，适配多种VLM架构",
+      "llm_tldr_en": "Proposes a unified framework adapting dual, hybrid, and encoder-decoder VLMs for efficient remote sensing VQA via PEFT.",
+      "llm_tldr_cn": "通用基础模型直接应用于遥感VQA存在领域漂移和计算开销大问题。本文提出一个统一的轻量级框架，采用参数高效微调策略适配三种视觉语言模型架构（双编码器、编码器-解码器、混合），并引入统一架构优化。在遥感VQA基准上取得高效且竞争力的结果。",
+      "llm_tldr": "通用基础模型直接应用于遥感VQA存在领域漂移和计算开销大问题。本文提出一个统一的轻量级框架，采用参数高效微调策略适配三种视觉语言模型架构（双编码器、编码器-解码器、混合），并引入统一架构优化。在遥感VQA基准上取得高效且竞争力的结果。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.17536v1",
+      "source": "arxiv",
+      "title": "OmniDrive: An LLM-Choreographed Multi-Agent World Model with Unified Latent Co-Compression for Multi-View Driving Video Generation",
+      "abstract": "Generative world models for autonomous driving face two unresolved tensions: heterogeneous control injection, where free-form language, HD-maps, trajectories, and camera poses reside in incompatible representational spaces, and post-hoc cross-view fusion, where per-camera latents fail to encode global 3-D geometry. We trace both to a single root cause: the absence of a shared symbolic interlingua aligning language, geometry, and pixels at the latent-token level. We present DRIVE-CHOREO, an LLM-choreographed multi-agent world model that recasts controllable multi-view video generation as latent choreography. Three Qwen2.5-VL agents - a Director parsing user intent into a structured WorldScript, a Cartographer grounding it into spatially-anchored layout tokens, and an Auditor feeding cross-view critiques back as auxiliary supervision - jointly author a single position-aware token sequence. This sequence is co-compressed with the multi-view video via a view-time permutation that enforces inter-camera geometry within the convolutional receptive field of a 3-D VAE. On nuScenes, DRIVE-CHOREO sets new state-of-the-art multi-view consistency and BEV mAP (21.6) with competitive FVD (45.7); a detector trained purely on our synthetic data gains +2.4 NDS on the real validation split, validating downstream utility.",
+      "authors": [
+        "Zijie Meng",
+        "Yufei Liu",
+        "Chengqian Ma",
+        "Zhiyu Li",
+        "Jiyuan Liu",
+        "Wenhua Nie",
+        "Bingcai Wei",
+        "Shuqin Chen",
+        "Weichen Xu",
+        "Jiquan Yuan",
+        "Miao Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-16T05:25:55+00:00",
+      "link": "https://arxiv.org/pdf/2606.17536v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Unified latent co-compression for multi-view driving video generation",
+      "llm_evidence_cn": "统一潜在协同压缩用于多视角驾驶视频生成",
+      "llm_evidence": "统一潜在协同压缩用于多视角驾驶视频生成",
+      "canonical_evidence": "统一潜在协同压缩用于多视角驾驶视频生成",
+      "llm_tldr_en": "OmniDrive uses an LLM-choreographed multi-agent world model with unified latent co-compression for controllable multi-view driving video generation.",
+      "llm_tldr_cn": "针对自动驾驶生成式世界模型中异构控制注入和后验跨视图融合的问题，本文提出OmniDrive，利用LLM编排的多智能体世界模型，通过统一潜在协同压缩将语言、几何和像素对齐到共享符号空间。该方法在多种控制条件下生成一致的多视图驾驶视频，展示了统一多模态架构在复杂场景中的应用。",
+      "llm_tldr": "针对自动驾驶生成式世界模型中异构控制注入和后验跨视图融合的问题，本文提出OmniDrive，利用LLM编排的多智能体世界模型，通过统一潜在协同压缩将语言、几何和像素对齐到共享符号空间。该方法在多种控制条件下生成一致的多视图驾驶视频，展示了统一多模态架构在复杂场景中的应用。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.19944v1",
+      "source": "arxiv",
+      "title": "Timage: A Generative Text-in-Image Paradigm for Fine-Tuning Vision-Language Models",
+      "abstract": "Multimodal Large Language Models (MLLMs) often lose track of the right image regions during fine-grained spatial reasoning, because a textual query rarely carries any explicit geometric anchor into the pixel domain. Prevailing remedies either rewire the model's weights or pad the prompt with verbose instructions, yet neither reliably pins the language to the correct visual coordinates without eroding the backbone's general competence. We introduce Timage, a paradigm that recasts multimodal understanding as an alignment problem solved at the input: the query is drawn, as a typeset overlay, onto the image itself. The placement and appearance of this overlay are produced by a Constrained Schrödinger Bridge (cSB), an entropic optimal-transport sampler that factorizes layout synthesis into two coupled stochastic stages. The first stage, Region Search, transports noise toward query-aligned image zones while obeying a hard occlusion barrier that protects salient foreground content; the second stage, Appearance Shaping, sizes the glyphs through an ``ink-budget'' regularizer so that the rendered text stays legible and visually balanced. The resulting overlay behaves as an explicit attention beacon that channels the model's focus along spatial semantics. On the VMCBench suite, Timage paired with a modest 7B backbone clearly overtakes far larger proprietary systems as well as parameter-tuned baselines. The study positions deliberate input reconstruction as a powerful, architecture-neutral lever for strengthening multimodal reasoning.",
+      "authors": [
+        "Yifeng Wu",
+        "Huimin Huang",
+        "Ruiluo Wu",
+        "Chunyi Lin",
+        "Guanhua Chen",
+        "Xian Wu",
+        "Wang Song",
+        "Ruize Han"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-18T08:40:41+00:00",
+      "link": "https://arxiv.org/pdf/2606.19944v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "Generative text-in-image paradigm for VLM fine-tuning",
+      "llm_evidence_cn": "生成式文字叠加图像范式用于视觉语言模型微调",
+      "llm_evidence": "生成式文字叠加图像范式用于视觉语言模型微调",
+      "canonical_evidence": "生成式文字叠加图像范式用于视觉语言模型微调",
+      "llm_tldr_en": "Timage recasts multimodal understanding as alignment by drawing the query onto the image via a Constrained Schrodinger Bridge, enabling fine-grained spatial reasoning without eroding backbone competence.",
+      "llm_tldr_cn": "针对多模态大模型在细粒度空间推理中丢失图像区域的问题，本文提出Timage范式，将查询以排版形式叠加到图像上，通过约束薛定谔桥优化叠加位置和外观。该方法将多模态理解重新定义为输入端的对齐问题，实验表明在保持骨干网络通用能力的同时，显著提升了空间定位精度。",
+      "llm_tldr": "针对多模态大模型在细粒度空间推理中丢失图像区域的问题，本文提出Timage范式，将查询以排版形式叠加到图像上，通过约束薛定谔桥优化叠加位置和外观。该方法将多模态理解重新定义为输入端的对齐问题，实验表明在保持骨干网络通用能力的同时，显著提升了空间定位精度。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    }
+  ]
+}

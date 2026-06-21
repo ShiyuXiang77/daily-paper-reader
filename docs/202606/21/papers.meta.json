@@ -1,0 +1,54 @@
+{
+  "label": "2026-06-21",
+  "date": "2026-06-21",
+  "generated_at": "2026-06-21T21:06:58",
+  "count": 3,
+  "papers": [
+    {
+      "paper_id": "202606/21/2606.19277v1-a-unified-framework-for-efficient-remote-sensing-visual-question-answering-adapting-dual-hybrid-and-encoder-decoder-architectures",
+      "section": "quick",
+      "title_en": "A Unified Framework for Efficient Remote Sensing Visual Question Answering: Adapting Dual, Hybrid, and Encoder-Decoder Architectures",
+      "authors": "Timothy Agboada, Shikha Chandel, Yadav Raj Ghimire, Leila Hashemi-Beni",
+      "date": "2026-06-17",
+      "pdf": "https://arxiv.org/pdf/2606.19277v1",
+      "score": "7.0",
+      "evidence": "引入针对遥感VQA的统一框架，适配多种VLM架构",
+      "tldr": "远程感知视觉问答因遥感图像的高分辨率、多尺度目标分布和语义复杂性而面临独特挑战。本文提出统一框架，采用参数高效微调（PEFT）策略RS Adapter，在双编码器CLIP、编码器-解码器BLIP和混合FLAVA三种视觉语言模型中，通过注入轻量bottleneck adapter到注意力与MLP层，仅训练不到5%参数实现快速适配。在RSVQA-x数据集上，混合FLAVA架构在多模态推理与检索上取得最佳平衡。与全微调相比，该方法极大降低了计算成本。该研究为灾害评估、城市监控等资源受限场景下的高效VQA建立了新基线，并推动了PEFT在遥感领域的应用。",
+      "tags": "query:um",
+      "abstract_en": "Visual Question Answering (VQA) in the Remote Sensing (RS) domain presents unique challenges due to the high resolution, multi scale object distribution, and semantic complexity of aerial imagery. While general domain Foundation Models have achieved remarkable success, their direct application to RSVQA is hindered by massive domain shifts and the computationally prohibitive nature of full fine tuning. This study presents a comparative analysis of RS Adapter, a Parameter Efficient Fine Tuning (PEFT) strategy, applied across three distinct Vision Language Model (VLM) architectures: the Dual Encoder CLIP, the Encoder Decoder BLIP, and the Hybrid FLAVA. We introduce a unified architectural surgery pipeline that injects lightweight bottleneck adapters into the attention and MLP layers of frozen backbones, enabling rapid adaptation with less than 5 percent of trainable parameters. Experimental results on the high resolution RSVQA x dataset demonstrate that while all adapted models achieve convergence, the Hybrid FLAVA architecture offers a superior balance of multimodal reasoning and retrieval capabilities compared to its unimodal counterparts. Our findings establish a new baseline for resource efficient VQA in disaster assessment and urban monitoring.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/21/2606.19944v1-timage-a-generative-text-in-image-paradigm-for-fine-tuning-vision-language-models",
+      "section": "quick",
+      "title_en": "Timage: A Generative Text-in-Image Paradigm for Fine-Tuning Vision-Language Models",
+      "authors": "Yifeng Wu, Huimin Huang, Ruiluo Wu, Chunyi Lin, Guanhua Chen, Xian Wu, Wang Song, Ruize Han",
+      "date": "2026-06-18",
+      "pdf": "https://arxiv.org/pdf/2606.19944v1",
+      "score": "7.0",
+      "evidence": "生成式文字叠加图像范式用于视觉语言模型微调",
+      "tldr": "多模态大模型在细粒度空间推理中常丢失目标图像区域，因文本查询缺乏几何锚点。Timage将文本查询直接渲染到图像上作为覆盖层，利用约束薛定谔桥（cSB）分两阶段生成：区域搜索定位对齐区域、外观塑造控制文字可读性。在VMCBench上，Timage搭配7B模型超越更大模型和参数微调基线。该工作表明输入重构是增强多模态推理的强效、架构无关手段。",
+      "tags": "query:um",
+      "abstract_en": "Multimodal Large Language Models (MLLMs) often lose track of the right image regions during fine-grained spatial reasoning, because a textual query rarely carries any explicit geometric anchor into the pixel domain. Prevailing remedies either rewire the model's weights or pad the prompt with verbose instructions, yet neither reliably pins the language to the correct visual coordinates without eroding the backbone's general competence. We introduce Timage, a paradigm that recasts multimodal understanding as an alignment problem solved at the input: the query is drawn, as a typeset overlay, onto the image itself. The placement and appearance of this overlay are produced by a Constrained Schrödinger Bridge (cSB), an entropic optimal-transport sampler that factorizes layout synthesis into two coupled stochastic stages. The first stage, Region Search, transports noise toward query-aligned image zones while obeying a hard occlusion barrier that protects salient foreground content; the second stage, Appearance Shaping, sizes the glyphs through an ``ink-budget'' regularizer so that the rendered text stays legible and visually balanced. The resulting overlay behaves as an explicit attention beacon that channels the model's focus along spatial semantics. On the VMCBench suite, Timage paired with a modest 7B backbone clearly overtakes far larger proprietary systems as well as parameter-tuned baselines. The study positions deliberate input reconstruction as a powerful, architecture-neutral lever for strengthening multimodal reasoning.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/21/2606.17536v1-omnidrive-an-llm-choreographed-multi-agent-world-model-with-unified-latent-co-compression-for-multi-view-driving-video-generation",
+      "section": "quick",
+      "title_en": "OmniDrive: An LLM-Choreographed Multi-Agent World Model with Unified Latent Co-Compression for Multi-View Driving Video Generation",
+      "authors": "Zijie Meng, Yufei Liu, Chengqian Ma, Zhiyu Li, Jiyuan Liu, Wenhua Nie, Bingcai Wei, Shuqin Chen, Weichen Xu, Jiquan Yuan, Miao Zhang",
+      "date": "2026-06-16",
+      "pdf": "https://arxiv.org/pdf/2606.17536v1",
+      "score": "6.0",
+      "evidence": "统一潜在协同压缩用于多视角驾驶视频生成",
+      "tldr": "自动驾驶生成式世界模型面临异构控制注入和跨视图融合两大难题，根源在于缺乏共享符号中介语。本文提出DRIVE-CHOREO，由三个Qwen2.5-VL智能体（Director、Cartographer、Auditor）协作生成位置感知标记序列，并通过视图-时间排列与多视图视频联合压缩至3D VAE，强制跨相机几何。在nuScenes上，BEV mAP达21.6，FVD为45.7；合成数据训练的检测器在真实验证集上NDS提升2.4，验证下游实用性。",
+      "tags": "query:um",
+      "abstract_en": "Generative world models for autonomous driving face two unresolved tensions: heterogeneous control injection, where free-form language, HD-maps, trajectories, and camera poses reside in incompatible representational spaces, and post-hoc cross-view fusion, where per-camera latents fail to encode global 3-D geometry. We trace both to a single root cause: the absence of a shared symbolic interlingua aligning language, geometry, and pixels at the latent-token level. We present DRIVE-CHOREO, an LLM-choreographed multi-agent world model that recasts controllable multi-view video generation as latent choreography. Three Qwen2.5-VL agents - a Director parsing user intent into a structured WorldScript, a Cartographer grounding it into spatially-anchored layout tokens, and an Auditor feeding cross-view critiques back as auxiliary supervision - jointly author a single position-aware token sequence. This sequence is co-compressed with the multi-view video via a view-time permutation that enforces inter-camera geometry within the convolutional receptive field of a 3-D VAE. On nuScenes, DRIVE-CHOREO sets new state-of-the-art multi-view consistency and BEV mAP (21.6) with competitive FVD (45.7); a detector trained purely on our synthetic data gains +2.4 NDS on the real validation split, validating downstream utility.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
