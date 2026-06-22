@@ -6,32 +6,34 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-21
-- 运行时间：2026-06-21 21:06:51 UTC
+- 最新运行日期：2026-06-22
+- 运行时间：2026-06-22 21:45:21 UTC
 - 运行状态：成功
-- 本次总论文数：3
-- 精读区：0
+- 本次总论文数：4
+- 精读区：1
 - 速读区：3
 
 ### 今日简报（AI）
-今日推荐3篇论文，聚焦遥感VQA统一框架、文本-图像生成微调范式及多视角驾驶视频生成。
-最值得看的是《A Unified Framework...》与《Timage...》两篇7分工作，前者构建了多架构统一的遥感视觉问答方案，后者提出生成式文本-图像微调新范式。
-建议优先精读前两篇高分论文，把握统一框架的设计思路与生成式微调的核心创新。
-- 详情：[/202606/21/README](/202606/21/README)
+1. 今日共推荐4篇论文，聚焦动态头像编辑（精读）与多模态感知、特征对齐等前沿方向。  
+2. 最值得关注的是精读论文《Edit3DGS》，首次将2D指令扩散与3D高斯泼溅结合实现高效头部动态编辑，极具应用潜力；速读中《SUP-MCRL》在脑电解码多模态对比学习上表现突出。  
+3. 建议深入理解Edit3DGS的指令控制机制，并留意频域对齐、概率建模等速读方向在跨模态任务中的扩展价值。
+- 详情：[/202606/22/README](/202606/22/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [Edit3DGS: Unified Framework for Dynamic Head Editing via 2D Instruction-Guided Diffusion and 3D Gaussian Splatting](/202606/22/2606.17432v1-edit3dgs-unified-framework-for-dynamic-head-editing-via-2d-instruction-guided-diffusion-and-3d-gaussian-splatting)  
+   标签：评分：8.0/10、query:um
+   evidence：统一的动态头部编辑框架，融合2D扩散和3D高斯泼溅
 
 ### 速读区论文标签
-1. [A Unified Framework for Efficient Remote Sensing Visual Question Answering: Adapting Dual, Hybrid, and Encoder-Decoder Architectures](/202606/21/2606.19277v1-a-unified-framework-for-efficient-remote-sensing-visual-question-answering-adapting-dual-hybrid-and-encoder-decoder-architectures)  
+1. [SUP-MCRL: Subject-aware Unified Pseudo-feature Coded Multimodal Contrastive Representation Learning for EEG Visual Decoding](/202606/22/2606.16615v1-sup-mcrl-subject-aware-unified-pseudo-feature-coded-multimodal-contrastive-representation-learning-for-eeg-visual-decoding)  
    标签：评分：7.0/10、query:um
-   evidence：引入针对遥感VQA的统一框架，适配多种VLM架构
-2. [Timage: A Generative Text-in-Image Paradigm for Fine-Tuning Vision-Language Models](/202606/21/2606.19944v1-timage-a-generative-text-in-image-paradigm-for-fine-tuning-vision-language-models)  
-   标签：评分：7.0/10、query:um
-   evidence：生成式文字叠加图像范式用于视觉语言模型微调
-3. [OmniDrive: An LLM-Choreographed Multi-Agent World Model with Unified Latent Co-Compression for Multi-View Driving Video Generation](/202606/21/2606.17536v1-omnidrive-an-llm-choreographed-multi-agent-world-model-with-unified-latent-co-compression-for-multi-view-driving-video-generation)  
+   evidence：统一的多模态对比表示学习框架用于脑电视觉解码
+2. [FUSE: Frequency-domain Unification and Spectral Energy Alignment for Multi-modal Object Re-Identification](/202606/22/2606.20044v1-fuse-frequency-domain-unification-and-spectral-energy-alignment-for-multi-modal-object-re-identification)  
    标签：评分：6.0/10、query:um
-   evidence：统一潜在协同压缩用于多视角驾驶视频生成
+   evidence：频域框架用于多模态重识别
+3. [MixProLAP: Mixture-Induced Uncertainty Modeling for Probabilistic Language-Audio Pretraining](/202606/22/2606.20418v1-mixprolap-mixture-induced-uncertainty-modeling-for-probabilistic-language-audio-pretraining)  
+   标签：评分：6.0/10、query:um
+   evidence：概率性跨模态对齐方法，基于Transformer但任务特定
 
 
 <div class="dpr-home-promo-card">

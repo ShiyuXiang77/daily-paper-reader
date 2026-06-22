@@ -1,0 +1,69 @@
+{
+  "label": "2026-06-22",
+  "date": "2026-06-22",
+  "generated_at": "2026-06-22T21:45:30",
+  "count": 4,
+  "papers": [
+    {
+      "paper_id": "202606/22/2606.17432v1-edit3dgs-unified-framework-for-dynamic-head-editing-via-2d-instruction-guided-diffusion-and-3d-gaussian-splatting",
+      "section": "deep",
+      "title_en": "Edit3DGS: Unified Framework for Dynamic Head Editing via 2D Instruction-Guided Diffusion and 3D Gaussian Splatting",
+      "authors": "Duy-Dat Tran, Trung-Nghia Le",
+      "date": "2026-06-16",
+      "pdf": "https://arxiv.org/pdf/2606.17432v1",
+      "score": "8.0",
+      "evidence": "统一的动态头部编辑框架，融合2D扩散和3D高斯泼溅",
+      "tldr": "现有动态头部编辑方法常将帧编辑与3D重建分离，导致时序一致性和语义可控性不足。Edit3DGS统一框架结合2D指令引导扩散与3D高斯溅射，输入视频后通过文本条件编辑面部区域，再经多视图批量编辑和轻量级修复聚合为高保真动态化身。实验实现无伪影、时间平滑的编辑，保留身份与动作。该框架支持表情变换、属性修改等细粒度操作，适用于虚拟化身和沉浸通信。",
+      "tags": "query:um",
+      "abstract_en": "We present Edit3DGS, a unified framework for dynamic 3D head editing that integrates 2D instruction-guided diffusion with 3D Gaussian splatting. Unlike prior approaches that separately address frame-based edits or static 3D reconstruction, our method couples semantic controllability in the image domain with photorealistic, temporally consistent 3D representations. Given an input video, editable facial regions are masked and modified using a text-conditioned diffusion model to support fine-grained operations such as expression transformation, attribute modification, and appearance refinement. The edited frames are then aggregated through 3D Gaussian splatting to produce a coherent, high-fidelity avatar that preserves both identity and motion dynamics. To enforce consistency, Edit3DGS incorporates multi-view batch editing and lightweight inpainting strategies that recover lost expressions across timesteps. Experimental results demonstrate that our framework enables controllable, artifact-free head editing with smooth temporal transitions, offering practical applications in virtual avatars, immersive communication, film production, and interactive media.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/22/2606.16615v1-sup-mcrl-subject-aware-unified-pseudo-feature-coded-multimodal-contrastive-representation-learning-for-eeg-visual-decoding",
+      "section": "quick",
+      "title_en": "SUP-MCRL: Subject-aware Unified Pseudo-feature Coded Multimodal Contrastive Representation Learning for EEG Visual Decoding",
+      "authors": "Shengyu Gong, Weiming Zeng, Yueyang Li, Zijian Kang, Hongjie Yan, Wai Ting Siok, Nizhuan Wang",
+      "date": "2026-06-15",
+      "pdf": "https://arxiv.org/pdf/2606.16615v1",
+      "score": "7.0",
+      "evidence": "统一的多模态对比表示学习框架用于脑电视觉解码",
+      "tldr": "非侵入式脑机接口在自然视觉解码中 fidelity 退化严重。提出 SUP-MCRL 框架，集成语义实体感知视觉编码器、统一 EEG 增强器和原型渐进增强器，实现语义一致和主体自适应的跨模态对比学习。在 THINGS-EEG 数据集上，内主体 Top-1/Top-5 达 66.0%/91.9%，跨主体 LOSO 达 24.0%/52.9%，超越现有方法。通过伪特征池和渐进增强防止表示崩溃，为零样本视觉解码提供新范式。",
+      "tags": "query:um",
+      "abstract_en": "Non-invasive brain-computer interfaces suffer severe fidelity degradation in neural visual decoding when generalizing to natural visual experiences. Conventional multimodal contrastive representation learning solely optimizes geometric distance alignment, neglecting semantic consistency and subject selectivity, causing spurious zero-shot alignment. We propose SUP-MCRL, a unified framework integrating three collaborative mechanisms: (1) Semantic-entity Aware Visual Encoder (SAVE), learning spatial attention to extract semantic content without pre-trained saliency models; (2 Unified EEG Enhancer (UEE), employing multi-scale atrous convolutions and inter-band attention for adaptive cross-subject robustness; and (3) Prototype-based Progressive Augmenter (PPA), maintaining an EMA-updated pseudo-feature pool to prevent representation collapse. Zero-shot experiments on THINGS-EEG achieve 66.0%/91.9% (Top-1/Top-5) intra-subject and 24.0%/52.9% LOSO accuracy, surpassing state-of-the-art methods. Code is available at https://github.com/NZWANG/SUP-MCRL.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/22/2606.20044v1-fuse-frequency-domain-unification-and-spectral-energy-alignment-for-multi-modal-object-re-identification",
+      "section": "quick",
+      "title_en": "FUSE: Frequency-domain Unification and Spectral Energy Alignment for Multi-modal Object Re-Identification",
+      "authors": "Xuanhao Qi, Tom H. Luan, Yukang Zhang, Jinkai Zheng, Zhou Su, Shuwei Li, Lei Tan",
+      "date": "2026-06-18",
+      "pdf": "https://arxiv.org/pdf/2606.20044v1",
+      "score": "6.0",
+      "evidence": "频域框架用于多模态重识别",
+      "tldr": "现有多模态重识别方法偏重低频特征（颜色、光照），忽略中高频纹理等细节，导致表征不完整。本文提出FUSE频域框架，通过光谱分解模块将特征解耦为低中高频子空间，再经跨模态对齐模块利用频域一致性正则化实现能量对齐。此外引入可学习频率调制增强鲁棒性。在RGBNT201、RGBNT100和MSVR310三个数据集上，mAP和Rank-1分别提升9.1%和9.5%，构建了可解释的频域多模态表示范式。",
+      "tags": "query:um",
+      "abstract_en": "Despite significant progress in multi-modal Re-Identification (ReID), existing methods tend to emphasize low-frequency cues. Consequently, they focus on attributes such as color, illumination, and coarse appearance, while overlooking mid and high-frequency structures that encode geometric, textural, and identity-discriminative details. This imbalance leads to incomplete spectral representations and unstable cross-modal alignment. To overcome these limitations, we introduce FUSE, a frequency-domain framework that reformulates multi-modal ReID as a two-stage process of spectral disentanglement and energy alignment. The proposed Spectral Decomposition Module (SDM) adaptively partitions features into low, mid, and high-frequency subspaces, enabling hierarchical spectral modeling. The Cross-Modal Alignment Module (CAM) further enforces energy alignment and subspace complementarity across modalities via frequency-consistency regularization. In addition, FUSE incorporates learnable frequency modulation to enhance robustness under varying illumination and heterogeneous sensor conditions. Extensive experiments on RGBNT201, RGBNT100, and MSVR310 show that FUSE achieves 9.1\\% mAP and 9.5\\% Rank-1 improvements, establishing an interpretable frequency-domain paradigm for multi-modal representation learning.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "paper_id": "202606/22/2606.20418v1-mixprolap-mixture-induced-uncertainty-modeling-for-probabilistic-language-audio-pretraining",
+      "section": "quick",
+      "title_en": "MixProLAP: Mixture-Induced Uncertainty Modeling for Probabilistic Language-Audio Pretraining",
+      "authors": "Yu Nakagome, Jaesong Lee, Soo-Whan Chung",
+      "date": "2026-06-18",
+      "pdf": "https://arxiv.org/pdf/2606.20418v1",
+      "score": "6.0",
+      "evidence": "概率性跨模态对齐方法，基于Transformer但任务特定",
+      "tldr": "声学环境中的重叠声音事件和多样文本描述导致音频-文本对齐存在固有歧义。为此提出MixProLAP概率框架，将每个模态表示为分布而非确定性点嵌入，通过混合音频-文本对模拟真实声学混合，并设计多级包含损失捕捉语义包含关系。在音频-文本检索基准上，该方法显著优于确定性对比方法，验证了不确定性建模对多对多歧义对齐的有效性。",
+      "tags": "query:um",
+      "abstract_en": "Acoustic environments often contain multiple overlapping sound events, and the same acoustic scene can be described using diverse textual expressions, making audio-text alignment inherently ambiguous. This paper proposes a probabilistic audio-language pretraining framework to model many-to-many correspondence ambiguity in audio-text alignment. Unlike conventional contrastive methods that learn deterministic point embeddings, our approach represents each modality as a distribution and learns uncertainty-aware cross-modal alignment. Rather than relying on masking-based uncertainty simulation, we mix audio-text pairs to create overlapping sounds that better reflect real acoustic mixtures and capture semantic inclusion relations among sound events. We further introduce a multi-level inclusion loss to enforce representations consistent with these relations. Experiments on audio-text retrieval benchmarks show that the proposed method outperforms deterministic baselines.",
+      "source": "arxiv",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "errors": []
+}
