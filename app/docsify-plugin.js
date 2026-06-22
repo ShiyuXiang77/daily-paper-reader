@@ -2682,10 +2682,12 @@ window.$docsify = {
                     const links = groupLi ? groupLi.querySelectorAll('a.dpr-sidebar-item-link[href*="#/"]') : [];
                     console.log('[DPR-badge] found ' + links.length + ' paper links to mark read');
                     links.forEach((a) => {
-                      const href = (a.getAttribute('href') || '').replace(/^#/, '');
-                      if (href) {
-                        console.log('[DPR-badge] marking read:', href);
-                        markPaperRead(href, 'read');
+                      const href = a.getAttribute('href') || '';
+                      const m = href.match(/#\/(.+)$/);
+                      if (m) {
+                        const paperId = m[1].replace(/\/$/, '');
+                        console.log('[DPR-badge] marking read:', paperId);
+                        markPaperRead(paperId, 'read');
                       }
                     });
                     badge.style.opacity = '';
