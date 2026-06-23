@@ -1,0 +1,489 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-23T21:10:19.412621+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 7,
+    "quick_skim_target": 11,
+    "quick_selected": 7
+  },
+  "deep_dive": [
+    {
+      "id": "2606.23041v1",
+      "source": "arxiv",
+      "title": "SPAR: Semantic-Pixel Self-Alignment and Adaptive Routing for Unified Multimodal Models",
+      "abstract": "Multimodal Large Language Models (MLLMs) have achieved remarkable success in visual understanding but remain constrained in visual generation due to the fundamental feature discrepancy between semantic perception and pixel-level reconstruction. Bridging this gap requires overcoming two core challenges: endowing semantic encoders with high-fidelity reconstruction capabilities, and effectively aligning generative models with semantic spaces without relying on external teachers. To this end, we propose a novel unified multimodal framework featuring \\textbf{S}emantic-\\textbf{P}ixel self-alignment and \\textbf{A}daptive \\textbf{R}outing (\\textbf{SPAR}). First, to reconcile semantic perception with pixel-level reconstruction, we introduce an asymmetric dual-stream unified tokenizer. A lightweight semantic stream anchors discriminative features, while a Transformer-augmented pixel stream recovers fine-grained visual details into a unified compact latent space. Second, to eliminate external dependencies, we propose a self-aligned generation paradigm that natively leverages this optimized tokenizer as an internal alignment teacher for the diffusion model. Furthermore, to facilitate flexible multimodal interaction within this unified space, we introduce Dynamic Token Routing, which enables each token to adaptively aggregate multi-layer MLLM features based on its distinct semantic demands. Extensive experiments demonstrate that SPAR establishes the state-of-the-art for unified architectures, achieving exceptional generation and reconstruction quality while preserving foundational visual understanding capabilities.",
+      "authors": [
+        "Hongxiang Li",
+        "Hongxu Chen",
+        "Chenyang Zhu",
+        "Xiaoshuang Huang",
+        "Jiayin Cai",
+        "Xiaolong Jiang",
+        "Yao Hu",
+        "Long Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-22T08:48:19+00:00",
+      "link": "https://arxiv.org/pdf/2606.23041v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "directly proposes unified multimodal model framework",
+      "llm_evidence_cn": "直接提出统一多模态模型框架",
+      "llm_evidence": "直接提出统一多模态模型框架",
+      "canonical_evidence": "直接提出统一多模态模型框架",
+      "llm_tldr_en": "SPAR introduces a unified multimodal framework with semantic-pixel self-alignment and adaptive routing, bridging visual understanding and generation within one model.",
+      "llm_tldr_cn": "多模态大语言模型在视觉理解上成功但生成受限，主要因语义感知与像素重建间的特征差异。SPAR提出统一多模态框架，通过语义-像素自对齐模块弥合语义编码与像素级重建，并利用自适应路由选择合适路径。实验表明，该框架同时提升理解和生成性能，为真正的统一多模态模型提供了有效方案。",
+      "llm_tldr": "多模态大语言模型在视觉理解上成功但生成受限，主要因语义感知与像素重建间的特征差异。SPAR提出统一多模态框架，通过语义-像素自对齐模块弥合语义编码与像素级重建，并利用自适应路由选择合适路径。实验表明，该框架同时提升理解和生成性能，为真正的统一多模态模型提供了有效方案。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.21135v1",
+      "source": "arxiv",
+      "title": "Odoriko: A Shape-Aware Multimodal Diffusion Framework for Human Motion",
+      "abstract": "Human motion generation has been widely studied across diverse input modalities, text, music, and video, and recent efforts have unified these into single multimodal frameworks. However, while morphological factors such as gender and body shape are known to produce distinct kinematic signatures, no existing unified framework incorporates this into generation, treating all subjects as morphologically equivalent. We present Odoriko, the first unified multimodal motion generation framework that reflects subject bio-morphological information directly in synthesized motion output. Rather than averaging over subject variation, Odoriko generates motion that is consistent with who is moving, not just what they are asked to do, across text, music, and video conditions within a single model. When explicit morphological information is unavailable, Odoriko additionally recovers subject morphology alongside motion, unifying estimation and generation in one framework. Extensive experiments across text-to-motion, music-to-dance, and video-to-motion benchmarks demonstrate that Odoriko matches or exceeds prior specialized models on standard metrics, while enabling morphology-consistent generation that no existing unified framework supports.",
+      "authors": [
+        "Dongseok Shim",
+        "Julian Tanke",
+        "Kengo Uchida",
+        "Christian Simon",
+        "Koichi Saito",
+        "Takashi Shibuya",
+        "Shusuke Takahashi",
+        "Yuki Mitsufuji"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.GR",
+        "cs.RO"
+      ],
+      "published": "2026-06-19T06:19:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.21135v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified multimodal motion generation framework with shape awareness",
+      "llm_evidence_cn": "形状感知的统一多模态运动生成框架",
+      "llm_evidence": "形状感知的统一多模态运动生成框架",
+      "canonical_evidence": "形状感知的统一多模态运动生成框架",
+      "llm_tldr_en": "Presents Odoriko, the first unified multimodal motion generation framework that incorporates bio-morphological information, enabling consistent motion generation across text, music, and video inputs.",
+      "llm_tldr_cn": "现有统一多模态运动生成框架忽略了个体形态差异，生成的动画缺乏个性化。本文提出Odoriko，首个融合生物形态信息的统一多模态运动生成框架，通过引入形态特征编码，使得基于文本、音乐、视频输入的生成结果与主体身份一致。实验表明Odoriko在多种模态下均能生成个性化运动，推动了统一多模态生成技术的细粒度发展。",
+      "llm_tldr": "现有统一多模态运动生成框架忽略了个体形态差异，生成的动画缺乏个性化。本文提出Odoriko，首个融合生物形态信息的统一多模态运动生成框架，通过引入形态特征编码，使得基于文本、音乐、视频输入的生成结果与主体身份一致。实验表明Odoriko在多种模态下均能生成个性化运动，推动了统一多模态生成技术的细粒度发展。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.22138v1",
+      "source": "arxiv",
+      "title": "BioMatrix: Towards a Comprehensive Biological Foundation Model Spanning the Modality Matrix of Sequences, Structures, and Language",
+      "abstract": "We present BioMatrix, the first multimodal foundation model that natively integrates sequences, structures, and natural language for both molecules and proteins within a single decoder-only architecture. Existing biological foundation models pursue native multimodality and broad entity coverage separately: those that fuse multiple modalities under a shared objective remain confined to a single entity type, while those spanning multiple entity types either omit explicit structural modeling or rely on adapter-based designs in which the model cannot natively generate the very modalities it can read. BioMatrix closes this gap by mapping molecular sequences (supporting both SMILES and SELFIES notations), molecular structures, protein sequences, protein structures, and natural language into a shared discrete token space through a unified tokenization scheme, so that all modalities are consumed and produced uniformly under a single next-token prediction objective -- without external encoders, projection adapters, or modality-specific output heads. Built upon the Qwen3 language model (1.7B and 4B), BioMatrix is continually pretrained on 304.4 billion tokens spanning general and domain-specific text, sequence and structure views of molecules and proteins, and cross-modal corpora that interleave biomolecular entities with scientific text and link distinct entities through molecule-protein and protein-protein interaction data. After tuning on a comprehensive suite of downstream applications covering 80 tasks across 6 categories -- encompassing single-entity and multi-entity understanding and generation tasks across and within modalities -- BioMatrix achieves state-of-the-art or competitive performance on 77 out of 80 tasks, demonstrating that a single, natively multimodal generalist model can effectively match or surpass specialized approaches across a wide range of biological tasks.",
+      "authors": [
+        "Qizhi Pei",
+        "Zhimeng Zhou",
+        "Yi Duan",
+        "Yiyang Zhao",
+        "Wei Li",
+        "Han Guo",
+        "Liang He",
+        "Chengping Li",
+        "Chang-Yu Hsieh",
+        "Conghui He",
+        "Rui Yan",
+        "Lijun Wu"
+      ],
+      "primary_category": "cs.CL",
+      "categories": [
+        "cs.CL",
+        "cs.AI",
+        "cs.LG",
+        "q-bio.BM"
+      ],
+      "published": "2026-06-20T16:38:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.22138v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "multimodal foundation model unifying sequences, structures, and language",
+      "llm_evidence_cn": "统一序列、结构和语言的多模态基础模型",
+      "llm_evidence": "统一序列、结构和语言的多模态基础模型",
+      "canonical_evidence": "统一序列、结构和语言的多模态基础模型",
+      "llm_tldr_en": "BioMatrix natively integrates sequences, structures, and language for molecules and proteins in a decoder-only architecture, representing a unified multimodal model in biology.",
+      "llm_tldr_cn": "生物基础模型难以同时处理多种实体和模态。BioMatrix首次在单一解码器架构中原生整合分子序列、结构和自然语言，支持多种表示方式。该模型虽局限于生物领域，但其统一多模态架构设计（原生生成所有模态）对通用统一多模态模型有重要参考价值。",
+      "llm_tldr": "生物基础模型难以同时处理多种实体和模态。BioMatrix首次在单一解码器架构中原生整合分子序列、结构和自然语言，支持多种表示方式。该模型虽局限于生物领域，但其统一多模态架构设计（原生生成所有模态）对通用统一多模态模型有重要参考价值。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.21395v1",
+      "source": "arxiv",
+      "title": "Atomistic Language Models Understand and Generate Materials",
+      "abstract": "Atomistic structure and natural language have long been modeled separately, with language models either calling atomistic models as tools or being fine-tuned on lossy textual encodings that discard atomistic information. We introduce Atomistic Language Models (ALMs) to pursue native multimodality, in which a single language backbone understands atomistic structures, generates materials from natural language, and optimizes crystal structures as instructed by text. By unifying a pretrained atomistic encoder, large language model, and denoising diffusion model through purely continuous projectors and staged training, ALMs achieve state-of-the-art results on crystal structure prediction and de novo generation. ALMs are enabled by a continuous bridge that maps language model embeddings directly into the steering space of atomistic diffusion, and are assisted by Text-to-Crystal Feynman-Kac (T2C-FK), a particle-based sampler that scores partial denoising trajectories to enforce stoichiometric targets at inference time. To evaluate the ability of ALMs to optimize and generate materials from natural-language prompts and 3D atom-coordinate inputs, we introduce ALM Bench, the first benchmark for text-conditioned crystal generation and optimization. Code, training data, and model weights will be released soon.",
+      "authors": [
+        "Sathya Edamadaka",
+        "Krithik Ramesh",
+        "Ju Li",
+        "Rafael Gómez-Bombarelli"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cond-mat.mtrl-sci"
+      ],
+      "published": "2026-06-19T13:01:45+00:00",
+      "link": "https://arxiv.org/pdf/2606.21395v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "native multimodality unifying atomistic structure and language",
+      "llm_evidence_cn": "原生多模态统一原子结构与语言",
+      "llm_evidence": "原生多模态统一原子结构与语言",
+      "canonical_evidence": "原生多模态统一原子结构与语言",
+      "llm_tldr_en": "Atomistic Language Models (ALMs) unify atomistic encoder, LLM, and diffusion model via continuous bridges for native multimodality, achieving state-of-the-art on crystal structure prediction and generation.",
+      "llm_tldr_cn": "该论文提出原子语言模型（ALM），通过连续投影器和分阶段训练，将预训练的原子编码器、大语言模型和去噪扩散模型统一成一个原生多模态架构，使单一语言骨干能够理解原子结构、生成材料并根据文本指令优化晶体。ALM在晶体结构预测和新材料生成上达到最先进水平，展示了统一多模态架构在科学领域的潜力。",
+      "llm_tldr": "该论文提出原子语言模型（ALM），通过连续投影器和分阶段训练，将预训练的原子编码器、大语言模型和去噪扩散模型统一成一个原生多模态架构，使单一语言骨干能够理解原子结构、生成材料并根据文本指令优化晶体。ALM在晶体结构预测和新材料生成上达到最先进水平，展示了统一多模态架构在科学领域的潜力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.16917v3",
+      "source": "arxiv",
+      "title": "Unified Motion-Action Modeling for Heterogeneous Robot Learning",
+      "abstract": "We present Unified Motion-Action (UMA) Model, an approach that uses 3D object motion trajectories as a shared interface to bridge visuomotor control and dynamics modeling. UMA treats object motion and robot actions as co-evolving variables under a masked generative objective, in which the mask pattern determines both the supervision regime during pretraining and the inference mode at deployment. Using hindsight-relabeled motion contexts and a contrastive objective that disentangles task intent from scene geometry, UMA enables multi-task pretraining across heterogeneous data sources without requiring manually annotated task instructions. At deployment, the same pretrained parameters support motion-conditioned visuomotor control, motion-based dynamics modeling, and task adaptation from few-shot demonstrations. Pretrained on a mixture of robot demonstrations, human videos, and simulated data, UMA consistently outperforms state-of-the-art baselines specialized for each inference mode.",
+      "authors": [
+        "Yunhao Cao",
+        "Shitong Liu",
+        "Chao Feng",
+        "Meryl Zhang",
+        "Xuanchen Lu",
+        "Andrew Owens",
+        "Kuan Fang"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-15T16:23:42+00:00",
+      "link": "https://arxiv.org/pdf/2606.16917v3",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Unified Motion-Action model for heterogeneous robot learning",
+      "llm_evidence_cn": "统一运动-动作模型用于异构机器人学习",
+      "llm_evidence": "统一运动-动作模型用于异构机器人学习",
+      "canonical_evidence": "统一运动-动作模型用于异构机器人学习",
+      "llm_tldr_en": "UMA proposes a unified framework using 3D object motion as a shared interface for visuomotor control and dynamics, offering a unified modeling approach applicable to multimodal systems.",
+      "llm_tldr_cn": "异构机器人学习缺乏统一接口。UMA模型以3D物体运动轨迹作为桥梁，统一视觉运动控制和动力学建模，采用掩码生成目标和大规模预训练。该方法虽聚焦机器人，但其“统一接口”思想对构建通用多模态模型具有方法论参考价值。",
+      "llm_tldr": "异构机器人学习缺乏统一接口。UMA模型以3D物体运动轨迹作为桥梁，统一视觉运动控制和动力学建模，采用掩码生成目标和大规模预训练。该方法虽聚焦机器人，但其“统一接口”思想对构建通用多模态模型具有方法论参考价值。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.17118v1",
+      "source": "arxiv",
+      "title": "MODE: Modality-Decomposed Expert-Level Mixed-Precision Quantization for MoE Multimodal LLMs",
+      "abstract": "Mixture-of-Experts Multimodal Large Language Models (MoE-MLLMs) offer remarkable performance but incur prohibitive GPU memory costs, making compression essential. Among PTQ methods, expert-level mixed-precision quantization has proven effective for MoE-LLMs, yet suffers notable degradation on MoE-MLLMs due to two overlooked biases in expert importance estimation. (1) At the cross-modal level, the numerical dominance of vision tokens causes expert selection frequency to be dominated by vision tokens, masking experts that are critical to the text modality; (2) at the intra-vision level, the large proportion of redundant vision tokens further skew frequency statistics, obscuring experts critical for informative visual content. To bridge gaps, we propose MODE, a modality-decomposed expert-level mixed-precision quantization framework for MoE-MLLMs that decomposes expert selection frequency by modality, filters redundant vision tokens to obtain denoised visual frequency, and further evaluates quantization sensitivity per modality as a complementary signal to frequency-based estimation. These signals are integrated into an Integer Linear Programming formulation to assign per-expert bit-widths under a given budget. Extensive experiments show that MODE is particularly well-suited for MoE-MLLMs, limiting average performance loss to within 2.9% at W3A16, with larger gains at the extreme 2-bit setting.",
+      "authors": [
+        "Yuanteng Chen",
+        "Peisong Wang",
+        "Zhilei Liu",
+        "Nanxin Zeng",
+        "Yuantian Shao",
+        "Shiqiang Lang",
+        "Tao Liu",
+        "Chuangyi Li",
+        "Qinghao Hu",
+        "Gang Li",
+        "Jing Liu",
+        "Jian Cheng"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-15T10:59:11+00:00",
+      "link": "https://arxiv.org/pdf/2606.17118v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "modality-decomposed quantization for MoE multimodal LLMs",
+      "llm_evidence_cn": "针对MoE多模态大模型的模态分解量化",
+      "llm_evidence": "针对MoE多模态大模型的模态分解量化",
+      "canonical_evidence": "针对MoE多模态大模型的模态分解量化",
+      "llm_tldr_en": "MODE proposes modality-decomposed expert-level mixed-precision quantization for MoE multimodal LLMs, addressing cross-modal and intra-vision biases in expert importance estimation.",
+      "llm_tldr_cn": "该论文针对MoE多模态大模型在量化压缩时存在的跨模态和视觉内偏差问题，提出模态分解的专家级混合精度量化方法MODE，通过解耦不同模态的专家重要性估计，在保持性能的同时显著降低GPU内存消耗，为统一多模态模型的高效部署提供支持。",
+      "llm_tldr": "该论文针对MoE多模态大模型在量化压缩时存在的跨模态和视觉内偏差问题，提出模态分解的专家级混合精度量化方法MODE，通过解耦不同模态的专家重要性估计，在保持性能的同时显著降低GPU内存消耗，为统一多模态模型的高效部署提供支持。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.17598v1",
+      "source": "arxiv",
+      "title": "MuseVLA: An Adaptive Multimodal Sensing Vision-Language-Action Model for Robotic Manipulation",
+      "abstract": "Humans naturally leverage diverse sensing modalities to interact with the physical world, while most Vision-Language-Action (VLA) models for robotics rely solely on RGB observations. This limits their ability to perceive physical properties that are difficult or impossible to infer from RGB cameras, such as temperature, sound, or radar response. We present MuseVLA, an adaptive multimodal sensing VLA model that integrates novel sensors as on-demand tools for robotic manipulation. Given a task instruction and visual context, MuseVLA first generates a sensor token and target description that select the sensing modality to invoke and what to attend to, analogous to a tool call with arguments. It then converts the selected sensor measurement into a grounded sensor image, a unified intermediate representation that encodes heterogeneous readings for multimodal fusion and action generation. This design decouples sensor-specific processing from the VLA backbone, enabling efficient integration of diverse modalities. To reduce the need for expensive multisensory robot datasets, we further introduce a data synthesis pipeline that augments existing RGB video datasets with grounded sensor images, enabling generalization to unseen sensor-guided tasks. We evaluate MuseVLA on a real-world robot across challenging dexterous hand manipulation tasks that require multimodal sensing inputs, including temperature-guided pick-and-place, audio-driven object search, and radar-assisted hidden object retrieval. MuseVLA achieves 80.6% success rate on average, outperforming RGB-only and multisensory VLA baselines significantly, and exhibits strong zero-shot capabilities on unseen tasks.",
+      "authors": [
+        "Xingyuming Liu",
+        "Ruichun Ma",
+        "Heyu Guo",
+        "Qixiu Li",
+        "Qingwen Yang",
+        "Lin Luo",
+        "Shiqi Jiang",
+        "Chenren Xu",
+        "Jiaolong Yang",
+        "Baining Guo"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.CV"
+      ],
+      "published": "2026-06-16T07:04:13+00:00",
+      "link": "https://arxiv.org/pdf/2606.17598v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "adaptive multimodal sensing VLA model",
+      "llm_evidence_cn": "自适应多模态感知的视觉-语言-动作模型",
+      "llm_evidence": "自适应多模态感知的视觉-语言-动作模型",
+      "canonical_evidence": "自适应多模态感知的视觉-语言-动作模型",
+      "llm_tldr_en": "MuseVLA integrates diverse sensors as tools into VLA models for robotics, demonstrating a multimodal fusion approach that can inform unified architectures.",
+      "llm_tldr_cn": "现有机器人VLA模型仅依赖RGB，无法感知温度、声音等物理属性。MuseVLA提出自适应多模态感知框架，根据任务指令动态选择传感器并生成控制信号，将新型传感器作为按需工具集成。该方法展示了灵活的多模态融合策略，对通用统一多模态模型设计有启示。",
+      "llm_tldr": "现有机器人VLA模型仅依赖RGB，无法感知温度、声音等物理属性。MuseVLA提出自适应多模态感知框架，根据任务指令动态选择传感器并生成控制信号，将新型传感器作为按需工具集成。该方法展示了灵活的多模态融合策略，对通用统一多模态模型设计有启示。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.19534v1",
+      "source": "arxiv",
+      "title": "PerceptionDLM: Parallel Region Perception with Multimodal Diffusion Language Models",
+      "abstract": "Multimodal large language models (MLLMs) have achieved remarkable progress in visual understanding tasks. However, most existing MLLMs rely on autoregressive generation, which limits their efficiency for perception tasks that require captioning multiple regions. In this work, we propose PerceptionDLM, a multimodal diffusion language model optimized for efficient parallel region perception. Built upon PerceptionDLM-Base, a strong foundational baseline that achieves state-of-the-art performance among open-source diffusion MLLMs, our architecture fully leverages the parallel decoding nature of DLMs. Specifically, we introduce efficient prompting and structured attention masking to enable simultaneous perception of multiple masked regions, allowing the model to generate region descriptions in parallel at both the sequence and token levels. This design significantly improves inference efficiency compared with existing approaches that process regions sequentially. To systematically evaluate the parallelism property of visual perception capability for DLMs, we construct a new Parallel Detailed Localized Captioning Benchmark (ParaDLC-Bench) by scaling the DLC-Bench to include multiple region masks per image, enabling joint evaluation of both caption quality and inference efficiency. Experiments demonstrate that PerceptionDLM maintains competitive performance in region captioning while achieving substantial speed improvements for multi-region perception tasks. Our results highlight the potential of multimodal diffusion language models for efficient, parallel visual perception. To the best of our knowledge, we are the first to achieve parallel region caption and perception by leveraging the advantages of diffusion language models. Code, models, and datasets are released.",
+      "authors": [
+        "Yueyi Sun",
+        "Yuhao Wang",
+        "Jason Li",
+        "Ye Tian",
+        "Tao Zhang",
+        "Jacky Mai",
+        "Yihan Wang",
+        "Haochen Wang",
+        "Jinbin Bai",
+        "Ling Yang",
+        "Yunhai Tong"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.CL"
+      ],
+      "published": "2026-06-17T19:27:55+00:00",
+      "link": "https://arxiv.org/pdf/2606.19534v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multimodal diffusion language model for perception",
+      "llm_evidence_cn": "用于感知的多模态扩散语言模型",
+      "llm_evidence": "用于感知的多模态扩散语言模型",
+      "canonical_evidence": "用于感知的多模态扩散语言模型",
+      "llm_tldr_en": "PerceptionDLM leverages diffusion LMs for parallel region perception in MLLMs, offering an efficient decoding approach relevant to unified multimodal models.",
+      "llm_tldr_cn": "自回归MLLMs在需要同时描述多个区域时效率低下。PerceptionDLM提出多模态扩散语言模型，利用并行解码特性，通过高效提示和注意力掩码同时感知多个区域。该方法提升了多区域感知效率，为统一多模态模型的高效推理提供了新思路。",
+      "llm_tldr": "自回归MLLMs在需要同时描述多个区域时效率低下。PerceptionDLM提出多模态扩散语言模型，利用并行解码特性，通过高效提示和注意力掩码同时感知多个区域。该方法提升了多区域感知效率，为统一多模态模型的高效推理提供了新思路。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.20044v1",
+      "source": "arxiv",
+      "title": "FUSE: Frequency-domain Unification and Spectral Energy Alignment for Multi-modal Object Re-Identification",
+      "abstract": "Despite significant progress in multi-modal Re-Identification (ReID), existing methods tend to emphasize low-frequency cues. Consequently, they focus on attributes such as color, illumination, and coarse appearance, while overlooking mid and high-frequency structures that encode geometric, textural, and identity-discriminative details. This imbalance leads to incomplete spectral representations and unstable cross-modal alignment. To overcome these limitations, we introduce FUSE, a frequency-domain framework that reformulates multi-modal ReID as a two-stage process of spectral disentanglement and energy alignment. The proposed Spectral Decomposition Module (SDM) adaptively partitions features into low, mid, and high-frequency subspaces, enabling hierarchical spectral modeling. The Cross-Modal Alignment Module (CAM) further enforces energy alignment and subspace complementarity across modalities via frequency-consistency regularization. In addition, FUSE incorporates learnable frequency modulation to enhance robustness under varying illumination and heterogeneous sensor conditions. Extensive experiments on RGBNT201, RGBNT100, and MSVR310 show that FUSE achieves 9.1\\% mAP and 9.5\\% Rank-1 improvements, establishing an interpretable frequency-domain paradigm for multi-modal representation learning.",
+      "authors": [
+        "Xuanhao Qi",
+        "Tom H. Luan",
+        "Yukang Zhang",
+        "Jinkai Zheng",
+        "Zhou Su",
+        "Shuwei Li",
+        "Lei Tan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-18T10:21:32+00:00",
+      "link": "https://arxiv.org/pdf/2606.20044v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "frequency-domain unification for multi-modal ReID",
+      "llm_evidence_cn": "频域统一多模态特征对齐",
+      "llm_evidence": "频域统一多模态特征对齐",
+      "canonical_evidence": "频域统一多模态特征对齐",
+      "llm_tldr_en": "FUSE reformulates multi-modal ReID as spectral disentanglement and energy alignment in frequency domain, providing a unification approach transferable to other multimodal tasks.",
+      "llm_tldr_cn": "现有多模态ReID方法忽略中高频结构导致表示不平衡。FUSE提出频域框架，通过谱分解模块自适应划分频带并进行能量对齐，实现更完整的多模态特征融合。该方法虽针对ReID，但其统一对齐思路可为通用多模态模型提供借鉴。",
+      "llm_tldr": "现有多模态ReID方法忽略中高频结构导致表示不平衡。FUSE提出频域框架，通过谱分解模块自适应划分频带并进行能量对齐，实现更完整的多模态特征融合。该方法虽针对ReID，但其统一对齐思路可为通用多模态模型提供借鉴。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.20971v1",
+      "source": "arxiv",
+      "title": "UNITY: Attention Flow Networks for Adaptive Conditioning in Diffusion",
+      "abstract": "We introduce UNITY, a Universal-to-Specialized adapter for efficient and scalable composite conditioning in diffusion based image generation. Unlike prior methods that train separate adapters for each conditioning modality, UNITY jointly learns shared semantics across multiple conditioning types and subsequently specializes without modifying the underlying architecture. The proposed two stage training paradigm consists of a Universal Stage that captures cross modal representations across all conditioning modalities using half of the total training steps, followed by a Specialization Stage that refines modality specific features using the remaining training budget. At the core of UNITY are the Morphable Attention Flow (MAF) Network and Morph Wrapper modules, which enable channel aware and spatially adaptive feature alignment through learnable flow fields and attention based fusion. This constant complexity formulation supports flexible operation under both single and composite conditioning settings while significantly reducing inference latency and memory consumption. Extensive experiments across multiple datasets demonstrate that UNITY achieves state of the art image fidelity while maintaining superior memory efficiency. Code: https://github.com/arya-domain/UNITY",
+      "authors": [
+        "Aryan Das",
+        "Koushik Biswas",
+        "Moloud Abdar",
+        "Vinay Kumar Verma"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-18T22:29:28+00:00",
+      "link": "https://arxiv.org/pdf/2606.20971v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "adaptive conditioning for multiple modalities in diffusion",
+      "llm_evidence_cn": "扩散模型中多模态自适应条件注入",
+      "llm_evidence": "扩散模型中多模态自适应条件注入",
+      "canonical_evidence": "扩散模型中多模态自适应条件注入",
+      "llm_tldr_en": "UNITY proposes a universal-to-specialized adapter with Morphable Attention Flow networks for efficient joint learning across conditioning modalities in diffusion-based image generation.",
+      "llm_tldr_cn": "现有方法针对每种条件模态训练独立适配器，效率低。UNITY提出通用到专用的两阶段训练范式，利用可变形注意力流网络联合学习所有条件模态的共享语义，再细化模态特定特征。该方法在不修改基础架构下实现高效多模态条件控制。实验证明其可扩展性和生成质量。",
+      "llm_tldr": "现有方法针对每种条件模态训练独立适配器，效率低。UNITY提出通用到专用的两阶段训练范式，利用可变形注意力流网络联合学习所有条件模态的共享语义，再细化模态特定特征。该方法在不修改基础架构下实现高效多模态条件控制。实验证明其可扩展性和生成质量。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.23634v1",
+      "source": "arxiv",
+      "title": "Pose Anything Anywhere:Model-free Object Poses from Arbitrary References",
+      "abstract": "Estimating the 6D pose of unseen objects is a fundamental yet challenging problem for open-world robotics and embodied perception. Model-based methods are accurate but depend on CAD assets or heavy onboarding, while most model-free approaches are still limited to pairwise single-anchor matching and thus fail under occlusion and large viewpoint changes with low query-reference overlap. Therefore, we present PANY, a unified model-free framework that seamlessly supports both RGB and RGB-D inputs, operates on one or sparse pose-free reference views, and generalizes effectively to novel objects. Built on a multi-view transformer geometry backbone, PANY moves beyond pairwise matching by learning view-consistent geometry and cross-view alignment cues that remain stable under wide baselines and limited overlap. When additional unposed assist views are available, PANY aggregates them via pose-graph canonical registration to increase geometric coverage and reinforce the final pose. Extensive experiments show that PANY achieves state-of-the-art performance across multiple benchmarks, substantially outperforming existing model-free methods, improving pose accuracy by +12% on YCB-V and over +20% on LM-O. Furthermore, PANY consistently performs well under both single-reference and sparse-reference settings, demonstrating strong robustness in real-world environments.",
+      "authors": [
+        "Hongli Xu",
+        "Jiaqi Hu",
+        "Junwen Huang",
+        "Boyang Zhong",
+        "Peter KT Yu",
+        "Nassir Navab",
+        "Benjamin Busam",
+        "Slobodan Ilic"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-22T17:23:57+00:00",
+      "link": "https://arxiv.org/pdf/2606.23634v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified model-free pose estimation with RGB and RGB-D",
+      "llm_evidence_cn": "统一无模型姿态估计支持RGB和RGB-D输入",
+      "llm_evidence": "统一无模型姿态估计支持RGB和RGB-D输入",
+      "canonical_evidence": "统一无模型姿态估计支持RGB和RGB-D输入",
+      "llm_tldr_en": "PANY presents a unified model-free framework for 6D pose estimation from sparse reference views, using a transformer backbone, relevant to multimodal fusion.",
+      "llm_tldr_cn": "现有物体姿态估计方法依赖CAD模型或受限于配对匹配。PANY提出统一无模型框架，支持RGB和RGB-D输入，基于多视角Transformer学习几何一致性，从稀疏参考视图泛化到新物体。其多模态输入融合和统一架构设计对通用多模态系统有借鉴意义。",
+      "llm_tldr": "现有物体姿态估计方法依赖CAD模型或受限于配对匹配。PANY提出统一无模型框架，支持RGB和RGB-D输入，基于多视角Transformer学习几何一致性，从稀疏参考视图泛化到新物体。其多模态输入融合和统一架构设计对通用多模态系统有借鉴意义。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
