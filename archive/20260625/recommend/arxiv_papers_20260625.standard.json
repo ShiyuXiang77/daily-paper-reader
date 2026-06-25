@@ -1,0 +1,491 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-25T20:36:47.980452+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 4,
+    "deep_cap": 6,
+    "deep_selected": 4,
+    "quick_candidates": 8,
+    "quick_skim_target": 11,
+    "quick_selected": 8
+  },
+  "deep_dive": [
+    {
+      "id": "2606.24441v1",
+      "source": "arxiv",
+      "title": "S1-Omni-Image: A Unified Model for Scientific Image Understanding, Generation, and Editing",
+      "abstract": "We present S1-Omni-Image, an open-weight unified multimodal model for scientific image understanding, generation, and editing. Unlike general-purpose image generation models, scientific image tasks require not only high-fidelity synthesis, but also robust understanding of scientific semantics, structural relations, domain knowledge, and task intent. To this end, S1-Omni-Image builds on the scientific multimodal reasoning backbone S1-VL-32B and couples its understanding capability with an image generation module under a unified think-before-generate paradigm. Given a user instruction, the model first produces a task-oriented reasoning trace, a textual answer, and a task special token; their hidden states are then injected into the generation module to condition image generation or editing. S1-Omni-Image supports scientific image understanding, generation, and editing in a unified framework. For generation, it focuses on scientific illustrations and text rendering, including logical diagrams, relational comparisons, data charts, and realistic scientific visualizations. For editing, it casts segmentation and other domain-specific vision tasks as native image editing problems, enabling multi-turn illustration editing, medical and geographic image segmentation, medical image translation, and scientific image super-resolution. We construct SciGenEdit, a 314K-sample training dataset, and release the model weights, inference code, and SciGenEdit-10K. Experiments show that S1-Omni-Image substantially improves scientific image generation and editing while preserving the scientific image understanding capability inherited from S1-VL-32B. It outperforms open-source models on GenExam and TechImage-Bench, achieves state-of-the-art results on four editing benchmarks including MSD, cigRockSEM, SynthRAD2025, and IXI, and maintains stable performance on scientific image understanding evaluations.",
+      "authors": [
+        "Qingxiao Li",
+        "Zikai Wang",
+        "Qingli Wang",
+        "Nan Xu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T11:19:34+00:00",
+      "link": "https://arxiv.org/pdf/2606.24441v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "presents S1-Omni-Image, a unified multimodal model for scientific image understanding, generation, editing",
+      "llm_evidence_cn": "提出S1-Omni-Image，统一多模态模型用于科学图像理解、生成和编辑",
+      "llm_evidence": "提出S1-Omni-Image，统一多模态模型用于科学图像理解、生成和编辑",
+      "canonical_evidence": "提出S1-Omni-Image，统一多模态模型用于科学图像理解、生成和编辑",
+      "llm_tldr_en": "S1-Omni-Image is an open-weight unified multimodal model that couples understanding and generation with a think-before-generate paradigm for scientific images.",
+      "llm_tldr_cn": "本文提出S1-Omni-Image，一个开源统一多模态模型，专门用于科学图像的理解、生成和编辑。该模型基于科学多模态推理骨干S1-VL-32B，通过“先思考后生成”范式将理解能力与图像生成模块耦合：首先产生推理轨迹和任务令牌，再将隐藏状态注入生成模块。在科学图像任务上达到领先性能，展示了统一架构在专业领域中的优势。",
+      "llm_tldr": "本文提出S1-Omni-Image，一个开源统一多模态模型，专门用于科学图像的理解、生成和编辑。该模型基于科学多模态推理骨干S1-VL-32B，通过“先思考后生成”范式将理解能力与图像生成模块耦合：首先产生推理轨迹和任务令牌，再将隐藏状态注入生成模块。在科学图像任务上达到领先性能，展示了统一架构在专业领域中的优势。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.25865v1",
+      "source": "arxiv",
+      "title": "Molexar: A Unified Multimodal Molecular Foundation Model for Drug Design",
+      "abstract": "Molecular generation is a central challenge in drug discovery, requiring models that explore vast chemical space while satisfying diverse design constraints. We present Molexar, a unified multimodal molecular foundation model built on Fragment-SELFIES, a robust, fragment-aware molecular language with validity-preserving decoding and explicit fragment structure. A pretrained autoregressive decoder learns the Fragment-SELFIES syntax and molecular distribution; supervised fine-tuning (SFT) then trains the same decoder on condition-molecule pairs spanning scalar molecular properties, pharmacophore fingerprints, protein sequences, and binding pockets, injecting each condition by in-place replacement of value-token embeddings so that all generation modes share one autoregressive path. Molexar achieves strong efficiency at a small parameter count while matching or exceeding larger models. The pretrained model reaches 100% validity and high drug-likeness in unconditional and fragment-constrained generation; the SFT model follows single- and multi-property instructions and remains competitive on target-conditioned generation on the CrossDocked2020 test set. On MolGenBench, Molexar further generates molecules with favorable safety and potency. These results establish Molexar as a practical unified foundation for computational chemistry and drug-design workflows.",
+      "authors": [
+        "Haoyu Lin",
+        "Yiyan Liao",
+        "Jinmei Pan",
+        "Xinliao Ling",
+        "Luhua Lai",
+        "Jianfeng Pei"
+      ],
+      "primary_category": "q-bio.BM",
+      "categories": [
+        "q-bio.BM"
+      ],
+      "published": "2026-06-24T14:11:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.25865v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified multimodal molecular foundation model",
+      "llm_evidence_cn": "统一多模态分子基础模型",
+      "llm_evidence": "统一多模态分子基础模型",
+      "canonical_evidence": "统一多模态分子基础模型",
+      "llm_tldr_en": "Molexar is a unified multimodal molecular foundation model using Fragment-SELFIES and autoregressive decoder for drug design, achieving state-of-the-art generation.",
+      "llm_tldr_cn": "针对药物设计中分子生成挑战，提出统一多模态分子基础模型Molexar。基于Fragment-SELFIES分子语言，自回归解码器学习语法和分布，通过监督微调支持多条件生成(性质、指纹、蛋白序列、结合口袋)，在多种生成模式上达到最优，是统一多模态架构在分子领域的典型应用。",
+      "llm_tldr": "针对药物设计中分子生成挑战，提出统一多模态分子基础模型Molexar。基于Fragment-SELFIES分子语言，自回归解码器学习语法和分布，通过监督微调支持多条件生成(性质、指纹、蛋白序列、结合口袋)，在多种生成模式上达到最优，是统一多模态架构在分子领域的典型应用。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.23058v1",
+      "source": "arxiv",
+      "title": "Three-Step Hierarchical Transformer for Multi-Pedestrian Trajectory Prediction",
+      "abstract": "Pedestrian trajectory prediction requires modeling temporal dynamics, multimodal cues, and social interactions in crowded environments. Existing methods often address these factors separately or entangle them in costly attention blocks, limiting scalability, flexibility, and interpretability. We propose a three-step hierarchical Transformer that explicitly separates temporal encoding, multimodal fusion, and scene-level interaction reasoning. Lightweight GRU summaries enable efficient cross-modal attention, while social attention over time--agent tokens captures inter-pedestrian influences at manageable cost. Experiments on JTA, JRDB, and the Pedestrians and Cyclists in Road Traffic dataset show state-of-the-art performance on real-world datasets (JRDB, Urban) and competitive results on JTA. Ablation and qualitative analyses confirm the contribution of each stage and the model's ability to anticipate complex behaviors such as early turning.",
+      "authors": [
+        "Raphaël Delécluse",
+        "Hazem Wannous",
+        "Laurent Grisoni",
+        "Laurent Guimas"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-22T09:11:20+00:00",
+      "link": "https://arxiv.org/pdf/2606.23058v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "hierarchical Transformer explicitly separating temporal, multimodal fusion, and interaction",
+      "llm_evidence_cn": "层次化Transformer明确分离时间编码、多模态融合和交互推理",
+      "llm_evidence": "层次化Transformer明确分离时间编码、多模态融合和交互推理",
+      "canonical_evidence": "层次化Transformer明确分离时间编码、多模态融合和交互推理",
+      "llm_tldr_en": "A three-step hierarchical Transformer for pedestrian trajectory prediction that separates temporal encoding, multimodal fusion, and social interaction reasoning.",
+      "llm_tldr_cn": "行人轨迹预测需要建模时间动态、多模态线索和社交交互。现有方法往往将三者纠缠在昂贵的注意力块中。本文提出三步层次化Transformer，分别处理时间编码、多模态融合和场景级交互推理，使用轻量GRU摘要实现高效跨模态注意力。在多个真实数据集上达到最先进性能。",
+      "llm_tldr": "行人轨迹预测需要建模时间动态、多模态线索和社交交互。现有方法往往将三者纠缠在昂贵的注意力块中。本文提出三步层次化Transformer，分别处理时间编码、多模态融合和场景级交互推理，使用轻量GRU摘要实现高效跨模态注意力。在多个真实数据集上达到最先进性能。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.25084v1",
+      "source": "arxiv",
+      "title": "Are We There Yet? Exploring the Capabilities of MLLMs in Assistive AI Applications",
+      "abstract": "Multimodal Large Language Models (MLLMs) have redefined visual understanding by combining vision encoders with large-scale language models. This unified architecture enables strong performance on tasks like image captioning, visual question answering, and multimodal dialogue, often in zero- and few-shot settings. Their general-purpose capabilities and flexible interfaces make MLLMs a promising foundation for real-world vision-language applications.   Assistive AI aims to help users interact with their environments through natural language. These scenarios demand robust visual recognition, contextual reasoning, and multilingual comprehension-capabilities that MLLMs are believed to offer. However, their effectiveness in assistive settings remains to be fully understood.   In this work, we explore whether MLLMs can support Assistive AI by evaluating state-of-the-art models on real-world tasks: recognizing everyday objects like currency, answering questions based on scene text, and reading visually presented content across multiple languages. To this end, we developed a system, NetraLink, using a head-mounted GoPro to capture real-world egocentric data, and collected a benchmark covering these assistive scenarios. Our findings provide a comprehensive diagnostic of current MLLMs, highlighting their strengths and limitations in enabling assistive technologies grounded in visual perception and language interaction.",
+      "authors": [
+        "Shayon Dasgupta",
+        "Avijit Dasgupta",
+        "C. V. Jawahar"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T18:44:59+00:00",
+      "link": "https://arxiv.org/pdf/2606.25084v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "studies MLLMs as unified multimodal architectures in assistive AI",
+      "llm_evidence_cn": "研究多模态大语言模型作为统一架构在辅助AI中的应用",
+      "llm_evidence": "研究多模态大语言模型作为统一架构在辅助AI中的应用",
+      "canonical_evidence": "研究多模态大语言模型作为统一架构在辅助AI中的应用",
+      "llm_tldr_en": "Explores capabilities of MLLMs in assistive AI applications, showing unified architectures enable strong zero-shot performance but have limitations in real-world scenarios.",
+      "llm_tldr_cn": "本文探索多模态大语言模型（MLLMs）在辅助AI应用中的能力。MLLMs通过统一架构在图像描述、视觉问答等任务中表现出色，零样本泛化能力强。但在真实辅助场景中，仍需改进视觉识别、上下文推理和多语言理解。研究为通用多模态模型的实际部署提供了评估与方向。",
+      "llm_tldr": "本文探索多模态大语言模型（MLLMs）在辅助AI应用中的能力。MLLMs通过统一架构在图像描述、视觉问答等任务中表现出色，零样本泛化能力强。但在真实辅助场景中，仍需改进视觉识别、上下文推理和多语言理解。研究为通用多模态模型的实际部署提供了评估与方向。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.23581v1",
+      "source": "arxiv",
+      "title": "Kamera: Unified Position-Invariant Multimodal KV Cache for Training-Free Reuse",
+      "abstract": "Multimodal agents repeatedly re-examine the same video frames, UI screenshots, and rendered artifacts as their context window slides and reasoning iterates, yet every look-back re-encodes from scratch, because prefix caches serve reuse only at a fixed leading position. We show this recompute is avoidable, and identify exactly what naive KV reuse loses: the cross-chunk conditioning a chunk absorbs from its neighbours. This loss is asymmetric. The direct readout of a cached chunk is recovered exactly and for free by the standard state-merge. What remains is a diffuse, low-rank residue concentrated in deep layers, invisible to single-hop retrieval but precisely what multi-hop reasoning binds on. Blind reuse therefore leaves single-hop recall intact while halving multi-hop accuracy; this is the failure mode prior position-independent caches, designed for single-context or single-image reuse, do not address. We repair it with a small, training-free low-rank conditioning patch stored alongside each position-free chunk. Reuse reduces to one operator across MLA, GQA, and MHA: exact RoPE re-rotation to any target position, plus the patch that restores cross-chunk binding. This makes three window operations cheap: reorder (one patch serves every ordering of a cached set), sliding-window survival (surviving chunks relocate via rotation only, zero re-encode), and recall (an evicted chunk is rehydrated by its patch, never re-encoded). A rank-m patch recovers full task accuracy on cross-chunk-binding benchmarks, MM-NIAH across two attention families and two-page doc-QA, at a fraction of the KV footprint, and reconstructs re-prefill KV to within bf16 rounding in a production SGLang kernel across six backbones. The conditioning signal is strongest in redundant vision and video streams, making our solution most impactful where multimodal agents spend their recompute budget.",
+      "authors": [
+        "Bole Ma",
+        "Jan Eitzinger",
+        "Harald Koestler",
+        "Gerhard Wellein"
+      ],
+      "primary_category": "cs.DC",
+      "categories": [
+        "cs.DC",
+        "cs.AI",
+        "cs.CV"
+      ],
+      "published": "2026-06-22T16:47:00+00:00",
+      "link": "https://arxiv.org/pdf/2606.23581v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "unified position-invariant multimodal KV cache for transformer reuse",
+      "llm_evidence_cn": "面向Transformer重用的统一位置不变多模态KV缓存",
+      "llm_evidence": "面向Transformer重用的统一位置不变多模态KV缓存",
+      "canonical_evidence": "面向Transformer重用的统一位置不变多模态KV缓存",
+      "llm_tldr_en": "Kamera enables training-free reuse of multimodal KV cache across sliding windows by recovering cross-chunk conditioning.",
+      "llm_tldr_cn": "多模态智能体在滑动窗口和迭代推理中反复重新编码相同内容。Kamera识别出朴素KV缓存重用丢失了跨块条件信息，并提出统一位置不变缓存方法，通过状态合并和残差恢复实现免训练重用。该方法显著减少推理计算开销，同时保持多跳推理能力。",
+      "llm_tldr": "多模态智能体在滑动窗口和迭代推理中反复重新编码相同内容。Kamera识别出朴素KV缓存重用丢失了跨块条件信息，并提出统一位置不变缓存方法，通过状态合并和残差恢复实现免训练重用。该方法显著减少推理计算开销，同时保持多跳推理能力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.19684v1",
+      "source": "arxiv",
+      "title": "Exploring Multi-Modal Large Language Models and Two-Stage Fine-Tuning for Fashion Image Retrieval",
+      "abstract": "Composed image retrieval retrieves a target image using a composed query of a reference image and a modified text description. In the fashion domain, this task requires understanding subtle attribute variations such as color, pattern, and texture. However, existing approaches face limitations due to scarce annotated data and simplistic negative sampling. We propose a novel framework that integrates a multi-modal large language model (LLaVA) to generate attribute-aware triplets and introduces a two-stage fine-tuning strategy to enhance contrastive learning. We leverage pretrained vision-language models, such as CLIP-ViT/B32, to generate and concatenate sentence-level prompts with the relative caption and to scale the number of negatives using static representations. Experimental results demonstrate enhanced compositional reasoning and improved fine-grained retrieval behavior, underscoring the feasibility and potential of the proposed framework for fashion retrieval.",
+      "authors": [
+        "Nguyen Cao Hoang",
+        "Hoang Bui Le",
+        "Nam Vo Hoang",
+        "Trung-Nghia Le"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-18T01:19:32+00:00",
+      "link": "https://arxiv.org/pdf/2606.19684v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multi-modal LLM for composed image retrieval",
+      "llm_evidence_cn": "多模态大模型用于组合图像检索",
+      "llm_evidence": "多模态大模型用于组合图像检索",
+      "canonical_evidence": "多模态大模型用于组合图像检索",
+      "llm_tldr_en": "Integrates LLaVA and two-stage fine-tuning for fashion composed image retrieval, addressing data scarcity and negative sampling.",
+      "llm_tldr_cn": "针对时尚领域组合图像检索数据稀缺和负采样简单问题，提出集成多模态大模型LLaVA的框架，通过生成属性感知三元组和两阶段微调策略增强对比学习，在多个数据集上提升检索准确率。",
+      "llm_tldr": "针对时尚领域组合图像检索数据稀缺和负采样简单问题，提出集成多模态大模型LLaVA的框架，通过生成属性感知三元组和两阶段微调策略增强对比学习，在多个数据集上提升检索准确率。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24165v1",
+      "source": "arxiv",
+      "title": "Spectral Evolution-Guided Token Pruning in Multimodal Large Language Models",
+      "abstract": "Reducing visual token redundancy is critical for accelerating Multimodal Large Language Models (MLLMs) without degrading cross-modal reasoning performance. Existing token pruning methods typically rely on single-layer signals, such as attention scores or token similarities, which overlook the cross-layer transformation of visual representations and may exhibit positional bias in multimodal token sequences. To address this limitation, we propose a training-free token pruning framework based on Cross-Layer Spectral Evolution (CLSE). Instead of measuring token importance from single-layer feature magnitudes, CLSE quantifies how token representations evolve across Transformer layers in the frequency domain. This evolution reflects the transition from high-frequency structural details to low-frequency semantic abstractions. We observe that tokens with stronger spectral redistribution across layers are more likely to be semantically active and should therefore be preserved. By modeling cross-layer token dynamics, CLSE provides a stable importance criterion that mitigates positional bias. Extensive experiments on both image and video benchmarks demonstrate that CLSE achieves a superior trade-off between efficiency and accuracy under aggressive token reduction. Across multiple MLLMs, CLSE reduces FLOPs, KV cache memory, and latency while maintaining competitive or improved performance.",
+      "authors": [
+        "Bin Chen",
+        "Yuxiang Cai",
+        "Yadan Luo",
+        "Yi Zhang",
+        "Jianwei Yin",
+        "Zhi Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T05:39:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.24165v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "training-free token pruning in multimodal LLMs",
+      "llm_evidence_cn": "多模态大模型中无需训练的标记剪枝",
+      "llm_evidence": "多模态大模型中无需训练的标记剪枝",
+      "canonical_evidence": "多模态大模型中无需训练的标记剪枝",
+      "llm_tldr_en": "Proposes Cross-Layer Spectral Evolution (CLSE) for training-free token pruning in MLLMs, improving efficiency without degrading cross-modal reasoning.",
+      "llm_tldr_cn": "针对多模态大模型中视觉标记冗余问题，提出基于跨层频谱演化的无需训练标记剪枝框架。该方法通过分析标记表示在Transformer层间的频率域演化来量化重要性，优于单层信号方法，有效加速推理且保持跨模态推理性能。",
+      "llm_tldr": "针对多模态大模型中视觉标记冗余问题，提出基于跨层频谱演化的无需训练标记剪枝框架。该方法通过分析标记表示在Transformer层间的频率域演化来量化重要性，优于单层信号方法，有效加速推理且保持跨模态推理性能。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.20774v1",
+      "source": "arxiv",
+      "title": "TriMotion: Modality-Agnostic Camera Control for Video Generation",
+      "abstract": "Camera motion control is essential for directing viewpoint changes in generative systems. However, existing methods typically condition the generation process on a single specific modality, such as explicit pose trajectories or reference videos, limiting their ability to support heterogeneous user inputs. To address this limitation, we present TriMotion, a modality-agnostic framework for camera-controlled video generation that maps video, pose, and text inputs, describing the same camera trajectory into a shared motion embedding space. Learning such a space requires synchronized supervision across modalities. Therefore, we build the Motion Triplet Dataset by extending a Multi-Cam Video Dataset with geometry-grounded motion descriptions derived from camera extrinsics. We further introduce a latent motion consistency objective that leverages the motion embedding space to encourage the generated video to follow the target camera trajectory directly in latent space, avoiding the cost of pixel-space decoding. Extensive experiments show that TriMotion generates high-quality videos that accurately follow the target camera trajectories across all three modalities. Beyond standard generation, the shared motion embedding space also enables flexible applications such as sequential motion composition and cross-modal motion interpolation.",
+      "authors": [
+        "Seunghyun Shin",
+        "Jifei Song",
+        "Wooseok Jeon",
+        "Hae-Gon Jeon",
+        "Jiankang Deng"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "published": "2026-06-18T16:07:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.20774v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "modality-agnostic camera control for video generation",
+      "llm_evidence_cn": "模态无关的相机控制用于视频生成",
+      "llm_evidence": "模态无关的相机控制用于视频生成",
+      "canonical_evidence": "模态无关的相机控制用于视频生成",
+      "llm_tldr_en": "TriMotion maps video, pose, and text to shared motion embedding for modality-agnostic camera control in video generation.",
+      "llm_tldr_cn": "针对相机运动控制依赖单一模态输入的问题，提出模态无关框架TriMotion。将视频、姿态和文本映射到共享运动嵌入空间，构建运动三元组数据集，实现跨模态输入的统一相机控制，支持异构用户输入。",
+      "llm_tldr": "针对相机运动控制依赖单一模态输入的问题，提出模态无关框架TriMotion。将视频、姿态和文本映射到共享运动嵌入空间，构建运动三元组数据集，实现跨模态输入的统一相机控制，支持异构用户输入。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.22617v1",
+      "source": "arxiv",
+      "title": "OmniSpace: Efficient Geometry Awareness for Autonomous Vehicles MLLMs",
+      "abstract": "Multimodal Large Language Models (MLLMs) have achieved remarkable performance on 2D visual tasks, yet enhancing their spatial intelligence for real-world applications such as Autonomous Vehicles (AV) remains an open challenge. Existing geometry-aware MLLMs typically rely on auxiliary 3D models at inference time, introducing pipeline complexity and the risk of cascading failures. In this paper, we present OmniSpace, a simple yet effective plug-and-play paradigm for geometry-aware spatial reasoning from purely 2D observations. Motivated by our finding that current MLLMs are bottlenecked by weak cross-view correspondence and depth estimation, OmniSpace introduces a Camera Pose Injector, a Multi-view Epipolar Attention module, and a 3D Geometric Distillation objective that jointly address these two limitations by transferring geometric knowledge into the model. Extensive experiments show that OmniSpace surpasses existing methods on planning benchmarks (nuScenes, Bench2Drive), risk detection (nuInstruct), language (Omnidrive), and generalization (DriveBench).",
+      "authors": [
+        "Hao Vo",
+        "Phu Loc Nguyen",
+        "Khoa Vo",
+        "Sieu Tran",
+        "Duc Minh Nguyen",
+        "Ngo Xuan Cuong",
+        "Nghi D. Q. Bui",
+        "Anh Nguyen",
+        "Duy Minh Ho Nguyen",
+        "Ngan Le"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-21T17:47:31+00:00",
+      "link": "https://arxiv.org/pdf/2606.22617v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Geometry awareness for MLLMs in autonomous driving",
+      "llm_evidence_cn": "增强自动驾驶MLLM的几何感知能力",
+      "llm_evidence": "增强自动驾驶MLLM的几何感知能力",
+      "canonical_evidence": "增强自动驾驶MLLM的几何感知能力",
+      "llm_tldr_en": "OmniSpace enhances MLLM spatial reasoning for autonomous driving via plug-and-play geometry modules, indirectly relevant to unified multimodal models.",
+      "llm_tldr_cn": "现有几何感知MLLM依赖额外3D模型增加复杂度。OmniSpace提出从纯2D观测实现几何感知的即插即用范式，引入相机姿态注入器、多视角极线注意力和3D几何蒸馏，有效提升MLLM空间智能。虽不直接构建统一架构，但其方法可增强统一多模态模型的空间推理能力。",
+      "llm_tldr": "现有几何感知MLLM依赖额外3D模型增加复杂度。OmniSpace提出从纯2D观测实现几何感知的即插即用范式，引入相机姿态注入器、多视角极线注意力和3D几何蒸馏，有效提升MLLM空间智能。虽不直接构建统一架构，但其方法可增强统一多模态模型的空间推理能力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24187v2",
+      "source": "arxiv",
+      "title": "Towards Fast and Effective Long Video Understanding of Multimodal Large Language Models via Adaptive Quasi-Gaussian Sampling",
+      "abstract": "Long video understanding remains a daunting challenge for Multimodal Large Language Models (MLLMs) due to the excessive computation and memory footprint. Thus, keyframe selection is often adopted to mitigate this shortcoming, which however still suffers from low flexibility and high noise due to its hard sampling principle. In this paper, we define video frame selection as a problem of Quasi-Gaussian Sampling, and propose an adaptive and training-free approach termed AdaQ. Inspired by the 3-$σ$ rule of Gaussian distribution, the objective of AdaQ is to achieve the optimal 3-$σ$ interval for different examples, i.e., a smaller 3-$σ$ interval for the local query and a larger one for the global query, thereby facilitating robust and adaptive frame sampling. To validate AdaQ, we apply it to four MLLMs with three embedding models. The extensive experimental results not only show its obvious performance gains over the default MLLMs and the SOTA keyframe selection methods, e.g., helping Qwen3-VL-8B outperform GPT4o by 15.8% on average by using only 64 frames, but also confirm its superior robustness and high efficiency for long-video understanding, e.g., only 1 hyper-parameter needs to be set.",
+      "authors": [
+        "Kun Zhang",
+        "Chenxin Fang",
+        "Tao Chen",
+        "Baiyang Song",
+        "Yunhang Shen",
+        "Yiyi Zhou",
+        "Rongrong Ji"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T06:13:30+00:00",
+      "link": "https://arxiv.org/pdf/2606.24187v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "adaptive keyframe sampling for long video understanding in MLLMs",
+      "llm_evidence_cn": "自适应关键帧采样用于多模态大模型的长视频理解",
+      "llm_evidence": "自适应关键帧采样用于多模态大模型的长视频理解",
+      "canonical_evidence": "自适应关键帧采样用于多模态大模型的长视频理解",
+      "llm_tldr_en": "AdaQ proposes adaptive quasi-Gaussian sampling for training-free keyframe selection in long video understanding with MLLMs.",
+      "llm_tldr_cn": "长视频理解中关键帧选择存在低灵活性和噪声问题。提出AdaQ方法，将帧选择定义为准高斯采样问题，根据查询类型自适应调整3-sigma区间（局部查询用小区间，全局查询用大区间），无需训练即可提升长视频理解效率。",
+      "llm_tldr": "长视频理解中关键帧选择存在低灵活性和噪声问题。提出AdaQ方法，将帧选择定义为准高斯采样问题，根据查询类型自适应调整3-sigma区间（局部查询用小区间，全局查询用大区间），无需训练即可提升长视频理解效率。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24636v1",
+      "source": "arxiv",
+      "title": "CineCap: Structured Reasoning with Spatio-Temporal Anchors for Cinematographic Video Captioning",
+      "abstract": "Cinematographic captioning aims to describe how a video is filmed using professional film-language concepts such as camera movement, shot size, depth of field, composition, and shooting angle. This capability is important for fine-grained video understanding and controllable movie-quality video generation, yet remains underexplored in existing multimodal large language models. Unlike question-answering-based evaluation of cinematic understanding, cinematographic captioning requires a unified open-form description over multiple cinematographic dimensions. This task is challenging for two main reasons: the model must infer professional cinematographic concepts from subtle visual evidence, and it must generate captions that are both comprehensive and accurate. Accordingly, we propose CineCap, a framework that combines structured reasoning with spatio-temporal anchors and reinforcement learning with comprehensiveness, accuracy, and gated coverage rewards. The former grounds professional cinematographic descriptions in explicit visual evidence and organizes them into compact atomic reasoning for supervised fine-tuning, while the latter improves the balance between descriptive completeness and factual correctness. In addition, we construct CineCap Bench, a benchmark of 472 manually annotated video-caption pairs for systematic evaluation. Extensive experiments show that CineCap consistently outperforms strong proprietary and open-source baselines, establishing a new state of the art for cinematographic captioning. The code, model checkpoint, and benchmark are publicly available in https://github.com/Hectormxy/CineCap.git.",
+      "authors": [
+        "Xinyu Mao",
+        "Yuhui Zeng",
+        "Xiaokun Liu",
+        "Wenyu Qin",
+        "Meng Wang",
+        "Xin Tao",
+        "Pengfei Wan",
+        "Xiaohan Xing",
+        "Max Meng"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-23T14:29:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.24636v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified open-form cinematographic captioning using MLLMs",
+      "llm_evidence_cn": "使用多模态大模型进行统一开放的影视描述",
+      "llm_evidence": "使用多模态大模型进行统一开放的影视描述",
+      "canonical_evidence": "使用多模态大模型进行统一开放的影视描述",
+      "llm_tldr_en": "CineCap generates professional cinematographic captions using structured reasoning with spatio-temporal anchors in multimodal LLMs.",
+      "llm_tldr_cn": "面向电影级视频描述任务，提出CineCap方法，利用时空锚点进行结构化推理，生成涵盖镜头运动、景深、构图等专业概念的开放描述。该方法弥补了现有多模态大模型在影视细粒度理解上的不足，为可控视频生成提供基础。",
+      "llm_tldr": "面向电影级视频描述任务，提出CineCap方法，利用时空锚点进行结构化推理，生成涵盖镜头运动、景深、构图等专业概念的开放描述。该方法弥补了现有多模态大模型在影视细粒度理解上的不足，为可控视频生成提供基础。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26029v1",
+      "source": "arxiv",
+      "title": "TriViewBench: Controlled Complexity Scaling for Multi-View Structural Reasoning in MLLMs",
+      "abstract": "Multimodal Large Language Models (MLLMs) demonstrate strong performance on standard visual question answering benchmarks, yet their scalability under controlled structural complexity remains poorly understood. We introduce TriViewBench, a controlled three-view visual reasoning benchmark constructed from synthetic 3D scenes with explicitly parameterized object count and occlusion. The benchmark contains 1,923 scenes and over 14K Question-Answer (QA) pairs organized into four complexity levels and three reasoning categories: Local Decision, Object Counting, and Global Recovery. We evaluate 18 open- and closed-source MLLMs under a unified prompting protocol. All 18 models exhibit an identical capability hierarchy without exception (Local Decision > Object Counting > Global Recovery), and performance degrades monotonically with complexity: Local Decision tasks decline modestly (12.11% relative drop), while Object Counting degrades substantially (59.14%) and Global Recovery collapses severely (80.02%). Error analysis on Object Counting reveals two mechanistically independent failure modes: single-view tasks are dominated by undercounting due to occlusion blindness, whereas the multi-view task reverses to overcounting due to cross-view identity confusion. Chain-of-Thought (CoT) prompting yields near-zero overall benefit ($Δ= -0.16\\%$) and its effect on Global Recovery is strongly capability-gated, suggesting that the bottleneck lies in cross-view spatial representation rather than reasoning strategy. These findings reveal fundamental scalability limitations in current MLLMs and position TriViewBench as a controlled diagnostic framework for analyzing structural reasoning failures.",
+      "authors": [
+        "Yu-Yang Chen",
+        "Lan-Zhe Guo"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.AI"
+      ],
+      "published": "2026-06-24T17:00:05+00:00",
+      "link": "https://arxiv.org/pdf/2606.26029v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "benchmark for multi-view structural reasoning in MLLMs",
+      "llm_evidence_cn": "多视图结构推理基准测试用于评估多模态大模型",
+      "llm_evidence": "多视图结构推理基准测试用于评估多模态大模型",
+      "canonical_evidence": "多视图结构推理基准测试用于评估多模态大模型",
+      "llm_tldr_en": "TriViewBench evaluates MLLMs on controlled multi-view structural reasoning, revealing consistent capability hierarchy across 18 models.",
+      "llm_tldr_cn": "为评估多模态大模型在多视图结构推理上的能力，提出TriViewBench基准。基于合成3D场景构建，包含1923场景和超14000问答对，按复杂度分四层、三种推理类别。评测18个模型显示一致的性能层次（局部决策>物体计数>全局恢复），为统一多模态模型能力诊断提供工具。",
+      "llm_tldr": "为评估多模态大模型在多视图结构推理上的能力，提出TriViewBench基准。基于合成3D场景构建，包含1923场景和超14000问答对，按复杂度分四层、三种推理类别。评测18个模型显示一致的性能层次（局部决策>物体计数>全局恢复），为统一多模态模型能力诊断提供工具。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
