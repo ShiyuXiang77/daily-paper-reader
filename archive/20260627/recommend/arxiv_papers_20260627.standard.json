@@ -1,0 +1,183 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-27T20:40:52.689821+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 2,
+    "deep_cap": 6,
+    "deep_selected": 2,
+    "quick_candidates": 2,
+    "quick_skim_target": 11,
+    "quick_selected": 2
+  },
+  "deep_dive": [
+    {
+      "id": "2606.21501v1",
+      "source": "arxiv",
+      "title": "UniviewVLA: A Unified Multiview Vision-Language-Action Model with World Modeling",
+      "abstract": "Occluded tasks remain a bottleneck in robot manipulation. Existing solutions either deploy additional physical cameras requiring training-inference camera parity, or rely on explicit 3D reconstruction with high computational cost. Moreover, both approaches rely on standard agent-view and wrist-view observations, while failing to capture occlusion information and future scene evolution. To this end, we propose UniviewVLA, a unified multiview Vision-Language-Action model with world modeling, which infers multiview scene evolution for action prediction from only standard two-camera observations. We demonstrate that by leveraging generated multiview future views from the world model, UniviewVLA reveals occluded cues and models future scene evolution, improving action prediction and removing the need for extra hardware or explicit reconstruction. Besides, to accelerate inference while preserving prediction accuracy, UniviewVLA develops Motion-Informative Token Compression, which compresses each generated view from 625 to 16 tokens and reduces per-view latency from 6-7s to 0.2-0.3s. UniviewVLA also proposes training-free Action-Entropy View Selection, which dynamically identifies the most action-informative view at different inference stages. Extensive experiments show that UniviewVLA achieves 95.8% on LIBERO and 4.60 on CALVIN ABCD to D, both standard occlusion-free benchmarks. On customized occlusion-focused tasks, it improves success rate from 40.0% to 73.3%, and average real-robot success rate by 33.4 points, demonstrating stronger occlusion-focused performance without sacrificing standard occlusion-free benchmarks.",
+      "authors": [
+        "Tao Xu",
+        "Runhao Zhang",
+        "Zhijian Huang",
+        "Jiayi Guan",
+        "Jiaxin Wang",
+        "Yifan Ding",
+        "Yong-Lu Li",
+        "Long Chen",
+        "Guang Chen",
+        "Jinghui Lu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-19T14:53:40+00:00",
+      "link": "https://arxiv.org/pdf/2606.21501v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified multiview vision-language-action model with world modeling for robot manipulation",
+      "llm_evidence_cn": "统一的多视图视觉-语言-动作模型，结合世界建模用于机器人操作",
+      "llm_evidence": "统一的多视图视觉-语言-动作模型，结合世界建模用于机器人操作",
+      "canonical_evidence": "统一的多视图视觉-语言-动作模型，结合世界建模用于机器人操作",
+      "llm_tldr_en": "UniviewVLA is a unified Vision-Language-Action model that infers multiview future scenes through world modeling from only two camera views, improving occlusion handling.",
+      "llm_tldr_cn": "UniviewVLA提出统一的多视图视觉-语言-动作模型，仅从两个标准相机观测通过世界模型生成多视图未来场景，从而揭示遮挡信息并建模未来演化。在机器人操作任务中有效应对遮挡瓶颈，无需额外物理相机或显式3D重建。",
+      "llm_tldr": "UniviewVLA提出统一的多视图视觉-语言-动作模型，仅从两个标准相机观测通过世界模型生成多视图未来场景，从而揭示遮挡信息并建模未来演化。在机器人操作任务中有效应对遮挡瓶颈，无需额外物理相机或显式3D重建。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.22794v1",
+      "source": "arxiv",
+      "title": "UniFS: Unified Fast-to-Slow Hierarchical Architecture for Vision-Language-Action Models",
+      "abstract": "Mainstream Fast-Slow dual system vision-language-action models decouple a high-frequency action expert from a low-frequency vision-language model for efficiency, yet they face a fundamental frequency dilemma: large update gaps cause semantic drift from stale context, while small gaps erode the intended computational savings. Moreover, because the action expert receives only the VLM's final-layer representation at a single fixed frequency, rich intermediate features are discarded, limiting both information coupling and manipulation precision. Inspired by multi-timescale neural processing in the human brain, we introduce UniFS, a unified fast-to-slow architecture that resolves these challenges through three key designs. First, we stratify the VLM layers into groups with progressively decreasing update frequencies, enabling shallow layers to capture fast-changing dynamics while deeper layers cache stable semantic context. Second, a latent vector inversion mechanism re-routes the interaction order between multi-scale VLM features and the action expert, aligning fast-varying representations with fine-grained action decoding and slow-varying ones with coarse planning. Third, a multi-level supervision strategy enforces a coarse-to-fine learning hierarchy across temporal scales. Together, these designs enable richer cross-frequency information transfer within a single backbone, while the low-frequency pathways additionally preserve temporal context across steps. Experiments on LIBERO show that UniFS achieves state-of-the-art performance (98.3\\% average success rate, a 2.5\\% gain over VLA-Adapter baseline) while reducing average inference latency from 36.5~ms to 17.8~ms (2.1$\\times$ speedup). Real-robot experiments on a Franka platform further validate its practical applicability. Code is opensourced at https://github.com/linsun449/UniFS.",
+      "authors": [
+        "Lin Sun",
+        "Zhiwei Guan",
+        "Conglin Wang",
+        "Zihong Chen",
+        "Jianhai Yu",
+        "Zongsheng Li",
+        "Boyong He",
+        "Tao Sun",
+        "Jiale Cao",
+        "Lige Liu"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO"
+      ],
+      "published": "2026-06-22T03:10:19+00:00",
+      "link": "https://arxiv.org/pdf/2606.22794v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "Unified architecture for vision-language-action models",
+      "llm_evidence_cn": "视觉-语言-动作模型的统一架构",
+      "llm_evidence": "视觉-语言-动作模型的统一架构",
+      "canonical_evidence": "视觉-语言-动作模型的统一架构",
+      "llm_tldr_en": "UniFS introduces a unified fast-to-slow hierarchical architecture that resolves the frequency dilemma in vision-language-action models by integrating multi-timescale processing, improving information coupling and manipulation precision.",
+      "llm_tldr_cn": "现有快速-慢速双系统视觉-语言-动作模型面临频率困境：更新间隔大导致语义漂移，间隔小则计算开销大。UniFS提出统一快速到慢速的分层架构，通过多时间尺度处理解决该问题，并利用中间特征增强信息耦合。实验表明该方法在精度和效率上取得提升，为高效多模态模型提供了新范式。",
+      "llm_tldr": "现有快速-慢速双系统视觉-语言-动作模型面临频率困境：更新间隔大导致语义漂移，间隔小则计算开销大。UniFS提出统一快速到慢速的分层架构，通过多时间尺度处理解决该问题，并利用中间特征增强信息耦合。实验表明该方法在精度和效率上取得提升，为高效多模态模型提供了新范式。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.24165v1",
+      "source": "arxiv",
+      "title": "Spectral Evolution-Guided Token Pruning in Multimodal Large Language Models",
+      "abstract": "Reducing visual token redundancy is critical for accelerating Multimodal Large Language Models (MLLMs) without degrading cross-modal reasoning performance. Existing token pruning methods typically rely on single-layer signals, such as attention scores or token similarities, which overlook the cross-layer transformation of visual representations and may exhibit positional bias in multimodal token sequences. To address this limitation, we propose a training-free token pruning framework based on Cross-Layer Spectral Evolution (CLSE). Instead of measuring token importance from single-layer feature magnitudes, CLSE quantifies how token representations evolve across Transformer layers in the frequency domain. This evolution reflects the transition from high-frequency structural details to low-frequency semantic abstractions. We observe that tokens with stronger spectral redistribution across layers are more likely to be semantically active and should therefore be preserved. By modeling cross-layer token dynamics, CLSE provides a stable importance criterion that mitigates positional bias. Extensive experiments on both image and video benchmarks demonstrate that CLSE achieves a superior trade-off between efficiency and accuracy under aggressive token reduction. Across multiple MLLMs, CLSE reduces FLOPs, KV cache memory, and latency while maintaining competitive or improved performance.",
+      "authors": [
+        "Bin Chen",
+        "Yuxiang Cai",
+        "Yadan Luo",
+        "Yi Zhang",
+        "Jianwei Yin",
+        "Zhi Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T05:39:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.24165v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "training-free token pruning for MLLMs using cross-layer spectral evolution",
+      "llm_evidence_cn": "基于跨层频谱演化的无训练令牌剪枝，加速多模态大模型",
+      "llm_evidence": "基于跨层频谱演化的无训练令牌剪枝，加速多模态大模型",
+      "canonical_evidence": "基于跨层频谱演化的无训练令牌剪枝，加速多模态大模型",
+      "llm_tldr_en": "Proposes CLSE, a training-free token pruning framework for MLLMs that uses cross-layer spectral evolution to measure token importance, avoiding positional bias.",
+      "llm_tldr_cn": "多模态大模型视觉令牌冗余影响推理速度，现有剪枝方法依赖单层信号且存在位置偏置。本文提出跨层频谱演化（CLSE）框架，通过分析令牌表示在Transformer层间的频率域演化来评估重要性，无需训练即可剪枝。实验表明CLSE在保持性能的同时显著加速推理，为多模态度量优化提供了轻量级方案。",
+      "llm_tldr": "多模态大模型视觉令牌冗余影响推理速度，现有剪枝方法依赖单层信号且存在位置偏置。本文提出跨层频谱演化（CLSE）框架，通过分析令牌表示在Transformer层间的频率域演化来评估重要性，无需训练即可剪枝。实验表明CLSE在保持性能的同时显著加速推理，为多模态度量优化提供了轻量级方案。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.26631v1",
+      "source": "arxiv",
+      "title": "Position Rebinding Cache Reuse: Replay-Free Visual Revisiting for Interleaved Multimodal Reasoning",
+      "abstract": "Interleaved multimodal reasoning improves visual grounding by revisiting visual evidence during multi-step generation, yet existing methods typically rely on token replay, repeatedly forwarding selected visual tokens. A natural shortcut is to reuse the historical visual key-value (KV) cache directly. However, we identify a critical failure mode of this strategy: cached visual keys are already bound to their original positional context. Such stale positional binding distorts attention under later decoding contexts and can trigger severe autoregressive decoding collapse. This failure suggests that effective cache reuse requires reconstructing visual evidence under positions compatible with the current decoding state, rather than directly copying position-bound historical cache entries. To this end, we propose Position Rebinding Cache Reuse (PRCR), a cache-level framework for replay-free visual revisiting. PRCR stores raw visual KV cache together with their original spatial coordinates, then reassigns position-compatible coordinates to select entries and rebinds their keys before injecting the reconstructed cache into the active decoder cache. This design reuses historical visual evidence while preserving textual positional continuity and relative visual structure. Experiments across multiple multimodal reasoning benchmarks show that PRCR achieves replay-level or better performance, improving average accuracy by 5 percent and reducing visual-revisiting computation by up to tens of thousands of times.",
+      "authors": [
+        "Mengzhao Wang",
+        "Yanli Ji",
+        "Wangmeng Zuo",
+        "Peng Ye",
+        "Chongjun Tu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-25T05:47:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.26631v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "proposes position rebinding for KV cache reuse in interleaved multimodal reasoning",
+      "llm_evidence_cn": "提出位置重绑定KV缓存复用方法用于交替多模态推理",
+      "llm_evidence": "提出位置重绑定KV缓存复用方法用于交替多模态推理",
+      "canonical_evidence": "提出位置重绑定KV缓存复用方法用于交替多模态推理",
+      "llm_tldr_en": "Identifies stale positional binding as a failure mode in direct KV cache reuse for interleaved multimodal reasoning and proposes position rebinding to enable replay-free visual revisiting.",
+      "llm_tldr_cn": "本文发现直接重用历史视觉KV缓存时，缓存键与原始位置绑定会导致注意力扭曲和解码崩溃。为此提出位置重绑定技术，在不回放令牌的情况下高效重用视觉证据，支持交替多模态推理中的视觉回溯。实验表明该方法显著提升生成质量和效率，为多模态模型推理加速提供了新思路。",
+      "llm_tldr": "本文发现直接重用历史视觉KV缓存时，缓存键与原始位置绑定会导致注意力扭曲和解码崩溃。为此提出位置重绑定技术，在不回放令牌的情况下高效重用视觉证据，支持交替多模态推理中的视觉回溯。实验表明该方法显著提升生成质量和效率，为多模态模型推理加速提供了新思路。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
