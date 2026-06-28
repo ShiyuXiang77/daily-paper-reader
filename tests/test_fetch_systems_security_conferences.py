@@ -53,6 +53,19 @@ class FetchSystemsSecurityConferencesTest(unittest.TestCase):
         self.assertEqual(paper["title"], "NDSS Paper Title")
         self.assertEqual(paper["pdf_url"], "https://www.ndss-symposium.org/wp-content/uploads/2026-f797-paper.pdf")
 
+    def test_parse_ndss_paper_page_reads_paper_data_abstract(self):
+        html = """
+        <h1>NDSS Paper Title</h1>
+        <a href="https://www.ndss-symposium.org/wp-content/uploads/2026-f797-paper.pdf">Paper</a>
+        <div class="paper-data">
+          <p><strong><p>Alice (Example University), Bob (Example Lab)</p></strong></p>
+          <p><p>This is the real abstract from the NDSS paper page.</p></p>
+        </div>
+        """
+        paper = self.mod.parse_ndss_paper_page(html, year=2026, page_url="https://www.ndss-symposium.org/ndss-paper/demo/")
+        self.assertEqual(paper["authors"], ["Alice", "Bob"])
+        self.assertEqual(paper["abstract"], "This is the real abstract from the NDSS paper page.")
+
     def test_parse_sosp_accepted_page_pairs_titles_and_authors(self):
         html = """
         <ul class="paperlist">
@@ -73,7 +86,7 @@ class FetchSystemsSecurityConferencesTest(unittest.TestCase):
 
     def test_ieee_sp_keeps_only_public_pdf_articles(self):
         articles = [
-            {"id": "open", "title": "Open Paper", "authors": [{"fullName": "Ada"}], "isOpenAccess": True, "hasPdf": True, "fno": "313000a001", "doi": "10.1109/SP.1", "year": "2024"},
+            {"id": "open", "title": "Open Paper", "abstract": "Escaped &#x2019; abstract.", "normalizedAbstract": "Readable abstract.", "authors": [{"fullName": "Ada"}], "isOpenAccess": True, "hasPdf": True, "fno": "313000a001", "doi": "10.1109/SP.1", "year": "2024"},
             {"id": "locked", "title": "Locked Paper", "authors": [{"fullName": "Bob"}], "isOpenAccess": False, "hasPdf": True, "fno": "223600a001", "doi": "10.1109/SP.2", "year": "2025"},
             {"id": "front", "title": "Title Page", "authors": [], "isOpenAccess": True, "hasPdf": True, "fno": "223600z001", "doi": "10.1109/SP.3", "year": "2025"},
         ]
@@ -84,6 +97,7 @@ class FetchSystemsSecurityConferencesTest(unittest.TestCase):
             papers[0]["pdf_url"],
             "https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/open/pdf",
         )
+        self.assertEqual(papers[0]["abstract"], "Readable abstract.")
 
 
 if __name__ == "__main__":

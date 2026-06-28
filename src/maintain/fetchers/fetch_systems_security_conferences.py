@@ -84,6 +84,17 @@ def _split_authors(value: Any) -> List[str]:
     text = _norm(value)
     if not text:
         return []
+    parenthesized = [
+        _norm(match.group(1))
+        for match in re.finditer(r"([^,;()]+?)\s*\([^)]*\)(?=\s*(?:,|;|$))", text)
+        if _norm(match.group(1))
+    ]
+    if parenthesized:
+        authors: List[str] = []
+        for item in parenthesized:
+            if item not in authors:
+                authors.append(item)
+        return authors
     text = re.sub(r"\s+and\s+", ", ", text)
     parts = re.split(r"\)\s*,|\s*;\s*", text)
     if len(parts) <= 1:
@@ -103,6 +114,8 @@ def _request_text(url: str) -> str:
         try:
             res = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=DEFAULT_TIMEOUT)
             res.raise_for_status()
+            if not res.encoding or res.encoding.lower() == "iso-8859-1":
+                res.encoding = res.apparent_encoding or "utf-8"
             return res.text
         except Exception as exc:
             last_exc = exc
@@ -231,6 +244,36 @@ def iter_ndss_paper_urls(index_html: str, *, base_url: str) -> List[str]:
     return urls
 
 
+def _extract_ndss_authors_and_abstract(soup: BeautifulSoup) -> tuple[List[str], str]:
+    paper_node = soup.select_one(".paper-data") or soup.select_one(".entry-content")
+    if paper_node:
+        paragraphs = [
+            _norm(node.get_text(" ", strip=True))
+            for node in paper_node.find_all("p")
+            if _norm(node.get_text(" ", strip=True))
+        ]
+        deduped: List[str] = []
+        for paragraph in paragraphs:
+            if paragraph not in deduped:
+                deduped.append(paragraph)
+        if deduped:
+            authors = _split_authors(deduped[0])
+            abstract = _norm(" ".join(deduped[1:]))
+            if abstract:
+                return authors, abstract
+
+    text = soup.get_text("\n", strip=True)
+    authors: List[str] = []
+    match = re.search(r"Authors?:\s*(.+?)(?:\n\s*\n|Abstract:|Paper|Slides|$)", text, flags=re.I | re.S)
+    if match:
+        authors = _split_authors(match.group(1))
+    abstract = ""
+    match = re.search(r"Abstract:?\s*(.+?)(?:\n\s*(?:Paper|Slides|BibTeX|View More Papers)|$)", text, flags=re.I | re.S)
+    if match:
+        abstract = _norm(match.group(1))
+    return authors, abstract
+
+
 def parse_ndss_paper_page(html_text: str, *, year: int, page_url: str) -> Dict[str, Any]:
     soup = BeautifulSoup(html_text, "html.parser")
     title = _norm(soup.find("h1").get_text(" ", strip=True) if soup.find("h1") else "")
@@ -243,15 +286,7 @@ def parse_ndss_paper_page(html_text: str, *, year: int, page_url: str) -> Dict[s
         if text == "paper" or href.lower().endswith("-paper.pdf") or "/wp-content/uploads/" in href and href.lower().endswith(".pdf"):
             pdf_url = href
             break
-    authors: List[str] = []
-    text = soup.get_text("\n", strip=True)
-    match = re.search(r"Authors?:\s*(.+?)(?:\n\s*\n|Abstract:|Paper|Slides|$)", text, flags=re.I | re.S)
-    if match:
-        authors = _split_authors(match.group(1))
-    abstract = ""
-    match = re.search(r"Abstract:?\s*(.+?)(?:\n\s*(?:Paper|Slides|BibTeX|View More Papers)|$)", text, flags=re.I | re.S)
-    if match:
-        abstract = _norm(match.group(1))
+    authors, abstract = _extract_ndss_authors_and_abstract(soup)
     return _clean_paper(
         {
             "id": _paper_id("ndss", year, title or page_url),
@@ -416,6 +451,19 @@ def build_ieee_sp_pdf_url(article_id: str) -> str:
     return f"https://www.computer.org/csdl/pds/api/csdl/proceedings/download-article/{_norm(article_id)}/pdf"
 
 
+def _ieee_sp_abstract(article: Dict[str, Any]) -> str:
+    for key in ("normalizedAbstract", "abstract"):
+        value = _norm(article.get(key))
+        if value:
+            return value
+    for item in article.get("abstracts") or []:
+        if isinstance(item, dict):
+            value = _norm(item.get("content"))
+            if value:
+                return value
+    return ""
+
+
 def normalize_ieee_sp_articles(articles: Iterable[Dict[str, Any]], *, year: int, require_public_pdf: bool = True) -> List[Dict[str, Any]]:
     out: List[Dict[str, Any]] = []
     for article in articles:
@@ -437,7 +485,7 @@ def normalize_ieee_sp_articles(articles: Iterable[Dict[str, Any]], *, year: int,
                 {
                     "id": _paper_id("ieee-sp", year, title),
                     "title": title,
-                    "abstract": _norm(article.get("abstract")),
+                    "abstract": _ieee_sp_abstract(article),
                     "authors": authors,
                     "published": published,
                     "link": f"https://www.computer.org/csdl/proceedings-article/sp/{int(year)}/{_norm(article.get('fno'))}/{article_id}",
@@ -467,6 +515,9 @@ def _fetch_ieee_sp_articles(proceeding_id: str) -> List[Dict[str, Any]]:
           isOpenAccess
           hasPdf
           title
+          abstract
+          normalizedAbstract
+          abstracts { abstractType content }
           year
           authors { fullName }
         }
