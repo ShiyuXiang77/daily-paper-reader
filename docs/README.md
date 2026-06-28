@@ -6,34 +6,36 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-27
-- 运行时间：2026-06-27 20:43:18 UTC
+- 最新运行日期：2026-06-28
+- 运行时间：2026-06-28 20:45:19 UTC
 - 运行状态：成功
-- 本次总论文数：4
-- 精读区：2
-- 速读区：2
+- 本次总论文数：5
+- 精读区：0
+- 速读区：5
 
 ### 今日简报（AI）
-今日推荐两篇高分VLA模型论文，聚焦多视图统一与层次化架构。  
-UniviewVLA通过多视图世界建模实现统一视觉-语言-动作，UniFS提出快慢层次架构，均达9.0高分，值得精读。  
-普通读者可关注VLA模型的多模态融合与推理效率优化，速读论文涉及剪枝与缓存复用，适合扩展视野。
-- 详情：[/202606/27/README](/202606/27/README)
+今日速读5篇多模态相关论文，聚焦缓存复用与内容生成方向。最值得关注的是《Position Rebinding Cache Reuse》提出回放无关的多模态推理加速方法，以及《TailorMind》实现偏好对齐的内容生成。后续可优先深入探索缓存复用技术在复杂推理任务中的实际效果。
+- 详情：[/202606/28/README](/202606/28/README)
 
 ### 精读区论文标签
-1. [UniviewVLA: A Unified Multiview Vision-Language-Action Model with World Modeling](/202606/27/2606.21501v1-univiewvla-a-unified-multiview-vision-language-action-model-with-world-modeling)  
-   标签：评分：9.0/10、query:um
-   evidence：统一的多视图视觉-语言-动作模型，结合世界建模用于机器人操作
-2. [UniFS: Unified Fast-to-Slow Hierarchical Architecture for Vision-Language-Action Models](/202606/27/2606.22794v1-unifs-unified-fast-to-slow-hierarchical-architecture-for-vision-language-action-models)  
-   标签：评分：9.0/10、query:um
-   evidence：视觉-语言-动作模型的统一架构
+- 本次无精读推荐。
 
 ### 速读区论文标签
-1. [Spectral Evolution-Guided Token Pruning in Multimodal Large Language Models](/202606/27/2606.24165v1-spectral-evolution-guided-token-pruning-in-multimodal-large-language-models)  
+1. [Position Rebinding Cache Reuse: Replay-Free Visual Revisiting for Interleaved Multimodal Reasoning](/202606/28/2606.26631v1-position-rebinding-cache-reuse-replay-free-visual-revisiting-for-interleaved-multimodal-reasoning)  
+   标签：评分：7.0/10、query:um
+   evidence：用于交错多模态推理的位置重绑定缓存重用
+2. [TailorMind: Towards Preference-Aligned Multimodal Content Generation](/202606/28/2606.23643v1-tailormind-towards-preference-aligned-multimodal-content-generation)  
    标签：评分：6.0/10、query:um
-   evidence：基于跨层频谱演化的无训练令牌剪枝，加速多模态大模型
-2. [Position Rebinding Cache Reuse: Replay-Free Visual Revisiting for Interleaved Multimodal Reasoning](/202606/27/2606.26631v1-position-rebinding-cache-reuse-replay-free-visual-revisiting-for-interleaved-multimodal-reasoning)  
+   evidence：多模态内容生成，个性化生成框架
+3. [Spectral Evolution-Guided Token Pruning in Multimodal Large Language Models](/202606/28/2606.24165v1-spectral-evolution-guided-token-pruning-in-multimodal-large-language-models)  
    标签：评分：6.0/10、query:um
-   evidence：提出位置重绑定KV缓存复用方法用于交替多模态推理
+   evidence：跨层频谱演化的MLLM标记剪枝
+4. [Curvature-Guided Mixing for MLLM Adaptation](/202606/28/2606.24963v1-curvature-guided-mixing-for-mllm-adaptation)  
+   标签：评分：6.0/10、query:um
+   evidence：曲率引导的MLLM适应混合以防止遗忘
+5. [Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models](/202606/28/2606.27373v1-paying-more-attention-to-visual-tokens-in-self-evolving-large-multimodal-models)  
+   标签：评分：6.0/10、query:um
+   evidence：改进自进化多模态模型中的视觉注意力
 
 
 <div class="dpr-home-promo-card">

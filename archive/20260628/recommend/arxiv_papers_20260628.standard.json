@@ -1,0 +1,217 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-28T20:44:06.116568+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 5,
+    "quick_skim_target": 11,
+    "quick_selected": 5
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.26631v1",
+      "source": "arxiv",
+      "title": "Position Rebinding Cache Reuse: Replay-Free Visual Revisiting for Interleaved Multimodal Reasoning",
+      "abstract": "Interleaved multimodal reasoning improves visual grounding by revisiting visual evidence during multi-step generation, yet existing methods typically rely on token replay, repeatedly forwarding selected visual tokens. A natural shortcut is to reuse the historical visual key-value (KV) cache directly. However, we identify a critical failure mode of this strategy: cached visual keys are already bound to their original positional context. Such stale positional binding distorts attention under later decoding contexts and can trigger severe autoregressive decoding collapse. This failure suggests that effective cache reuse requires reconstructing visual evidence under positions compatible with the current decoding state, rather than directly copying position-bound historical cache entries. To this end, we propose Position Rebinding Cache Reuse (PRCR), a cache-level framework for replay-free visual revisiting. PRCR stores raw visual KV cache together with their original spatial coordinates, then reassigns position-compatible coordinates to select entries and rebinds their keys before injecting the reconstructed cache into the active decoder cache. This design reuses historical visual evidence while preserving textual positional continuity and relative visual structure. Experiments across multiple multimodal reasoning benchmarks show that PRCR achieves replay-level or better performance, improving average accuracy by 5 percent and reducing visual-revisiting computation by up to tens of thousands of times.",
+      "authors": [
+        "Mengzhao Wang",
+        "Yanli Ji",
+        "Wangmeng Zuo",
+        "Peng Ye",
+        "Chongjun Tu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-25T05:47:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.26631v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "position rebinding cache reuse for interleaved multimodal reasoning",
+      "llm_evidence_cn": "用于交错多模态推理的位置重绑定缓存重用",
+      "llm_evidence": "用于交错多模态推理的位置重绑定缓存重用",
+      "canonical_evidence": "用于交错多模态推理的位置重绑定缓存重用",
+      "llm_tldr_en": "Identifies failure mode of naive KV cache reuse due to stale positional binding and proposes position rebinding for replay-free visual revisiting.",
+      "llm_tldr_cn": "交错多模态推理中直接重用视觉KV缓存会导致位置绑定过时，引发解码崩溃。本文提出位置重绑定机制，在不重放标记的情况下重建与当前解码状态兼容的视觉证据。该方法有效避免了自回归解码错误，提升了推理效率。",
+      "llm_tldr": "交错多模态推理中直接重用视觉KV缓存会导致位置绑定过时，引发解码崩溃。本文提出位置重绑定机制，在不重放标记的情况下重建与当前解码状态兼容的视觉证据。该方法有效避免了自回归解码错误，提升了推理效率。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.23643v1",
+      "source": "arxiv",
+      "title": "TailorMind: Towards Preference-Aligned Multimodal Content Generation",
+      "abstract": "Personalized content systems depend on available UGC and struggle when suitable content is absent, delayed, or costly to create. Although multimodal generators can synthesize content on demand, how to translate behavioral traces into generation-ready preferences remains underexplored. We study personalized multimodal content generation: creating user-tailored multimodal content without existing item pools or waiting for matching UGC. We propose TailorMind, linking collaborative preference modeling with controllable multimodal generation. TailorMind enriches sparse user histories via hypergraph collaborative filtering and optimizes textual profiles with ranking-error feedback and textual gradient descent. Retrieval-augmented style control grounds outputs in authentic UGC patterns, while cross-modal cohesion reflection reduces semantic drift. We construct TailorBench, a benchmark from three mainstream platforms evaluated along five dimensions: coherence, novelty, aesthetic, hallucination, profiling. Experiments show that TailorMind achieves competitive or stronger coherence, improves novelty and aesthetic quality over representative generation baselines and ground-truth UGC, demonstrating advantages over retrieving available content or comparable UGC, while achieving up to 29% Recall gains in reranking. Our code is released at: https://github.com/iLearn-Lab/TailorMind.",
+      "authors": [
+        "Hengji Zhou",
+        "Ye Liu",
+        "Yufeng Liu",
+        "Si Wu",
+        "Lianghao Xia",
+        "Liqiang Nie"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-22T17:31:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.23643v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "multimodal content generation, personalized generation framework",
+      "llm_evidence_cn": "多模态内容生成，个性化生成框架",
+      "llm_evidence": "多模态内容生成，个性化生成框架",
+      "canonical_evidence": "多模态内容生成，个性化生成框架",
+      "llm_tldr_en": "TailorMind addresses personalized multimodal generation by linking collaborative preference modeling with controllable generation, using hypergraph filtering and textual gradient descent.",
+      "llm_tldr_cn": "现有个性化内容系统依赖已有用户生成内容，在缺乏合适内容时受限。TailorMind提出将协同偏好建模与可控多模态生成相连的方法，通过超图协同过滤丰富稀疏用户历史，利用排序误差反馈和文本梯度下降优化文本描述，并结合检索增强风格控制。该方法实现了无需现有物品池的用户定制多模态内容生成。",
+      "llm_tldr": "现有个性化内容系统依赖已有用户生成内容，在缺乏合适内容时受限。TailorMind提出将协同偏好建模与可控多模态生成相连的方法，通过超图协同过滤丰富稀疏用户历史，利用排序误差反馈和文本梯度下降优化文本描述，并结合检索增强风格控制。该方法实现了无需现有物品池的用户定制多模态内容生成。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24165v1",
+      "source": "arxiv",
+      "title": "Spectral Evolution-Guided Token Pruning in Multimodal Large Language Models",
+      "abstract": "Reducing visual token redundancy is critical for accelerating Multimodal Large Language Models (MLLMs) without degrading cross-modal reasoning performance. Existing token pruning methods typically rely on single-layer signals, such as attention scores or token similarities, which overlook the cross-layer transformation of visual representations and may exhibit positional bias in multimodal token sequences. To address this limitation, we propose a training-free token pruning framework based on Cross-Layer Spectral Evolution (CLSE). Instead of measuring token importance from single-layer feature magnitudes, CLSE quantifies how token representations evolve across Transformer layers in the frequency domain. This evolution reflects the transition from high-frequency structural details to low-frequency semantic abstractions. We observe that tokens with stronger spectral redistribution across layers are more likely to be semantically active and should therefore be preserved. By modeling cross-layer token dynamics, CLSE provides a stable importance criterion that mitigates positional bias. Extensive experiments on both image and video benchmarks demonstrate that CLSE achieves a superior trade-off between efficiency and accuracy under aggressive token reduction. Across multiple MLLMs, CLSE reduces FLOPs, KV cache memory, and latency while maintaining competitive or improved performance.",
+      "authors": [
+        "Bin Chen",
+        "Yuxiang Cai",
+        "Yadan Luo",
+        "Yi Zhang",
+        "Jianwei Yin",
+        "Zhi Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-23T05:39:52+00:00",
+      "link": "https://arxiv.org/pdf/2606.24165v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "token pruning for MLLMs using cross-layer spectral evolution",
+      "llm_evidence_cn": "跨层频谱演化的MLLM标记剪枝",
+      "llm_evidence": "跨层频谱演化的MLLM标记剪枝",
+      "canonical_evidence": "跨层频谱演化的MLLM标记剪枝",
+      "llm_tldr_en": "Proposes a training-free token pruning method for MLLMs using cross-layer spectral evolution to reduce redundancy while preserving cross-modal reasoning.",
+      "llm_tldr_cn": "针对多模态大语言模型中视觉标记冗余问题，提出了一种基于跨层频谱演化的免训练标记剪枝框架。该方法通过频率域分析标记表示在Transformer层间的演化，而非单层特征，从而更准确地评估标记重要性。实验表明，该方法在加速推理的同时保持了跨模态推理性能。",
+      "llm_tldr": "针对多模态大语言模型中视觉标记冗余问题，提出了一种基于跨层频谱演化的免训练标记剪枝框架。该方法通过频率域分析标记表示在Transformer层间的演化，而非单层特征，从而更准确地评估标记重要性。实验表明，该方法在加速推理的同时保持了跨模态推理性能。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.24963v1",
+      "source": "arxiv",
+      "title": "Curvature-Guided Mixing for MLLM Adaptation",
+      "abstract": "Fine-tuning Multimodal Large Language Models (MLLMs) on specialized tasks often leads to catastrophic forgetting of their general capabilities. Existing model merging methods to combat this are often heuristic or use sub-optimal objectives. We propose CurvatureGuided Mixing (CGM), a theoretically grounded framework that merges pre-trained and fine-tuned models. CGM formulates a joint optimization objective and uses a second-order (Hessian) approximation of the loss landscapes to analytically derive an optimal, closed-form \"soft mixing\" ratio. This ratio intelligently blends parameters based on their relative task-specific curvatures. We also introduce CGM$\\dagger$, a robust \"hard mixing\" variant that performs sparse parameter selection guided by a novel, curvature-aware score. Experiments on LLaVA-1.5 and Qwen2.5VL across multiple downstream tasks show that CGM and CGM$\\dagger$ consistently improve the trade-off between task specialization and general knowledge retention over existing methods. Code is available at github.com/zzsyjl/CGM-ECCV-2026.",
+      "authors": [
+        "Jinglong Yang",
+        "Jiaxuan He",
+        "Wenjian Huang",
+        "Zhan Zhuang",
+        "Jianguo Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-23T09:21:54+00:00",
+      "link": "https://arxiv.org/pdf/2606.24963v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "curvature-guided mixing for MLLM adaptation to prevent forgetting",
+      "llm_evidence_cn": "曲率引导的MLLM适应混合以防止遗忘",
+      "llm_evidence": "曲率引导的MLLM适应混合以防止遗忘",
+      "canonical_evidence": "曲率引导的MLLM适应混合以防止遗忘",
+      "llm_tldr_en": "Proposes Curvature-Guided Mixing to merge pre-trained and fine-tuned MLLMs using Hessian-based optimization, preventing catastrophic forgetting.",
+      "llm_tldr_cn": "微调多模态大语言模型常导致灾难性遗忘。现有模型融合方法多启发式。本文提出曲率引导混合（CGM），利用二阶Hessian近似损失景观，解析导出最优软混合比，并推出硬混合变体。该方法有效平衡了任务特化与通用能力。",
+      "llm_tldr": "微调多模态大语言模型常导致灾难性遗忘。现有模型融合方法多启发式。本文提出曲率引导混合（CGM），利用二阶Hessian近似损失景观，解析导出最优软混合比，并推出硬混合变体。该方法有效平衡了任务特化与通用能力。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.27373v1",
+      "source": "arxiv",
+      "title": "Paying More Attention to Visual Tokens in Self-Evolving Large Multimodal Models",
+      "abstract": "Recently, self-evolving large multimodal models (LMMs) have received attention for improving visual reasoning in a purely unsupervised setting. However, multi-role self-play and self-consistency reward schemes in existing self-evolving LMMs optimize answer agreement without ensuring the decoder attends to visual content, relying instead on statistical language priors to produce self consistent outputs. This leads to a persistent failure mode we term visual under-conditioning, where the decoder relies on language priors rather than the image during generation, manifesting as insufficient attention to visual tokens. As a result, current self-evolving LMMs struggle on vision--language understanding tasks such as image captioning and visual question answering. To address this, we propose VISE (Visual Invariance Self-Evolution), a purely unsupervised self-evolving framework that directly regularizes the model's visual conditioning policy through two complementary invariance-based rewards: a geometric invariance reward that enforces spatial consistency under known transformations, and a semantic invariance reward that penalizes evidence-agnostic generation by requiring the model to recognize the absence of evidence when predicted regions are perturbed. VISE operates within a single model without specialist roles, external reward models, or annotations, and is trained on raw unlabeled images. Experiments on 18 benchmarks demonstrate the efficacy of our approach. Using Qwen3-VL-2B as the base model, VISE achieves gains of $+16.85$ CIDEr on COCO and $+19.66$ CIDEr on TextCaps, reduces object hallucination by $5.0$ Chair-I points, and generalizes across four model families and scales. Our code and models are available at https://mbzuai-oryx.github.io/VISE",
+      "authors": [
+        "Shravan Venkatraman",
+        "Ritesh Thawkar",
+        "Omkar Thawakar",
+        "Rao Muhammad Anwer",
+        "Hisham Cholakkal",
+        "Salman Khan",
+        "Fahad Khan"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-25T17:59:55+00:00",
+      "link": "https://arxiv.org/pdf/2606.27373v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "improving visual attention in self-evolving multimodal models",
+      "llm_evidence_cn": "改进自进化多模态模型中的视觉注意力",
+      "llm_evidence": "改进自进化多模态模型中的视觉注意力",
+      "canonical_evidence": "改进自进化多模态模型中的视觉注意力",
+      "llm_tldr_en": "This paper identifies and addresses visual under-conditioning in self-evolving LMMs by proposing methods to enhance attention to visual tokens, improving vision-language understanding.",
+      "llm_tldr_cn": "现有自进化多模态模型在视觉推理中存在视觉条件不足问题，即解码器依赖语言先验而非图像内容。本文提出通过增强视觉令牌的注意力来缓解此问题，实验表明该方法在图像描述和视觉问答等任务上提升了视觉语言理解能力，推动了多模态模型的自我进化方向。",
+      "llm_tldr": "现有自进化多模态模型在视觉推理中存在视觉条件不足问题，即解码器依赖语言先验而非图像内容。本文提出通过增强视觉令牌的注意力来缓解此问题，实验表明该方法在图像描述和视觉问答等任务上提升了视觉语言理解能力，推动了多模态模型的自我进化方向。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "Unified Multimodal",
+      "matched_requirement_id": "req-3",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
