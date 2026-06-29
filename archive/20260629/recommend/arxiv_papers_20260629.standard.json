@@ -1,0 +1,136 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-06-29T21:27:52.933524+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 0,
+    "deep_cap": 6,
+    "deep_selected": 0,
+    "quick_candidates": 3,
+    "quick_skim_target": 11,
+    "quick_selected": 3
+  },
+  "deep_dive": [],
+  "quick_skim": [
+    {
+      "id": "2606.23643v1",
+      "source": "arxiv",
+      "title": "TailorMind: Towards Preference-Aligned Multimodal Content Generation",
+      "abstract": "Personalized content systems depend on available UGC and struggle when suitable content is absent, delayed, or costly to create. Although multimodal generators can synthesize content on demand, how to translate behavioral traces into generation-ready preferences remains underexplored. We study personalized multimodal content generation: creating user-tailored multimodal content without existing item pools or waiting for matching UGC. We propose TailorMind, linking collaborative preference modeling with controllable multimodal generation. TailorMind enriches sparse user histories via hypergraph collaborative filtering and optimizes textual profiles with ranking-error feedback and textual gradient descent. Retrieval-augmented style control grounds outputs in authentic UGC patterns, while cross-modal cohesion reflection reduces semantic drift. We construct TailorBench, a benchmark from three mainstream platforms evaluated along five dimensions: coherence, novelty, aesthetic, hallucination, profiling. Experiments show that TailorMind achieves competitive or stronger coherence, improves novelty and aesthetic quality over representative generation baselines and ground-truth UGC, demonstrating advantages over retrieving available content or comparable UGC, while achieving up to 29% Recall gains in reranking. Our code is released at: https://github.com/iLearn-Lab/TailorMind.",
+      "authors": [
+        "Hengji Zhou",
+        "Ye Liu",
+        "Yufeng Liu",
+        "Si Wu",
+        "Lianghao Xia",
+        "Liqiang Nie"
+      ],
+      "primary_category": "cs.AI",
+      "categories": [
+        "cs.AI"
+      ],
+      "published": "2026-06-22T17:31:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.23643v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "preference-aligned multimodal content generation framework",
+      "llm_evidence_cn": "偏好对齐的多模态内容生成框架",
+      "llm_evidence": "偏好对齐的多模态内容生成框架",
+      "canonical_evidence": "偏好对齐的多模态内容生成框架",
+      "llm_tldr_en": "TailorMind personalizes multimodal content generation by linking collaborative preference modeling with controllable generation, enabling creation without existing item pools.",
+      "llm_tldr_cn": "针对个性化内容生成中用户偏好难以从行为轨迹转化的问题，TailorMind提出将协同偏好建模与可控多模态生成相结合。通过超图协同过滤丰富稀疏历史，结合排序误差反馈和文本梯度下降优化文本轮廓，并利用检索增强风格控制。实验证明该方法能在无候选池情况下生成符合用户偏好的多模态内容。该工作拓展了多模态生成在个性化场景中的应用。",
+      "llm_tldr": "针对个性化内容生成中用户偏好难以从行为轨迹转化的问题，TailorMind提出将协同偏好建模与可控多模态生成相结合。通过超图协同过滤丰富稀疏历史，结合排序误差反馈和文本梯度下降优化文本轮廓，并利用检索增强风格控制。实验证明该方法能在无候选池情况下生成符合用户偏好的多模态内容。该工作拓展了多模态生成在个性化场景中的应用。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.22631v1",
+      "source": "arxiv",
+      "title": "4DVLT: Dynamic Scene Understanding with Worldline-Centered Vision-Language Tracking",
+      "abstract": "4D dynamic scene understanding requires grounding language to a persistent worldline that binds identity, metric 3D motion, and synchronized multi-view 2D projections. Existing paradigms capture only part of this structure: large multimodal models reason over rich visual evidence but rarely preserve metric topology, while vision-language tracking remains tied to fragmented 2D or 3D outputs and local continuation. We therefore introduce \\textbf{4DVLT}, a worldline-centered task for instruction-conditioned 4D dynamic scene understanding in fully observed multi-view video, and \\textbf{Instruct-4D}, a benchmark with 129.4K question-answer pairs, 64.7K target entities, 851 scenes, and 9 reasoning-oriented query types. To address this setting, we present \\textbf{4DTrack}, which casts instruction-conditioned tracking as graph-conditioned worldline inference through an object-centric 4D state graph, metric-guided routing, bidirectional decoding, and kinematic calibration. On Instruct-4D, 4DTrack-Qwen3.5-9B reaches 62.68 $\\mathrm{TGA}_{\\mathrm{Top1}}$ and surpasses the best adapted VLT baseline by 19.62 points. These results show that worldline-centered modeling improves both target grounding and recovered worldline quality. The project page is available at https://github.com/mikubaka88/4DVLT.",
+      "authors": [
+        "Chaoyue Li",
+        "Boxue Yang",
+        "Shengyao Zhou",
+        "Haoyang Wu",
+        "Rui Qian",
+        "Linfeng Zhang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-21T18:33:15+00:00",
+      "link": "https://arxiv.org/pdf/2606.22631v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "worldline-centered vision-language tracking for 4D dynamic scene understanding",
+      "llm_evidence_cn": "以世界线为中心的视觉语言追踪用于4D动态场景理解",
+      "llm_evidence": "以世界线为中心的视觉语言追踪用于4D动态场景理解",
+      "canonical_evidence": "以世界线为中心的视觉语言追踪用于4D动态场景理解",
+      "llm_tldr_en": "4DVLT introduces a worldline-centered task for 4D dynamic scene understanding, combining vision-language tracking with metric 3D motion and multi-view video.",
+      "llm_tldr_cn": "4D动态场景理解需要将语言与持续的身份、三维运动和多视角投影绑定。现有多模态模型缺乏度量拓扑保持。4DVLT提出以世界线为中心的任务，融合视觉语言追踪与三维度量信息，并构建大规模基准。该方法在多种推理查询上表现优异。该工作推进了多模态理解在动态场景中的应用。",
+      "llm_tldr": "4D动态场景理解需要将语言与持续的身份、三维运动和多视角投影绑定。现有多模态模型缺乏度量拓扑保持。4DVLT提出以世界线为中心的任务，融合视觉语言追踪与三维度量信息，并构建大规模基准。该方法在多种推理查询上表现优异。该工作推进了多模态理解在动态场景中的应用。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.27627v1",
+      "source": "arxiv",
+      "title": "HybridCodec: Modeling Discrete and Continuous Representations for Efficient Speech Language Models",
+      "abstract": "Discrete audio representations have become increasingly popular for building multimodal text-audio systems and integrating audio capabilities into Large Language Models (LLMs). However, numerous studies report performance degradation on various downstream tasks due to information loss during discretization. To address this, we propose a novel approach combining temporally compressed discrete tokens with dimensionality-reduced continuous residuals. Our framework consists of a hybridized discrete-continuous focal modulation codec and a hybrid Transformer. This architecture performs autoregressive inference in the discrete domain, coupled with non-autoregressive prediction and continuous residual upsampling. Experimental results show that our approach significantly improves the retention of speaker characteristics compared to discrete-only methods, while simultaneously reducing the number of required autoregressive steps.",
+      "authors": [
+        "Artem Ploujnikov",
+        "Francesco Verdini",
+        "Samir Sadok",
+        "Mirco Ravanelli"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG",
+        "cs.AI"
+      ],
+      "published": "2026-06-26T00:53:49+00:00",
+      "link": "https://arxiv.org/pdf/2606.27627v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "Hybrid Transformer for discrete-continuous multimodal audio-text fusion",
+      "llm_evidence_cn": "混合Transformer用于离散-连续多模态音频-文本融合",
+      "llm_evidence": "混合Transformer用于离散-连续多模态音频-文本融合",
+      "canonical_evidence": "混合Transformer用于离散-连续多模态音频-文本融合",
+      "llm_tldr_en": "HybridCodec combines discrete tokens and continuous residuals with a hybrid Transformer for efficient speech language models, improving performance on multimodal text-audio tasks.",
+      "llm_tldr_cn": "本文提出HybridCodec，将时间压缩的离散令牌与降维连续残差结合，并采用混合Transformer架构进行自回归推理和非自回归连续残差上采样。实验表明，该方法在多个语音语言任务上优于纯离散方法，为多模态音频文本系统的高效融合提供了新思路。",
+      "llm_tldr": "本文提出HybridCodec，将时间压缩的离散令牌与降维连续残差结合，并采用混合Transformer架构进行自回归推理和非自回归连续残差上采样。实验表明，该方法在多个语音语言任务上优于纯离散方法，为多模态音频文本系统的高效融合提供了新思路。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "transformer models for multimodal data fusion",
+      "matched_requirement_id": "req-2",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    }
+  ]
+}
