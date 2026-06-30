@@ -6,30 +6,35 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-29
-- 运行时间：2026-06-29 21:29:18 UTC
+- 最新运行日期：2026-06-30
+- 运行时间：2026-06-30 20:48:09 UTC
 - 运行状态：成功
-- 本次总论文数：3
-- 精读区：0
-- 速读区：3
+- 本次总论文数：5
+- 精读区：4
+- 速读区：1
 
 ### 今日简报（AI）
-今日精读3篇：聚焦多模态生成、动态场景理解及语音语言模型效率提升。最值得关注TailorMind（7.0分）实现偏好对齐的多模态内容生成，以及4DVLT（6.0分）创新的世界线中心视觉语言跟踪。建议优先关注TailorMind的多模态对齐技术，对理解未来个性化内容生成有直接帮助。
-- 详情：[/202606/29/README](/202606/29/README)
+今日推荐5篇论文，精读2篇高分统一多模态模型研究，满分工作聚焦自由形式图文交错生成。最值得关注《Illuminating》的跨模态生成创新与《COMPASS》的组合意图引导机制。建议优先精读满分论文，把握多模态模型前沿方向。
+- 详情：[/202606/30/README](/202606/30/README)
 
 ### 精读区论文标签
-- 本次无精读推荐。
+1. [Illuminating Unified Multimodal Model for Free-form Interleaved Text-Image Generation](/202606/30/2606.30054v1-illuminating-unified-multimodal-model-for-free-form-interleaved-text-image-generation)  
+   标签：评分：10.0/10、query:um
+   evidence：统一的交错文本-图像生成模型ILLUME-X
+2. [COMPASS: Grounding Composition-Intent Guidance in Unified Multimodal Models](/202606/30/2606.28696v1-compass-grounding-composition-intent-guidance-in-unified-multimodal-models)  
+   标签：评分：9.0/10、query:um
+   evidence：统一多模态框架实现构图感知与生成
+3. [EVLA: An Electro-Aware Multimodal Assistant for Physically-Grounded Driving Reasoning and Control](/202606/30/2606.28938v1-evla-an-electro-aware-multimodal-assistant-for-physically-grounded-driving-reasoning-and-control)  
+   标签：评分：8.0/10、query:um
+   evidence：提出统一共态编码器融合视觉、文本和车辆状态
+4. [CMTFormer: Marrying Transformer with Hierarchical Information Interaction for RGB-Event Object Detection](/202606/30/2606.29136v1-cmtformer-marrying-transformer-with-hierarchical-information-interaction-for-rgb-event-object-detection)  
+   标签：评分：8.0/10、query:um
+   evidence：用于RGB-事件目标检测的跨模态Transformer
 
 ### 速读区论文标签
-1. [TailorMind: Towards Preference-Aligned Multimodal Content Generation](/202606/29/2606.23643v1-tailormind-towards-preference-aligned-multimodal-content-generation)  
-   标签：评分：7.0/10、query:um
-   evidence：偏好对齐的多模态内容生成框架
-2. [4DVLT: Dynamic Scene Understanding with Worldline-Centered Vision-Language Tracking](/202606/29/2606.22631v1-4dvlt-dynamic-scene-understanding-with-worldline-centered-vision-language-tracking)  
+1. [Multi-modality Image Fusion under Adverse Weather: Mask-Guided Feature Restoration and Interaction](/202606/30/2606.26812v1-multi-modality-image-fusion-under-adverse-weather-mask-guided-feature-restoration-and-interaction)  
    标签：评分：6.0/10、query:um
-   evidence：以世界线为中心的视觉语言追踪用于4D动态场景理解
-3. [HybridCodec: Modeling Discrete and Continuous Representations for Efficient Speech Language Models](/202606/29/2606.27627v1-hybridcodec-modeling-discrete-and-continuous-representations-for-efficient-speech-language-models)  
-   标签：评分：6.0/10、query:um
-   evidence：混合Transformer用于离散-连续多模态音频-文本融合
+   evidence：恶劣天气下的多模态图像融合，特征恢复与交互
 
 
 <div class="dpr-home-promo-card">

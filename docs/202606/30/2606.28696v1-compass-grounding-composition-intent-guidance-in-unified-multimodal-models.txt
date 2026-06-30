@@ -1,0 +1,1246 @@
+Title: COMPASS: Grounding Composition-Intent Guidance in Unified Multimodal Models
+
+URL Source: https://arxiv.org/pdf/2606.28696v1
+
+Published Time: Tue, 30 Jun 2026 00:25:46 GMT
+
+Number of Pages: 29
+
+Markdown Content:
+## COMPASS: Grounding Composition-Intent Guidance in Unified Multimodal Models 
+
+Ziqi Zhou 1,2, Weize Quan 2,3⋆, Mining Tan 2,3, Zhihan Chen 2,3, Dandan Zheng 4,Jingdong Chen 4, Jun Zhou 4, Weiming Dong 2,3, and Dong-Ming Yan 2,3
+
+1 University of Edinburgh, United Kingdom 
+
+2 State Key Laboratory of Multimodal Artificial Intelligence Systems (MAIS), Institute of Automation, Chinese Academy of Sciences, China 
+
+3 University of Chinese Academy of Sciences, China 
+
+4 Ant Group, China Prompt : Analyze the composition of this image . 
+
+> Answer :
+
+This picture uses the rule of thirds and 
+
+horizontal composition to showcase a solitary tree 
+
+standing on the left, overlooking a vast patchwork of yellow 
+
+and green fields that stretch toward a sky ablaze with the 
+
+colors of sunset .                                 
+
+> Prompt :Which composition technique(s) are
+> used in this picture? A.rule of thirds (RoT ), B.
+> vertical, C.horizontal, D.diagonal, E.curved,
+> F.triangle, G.center, H.symmetric, I.pattern,
+> J.fill the frame, K.leading lines .
+> Answer :
+
+A, C
+
+Composition Perception 
+
+Composition -guided Generation 
+
+A breathtaking mountainous 
+
+landscape, characterized by 
+
+rugged peaks and valleys 
+
+shrouded in mist .     
+
+> Reference Image Content Description Generated Image Reference Image Content Description Generated Image
+
+A majestic mountain, likely a
+
+volcano, with a conical shape 
+
+and a snow -capped peak, 
+
+bathed in a striking red hue .
+
+A locomotive train on a snowy 
+
+railway track . The surrounding 
+
+area includes bare trees, 
+
+indicating a winter season .
+
+A serene pastoral scene with a
+
+group of cows grazing on a
+
+lush green hillside .
+
+Fig. 1: Performance of the proposed COMPASS: the unified system handles various composition understanding tasks, and further uses a reference image as layout intent to synthesize new content that remains faithful to the text prompt. 
+
+Abstract. Composition is a high-level visual intent that governs where subjects are placed and how a scene is organized, yet current unified multimodal models remain unreliable at fine-grained composition recog-nition and struggle to turn such intent into controllable generation. We present COMPASS, the first unified multimodal framework that grounds composition-intent control in a single system spanning both composition perception and composition-guided generation, with a shared expert to-ken τc as the central intent anchor. On the perception side, COMPASS injects composition expertise into an MoE backbone in a minimally in-vasive manner and distills the inferred intent into τc. On the generation side, COMPASS reuses τc as a global conditioning signal that steers the 
+
+⋆ Corresponding author: qweizework@gmail.com   
+
+> arXiv:2606.28696v1 [cs.AI] 27 Jun 2026 2Z. Zhou et al. denoising trajectory, effectively converting passive composition analysis into explicit layout control. To support systematic instruction-following composition learning and evaluation at scale, we construct Comp-11 , a large-scale dataset with an 11-class taxonomy and reasoning-augmented annotations. Extensive experiments show that COMPASS substantially improves category-level composition understanding and delivers more composition-consistent, prompt-faithful generation than strong baselines. The code and dataset for this work will be released here.
+
+1 Introduction 
+
+Visual composition is the grammar of photography, providing the structural scaffold upon which aesthetic and emotional narratives are built. In the field of aesthetic intelligence, this necessitates two core capabilities working in tandem: expert-level perception, the ability to decode the intentional geometric organiza-tion of a scene, and layout-guided creation, the ability to synthesize new content that respects a specific compositional schema. Recently, Large Multimodal Mod-els (LMMs) [5,9,11,29,30,33,43] have trended towards a unified paradigm, aiming to integrate visual understanding and generation into a single, cohesive frame-work. However, while these models excel at general reasoning, they struggle to represent composition as an explicit, controllable structure. Existing aesthetic LMMs [3, 4, 18, 44] primarily emphasize passive assessment and critique, treat-ing composition as one attribute among many rather than a structured object that can be parsed and acted upon. Meanwhile, the broader literature on photo-graphic composition has proposed rule-based taxonomies and datasets [20,40,42], which underscore that composition understanding is a distinct capability and re-mains underexplored for general LMMs. In this work, we make the first attempt to unify expert composition percep-tion and reference-guided generation in a cohesive framework. On the generation side, we target a challenging setting: given a reference image that conveys compo-sitional intent and a text prompt for new semantic content, we seek to generate an image that inherits the reference layout style while changing the content. This pursuit is motivated by the inherent limitation of text-only prompting—language efficiently describes semantics but is a low-bandwidth channel for precise spa-tial geometry. In contrast, a reference photo provides a high-bandwidth spatial blueprint. Related controllable generation methods often rely on explicit low-level controls such as edges, depth, or bounding boxes [21, 39, 41], which provide strong spatial constraints but do not directly encode high-level composition rules. Closer in spirit, image-prompt editing and style-transfer methods [8, 28, 37] also condition on a reference image and aim to transfer a specific factor (e.g., style) to a new image; however, they often suffer from content leakage from the refer-ence ones. In our setting, the target factor—composition—is even more entan-gled with image content, making layout transfer without semantic contamination substantially harder. Crucially, reference-guided compositional generation presupposes expert per-ception; the model must infer the structural intent of a reference before it can re-COMPASS 3
+
+produce it. However, achieving this dual intelligence in a unified model raises two domain-specific hurdles. On the perception side, the challenge is twofold. First, there is a severe scarcity of systematic compositional data: existing aesthetic datasets for LMM [3,4,18,19,44] often treat composition as a coarse-grained at-tribute within a broad aesthetic analysis, lacking a comprehensive and consistent taxonomy to cover the diverse layout patterns used in professional photography. Second, injecting such specialized expertise into a pre-trained LMM through full-parameter fine-tuning or task-agnostic adapters like LoRA [17] can easily bias or overwrite general reasoning unless the expertise is explicitly anchored and routed. On the generation side, the task faces an entanglement trap where models struggle to disentangle the high-level compositional intent from low-level content features. This is especially difficult because paired data—images sharing the same layout but different semantics—rarely exists at scale, making conven-tional supervised disentanglement infeasible. To address these challenges, we introduce COMPASS, a framework that empowers unified LMMs with specialized compositional intelligence through an expert-anchor paradigm. To overcome the scarcity of systematic data, we first build Comp-11, a comprehensive composition-focused instruction dataset. Inspired by prior composition datasets [20, 40] and recent benchmarks high-lighting LMMs’ compositional limitations [42], Comp-11 is designed specifically for instruction-following and actionable composition understanding. In terms of architecture, we propose a Composition-specific Mixture-of-Experts (C-MoE) strategy to achieve expert-level composition perception. Leveraging an existing MoE-based backbone [11], we instantiate a dedicated set of new expert Multi-layer Perceptrons (MLPs) and optimize only these parameters during training. This approach infuses the model with compositional expertise while preserving its foundational multimodal competence. Complementing this architecture, we introduce a single learnable expert token τc as a prefix to the model’s response. Supervised by a hard composition classification objective, τc serves as an explicit intent anchor that activates specialized knowledge and surfaces compositional decisions. To break entanglement in generation without requiring paired data, we pio-neer a self-supervised structural bottlenecking strategy. We apply explicit phys-ical decoupling via pixelization and grayscaling to reference images, creating a structural invariant that suppresses semantic appearance while preserving global layout cues. Beyond the input-side bottleneck, we introduce model-side mecha-nisms to suppress reference leakage, including a customized attention mask that prevents learnable queries from attending to perturbed image tokens and a cross-attention refinement to ensure text faithfulness. Reusing the expert token τc as a global conditioning signal further bridges the gap between passive composition analysis and active, layout-controllable generation within a single unified system. Our main contributions are summarized as follows: (1) We present the first systematic study of unified LMMs for compositional intelligence. (2) We build 
+
+Comp-11 , the first large-scale comprehensive composition-focused instruction dataset with an 11-class taxonomy to enable actionable understanding and rea-4 Z. Zhou et al. Center Rule of Thirds Horizontal Symmetric Diagonal Curved Vertical Triangular Pattern Fill the Frame Leading Lines 
+
+Fig. 2: Visual examples of our Comp-11 taxonomy. 
+
+soning. (3) We propose COMPASS, featuring a learnable prefix token τc as a shared intent anchor for both understanding and generation tasks, and a self-supervised structural bottlenecking framework that enables reference-guided generation without the need for paired training images. 
+
+2 Related Work 
+
+Composition understanding and optimization. Photographic composi-tion has primarily been studied from two complementary perspectives: com-position understanding and composition optimization. Together, these lines of research provide essential foundations for controllable composition generation. The first line of research focuses on composition understanding, aiming to model and quantify structural layouts. Early approaches typically evaluated composition quality through regression-based models. By utilizing datasets with dedicated composition-aware annotations, such as CADB [40], these methods isolated spatial arrangement patterns rather than predicting holistic aesthetic scores. Progressing toward a more structured formulation, subsequent studies treated composition as a rule-based classification task. For instance, KU-PCP [20] categorizes images based on predefined compositional rules while explicitly localizing key geometric elements. Together, these works established quantitative and interpretable paradigms for composition recognition. Building upon composition evaluation, composition optimization focuses on active enhancement, primarily through image cropping. Existing methods are largely supported by two types of datasets: densely annotated datasets with multiple candidate crops (e.g., SACD [36], UGCrop5K [25]) and sparsely an-notated datasets providing a single optimal crop (e.g., FCDB [7]). Recent ad-vances incorporate generative modeling to improve robustness, as exemplified by GenCrop [16], which leverages diffusion-based augmentation. Multimodal large models have also been introduced into composition tasks; for instance, PhotoFramer [38] employs multimodal instruction tuning to generate composi-tion guidance alongside exemplar images. Despite these advances, existing optimization methods—particularly crop-ping—are inherently restricted to being post-processing steps for existing im-ages. In contrast, our work transcends this limitation by providing real-time guidance, directly generating photographs with ideal compositions. 
+
+LMM aesthetic perception. More recently, multi-dimensional aesthetic eval-uation has increasingly incorporated Large Multimodal Models (LMMs) to en-COMPASS 5
+
+hance semantic reasoning and interpretability [1]. Representative works—such as AesExpert [18], UNIAA [44], AesBench [19], and UniPercept [3]—simultane-ously generate aesthetic scores and natural language explanations. This approach facilitates unified reasoning across various aesthetic attributes, including color, lighting, subject emphasis, and composition. However, within this paradigm, composition is primarily treated as a de-scriptive attribute embedded within a holistic aesthetic assessment. Even when compositional aspects are explicitly evaluated [4,18], they are subsumed into the broader semantic reasoning process rather than being modeled as explicit, con-trollable composition categories. Consequently, existing LMM-based aesthetic perception frameworks remain predominantly evaluative, falling short of directly supporting composition-conditioned generation. 
+
+Unified multimodal models. Unified multimodal models seeks to integrate perception and generation within a shared architecture. Existing approaches can be broadly grouped into three paradigms. Modular coordination frameworks, such as NExT-GPT [31], employ a large language model to orchestrate exter-nal modality-specific generators. While flexible, these designs rely on loosely coupled components with limited cross-modal fusion. Token-level fusion models, including SEED-X [10] and Chameleon [5], move toward tighter integration by jointly modeling visual and textual tokens within autoregressive transformers, enabling unified understanding and generation. However, purely autoregressive modeling often struggles with high-fidelity image synthesis. To address this lim-itation, hybrid unified frameworks incorporate diffusion mechanisms into the modeling pipeline. Transfusion [43] integrates diffusion into unified training to balance semantic controllability and synthesis quality. Subsequent models, such as Show-o [33], Emu3 [29], and the Janus series [6, 23, 30], further extend uni-fied architectures to support multi-task perception and high-quality generation. More recent efforts emphasize scalability and system-level refinement. VILA-U [32] improves multimodal alignment efficiency for large-scale training, while BAGEL [9] and Ming-Lite-Uni [11] explore scalable and lightweight unified mod-eling strategies. Despite architectural unification, existing models primarily optimize modal-ity alignment, generation quality, and training scalability [35]. Fine-grained struc-tural factors—such as photographic composition—are rarely treated as explicit, controllable modeling targets. Consequently, while unified multimodal architec-tures provide a strong backbone for integrated perception and generation, they lack dedicated mechanisms for structure-aware and composition-conditioned syn-thesis. 
+
+3 Dataset 
+
+We introduce Comp-11 , a large-scale dataset for composition perception and generation in unified LMMs. Comp-11 is built upon an 11-class composition tax-onomy and further augmented with instruction-following and reasoning-oriented multimodal annotations. 6 Z. Zhou et al. Data Preparation LMM Augmented VQA                                                                    
+
+> üCollecting diverse high quality
+> images from aesthetic datasets.
+> üIncluding composition specific
+> datasets (CADB and KU -PCP ).
+> ü389031 samples in total.
+> üInviting art students as expert
+> annotators.
+> üMulti -round pilot annotations
+> to ensure label accuracy.
+> Dataset Proportions Data Labels Distribution
+> Q:What’s the composition of this image?
+> A:This photograph implements horizontal and
+> diagonal composition .
+> Q:Does this image use vertical composition?
+> A:No .
+> Q:Which composition technique(s) are used in
+> this picture? Select all that apply from the
+> following options :A.rule of thirds( RoT ), B.vertical,
+> C.horizontal, D.diagonal, E.curved, F.triangle, G.
+> center, H.symmetric, I.pattern, J.fill the frame, K.
+> leading lines .
+> A:C, E
+> image & label
+> horizontal, diagonal
+> Expert Labeling and Refinement
+> ~1.2M VQA samples
+
+Fig. 3: Data construction pipeline of Comp-11 .
+
+Taxonomy of Composition. We consolidate composition concepts from ex-isting composition classification datasets KU-PCP [20] and CADB [40] into a unified taxonomy with C=11 commonly used categories, which we adopt as the label set of our dataset. Specifically, the taxonomy includes Rule of Thirds (RoT), Center, Horizontal, Symmetric, Diagonal, Curved, Vertical, Triangle, Pattern, Leading Lines, and Fill the Frame. We provide qualitative visualization examples for all 11 categories in Figure 2. Precise operational definitions and annotation guidelines are deferred to the supplementary material. 
+
+Data Construction Pipeline Building upon our 11-class taxonomy, we de-velop a rigorous pipeline comprising three stages: data preparation, expert la-beling and refinement, and LMM augmentation (Figure 3). 
+
+Data preparation. We aggregate 389,031 images from four public aesthetic benchmarks: AVA [24], TAD66K [12], CADB [40], and KU-PCP [20]. Among them, CADB and KU-PCP provide composition labels that can be directly reused, but their scale is insufficient for training a unified LMM. To build a large and systematic training set, we further incorporate high-quality images from AVA and TAD66K as unlabeled aesthetic data and annotate them with our 11-category taxonomy in the next stage. The proportion of images contributed by each source can be seen from the left side of Figure 3. 
+
+Expert labeling and refinement. To ensure expert-level annotation quality, we recruited students from photography and fine arts programs and refined labels in two rounds: (i) verifying and correcting inherited annotations from source datasets, and (ii) exhaustively annotating newly collected data under our 11-class taxonomy. To mitigate individual bias, each image is independently reviewed by multiple annotators and disagreements are resolved by consensus voting, yielding a unified and reliable label space. The middle part of Figure 3 further indicates a long-tailed, highly imbalanced label distribution that naturally arises in real-world composition patterns. Notably, we also allow a none-label assignment when COMPASS 7Expert 1 Expert N…… 
+
+LMM     
+
+> Image Tokens Text Tokens
+> Respons e
+> Expert
+> Token
+> Classification
+> Loss
+> NTP
+> Loss
+> Expert 1Expert N
+
+…… 
+
+LMM  
+
+> Pixelated
+> Image Tokens
+> Text Tokens Expert
+> Token
+> Classification
+> Loss
+> Learnable
+> Queries
+> Cross
+> Attention
+
+Diffusion 
+
+Transformer 
+
+> Generated Image
+
+Understanding Generation                
+
+> Diffusion
+> Loss
+> Analyze the composition
+> of this image .
+> Compose the following visual: The image captures a dramatic
+> scene viewed through atunnel. Asteam locomotive is seen
+> emerging from the tunnel, which is positioned centrally in the
+> frame, with the tracks leading directly towards the viewer.
+> Noisy Input
+> MLP
+> Time
+> Embedding
+
+⨁
+
+Fig. 4: Overview of COMPASS. The model first performs composition perception with N new experts (C-MoE) and an expert token τc to summarize layout cues. For composition-guided generation, a structurally bottlenecked (pixelated) reference is used to suppress appearance leakage, while a customized attention mask (demonstrated un-der the bold “Generation”, where the dark squares represent “allow to attend”, while the white ones indicate the opposite) and a cross-attention refinement improve control-lability and text faithfulness. The expert token representation is further injected into the diffusion denoiser as a global conditioning signal to steer the generation toward the intended composition. 
+
+an image is visually cluttered or its composition is indiscernible even for experts, avoiding forced noisy labels and keeping supervision reliable. 
+
+LMM augmentation. Using the expert-verified labels as gold-standard prompts, we leverage a strong LMM [26] to generate reasoning-enhanced metadata, includ-ing (i) question answering on compositional rationale, (ii) multiple-choice layout discrimination, and (iii) judgment tasks. In total, this augmentation yields on the order of 1.2M VQA-style pairs, substantially scaling up composition supervision for unified LMM training. 
+
+4 Methodology 
+
+With the dataset and supervision described in Section 3, we study composi-tional intelligence in unified large multimodal models through two tightly cou-pled tasks. In composition perception, given an input image I and an instruction, the model produces an instruction-following response and predicts a multi-label composition vector y ∈ { 0, 1}C (with C = 11 in our setting). In reference-guided compositional generation, given a reference image Iref that provides layout in-tent and a text prompt t that specifies new semantic content, we aim to sample an output image Igen that preserves the reference composition while remaining faithful to the prompt: 
+
+Igen ∼ G  Iref , t  , s.t. Comp( Igen ) ≈ Comp( Iref ), Sem( Igen ) ≈ t.  (1) 8 Z. Zhou et al. 
+
+To support these objectives within a single system, we introduce a minimally invasive perception expertization mechanism (C-MoE with a learnable expert token) and a self-supervised generation design that avoids paired same-layout-different-content supervision. We describe the perception branch, the generation branch, and our training strategy as follows. 
+
+4.1 Composition Perception 
+
+Compositional cues are subtle, geometry-centric, and poorly aligned with generic pretraining objectives, making naïve fine-tuning prone to either underfitting or overwriting general multimodal competence. To this end, we design a perception branch with two complementary components: C-MoE, which injects composition expertise into the MoE backbone in a minimally invasive manner, and a learnable expert token τc, which serves as an explicit intent anchor whose representation can be directly supervised for composition prediction. 
+
+Composition expertization via C-MoE. Our original unified LMM back-bone [11] adopts MoE-based feed-forward networks (FFNs) in a subset of trans-former blocks. Given latent token features h ∈ Rd, the router first produces logits z = g(h) ∈ RN over N experts and selects the index set K = TopK( z) of the K largest entries in z (Top-K expert selection). The combining weights are then computed by a softmax restricted to K:
+
+αk(h) = 
+
+
+
+exp( zk)
+
+P 
+
+> j∈K
+
+exp( zj ) , k ∈ K ,
+
+0, k / ∈ K ,
+
+(2) and the MoE-FFN output is a weighted sum of the selected experts: 
+
+MoE( h) = 
+
+> N
+
+X
+
+> k=1
+
+αk(h) Ek(h) = X
+
+> k∈K
+
+αk(h) Ek(h), (3) where Ek(·) denotes the k-th expert MLP. To inject composition expertise without overwriting the foundation capabil-ities, we propose C-MoE (Composition-specific Mixture-of-Experts), which allo-cates a new MoE-FFN branch in each MoE block. Concretely, for every sparse FFN layer we instantiate an additional MoE module, named MoE comp (·), with its own router and expert parameters, in parallel to the original backbone MoE, noted as MoE base (·).At runtime, we switch between the two branches using a task flag s ∈ { 0, 1}:
+
+FFN( h) = (1 − s) MoE base (h) + s MoE comp (h), (4) where s = 1 activates the composition expert branch. Importantly, MoE comp 
+
+may adopt a different routing policy (router type) from the original backbone, enabling task-specific routing while keeping the backbone intact. COMPASS 9
+
+During training, we freeze the original backbone parameters and update only the newly introduced parameters in MoE comp (its router and expert MLPs) to add compositional knowledge with minimal interference to the model’s general multimodal abilities. 
+
+Learnable expert token as an intent anchor. To turn composition from an implicit aesthetic attribute into an explicit and actionable decision in uni-fied LMM, we introduce a single learnable expert token τc as an intent anchor for composition understanding. Concretely, given a dialogue context x format-ted by a chat template, the assistant turn is constructed as x ∥ prefix ans ∥ τc ∥ s,where prefix ans denotes the fixed answer prefix produced by the template (e.g., role/format tokens) and s = s1: T is the response with T tokens. We insert τc
+
+right after prefix ans and before the first response token, so that it functions as the answer-leading token and concentrates compositional cues into a dedicated representation for downstream supervision. We supervise τc with a composition classification objective. Let H ∈ RL×d
+
+be the final hidden states of the unified LMM for an input sequence of length 
+
+L. We extract the hidden representation at the expert-token position, denoted as hc ∈ Rd, and apply a lightweight projection head ϕ(·) and a classifier W to obtain logits o ∈ RC over C composition classes: 
+
+o = W ϕ (hc). (5) Since an image may exhibit multiple composition techniques, we formulate com-position prediction as multi-label classification and optimize a weighted binary cross-entropy loss: 
+
+Lcls =
+
+> C
+
+X
+
+> i=1
+
+ w+ 
+
+> i
+
+yi log σ(oi) + w− 
+
+> i
+
+(1 − yi) log(1 − σ(oi))  , (6) where y ∈ { 0, 1}C is the multi-hot label vector, σ(·) is the sigmoid function, and (w+ 
+
+> i
+
+, w − 
+
+> i
+
+) are per-class weights to counter class imbalance (computed from the label distribution; see Section 3). In practice, we optionally apply a pooling operator when multiple τc instances appear (e.g., in multi-round dialogues), but Eq. (6) remains unchanged. 
+
+4.2 Composition-guided Generation Physical decoupling via structural bottlenecking. In reference-guided compositional generation, the reference image only provides layout intent but not content. Ideally, one would learn this factorized transfer from paired supervision— images sharing the same composition but different semantics—yet such paired data is scarce in practice. Motivated by common self-supervised learning prin-ciples, we instead create a training signal by transforming each sample into a structural proxy that approximates “same layout, different appearance” without explicit pairs. 10 Z. Zhou et al. Original Canny Edges Mild Blur Strong Blur Pixelated Pixel -Gray (Ours)  
+
+> Fig. 5: Comparison of structural bottlenecks for reference-guided generation. Pixelated grayscale references suppress semantic identifiability by disrupting contour-level cues while preserving coarse spatial layout, leading to better layout transfer with reduced content leakage compared to edge- or blur-based alternatives.
+
+Concretely, we introduce a structural bottleneck before the model: we trans-form the reference image Iref into a grayscale, pixelated image ˜I and condition generation on ˜I instead of the raw reference. Grayscaling suppresses color as a strong content cue, while pixelization aggressively removes recognizable de-tails yet preserves coarse spatial massing and dominant layout lines. Alternative structuralizations do not reliably eliminate semantics. Edge-based representa-tions preserve fine contours that directly encode object identity, while Gaussian blurring mainly smooths textures but often retains coherent silhouettes, allow-ing viewers (and models) to infer plausible semantics from shape cues even when details are unclear. Pixelization offers a better compromise: it disrupts contour-level recognizability and thus weakens semantic inference, yet largely preserves coarse spatial layout and region massing. Accordingly, we adopt grayscale pix-elization as the structural bottleneck for reference-guided generation (Figure 5). 
+
+Customized attention mask for leakage suppression. On top of the above input-side bottleneck, we further introduce model-side mechanisms to pre-vent reference content leakage and to ensure text faithfulness during generation. Following existing unified model architectures [11,27,30], when processing ˜I, our unified LMM forms an autoregressive token sequence that contains (i) perturbed image tokens v = v1: M extracted from ˜I, (ii) text tokens t = t1: L, and (iii) a set of learnable queries q = q1: Q used as the downstream generation interface. Although ˜I already removes most semantic details, allowing text tokens or learn-able queries to attend to v can still create shortcut copying. We therefore use a customized causal mask A ∈ { 0, 1}N ×N (N is the model length) such that 
+
+Aij = 1[j ≤ i] · 1(i / ∈ T ∪ Q \ { τc}) ∨ (j / ∈ I ), (7) where I indexes the reference-image token span, Q indexes the learnable-query span, and T indexes all text-token positions after the reference image. Thus, standard causality ( j ≤ i) is preserved, while any position i ∈ (T ∪ Q ) \ { τc}
+
+is forbidden to attend to reference-image tokens j ∈ I , leaving τc as the only post-image token that may read v for composition-related summarization. We visualize the allowed and blocked regions of A in Figure 4 (under the bold “Gen-eration”) for more intuitive demonstration. COMPASS 11 
+
+Cross-attention refinement for text faithfulness. Reference-guided gen-eration is prone to content leakage unless the model is simultaneously discour-aged from copying the reference and encouraged to follow the prompt [34]. Our customized attention mask implements the former by preventing post-image to-kens and learnable queries from attending to reference-image tokens. To comple-ment this, we add a lightweight cross-attention refinement module that directly ties the learnable queries to the prompt representation, strengthening text faith-fulness in the diffusion conditioning stream. Concretely, after the LMM forward pass, let H ∈ RN ×d be the resulting hidden states. We take the subsequences for learnable queries and prompt tokens, denoted as Hqueries = LMM (q) ∈ RQ×d
+
+and Hprompt = LMM (t) ∈ RL×d, and apply 
+
+ˆq = CrossAttn( Hqueries , H prompt ), (8) where Hqueries acts as queries and Hprompt provides keys/values. This process an-chors the learnable queries to the prompt representation and thereby improving text content faithfulness. 
+
+Expert token as a global conditioning signal. Finally, we reuse the expert token τc as a layout capsule that bridges composition perception and controllable generation. In our generation setting, the reference-image pathway is deliberately weakened, so the model cannot reliably exploit residual appearance cues from reference tokens; instead, transferable layout information is encouraged to be summarized into the representation at τc. Formally, let hc ∈ Rd be the final hid-den state at τc, and let c = ψ(hc) be a projection into the diffusion conditioning space. We inject c as a global bias via timestep modulation, ˜et = et + c, where 
+
+et is the standard timestep embedding. The modulated embedding ˜et is broad-cast within the diffusion transformer and used to modulate denoising blocks in an AdaLN-style manner, supplying a scene-level control signal that steers the denoising trajectory toward the intended composition. Importantly, we keep the composition classification supervision on τc enabled during generation training to handle the domain shift introduced by the perturbed reference images. This encourages τc to remain a stable carrier of compositional cues and reduces the tendency to fall back to shortcut copying. 
+
+4.3 Stage-wise Training Objective and Strategy 
+
+We train composition perception and reference-guided generation in two stages, rather than jointly, to stabilize optimization and to better match their hetero-geneous input domains. 
+
+Stage I: composition perception. We optimize the unified LMM on the perception data with a standard instruction-following objective together with the composition supervision on the expert token: 
+
+Lperc = Lntp + λcls Lcls , (9) where Lntp denotes the next-token prediction loss for autoregressive language models (details in the supplementary material) and Lcls is the weighted multi-12 Z. Zhou et al. 
+
+Table 1: Category-wise AP (%) for composition understanding on the Comp-11 per-ception test split. † denotes understanding-only models, and ‡ denotes unified models. Method RoT Center Hori. Vert. Diag. Curved Tri. Sym. Patt. Lead. Fill mAP ↑                                                                                   
+
+> AesExpert †[18] 42.3 50.6 53.0 50.2 47.8 50.4 63.9 56.3 54.4 58.1 50.1 49.5 Qwen3-VL †[2] 56.7 70.8 78.7 76.9 54.1 54.6 87.2 86.0 61.8 72.5 66.2 66.4 InternVL3 †[45] 50.6 65.7 57.5 55.9 55.8 64.3 82.8 78.3 65.5 62.3 52.6 60.0 Janus-Pro ‡[6] 50.2 55.1 56.7 66.8 52.7 51.5 71.0 69.5 55.5 51.5 52.3 54.2 BAGEL ‡[9] 51.1 66.4 80.2 68.2 54.2 57.9 87.4 83.2 70.7 74.0 52.8 63.2 Ming-Lite-Uni ‡[11] 31.4 68.1 67.4 63.2 63.9 57.3 84.2 82.0 69.8 65.8 62.2 58.2 COMPASS (ours) ‡90.1 86.2 96.1 97.5 96.2 92.9 98.4 98.1 95.3 96.2 87.2 90.6
+
+label classification loss defined in Eq. (6). During this stage, we keep the back-bone frozen and update only the composition-specific modules, including the C-MoE branch, the learnable expert token τc and its lightweight prediction head. 
+
+Stage II: reference-guided generation. We then train the generation pipeline under structural bottlenecking, where the model must follow the text prompt while transferring only layout cues from the perturbed reference. The objective combines the diffusion training loss with the same Lcls on τc:
+
+Lgen = Ldiff + λ′ 
+
+> cls
+
+Lcls . (10) Here Ldiff is the standard diffusion objective used by the denoiser (detailed in the supplementary material). In this stage, we freeze the C-MoE composition experts learned in Stage I to preserve the acquired perception capability and to maintain a single shared expertization module across tasks. Meanwhile, we train all generation-specific parameters and re-train the expert token τc (and its lightweight head) to account for the domain shift of reference inputs. Although 
+
+τc is trained separately across stages, it is lightweight and can be packaged with the unified system as task-specific parameters. 
+
+5 Experiments 
+
+Experimental setup. With the constructed Comp-11 dataset, we evaluate COMPASS on both composition perception and composition-guided generation. For perception, we hold out 20% of the full dataset as a test split; the class distribution of the test set is provided in the supplementary material. For gen-eration, we further sample 10,000 evaluation groups from the perception test split with a uniform coverage over composition categories. Each group consists of (i) a reference image that provides layout intent and (ii) a content reference image whose caption is used as the semantic prompt to the model. Additional implementation details are included in the supplementary material. COMPASS 13                                                                                        
+
+> Table 2: Quantitative results on composition-guided generation. †denotes generation-only models, and ‡denotes unified models. Method FID ↓CLIPScore ↑Comp-Cons. ↑cos( href
+> c, h gen
+> c)↑
+> Step1X-Edit †[22] 7.5 0.72 0.60 0.51 BAGEL ‡[9] 7.8 0.76 0.59 0.48 Ming-Lite-Uni ‡[11] 9.6 0.64 0.53 0.44 COMPASS (ours) ‡8.2 0.83 0.74 0.62 Table 3: Ablation study on composition-guided generation. ⋆denotes “same as the pre-vious row” with additional removals. Pand Gindicate perception-stage and generation-stage ablations, respectively. Variant mAP ↑FID ↓CLIPScore ↑Comp-Cons. ↑cos( href
+> c, h gen
+> c)↑
+> Full (COMPASS) 90.6 8.2 0.83 0.74 0.62
+> w/o C-MoE P78.2 ––––w/o τcP71.1 ––––w/o cross attention G–8.0 0.79 0.64 0.56
+> ⋆+ w/o mask G–8.6 0.72 0.59 0.48
+> ⋆+ w/o τcG–8.3 0.75 0.53 0.42
+
+5.1 Quantitative results Metrics. We report results on three aspects. (i) Category-level composition understanding : we evaluate each composition category as a binary decision and report average precision (AP), which directly reflects the model’s discriminative capability under class imbalance. (ii) Composition-guided generation : we mea-sure general quality by FID [14] and CLIPScore [13], and measure composition transfer by the agreement (Comp-Cons.) between predicted composition labels (by COMPASS) of the reference and generated images and the cosine similarity (cos( href  
+
+> c
+
+, h gen  
+
+> c
+
+)) between their expert-token hidden representations. (iii) Head-only classification (in supplementary material): we compute multi-class accuracy using the lightweight head attached to the expert token. Detailed definitions can be found in the supplementary material. 
+
+Baselines. For perception, we compare against strong multimodal models, in-cluding an open-source aesthetic finetuned expert model: AesExpert [18], state-of-the-art VLMs: Qwen3-VL (8B) [2] and InternVL3 (8B) [45], and unified mod-els: Janus-Pro (7B) [6], BAGEL (7B) [9], and our backbone Ming-Lite-Uni (8B) [11]. For generation, we compare against image editing/unified models that support reference-guided generation, including Step1X-Edit [22], BAGEL [9], and Ming-Lite-Uni [11]. When a baseline does not support pixelated grayscale references, we feed the original reference image and prepend the prompt with 
+
+“Generate an image with the composition style of the reference image and the following content: ” for a fair comparison. 14 Z. Zhou et al. 
+
+Main results. Table 1 reports category-level AP for composition understand-ing. We observe that even strong contemporary LMMs still struggle to reliably identify fine-grained composition types, with performance often varying substan-tially across categories, highlighting that composition-centric reasoning remains underdeveloped in general-purpose multimodal models. In contrast, COMPASS consistently improves recognition across all categories, demonstrating that ex-plicit composition expertization and direct supervision on the expert token can effectively elicit composition knowledge. Table 2 summarizes quantitative gen-eration results, where the substantial gains in composition-specific metrics and CLIPScore confirm that our framework effectively inherits the reference layout intent while successfully mitigating semantic leakage from the reference image. More importantly, by grounding generation on explicit composition understand-ing, COMPASS enables composition-intent controllable generation—an expert capability that is largely absent from current unified models. 
+
+Ablations. We ablate key components in both perception and generation. The results are presented in Table 3. On perception, removing either C-MoE or the expert token causes a pronounced drop in mAP, suggesting that composition recognition benefits from both (i) explicit capacity allocation for composition features (C-MoE) and (ii) a dedicated, directly supervised intent carrier ( τc). On generation, removing the cross-attention refinement and the customized atten-tion mask mainly harms text faithfulness, reflected by a decrease in CLIPScore. Finally, disabling the expert-token conditioning degrades composition-transfer metrics, confirming that τc serves as the global layout capsule that stabilizes composition control throughout the denoising trajectory. Due to space limita-tions, detailed numerical results are provided in the supplementary material. 
+
+5.2 Qualitative results 
+
+Figure 6 presents representative qualitative comparisons for composition-guided generation. Rather than directly copying the reference layout, COMPASS first infers the compositional intent implied by the reference and then integrates this intent into the semantic content, yielding generations that are more harmonious and self-consistent while remaining faithful to the prompt semantics. Additional qualitative examples for both composition perception and composition-guided generation, together with failure-case analysis, are provided in Figure 1 and the supplementary material. 
+
+6 Conclusion 
+
+In this work, we present COMPASS, the first unified framework to bridge expert-level composition perception and reference-guided creation within a single LMM architecture. Supported by our systematic Comp-11 dataset, COMPASS uti-lizes an expert-anchor paradigm and a self-supervised structural bottleneck to effectively decouple compositional intent from semantic content without requir-ing paired training data. This methodology transforms unified models from COMPASS 15 Reference Image BAGEL Step1X -Edit COMPASS (ours) Ming -Lite -Uni                                                     
+
+> Alarge cluster of vibrant yellow
+> flowers with atrumpet -like shape,
+> surrounded by lush green leaves .
+> Composition :cente r
+> Abeach scene with afocus on the
+> foreground, where tall, slender
+> grasses are prominently displayed .
+> Composition :horizonta l
+> An autumn forest scene.
+> Composition: vertical, leading lines
+> Arural canal in the twilight with
+> residential buildings and trees on
+> both sides .
+> Composition :leading line s
+> Caption
+> Ablack and white photograph
+> depicting arailway scene .
+> Composition :diagona l
+
+Fig. 6: Qualitative comparison on composition-guided generation. Gray annotations under the captions are for intuitive illustration only and are not used as model inputs. 
+
+composition-blind observers into expert-level aesthetic creators, establishing a generalizable blueprint for domain-specific multimodal intelligence. 
+
+Acknowledgment. This work was partially supported by the National Natural Science Foundation of China (62572469, 62572458) and the Ant Group. 
+
+References 
+
+1. Achlioptas, P., Ovsjanikov, M., Haydarov, K., Elhoseiny, M., Guibas, L.J.: Artemis: Affective language for visual art. In: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 11569–11579 (2021) 2. Bai, S., Cai, Y., Chen, R., Chen, K., Chen, X., Cheng, Z., et al.: Qwen3-vl technical report. arXiv preprint arXiv:2511.21631 (2025) 3. Cao, S., Li, J., Li, X., Pu, Y., Zhu, K., Gao, Y., Luo, S., Xin, Y., Qin, Q., Zhou, Y., Chen, X., Zhang, W., Fu, B., Qiao, Y., Liu, Y.: UniPercept: Towards uni-fied perceptual-level image understanding across aesthetics, quality, structure, and texture. arXiv preprint arXiv:2512.21675 (2025) 4. Cao, S., Ma, N., Liu, Y., et al.: ArtiMuse: Fine-grained image aesthetics assessment with joint scoring and expert-level understanding. In: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 15313–15322 (2026) 5. Chameleon Team: Chameleon: Mixed-modal early-fusion foundation models. arXiv preprint arXiv:2405.09818 (2024) 16 Z. Zhou et al. 6. Chen, X., Wu, Z., Liu, X., Pan, Z., Liu, W., Xie, Z., Yu, X., Ruan, C.: Janus-Pro: Unified multimodal understanding and generation with data and model scaling. arXiv preprint arXiv:2501.17811 (2025) 7. Chen, Y.L., Huang, T.W., Chang, K.H., Tsai, Y.C., Chen, H.T., Chen, B.Y.: Quan-titative analysis of automatic image cropping algorithms:a dataset and comparative study. In: IEEE Winter Conference on Applications of Computer Vision (WACV) (2017) 8. Chung, J., Hyun, S., Heo, J.P.: Style Injection in Diffusion: A training-free ap-proach for adapting large-scale diffusion models for style transfer. In: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 8795–8805 (2024) 9. Deng, C., Xie, J., Zhang, D.J., Gu, Y., Mao, W., Bai, Z., Wang, W., Lin, K.Q., Chen, Z., Yang, Z., Shou, M.Z.: Emerging properties in unified multimodal pre-training. arXiv preprint arXiv:2505.14683 (2025) 10. Ge, Y., Zhao, S., Zhu, J., Ge, Y., Yi, K., Song, L., Li, C., Ding, X., Shan, Y.: SEED-X: Multimodal models with unified multi-granularity comprehension and generation. arXiv preprint arXiv:2404.14396 (2024) 11. Gong, B., Zou, C., Zheng, D., Yu, H., Chen, J., Sun, J., Zhao, J., Zhou, J., Ji, K., Ru, L., et al.: Ming-Lite-Uni: Advancements in unified architecture for natural multimodal interaction. arXiv preprint arXiv:2505.02471 (2025) 12. He, S., Zhang, Y., Xie, R., Jiang, D., Ming, A.: Rethinking image aesthetics as-sessment: Models, datasets and benchmarks. In: International Joint Conference on Artificial Intelligence (IJCAI). vol. 6, p. 22 (2022) 13. Hessel, J., Holtzman, A., Forbes, M., Le Bras, R., Choi, Y.: CLIPScore: A reference-free evaluation metric for image captioning. In: Proceedings of the 2021 Conference on Empirical Methods in Natural Language Processing. pp. 7514–7528 (2021) 14. Heusel, M., Ramsauer, H., Unterthiner, T., Nessler, B., Hochreiter, S.: GANs trained by a two time-scale update rule converge to a local nash equilibrium. In: International Conference on Neural Information Processing Systems (NIPS). vol. 30 (2017) 15. Hong, C., Du, S., Xian, K., Lu, H., Cao, Z., Zhong, W.: Composing photos like a photographer. In: IEEE/CVF Conference on Computer Vision and Pattern Recog-nition (CVPR). pp. 7053–7062 (2021) 16. Hong, J., Yuan, L., Gharbi, M., Fisher, M., Fatahalian, K.: Learning subject-aware cropping by outpainting professional photos. In: AAAI Conference on Artificial Intelligence (AAAI). vol. 38, pp. 2175–2183 (2024) 17. Hu, E.J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., Chen, W., et al.: LoRA: Low-rank adaptation of large language models. In: International Conference on Learning Representations (ICLR) (2022) 18. Huang, Y., Cao, Z., Li, Q., Zhao, C., Gao, C., Yan, Z., Zuo, Y., Yang, F., Cheng, D., Tan, P., et al.: AesExpert: Towards multi-modality foundation model for image aesthetics perception. In: ACM International Conference on Multimedia. pp. 5925– 5936 (2024) 19. Huang, Y., Yuan, Q., Sheng, X., Yang, Z., Wu, H., Chen, P., Yang, Y., Li, L., Lin, W.: AesBench: An expert benchmark for multimodal large language models on image aesthetics perception. arXiv preprint arXiv:2401.08276 (2024) 20. Lee, J.T., Kim, H.U., Lee, C., Kim, C.S.: Photographic composition classification and dominant geometric element detection for outdoor scenes. Journal of Visual Communication and Image Representation 55 , 91–105 (2018) COMPASS 17 21. Li, Y., Liu, H., Wu, Q., Mu, F., Yang, J., Gao, J., Li, C., Lee, Y.J.: GLIGEN: Open-set grounded text-to-image generation. In: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 22511–22521 (2023) 22. Liu, S., Han, Y., Xing, P., Yin, F., Wang, R., Cheng, W., Liao, J., Wang, Y., Fu, H., Han, C., Li, G., Peng, Y., Sun, Q., Wu, J., Cai, Y., Ge, Z., Ming, R., Xia, L., Zeng, X., Zhu, Y., Jiao, B., Zhang, X., Yu, G., Jiang, D.: Step1X-Edit: A practical framework for general image editing. arXiv preprint arXiv:2504.17761 (2025) 23. Ma, Y., Liu, X., Chen, X., Liu, W., Wu, C., Wu, Z., Pan, Z., Xie, Z., Zhang, H., yu, X., Zhao, L., Wang, Y., Liu, J., Ruan, C.: JanusFlow: Harmonizing autore-gression and rectified flow for unified multimodal understanding and generation. arXiv preprint arXiv:2411.07975 (2024) 24. Murray, N., Marchesotti, L., Perronnin, F.: AVA: A large-scale database for aes-thetic visual analysis. In: IEE Conference on Computer Vision and Pattern Recog-nition (CVPR). pp. 2408–2415 (2012) 25. Su, Y., Cao, Y., Deng, J., Rao, F., Wu, Q.: Spatial-semantic collaborative cropping for user generated content. In: AAAI Conference on Artificial Intelligence (AAAI). pp. 4988 – 4997 (2024) 26. Team, Q.: Qwen2.5-vl technical report. arXiv preprint arXiv:2502.13923 (2025) 27. Tong, S., Fan, D., Zhu, J., Xiong, Y., Chen, X., Sinha, K., Rabbat, M., LeCun, Y., Xie, S., Liu, Z.: MetaMorph: Multimodal understanding and generation via instruction tuning. In: IEEE/CVF International Conference on Computer Vision (ICCV). pp. 17001–17012 (2025) 28. Wang, H., Wang, Q., Bai, X., Qin, Z., Chen, A.: InstantStyle: Free lunch towards style-preserving in text-to-image generation. arXiv preprint arXiv:2404.02733 (2024) 29. Wang, X., Zhang, Z., Wang, W., et al.: Emu3: Next-token prediction is all you need. arXiv preprint arXiv:2409.18869 (2024) 30. Wu, C., Chen, X., Wu, Z., Ma, Y., Liu, X., Pan, Z., Liu, W., Xie, Z., Yu, X., Ruan, C., Luo, P.: Janus: Decoupling visual encoding for unified multimodal understand-ing and generation. In: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 12966–12977 (2025) 31. Wu, S., Fei, H., Qu, L., Ji, W., Chua, T.S.: NExT-GPT: Any-to-any multimodal LLM. In: International Conference on Machine Learning (ICML) (2024) 32. Wu, Y., Zhang, Z., Chen, J., Tang, H., Li, D., Fang, Y., Zhu, L., Xie, E., Yin, H., Yi, L., et al.: VILA-U: a unified foundation model integrating visual understanding and generation. arXiv preprint arXiv:2409.04429 (2024) 33. Xie, J., Mao, W., Bai, Z., Zhang, D.J., Wang, W., Lin, K.Q., Gu, Y., Chen, Z., Yang, Z., Shou, M.Z.: Show-o: One single transformer to unify multimodal under-standing and generation. In: International Conference on Learning Representations (ICLR) (2025) 34. Xu, R., Xi, W., Wang, X., Mao, Y., Cheng, Z.: Stylessp: Sampling start-point enhancement for training-free diffusion-based method for style transfer. In: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) (2025) 35. Xu, Y., Wei, H., Lin, M., Deng, Y., Sheng, K., Zhang, M., Tang, F., Dong, W., Huang, F., Xu, C.: Transformers in computational visual media: A survey. Com-putational Visual Media 8(1), 33–62 (2022) 36. Yang, G.Y., Zhou, W.Y., Cai, Y., Zhang, S.H., Zhang, F.L.: Focusing on your subject: Deep subject-aware image composition recommendation networks. Com-putational Visual Media 9(1), 87–107 (2023) 18 Z. Zhou et al. 37. Ye, H., Zhang, J., Liu, S., Han, X., Yang, W.: IP-Adapter: Text compati-ble image prompt adapter for text-to-image diffusion models. arXiv preprint arXiv:2308.06721 (2023) 38. You, Z., Wang, K., Zhang, H., Cai, X., Gu, J., Xue, T., Dong, C., Zhang, Z.: PhotoFramer: Multi-modal image composition instruction pp. 10197–10207 (2026) 39. Zhang, J., Guo, J., Sun, S., Lou, J.G., Zhang, D.: LayoutDiffusion: Improving graphic layout generation by discrete diffusion probabilistic models. In: IEEE/CVF International Conference on Computer Vision (ICCV). pp. 22490–22499 (2023) 40. Zhang, L., Niu, Y., Liu, W., et al.: Image composition assessment with saliency-augmented multi-pattern pooling (2021) 41. Zhang, L., Rao, A., Agrawala, M.: Adding conditional control to text-to-image diffusion models. In: IEEE/CVF International Conference on Computer Vision (ICCV). pp. 3836–3847 (2023) 42. Zhao, Z., Lu, P., Hu, Y., Zhang, A., Chen, S., Li, P., Li, X., Liu, X., Wang, L., Guo, W.: Can machines understand composition? dataset and benchmark for photographic image composition embedding and understanding. In: IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR). pp. 14411– 14421 (2025) 43. Zhou, C., Yu, L., Babu, A., Tirumala, K., Yasunaga, M., Shamis, L., Kahn, J., Ma, X., Zettlemoyer, L., Levy, O.: Transfusion: Predict the next token and diffuse images with one multi-modal model. In: International Conference on Learning Representations (ICLR) (2025) 44. Zhou, Z., Wang, Q., Lin, B., Su, Y., Chen, R., Tao, X., Zheng, A., Yuan, L., Wan, P., Zhang, D.: UNIAA: A unified multi-modal image aesthetic assessment baseline and benchmark. arXiv preprint arXiv:2404.09619 (2024) 45. Zhu, J., Tian, H., Gao, Z., Liu, Y., Li, H., Chen, D., Jiang, T., et al.: InternVL3: Ex-ploring advanced training and test-time recipes for open-source multimodal models. arXiv preprint arXiv:2504.10479 (2025) COMPASS 19 
+
+Appendix 
+
+This appendix provides additional details that are omitted from the main paper due to space constraints, including: (i) taxonomy definitions and annotation guidelines, (ii) full objective formulations, (iii) evaluation metric definitions, (iv) ablation records, (v) additional qualitative results and failure cases, and (vi) ethics considerations. 
+
+A Comp-11 Taxonomy and Annotation Guidelines 
+
+A.1 Taxonomy Definitions 
+
+We adopt an 11-category composition taxonomy: Rule of Thirds (RoT), Center, Horizontal, Vertical, Diagonal, Curved, Triangle, Symmetric, Pattern, Leading Lines, and Fill the Frame. Each image may exhibit multiple composition tech-niques; hence labels are multi-hot vectors y ∈ { 0, 1}11 . We provide qualitative visualization examples for all categories in Figure 7. Center Rule of Thirds Horizontal Symmetric Diagonal Curved Vertical Triangular Pattern Fill the Frame Leading Lines 
+
+Fig. 7: Typical examples for the 11 composition categories in Comp-11 .
+
+Rule of Thirds (RoT). The main subject(s) are placed near the intersections or lines of a 3 × 3 grid. 
+
+Center. The primary subject is centered, with salient mass concentrated around the image center. 
+
+Horizontal / Vertical. The global structure is dominated by horizontal (resp. vertical) alignments, e.g., horizons or vertical pillars. 20 Z. Zhou et al.                          
+
+> Table 4: Per-category test set sizes for binary composition recognition benchmarks (balanced positives/negatives by construction). Category RoT Vert. Hori. Diag. Curved Tri. Center Sym. Patt. Fill Lead. Total #Samples 21,534 2,400 8,434 3,694 6,974 1,396 30,174 1,786 2,944 5,780 4,220 89,336
+
+Diagonal. The primary structure follows a dominant diagonal direction (top-left to bottom-right or top-right to bottom-left). 
+
+Curved. The layout exhibits salient curved flow (e.g., S-curves, arcs) that organizes subject placement or visual guidance. 
+
+Triangle. Key elements form a triangular arrangement (explicit or implicit), yielding a stable triangular composition. 
+
+Symmetric. The scene is organized with strong reflectional symmetry (hori-zontal or vertical), often centered around an axis. 
+
+Pattern. Repeated visual elements form a regular or quasi-regular spatial pat-tern. 
+
+Leading Lines. Prominent lines (e.g., roads, rails, edges) guide the viewer’s gaze toward the main subject or vanishing point. 
+
+Fill the Frame. The subject occupies most of the frame (e.g., close-up com-position) with minimal background distraction. 
+
+A.2 Annotation Protocol Multi-label rules. Annotators assign all applicable categories when multiple composition techniques co-occur. 
+
+None-label (all-zero) rule. If an image is visually cluttered or its composi-tion is indiscernible even for experts, we allow an all-zero assignment to avoid forcing noisy labels. 
+
+Conflict resolution. Each image is reviewed by multiple annotators. Dis-agreements are resolved by consensus voting under a cross-validation protocol. 
+
+Label distribution. As shown in Figure 3 in the main paper, the resulting taxonomy follows a long-tailed distribution in real-world data, reflecting the un-equal prevalence of different composition patterns. For evaluation, we construct the perception test split by holding out approximately 20% of the dataset (with stratification over composition labels), and report its per-label prevalence in Table 4. 
+
+B Objectives and Optimization Details 
+
+B.1 Stage I: Next-Token Prediction Loss 
+
+Let the tokenized training sequence be u1: T (including image/text special tokens according to the template). The standard autoregressive next-token prediction COMPASS 21 
+
+(NTP) objective is 
+
+Lntp = −
+
+> T
+
+X
+
+> t=1
+
+log pθ (ut | u<t ). (11) In practice, we apply standard label masking for non-target positions (e.g., prompt tokens). 
+
+B.2 Stage II: Diffusion Training Objective 
+
+We use a standard diffusion/denoising objective. Let x be the target image and 
+
+z be its latent. At timestep t, we form a noised latent zt and train a denoiser ϵθ
+
+conditioned on the refined query embeddings and the expert-token conditioning: 
+
+Ldiff = Et,ϵ 
+
+h
+
+∥ϵ − ϵθ (zt, t ; ˆ q, c )∥22
+
+i
+
+. (12) Here ˆq denotes the diffusion-conditioning query stream (after cross-attention refinement) and c = ψ(hc) is the projected expert-token representation used for timestep modulation. 
+
+B.3 Trainable Parameters and Freezing Strategy Stage I (perception). We freeze the backbone and update only: C-MoE branch parameters, the expert token τc, and its lightweight prediction head. 
+
+Stage II (generation). We freeze the C-MoE parameters learned in Stage I, and train: diffusion-side parameters, learnable queries, and τc (plus its head) to accommodate the domain shift of pixelated grayscale references. 
+
+Hyperparameters and hardware setup. We summarize the hardware setup and key training hyperparameters in Table 5. We adopt a step-wise linear warmup followed by cosine decay, with weight decay 0.05 .
+
+C Evaluation Metrics 
+
+C.1 Average Precision (AP) and mAP 
+
+For each category k, we compute AP from the precision-recall curve induced by ranking samples using the predicted score ˆs(k). We report mAP as the mean over all categories: 
+
+mAP = 1
+
+C
+
+> C
+
+X
+
+> k=1
+
+AP k. (13) 
+
+C.2 FID and CLIPScore 
+
+We report FID between generated images and the evaluation set following [14]. CLIPScore is computed following [13] by measuring image-text similarity under a pretrained CLIP model. 22 Z. Zhou et al. 
+
+Table 5: Training and hardware configuration. Unless specified, the same setting is used for both Stage I (perception) and Stage II (generation). Item Value Hardware (GPU) 8× NVIDIA A100 Batch size per GPU 16 Global batch size 128 Optimizer AdamW LR scheduler step-wise linear warmup & cosine decay Init LR 2 × 10 −5
+
+Min LR 1 × 10 −6
+
+Warmup LR 1 × 10 −6
+
+Warmup steps 100 Weight decay 0.05 Training length (Stage I) 10 epochs Training length (Stage II) 10 epochs Loss weights (λcls , λ ′
+
+> cls
+
+) (1.0, 1.0) Pixelation (blocks wide) 32 Pixelation resize kernel nearest neighbor (down & up) 
+
+C.3 Composition Consistency and Expert-Token Similarity Composition consistency (Comp-Cons.). Let ˆyref , ˆygen ∈ { 0, 1}C be the predicted multi-label vectors for the reference and generated images (predicted by COMPASS). We measure composition transfer consistency via a set-level agreement: 
+
+CompCons = 1
+
+|D| 
+
+X 
+
+> (Iref ,I gen )∈D
+
+ˆyref ∧ ˆygen 
+
+|ˆyref ∨ ˆygen | + ϵ , (14) where ∧/∨ denote element-wise AND/OR and ϵ avoids division by zero. 
+
+Expert-token similarity. For an image I and a fixed composition-prediction prompt template, let H(I) ∈ RN ×d denote the final-layer hidden states of the unified LMM, and let pc(I) be the (unique) position index of the expert token 
+
+τc in the resulting token sequence. We define the expert-token representation as 
+
+hc(I) = H(I)pc(I) ∈ Rd. For a reference image Iref and a generated image Igen ,we report the cosine similarity between their expert-token representations: 
+
+cos  href  
+
+> c
+
+, h gen 
+
+> c
+
+ = ⟨hc(Iref ), h c(Igen )⟩∥hc(Iref )∥2 ∥hc(Igen )∥2
+
+, (15) where ⟨· , ·⟩ is the standard inner product and ∥ · ∥ 2 is the Euclidean norm. If multiple instances of τc occur (e.g., multi-turn prompts), we compute hc(I) by averaging the corresponding token states before evaluating the cosine similarity. COMPASS 23      
+
+> Table 6: Classification accuracy on the KU-PCP test set. Method Acc. (%) KU-PCP [20] 87.9 CACNet [15] 88.4 COMPASS (ours) 90.6
+
+D Additional Experimental Results 
+
+D.1 Head-only Classification 
+
+Since τc is explicitly trained with the composition classification loss (Eq. (6)), its attached lightweight head can be directly used as a standalone composition classifier. We therefore report head-only classification accuracy on KU-PCP [20] in Table 6, the most widely used benchmark in prior composition classification works, and compare with KU-PCP [20] and CACNet [15]. COMPASS achieves the best accuracy, confirming that the expert-token representation provides a strong and transferable encoding of composition intent. 
+
+D.2 Additional Qualitative Results and Failure Cases 
+
+In this section, we provide additional qualitative comparisons for both composi-tion perception and composition-guided generation. 
+
+Composition perception results. We provide additional qualitative com-parisons on two perception formats included in Comp-11 : multiple-choice com-position identification and free-form compositional analysis (VQA). As shown in Figure 8 and 9, COMPASS more consistently grounds its predictions in the visual evidence and selects/explains the correct composition techniques, while strong LMM/unified baselines frequently fall back to generic “composition buz-zwords” (e.g., repeatedly mentioning RoT, leading lines, or framing-related cues) regardless of whether such patterns are present. 
+
+Multiple-choice comparisons. Figure 8 shows representative multiple-choice discrimination cases. A common failure mode of existing models is over-selection: they tend to tick several popular options as a hedge, which often looks like a lucky guess rather than a grounded decision. For example, RoT (A) and Center (G) are frequently selected together even when the image primarily reflects one dominant subject placement, suggesting limited discrimination over fine-grained layout intent. In contrast, COMPASS typically selects a compact set of options that aligns with the ground-truth labels, indicating stronger composition-sensitive perception. 
+
+Free-form VQA comparisons. In this setting, models are asked to “analyze the composition of the image”. Figure 9 compares open-ended compositional analyses. Most baselines exhibit a “list-and-describe” behavior: they enumerate common techniques with plausible-sounding justifications, but the mentioned 24 Z. Zhou et al. Ground Truth B
+
+COMPASS (ours) B
+
+AesExpert A
+
+Qwen3 -VL A, C, D, G, K 
+
+InternVL3 A, B, K
+
+Janus -Pro A, B, C, K 
+
+BAGEL A, B, C, D, F, G, H, K 
+
+Ming -Lite -Uni A, B, C, K 
+
+Ground Truth A, C
+
+COMPASS (ours) A, C
+
+AesExpert C
+
+Qwen3 -VL A, C, G, K 
+
+InternVL3 A, C, H
+
+Janus -Pro A, C, D, E, K 
+
+BAGEL A, C, G
+
+Ming -Lite -Uni A, B, C, H, I, J, K 
+
+Ground Truth G
+
+COMPASS (ours) G
+
+AesExpert A
+
+Qwen3 -VL A, D, E, F, G
+
+InternVL3 E, J 
+
+Janus -Pro A, B, C, D, E, F, G
+
+BAGEL B, E 
+
+Ming -Lite -Uni A, B, G, J
+
+Ground Truth I
+
+COMPASS (ours) I
+
+AesExpert I
+
+Qwen3 -VL H, I, J
+
+InternVL3 H, I, J
+
+Janus -Pro A, C, I
+
+BAGEL C, D, I, J
+
+Ming -Lite -Uni H, I, J
+
+Ground Truth H, K 
+
+COMPASS (ours) H, K 
+
+AesExpert A
+
+Qwen3 -VL H, I, K
+
+InternVL3 A, B, C, E, H, I, K
+
+Janus -Pro A, C, D, K
+
+BAGEL B, C, E, H, I
+
+Ming -Lite -Uni A, H, I
+
+Ground Truth D
+
+COMPASS (ours) D
+
+AesExpert D
+
+Qwen3 -VL A, D, K
+
+InternVL3 B, C, K 
+
+Janus -Pro A, C, K 
+
+BAGEL A, C, D, K
+
+Ming -Lite -Uni A, B, C, D, E, K 
+
+Ground Truth D
+
+COMPASS (ours) D
+
+AesExpert A
+
+Qwen3 -VL D, K
+
+InternVL3 B, C, K 
+
+Janus -Pro A, B, C, K 
+
+BAGEL B, H, K 
+
+Ming -Lite -Uni A, B, C, E, K 
+
+Ground Truth B
+
+COMPASS (ours) B
+
+AesExpert I
+
+Qwen3 -VL B, H, I, K
+
+InternVL3 B, I, K 
+
+Janus -Pro A, B, E, H, J 
+
+BAGEL B, H, I, J 
+
+Ming -Lite -Uni B, H, I, J 
+
+Ground Truth A, C 
+
+COMPASS (ours) A, C 
+
+AesExpert C
+
+Qwen3 -VL A, C, D, G, K 
+
+InternVL3 A, C, D, E, K 
+
+Janus -Pro A, B, C, D, E, K 
+
+BAGEL A, C, G
+
+Ming -Lite -Uni A, B, C, E, K 
+
+Ground Truth H
+
+COMPASS (ours) H
+
+AesExpert C
+
+Qwen3 -VL A, C, E, G, H, K
+
+InternVL3 A, B, C, E, H
+
+Janus -Pro A, B, C, D, E, H
+
+BAGEL A, C, E, H
+
+Ming -Lite -Uni A, C, H, I
+
+Ground Truth A
+
+COMPASS (ours) A
+
+AesExpert A
+
+Qwen3 -VL A, G, K 
+
+InternVL3 A, C, G 
+
+Janus -Pro A, B, C, D, E, F, I 
+
+BAGEL A, C, G 
+
+Ming -Lite -Uni A, B, D, E, J 
+
+Ground Truth C, F 
+
+COMPASS (ours) C, F 
+
+AesExpert C
+
+Qwen3 -VL A, C, G, K 
+
+InternVL3 A, B, C, D, H 
+
+Janus -Pro A, C, K
+
+BAGEL A, B, C, G, K 
+
+Ming -Lite -Uni A, B, C, E, K 
+
+Ground Truth A
+
+COMPASS (ours) A
+
+AesExpert C
+
+Qwen3 -VL A, C, G 
+
+InternVL3 A, C, G 
+
+Janus -Pro A, B, C, D, E, K 
+
+BAGEL A, C, G 
+
+Ming -Lite -Uni A, C, G, H, I, J, K 
+
+Ground Truth D
+
+COMPASS (ours) D
+
+AesExpert A
+
+Qwen3 -VL B, D, K
+
+InternVL3 B, C, E, K 
+
+Janus -Pro A, B, C, D, E, K 
+
+BAGEL B, H, I, J 
+
+Ming -Lite -Uni A, B, C, E, F, H, I, J 
+
+Ground Truth G, H 
+
+COMPASS (ours) G, H 
+
+AesExpert A
+
+Qwen3 -VL G, H, I, K 
+
+InternVL3 A, B, C, E, H, I, K 
+
+Janus -Pro A, B, C, D, K 
+
+BAGEL B, C, E, G, H 
+
+Ming -Lite -Uni A, H, I
+
+Ground Truth A, B 
+
+COMPASS (ours) A, B 
+
+AesExpert A
+
+Qwen3 -VL A, B, G, K 
+
+InternVL3 B, K
+
+Janus -Pro A, B, C, D, K 
+
+BAGEL B, K
+
+Ming -Lite -Uni A, B, C, K 
+
+Ground Truth G
+
+COMPASS (ours) G
+
+AesExpert A
+
+Qwen3 -VL A, D, E, G, K
+
+InternVL3 E, G, K
+
+Janus -Pro A, C, E 
+
+BAGEL A, C, G
+
+Ming -Lite -Uni A, B, G, H
+
+Ground Truth K
+
+COMPASS (ours) K
+
+AesExpert A
+
+Qwen3 -VL B, G, K
+
+InternVL3 B, C, H, I, K
+
+Janus -Pro A, B, K
+
+BAGEL B, H, K
+
+Ming -Lite -Uni B, H, I, K
+
+Which composition technique(s) are used in this picture? A. rule of thirds (RoT ), B. vertical, C. horizontal, D. diagonal, E. curved, 
+
+F. triangle, G. center, H. symmetric, I. pattern, J. fill the frame, K. leading lines .
+
+Fig. 8: Qualitative comparison on multiple-choice composition identification. We color-code each option for intuitive reading: green = correctly selected, red = incorrectly se-lected, blue = missed ground-truth option. Compared with strong baselines, COMPASS selects composition techniques more accurately and avoids “hedging” by over-selecting frequent labels. 
+
+cues are often weakly supported by the image or even mutually inconsistent within the same response. COMPASS, by contrast, identifies the correct tech-niques with more image-grounded explanations (e.g., explicitly linking dominant geometric cues and spatial organization to the predicted composition intent), demonstrating that the learned composition expertise is not only classifiable but also explainable. 
+
+Composition-guided generation results. We provide additional qualita-tive results to complement the quantitative evaluation in the main paper. Our goal is to diagnose whether a model can (i) extract composition intent from a ref-erence image and (ii) realize this intent while synthesizing new semantics from text, rather than copying residual reference appearance. We therefore present COMPASS 25 COMPASS (ours) 
+
+Qwen3 -VL 
+
+The shot is marked by diagonal 
+
+composition combined with the curved 
+
+lines technique, enhancing the overall 
+
+aesthetic . The image features a
+
+picturesque coastal town with white 
+
+buildings and domed roofs, set against a
+
+backdrop of a deep blue sea and a cliff .
+
+The buildings are positioned on the left 
+
+and center of the image, while the sea 
+
+occupies the right side . The cliff is visible 
+
+in the background, separating the town 
+
+from the sea .
+
+This image masterfully employs several key composition techniques to create a powerful, immersive, and visually striking 
+
+photograph : 1. Leading Lines : This is the most dominant technique . The escalator itself acts as a powerful, central 
+
+leading line, drawing the viewer's eye directly down its length and towards the bright blue circular opening at the far end .
+
+The parallel lines of the tunnel walls and the edges of the escalator further reinforce this effect, creating a strong sense of 
+
+depth and perspective . 2. Symmetry and Balance : The composition is highly symmetrical . The escalator is centered, and 
+
+the tunnel walls, lighting fixtures, and signs on either side are mirrored . This creates a sense of order, stability, and 
+
+grandeur, making the scene feel deliberate and architectural . 3. Perspective and Vanishing Point : The image uses a
+
+strong one -point perspective . All the converging lines (the walls, the ceiling, the escalator rails) lead to a single vanishing 
+
+point at the blue circle in the distance . This technique dramatically enhances the feeling of depth and scale, making the 
+
+tunnel feel vast and the journey forward feel significant . 4. Framing : The curved, arched ceiling of the tunnel acts as a
+
+natural frame, enclosing the scene and directing attention inward toward the escalator and the destination . The circular 
+
+lights at the top corners also frame the top of the image, adding to the sense of enclosure .
+
+InternVL 3
+
+This image utilizes several composition techniques : 1. Symmetry : The escalator and tunnel create a symmetrical 
+
+composition, drawing the viewer's eye down the center . 2. Leading Lines : The escalator steps act as leading lines, guiding 
+
+the viewer's gaze into the depth of the tunnel . 3. Framing : The curved walls of the tunnel frame the escalator, focusing 
+
+attention on the central subject . 4. Depth and Perspective : The diminishing perspective of the escalator and tunnel 
+
+creates a sense of depth . 5. Contrast : The metallic surfaces and the blue light at the end provide contrast, adding visual 
+
+interest . 6. Rule of Thirds : The signs are placed off -center, aligning with the rule of thirds for balance . These techniques 
+
+work together to create a visually engaging and dynamic image .
+
+COMPASS (ours) 
+
+Ming -Lite -Uni 
+
+This photograph is marked by vertical and 
+
+centered composition, resulting in balanced 
+
+framing . The main object in the image is the 
+
+Washington Monument, which is located in 
+
+the center of the frame . It is framed by a series 
+
+of columns on the left and right sides, creating 
+
+a tunnel -like effect that leads the viewer's eye 
+
+towards the monument . The monument is 
+
+illuminated, standing tall in the background 
+
+against a dark sky . The columns are evenly 
+
+spaced and extend from the bottom to the top 
+
+of the image, framing the monument 
+
+symmetrically .
+
+This image utilizes several composition techniques to create a striking visual effect : 1. Leading lines : The long, straight path 
+
+leading to the Washington Monument creates a strong visual guide, drawing the viewer's eye towards the monument . 2. Rule 
+
+of thirds : The columns are positioned on either side of the frame, creating a balanced composition that's visually pleasing . 3.
+
+Framing : The columns act as a natural frame, focusing attention on the Washington Monument and creating a sense of depth .
+
+4. Symmetry : The columns and the monument itself create a symmetrical composition, adding to the sense of grandeur and 
+
+importance . 5. Contrast : The illuminated monument against the dark sky creates a strong visual contrast, making the 
+
+monument stand out . 6. Depth of field : The use of a narrow depth of field emphasizes the monument, making it appear more 
+
+prominent against the darker background . These techniques work together to create a powerful and memorable image that 
+
+highlights the majesty of the Washington Monument and the surrounding architecture .
+
+BAGEL 
+
+The image employs several composition techniques to create a visually compelling scene . The use of leading lines , such as the 
+
+path leading towards the Washington Monument, draws the viewer's eye into the image . The symmetry of the columns on 
+
+either side of the frame adds balance and structure . Additionally, the use of a low angle emphasizes the monument's height 
+
+and grandeur, while the night sky provides a dramatic backdrop .
+
+Janus -Pro 
+
+This image utilizes several composition techniques : 1. Rule of Thirds : The image follows the rule of thirds by placing the 
+
+Washington Monument centrally, which creates a balanced and visually appealing composition . 2. Framing : The large 
+
+columns on either side of the image frame the view, creating a sense of depth and directing attention towards the monument . 3.
+
+Symmetry : The symmetrical arrangement of the columns and the central placement of the monument contribute to a sense of 
+
+balance and harmony in the composition . These techniques together create a visually striking and well -composed image .
+
+COMPASS (ours) 
+
+Qwen3 -VL 
+
+This artistic work uses a effective structure through 
+
+pattern repetition . The image shows a building 
+
+with a facade divided into three sections : two 
+
+sections on the left and right are painted yellow, 
+
+and one section in the center is painted orange .
+
+The facade is composed of multiple windows, each 
+
+with a gray frame and blue curtains, and are 
+
+evenly spaced and aligned vertically and 
+
+horizontally . The composition is also symmetrical ,
+
+with the orange section serving as a central axis .
+
+This image masterfully employs several key composition techniques to create a visually striking and harmonious effect : 1. Symmetry 
+
+and Repetition : The most dominant technique is the use of symmetry . The building is divided into three vertical sections (yellow, 
+
+orange, yellow), and within each section, the windows are arranged in a perfectly repeating pattern . This creates a strong sense of 
+
+order, rhythm, and visual stability . 2. Leading Lines and Framing : The vertical lines of the building's sections and the horizontal 
+
+lines of the window rows act as leading lines, guiding the viewer's eye across the image . The windows themselves act as frames, 
+
+drawing attention to the curtains within, creating a sense of depth and inviting the viewer to look in . 3. Balance : The composition is 
+
+balanced . The central orange section provides a visual anchor, while the two yellow sections on either side create a sense of 
+
+equilibrium . The symmetry ensures that no single part of the image feels heavier than another . In summary, the image uses 
+
+symmetry, repetition, and balanced composition to create a visually compelling and aesthetically pleasing abstract architectural 
+
+photograph .
+
+InternVL 3
+
+This image utilizes several composition techniques : 1. Rule of Thirds : The building is divided into thirds both vertically and 
+
+horizontally, with the windows aligning with these divisions . 2. Color Contrast : The use of contrasting colors (yellow and orange) 
+
+draws attention and adds visual interest . 3. Symmetry and Repetition : The uniformity of the windows creates a sense of order and 
+
+balance . 4. Geometric Shapes : The rectangular windows and the overall grid pattern create strong geometric lines . These techniques 
+
+work together to create a visually engaging and balanced composition .
+
+COMPASS (ours) 
+
+Ming -Lite -Un i
+
+This picture uses around horizontal 
+
+and symmetrical composition ,
+
+establishing clear focal points . The 
+
+sun is positioned in the center of 
+
+the frame and above the horizon .
+
+The sea is depicted in the lower part 
+
+of the image, while the sky is a
+
+gradient of dark blue to orange near 
+
+the horizon, indicating a sunset 
+
+scene .
+
+This image utilizes several composition techniques to create a visually striking and balanced scene : 1. Rule of thirds :
+
+The sun is positioned slightly off -center , creating a dynamic focal point . 2. Leading lines : The sun's reflection on 
+
+the water acts as a natural leading line, drawing the viewer's eye into the image . 3. Symmetry : The horizon line is 
+
+perfectly straight, creating a sense of balance and stability . 4. Contrast : The dark foreground contrasts with the 
+
+bright sun and sky, creating visual interest . 5. Framing : The sun acts as a natural frame within the image, focusing 
+
+attention on the central subject . 6. Depth : The image captures both the foreground (shoreline) and background 
+
+(horizon), adding dimension . 7. Rule of odds : The single sun creates a visually appealing focal point, adhering to this 
+
+principle . These techniques work together to create a harmonious and aesthetically pleasing composition that draws 
+
+the viewer's eye and creates a sense of tranquility .
+
+Janus -Pr o
+
+This image utilizes several composition techniques : 1. Rule of Thirds : The sun is positioned near the center of the 
+
+image, creating a balanced and visually appealing composition . 2. Leading Lines : The reflection of the sun on the 
+
+water creates a leading line that guides the viewer's eye from the bottom of the image towards the sun . 3. Contrast :
+
+The contrast between the dark ocean and the bright sun creates a striking visual effect . 4. Symmetry : The sun's 
+
+reflection on the water creates a symmetrical effect, adding to the overall harmony of the image . 5. Framing : The 
+
+horizon line frames the sun, adding to the depth and focus of the image .
+
+Janus -Pro 
+
+This image utilizes several composition techniques : 1. Rule of Thirds : The windows are arranged in a grid that follows the rule of 
+
+thirds, creating a balanced and visually appealing layout . 2. Color Contrast : The use of contrasting colors (yellow and orange) helps 
+
+to draw attention to the windows and creates a vibrant visual effect . 3. Symmetry : The symmetrical arrangement of windows on 
+
+either side of the central orange section adds to the overall harmony and balance of the image . 4. Repetition : The repetition of 
+
+window shapes and sizes creates a sense of rhythm and order . 5. Focal Point : The central orange section acts as a focal point, 
+
+drawing the viewer's eye to the middle of the image .
+
+BAGEL 
+
+The image employs several composition techniques to create a visually striking scene . The rule of thirds is used 
+
+effectively, with the horizon line placed slightly off -center , creating a more dynamic and engaging composition . The 
+
+sun is positioned at the intersection of the third lines, which is a common focal point in photography . Additionally, 
+
+the use of leading lines , such as the waves and the shoreline, guides the viewer's eye towards the sun, enhancing the 
+
+depth and perspective of the image . The contrast between the dark sky and the bright sun also adds to the dramatic 
+
+effect .
+
+Fig. 9: Qualitative comparison on VQA-style compositional analysis. Highlighted tech-nique words indicate whether the mentioned composition cues match the ground truth (green) or reflect hallucinated/unsupported claims (red). COMPASS produces more grounded and composition-consistent analyses, whereas other LMM/unified baselines often repeat high-frequency concepts independent of the actual layout. 26 Z. Zhou et al. Reference Image BAGEL Step1X -Edit COMPASS (ours) Ming -Lite -Uni                                                                                                              
+
+> Asolitary tree standing on a
+> grassy hill under aclear blue sky .
+> Composition :rule of third s
+> Asmall, rustic stone hut situated
+> in amountainous ,open landscape
+> with green grass .
+> Composition :rule of third s
+> Aserene beach scene with aclear
+> view of the ocean on the left and a
+> sandy shore on the right .
+> Composition :diagonal
+> Avibrant piece of graffiti art on a
+> wall .The graffiti is composed of
+> large, stylized letters and symbols ,
+> primarily in shades of blue, purple
+> and black .
+> Composition :fill the fram e
+> Caption
+> Ablack and white photograph of a
+> small dog with ablurred indoor
+> background .
+> Composition :rule of thirds
+> Aserene landscape featuring a
+> calm body of water with adense
+> collection of season changing trees .
+> Composition :symmetrica l
+> Anarrow alleyway lined with old,
+> weathered buildings .
+> Composition :leading line s
+
+Fig. 10: Additional qualitative comparison on composition-guided generation. Gray annotations under captions are for intuitive illustration only and are not used as model inputs. 
+
+extended baseline comparisons, an ablation showing that pixelization alone is insufficient without model-side intent grounding. 
+
+Additional comparisons against baselines. Figure 10 extends the qualitative comparisons in the main paper. The results show that COMPASS exhibits a capability largely missing from current image editing and unified models: it can infer the compositional intent from the reference and integrate this intent into the prompt-specified content, producing generations that are more composition-consistent and semantically coherent. In contrast, baselines often either drift toward prompt content with weak composition control or exhibit unintended reference leakage and over-dependence on the reference appearance. 
+
+Why pixelation alone is insufficient. To isolate the effect of input-side struc-tural bottlenecking, Figure 11 compares (i) the original BAGEL using raw refer-ence images, (ii) BAGEL finetuned with pixelized references on Comp-11 , and (iii) COMPASS. While pixelization weakens the reference semantic pathway, we observe that pixelization-only finetuning does not reliably yield composition COMPASS 27 Reference Image BAGEL BAGEL (finetuned) COMPASS (ours) Pixelated Image                                                
+
+> Apicturesque, snow -covered scene
+> at night .The focal point is alarge,
+> ornate house illuminated by warm,
+> glowing lights .
+> Composition :leading line s
+> Aserene sunrise or sunset over a
+> calm body of water, likely alake or
+> river .
+> Composition :symmetrica l
+> A scene of tall grasses silhouetted
+> against a sky during what appears
+> to be either sunrise or sunset .
+> Composition: horizonta l
+> Anighttime urban scene with a
+> dynamic and somewhat blurred
+> motion effect .
+> Composition :leading line s
+> Caption
+
+Fig. 11: Ablation on structural bottlenecking via pixelization. Finetuning a unified model with pixelized references alone does not reliably learn composition-intent trans-fer, highlighting the necessity of expert-token-based intent grounding and generation-time conditioning. 
+
+transfer. This supports our central motivation: after removing semantic appear-ance cues, the model still needs an explicit composition inference and summariza-tion process (anchored by the expert token) and a generation-time mechanism to inject the inferred intent as a global control signal. In other words, suppressing reference semantics is necessary but not sufficient; composition-intent controlla-bility requires model-side intent grounding and conditioning. 
+
+Failure cases. Figure 12 summarizes representative failure cases of COM-PASS. We observe two recurring patterns. First, the model may preserve the composition category but mismatch orientation (e.g., left/right subject place-ment for RoT, or opposite diagonal direction), suggesting that the dominant signal is still category-level intent while the remaining coarse layout cues in the pixelized reference may be insufficient to fully determine directional instantia-tion. Second, the model may misinterpret composition when the image exhibits strong perspective/blur cues: e.g., a scene that resembles a diagonal layout due to background leading structure, while the true intent is RoT with a focused subject (the left bottom example). These cases indicate that improving depth-of-field and 3D spatial reasoning for composition remains an important direction. 28 Z. Zhou et al. Reference Image COMPASS (ours)                                             
+
+> Anighttime scene of a
+> traditional building complex
+> situated along acanal .
+> lef t->righ t
+> Amajestic mountain range
+> under aclear blue sky with
+> snow cover .
+> rule of thirds -> diagonal
+> Caption Reference Image COMPASS (ours)
+> Acluster of mushrooms
+> growing on the side of atree
+> trunk .
+> right ->lef t
+> Amountainous landscape
+> with arocky terrain partially
+> covered in snow .
+> right ->left
+> Caption
+
+Fig. 12: Failure cases of COMPASS. Common issues include orientation mismatch under the correct composition type, and occasional misclassification when perspec-tive/defocus cues dominate perceived structure. 
+
+E Ethics Considerations 
+
+Dataset sourcing and licensing. Comp-11 is constructed by aggregating images from public aesthetic benchmarks (AVA [24], TAD66K [12], CADB [40], KU-PCP [20]). We will comply with the original datasets’ licenses and terms of use, and we will provide clear attribution and usage conditions in the release package. If any source imposes restrictions that prevent redistribution, we will release only the derived annotations/metadata and provide scripts to reproduce the dataset from the original sources when feasible. 
+
+Privacy and sensitive content. The underlying benchmarks may contain images of people or potentially sensitive scenes. We do not collect private data beyond what is already present in public benchmarks, but we acknowledge the risk of unintentionally propagating personally identifiable information. When releasing Comp-11 , we will provide guidance on responsible use, and we will support takedown requests for problematic content when applicable. 
+
+Annotation labor and annotator welfare. Expert labeling involves sub-jective judgments and may incur cognitive load. We follow a multi-annotator protocol with consensus resolution to reduce individual pressure and bias. If we release additional annotation guidelines and tooling, we will document the pro-cess and recommend fair compensation and reasonable workload management for any future extensions. 
+
+Potential misuse. Composition-aware generation can be used to create per-suasive or misleading imagery. Our work focuses on compositional intent (lay-out control) rather than identity manipulation or targeted deception, but the broader capability could be misused. We will include a responsible-use state-ment and encourage downstream users to follow applicable platform policies and local regulations for synthetic media disclosure. 
+
+Bias and representativeness. Aesthetic and composition preferences can be culturally dependent. Because the source benchmarks may over-represent certain photographic styles, our taxonomy and annotations might not fully cover diverse cultural composition norms. We will document dataset composition and known limitations, and we encourage future work to expand coverage across cultures, genres, and contexts. COMPASS 29 
+
+Environmental impact and reproducibility. Training unified multimodal models and diffusion generators can be compute-intensive. To reduce unnec-essary computation compared to full-model fine-tuning, our design emphasizes parameter-efficient expertization (C-MoE branch and lightweight modules) and stage-wise training. We will report key training configurations in the supple-mentary material for transparency and reproducibility, and plan to release the dataset and code once organized.
