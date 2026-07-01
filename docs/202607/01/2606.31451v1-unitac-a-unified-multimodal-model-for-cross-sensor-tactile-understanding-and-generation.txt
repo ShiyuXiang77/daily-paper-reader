@@ -1,0 +1,950 @@
+Title: UniTac: A Unified Multimodal Model for Cross-Sensor Tactile Understanding and Generation
+
+URL Source: https://arxiv.org/pdf/2606.31451v1
+
+Published Time: Wed, 01 Jul 2026 01:06:47 GMT
+
+Number of Pages: 31
+
+Markdown Content:
+# UniTac: A Unified Multimodal Model for Cross-Sensor Tactile Understanding and Generation 
+
+Jiahang Tu ∗1, Fengyu Yang ∗2,6, Chenyang Ma 3, Xihang Yu 4, Ziyao Zeng 2,Shaokai Wu 5, Hanbin Zhao †1, Zhi Tao 6, Chao Zhang 1, Hui Qian 1, and Alex Wong 2 
+
+> 1
+
+Zhejiang University  
+
+> 2
+
+Yale University  
+
+> 3
+
+University of Oxford  
+
+> 4
+
+MIT  
+
+> 5
+
+Shanghai Jiaotong University  
+
+> 6
+
+UNIX AI 
+
+Abstract. Unified multimodal models (UMMs) have shown great promise in integrating understanding and generation across diverse modalities. However, existing research rarely extends this paradigm to the tactile domain, where both object-level semantics and sensor-level configura-tions jointly determine the meaning of touch. To address this gap, we propose UniTac, the first UMM designed for tactile understanding and generation. UniTac models the tactile process as a transition from non-contact to contact, capturing the physical interaction between sensors and objects through a dual-level representation that encodes both sen-sor and object attributes. For tactile understanding, UniTac introduces two tasks, object property description and sensor identification, to en-hance reasoning over physical and cross-sensor information. For tactile generation, we design a two-stage training paradigm consisting of recon-struction and alignment, together with a sensor-prior-based sampling strategy that simulates realistic tactile contact. Trained on large-scale multi-sensor datasets, UniTac achieves state-of-the-art performance in tactile understanding and generates realistic tactile signals across sen-sors. 
+
+Keywords: Tactile Understanding · Tactile Generation · Unified Mul-timodal Model 
+
+1 Introduction 
+
+Unified multimodal models (UMMs) have recently gained significant attention for integrating perception and generation within a single architecture [23, 32, 50]. By unifying diverse modalities, UMMs enhance the adaptability and scal-ability of multimodal systems, laying the foundation for developing interactive 
+
+> ∗
+
+: Equal contribution. †: Corresponding author. 
+
+> arXiv:2606.31451v1 [cs.RO] 30 Jun 2026
+
+2 Tu et al. UniTac    
+
+> Tactile Undestadning Tactile Generation
+> Q: Which one is
+> more smoother?
+> Prompt: The tactile sensor is
+> touching a specific point on a flat
+> , smooth , metallic surface with
+> high hardness . The texture is
+> sleek , reflective ...
+> A: The
+> second is
+> smoother.
+> bath towel hairbrush handle
+> Q: Describe the
+> tactile videos?
+> A: The surface
+> is rough, rigid,
+> irregular...
+> A: The material is
+> soft fabric, slightly
+> rough texture...
+> Sensor: Digit-1 Digit-2
+> (a) Average Performance on PHYSICLEAR-
+> Test Benchmark.
+> (b) Average Performance on Tactile
+> Generation Task.
+> synthetic fabric
+
+Fig. 1: Quantitative evaluation of UniTac on tactile understanding and generation tasks. (a) Average results on the PHYSICLEAR-Test benchmark across six tactile understanding tasks, where UniTac-7B achieves the strongest overall performance. (b) Average SSIM and PSNR on the tactile generation task, showing that UniTac provides superior generation quality compared with existing baselines. 
+
+and physically grounded intelligent agents [5, 29]. Within this framework, tac-tile understanding and generation are essential for embodied intelligence and robotic perception, as touch provides a direct means of interaction with the physical world. Accurate tactile understanding enables fine-grained manipula-tion [8, 48], material and surface recognition [2, 18], and geometric inference beyond vision [34]. High-fidelity tactile generation facilitates simulation-based training [27], strengthens cross-modal learning [36, 45], and enables realistic tactile feedback in virtual environments [10, 14, 33]. Together, these capabili-ties strengthen multimodal perception and sensor-level grounding in embodied robotic systems. Recent advances in visuo-tactile sensing have opened new directions for touch-centered multimodal research. Sensors such as GelSight [47], DIGIT [21], and Duragel [49] capture tactile data in image-like formats encoding both sensor-level configurations [36] (lighting, gel deformation, camera parameters) and object-level semantics [19, 21, 47] (surface geometry, hardness, roughness). However, two major challenges remain for tactile understanding. First, existing touch-language models are often trained on small, self-curated datasets, such as PHYSI-CLEAR [46] with only 482 touch videos. In contrast, the tactile research com-munity has collectively released large-scale open datasets comprising over 400K video clips and 1.6 million frames, yet these datasets are typically used in isola-tion rather than being combined for joint training, which limits the representa-tion of tactile semantics. Second, significant domain gaps among sensors hinder cross-sensor generalization due to differences in sensor characteristics and illu-mination conditions [36]. For tactile generation, prior work [31] has explored translation between specific sensor pairs but has not addressed generalizable cross-sensor synthesis across diverse sensor types. Moreover, most tactile stud-UniTac 3
+
+ies treat understanding and generation as separate problems without exploring their intrinsic connection. Unlike visual cameras that capture a natural image in a single exposure, tactile data acquisition inherently involves two stages: a non-contact stage cap-turing sensor configuration and a contact stage recording object-level physical properties under that configuration [19,36,47]. Without object-level information, non-contact tactile data lack semantic meaning; without sensor-level informa-tion, generative models are unaware of the sensor configuration on which tactile signals should be synthesized, while understanding models cannot interpret how sensor design translates tactile patterns into object properties. For example, Gel-Sight [47] encodes surface roughness through marker displacement patterns that depend on its sensor configuration. Thus, a unified multimodal model should jointly model both levels of tactile information to achieve cross-sensor tactile understanding and generation. UniTac    
+
+> Tactile Understanding Tactile Generation
+> Q: Which one is
+> smoother?
+> Prompt: The tactile sensor is
+> touching a specific point on a flat
+> , smooth , metallic surface with
+> high hardness . The texture is
+> sleek , reflective ...
+> A: The
+> second is
+> smoother.
+> bath towel hairbrush handle
+> Q: Describe the
+> tactile videos?
+> A: The surface
+> is rough, rigid,
+> irregular...
+> A: The material is
+> soft fabric, slightly
+> rough texture...
+> Sensor: Digit-1 Digit-2
+
+(a) Average Performance on PHYSICLEAR-
+
+Test Benchmark. 
+
+(b) Average Performance on Tactile 
+
+Generatin Task. 
+
+> synthetic fabric
+
+Fig. 2: Overview of UniTac for unified tactile un-derstanding and tactile generation. 
+
+In this work, we present UniTac, the first UMM for the touch domain, designed to jointly perform tactile un-derstanding and generation tasks within a single frame-work. As illustrated in Fig. 2, UniTac unifies tactile under-standing ( e.g ., property com-parison/description) and tac-tile generation under a shared multimodal backbone. Uni-Tac is trained on a large com-posite tactile corpus that in-tegrates diverse open datasets comprising over 400K video clips and 1.6 million frames from multiple sensor domains. The proposed frame-work comprises several essential modules for tactile data processing. The touch encoder extracts meaningful representations from tactile inputs, while the mul-timodal large language model (MLLM) serves as a shared backbone for both understanding and generation. The sensor-aware DiT (Diffusion Transformer) projector further maps the MLLM outputs into the conditional space required by the touch decoder, which synthesizes accurate tactile data. For understanding, UniTac introduces two supervised tasks that enhance comprehension of tactile information: object property description [42, 46], which captures the physical attributes of contacted objects, and sensor identification, which enables recogni-tion of specific sensor configurations. These tasks jointly strengthen the model’s understanding of both object-level and sensor-level information. For generation, the training is divided into two stages: reconstruction and alignment. In re-construction stage, the decoder is trained using hidden tokens from the touch encoder as conditional inputs, enabling efficient parallel training without involv-4 Tu et al. 
+
+ing the MLLM backbone. The alignment stage then trains a DiT Projector to align the MLLM’s output with encoder representations. To compensate for the absence of sensor-level cues in tactile descriptions, sensor-level tokens from the encoder are incorporated in the projector to refine the generated results. More-over, we propose a sensor-prior-based sampling strategy that simulates the tran-sition from non-contact to contact stages. By incorporating two level conditions into the sampling process, this method achieves flexible and accurate tactile sig-nal generation aligned with real sensor behaviors. Extensive experiments on the PHYSICLEAR-Test benchmark [46] and multiple tactile datasets demonstrate strong performance of UniTac on both understanding and generation (Fig. 1), compared with existing UMMs and leading tactile models. We further deploy UniTac on real robotic platforms to verify its understanding ability and the practical effectiveness of generated cross-sensor data. Our main contributions are summarized as follows: 
+
+– We introduce UniTac, the first UMM for the tactile domain, jointly modeling sensor-level configurations and object-level semantics for unified understand-ing and generation. 
+
+– We enhance tactile understanding through large-scale multi-sensor training and dual-level supervision tasks that improve object physical reasoning. 
+
+– We advance tactile generation via a two-stage training scheme and a sensor-prior-based sampling strategy that models the non-contact–to–contact tran-sition for realistic tactile synthesis. 
+
+– We validate UniTac via extensive experiments and real-world deployment, achieving SOTA performance and demonstrating its practicality in robotic perception. 
+
+2 Related Work 
+
+2.1 Unified Multimodal Models 
+
+Recent advances in unified multimodal models (UMMs) have integrated percep-tion and generation within a single architecture [23, 29, 32, 50]. Works such as Janus-Pro [29], Chameleon [35], and Emu3 [39] employ Transformer-based back-bones to jointly handle visual understanding and synthesis. Hybrid frameworks including Transfusion [50] and Show-o [41] further combine autoregressive and diffusion paradigms to exploit their complementary strengths. BLIP3-o [3] ex-tends this line by introducing a diffusion transformer for CLIP-space generation with sequential training that balances understanding and generation. However, existing UMMs remain limited to visual–textual modalities. In contrast, our UniTac extends this paradigm to the tactile domain, enabling both tactile un-derstanding and generation within a unified architecture trained on a large-scale composite dataset. UniTac 5
+
+2.2 Tactile Understanding Models 
+
+Tactile understanding has increasingly relied on representation learning to cap-ture contact dynamics and material properties. UniTouch [43] and TVL-Link [7] align tactile inputs with visual and linguistic modalities to build consistent mul-timodal embeddings within a single sensor setup. AnyTouch [12] proposes a cross-sensor representation unifying tactile features but focuses mainly on repre-sentation learning rather than downstream reasoning. Beyond representations, Octopi [46] aligns tactile videos with vision–language models for object prop-erty reasoning, while VTV-LLM [42] explores visuo-tactile video understanding but relies on a small self-collected dataset, limiting generalization. More recent efforts such as SToLa [6] and CLTP [28] introduce commonsense reasoning and contrastive language–tactile pretraining for 3D contact understanding. Despite these advances, most models still overlook sensor-level configurations and fail to unify tactile understanding and generation within a single framework. 
+
+2.3 Tactile Generative Models 
+
+Tactile generation research mainly focuses on cross-modal synthesis between visual and tactile modalities. Vision2Touch [24] establishes paired visuo-tactile data for conditional generation, and GVST [44] adopts diffusion models for high-quality bidirectional synthesis. UniTouch [43] incorporates tactile signals into large multimodal frameworks for image-conditioned generation. Recent stud-ies have emphasized finer control, such as TextToucher [36] for text-to-touch synthesis, ControlTac [26] for force- and position-controlled augmentation, and Touch2Touch [31] for translation between limited sensor pairs. Nonetheless, most existing methods remain confined to single-sensor scenarios and lack unified cross-sensor modeling. UniTac overcomes these limitations by enabling multi-sensor tactile generation through the joint modeling of sensor-level configurations and object-level semantics within a unified multimodal framework. 
+
+3 Method 
+
+UniTac unifies tactile understanding and generation across sensors by jointly modeling sensor-level configurations and object-level semantics within a single framework. This formulation enables the model to reason about how different sensors perceive the same physical properties and to synthesize sensor-consistent tactile signals. To this end, we introduce three key components bridging under-standing and generation. In Sec. 3.1, Dual-Level Mixture Comprehension en-hances tactile reasoning through object property description and sensor identi-fication, improving cross-sensor comprehension. In Sec. 3.2, Two-Stage Aligned Generation advances tactile synthesis through reconstruction and sensor-aware alignment, ensuring semantic–physical coherence. In Sec. 3.3, Sensor-Prior Sam-pling Strategy models the transition from non-contact to contact by embedding sensor priors during sampling, yielding realistic cross-sensor tactile generation. An overview of the full framework is shown in Fig. 3. 6 Tu et al. Touch Encoder  
+
+> Tactile Image Across Sensors
+> Digit Gelsight Mini
+> Duragel Gelsight
+> Touch Decoder
+> Sensor Selector
+> Gelsight Mini
+> Reconstruction Loss
+> Patchify
+
+Multimodal Large Language Model      
+
+> Touch Encoder
+> <T_VID> Describe the physical properties of
+> The surface feels soft and slightly
+> </T_VID>
+
+Understanding      
+
+> Generate touch image: the surface feels N Touch Query
+> Alignment Loss
+> Sensor-Aware DiT Projector
+
+Generation 
+
+Reconstruction     
+
+> Sensor is Gelsight Mini
+> Object Property Description Sensor Identification Regression Loss
+
+Fig. 3: Overview of the UniTac architecture. UniTac unifies tactile understanding and generation across sensors by jointly modeling sensor-level configurations and object-level semantics. The Touch Encoder extracts static and dynamic contact features, while the Multimodal Large Language Model (MLLM) integrates tactile and textual modalities for joint reasoning over object- and sensor-level information (Sec. 3.1). The Sensor-Aware DiT Projector and Touch Decoder perform two-stage tactile genera-tion (Sec. 3.2), combining data reconstruction with sensor-aware alignment between MLLM embeddings and tactile representations. In addition, a sensor-prior-based sam-pling strategy (Sec. 3.3) models the transition from non-contact to contact, achieving realistic cross-sensor tactile synthesis. 
+
+3.1 Dual-Level Mixture Comprehension 
+
+To strengthen UniTac’s reasoning in tactile understanding, we propose Dual-Level Mixture Comprehension, which jointly supervises the model from object-level and sensor-level perspectives using paired video–text data. Given a visuo-tactile video Vi and an accompanying text Ti, the pretrained touch encoder produces a sequence of tactile tokens Zi = Etouch (Vi) ∈ RLv ×d.We then splice these tokens into the MLLM text stream using two special markers 
+
+<T_VID> and </T_VID> , yielding the input Xi = [ <T_VID> , Zi, </T_VID> , Π i, T i],where Πi denotes an instructional prompt that specifies one of two comprehen-sion objectives: object property description or sensor identification . The sequence 
+
+Xi is fed into the MLLM and optimized via a standard next-token prediction objective: 
+
+L = −
+
+|Xi|− 1
+
+X
+
+t=2+ Lv +|Πi|
+
+log pθ (xi,t +1 | xi, ≤t), (1) UniTac 7
+
+where each token in Xi is trained to predict its next token xi,t +1 .
+
+Object-Level Supervision (Property Description) . Following Octopi [46], we describe the contacted object using three tactile dimensions: roughness, hard-ness, and texture. For this task, Πprop  
+
+> i
+
+instructs the MLLM to generate the prop-erty description ( e.g ., “The surface is soft, rough and big bumps.”). By learning to predict these words conditioned on tactile embeddings, the model strength-ens its grounding in object-level semantics, encouraging it to associate contact patterns with physical material properties. 
+
+Sensor-Level Supervision (Sensor Identification) . In contrast, Πsen  
+
+> i
+
+guides the model to verbalize the tactile sensor identity ( e.g ., “Captured by a Digit sen-sor.”). The same next-token prediction loss applies, driving the MLLM to learn sensor-related variations such as lighting, gel elasticity, and imaging resolution. This supervision enforces sensitivity to sensor-level configurations, making the representation more robust across various tactile devices. The overall comprehension loss integrates the two tasks: 
+
+LDLMC = Lprop + λsen Lsen , (2) where Lprop and Lsen denote the respective next-token prediction losses under their prompts, and λsen > 0 balance the two objectives. Through this dual-level supervision, UniTac learns to disentangle what changes with the object from what changes with the sensor , leading to more accurate tactile understanding. 
+
+3.2 Two-Stage Aligned Generation 
+
+To achieve controllable and sensor-consistent tactile generation, UniTac employs a Two-Stage Aligned Generation strategy consisting of a reconstruction stage and a sensor-aware alignment stage. 
+
+Stage I: Reconstruction. The reconstruction stage focuses on learning a gen-erative prior within the tactile domain, independent of the MLLM. Here, the latent representation Zi extracted from the touch encoder inherently contains two types of information: Zi = [ Zobj  
+
+> i
+
+, Zsen  
+
+> i
+
+], where Zobj  
+
+> i
+
+encodes object-level se-mantics such as hardness and roughness, and Zsen  
+
+> i
+
+represents sensor-level con-figurations including illumination and gel properties. These latent tokens are fed into the touch decoder Dtouch to reconstruct the tactile signal. As this stage does not involve the MLLM backbone, it can be trained in parallel with the Dual-Level Mixture Comprehension task to improve training efficiency. 
+
+Stage II: Sensor-Aware Alignment. After learning tactile priors, we align the MLLM’s textual generation space with the tactile latent space. Given a tactile description Ti and N touch queries, the MLLM produces output query embeddings: ˆQi = EMLLM (Ti, Qi) ∈ RN ×d, which primarily encode object-level semantics consistent with the described physical attributes of the surface, but lack explicit sensor cues. To recover sensor awareness, we concatenate these embeddings with the specific sensor tokens S obtained from the pretrained touch encoder, forming the conditional representation: Fi = [ ˆQi; S].The sensor-aware DiT projector learns a conditional vector field vθ (·| t, Fi)
+
+that transforms a Gaussian prior toward the tactile latent representation Zi,8 Tu et al. 
+
+under the guidance of Fi. Following the rectified flow formulation [11, 25], we define a linear interpolation path between a Gaussian noise sample z ∼ N (0 , I )
+
+and the target tactile latent Zi as: 
+
+xt = (1 − t) z + t Zi, t ∈ [0 , 1]  (3) whose target velocity is a constant vector 
+
+ut = dxt
+
+dt = Zi − z. (4) The sensor-aware DiT projector is trained by minimizing the conditional rectified flow matching loss: 
+
+LRF align = Et∼U (0 ,1) ,z∼N (0 ,I ), Zi vθ (xt|t, Fi) − (Zi − z) 22. (5) This alignment bridges the MLLM semantic output and the touch encoder rep-resentations, enabling the model to generate tactile signals that are both seman-tically faithful and sensor-consistent. 
+
+3.3 Sensor-Prior Sampling Strategy 
+
+In real tactile sensing, data acquisition follows a sequential process from a non-contact stage to a contact stage. The non-contact stage captures the intrinsic sensor state, while the contact stage records the physical interaction between the sensor and the object surface. Inspired by this process, we propose a Sensor-Prior Sampling Strategy (SPSS) that incorporates sensor priors into the sampling procedure, thereby simulating the gradual transition from non-contact to contact during tactile generation. The denoised velocity field is typically estimated using classifier-free guidance (CFG) [15]: 
+
+ˆvθ (xt, c ) = vθ (xt|t, ∅) + svθ (xt|t, c ) − vθ (xt|t, ∅), (6) where c denotes the conditional input and s is the guidance scale. However, in tactile generation, the unconditional prior vθ (xt|t, ∅) does not accurately rep-resent the non-contact initialization, as tactile signals are inherently dependent on the sensor configuration. To better align with the tactile data acquisition process, we replace the un-conditional branch with a sensor-conditioned prior that explicitly encodes the non-contact state. The sampling process is redefined as: 
+
+ˆvθ (xt|t, Zobj  
+
+> i
+
+, Zsen  
+
+> i
+
+) = vθ (xt|t, Zsen  
+
+> i
+
+) (7) 
+
++ svθ (xt|t, Zobj  
+
+> i
+
+, Zsen  
+
+> i
+
+) − vθ (xt|t, Zsen  
+
+> i
+
+).
+
+Here, vθ (xt|t, Zsen  
+
+> i
+
+) serves as the sensor prior branch, corresponding to the non-contact process, while vθ (xt|t, Zobj  
+
+> i
+
+, Zsen  
+
+> i
+
+) introduces the contact-specific guid-ance that reflects object-level semantics under the same sensor state. This de-sign enforces a physically consistent transition, where the first item respects the sensor configuration and the second item incorporates contact semantics. UniTac 9User: Describe 
+
+> UniTac: The surface is rough, rigid, irregular, coarse, and
+> fibrous, exhibiting high hardness. The texture is grooved and
+> cracked. The tactile feedback is uneven, splintery, and solid.
+> <Object: Tree Bark>
+> User: Describe
+> UniTac: The contact point possesses a fuzzy texture with very
+> low roughness and low hardness. The surface feels slightly
+> ticklish to the touch.
+> <Object: Plush Toy>
+> User: Describe
+> UniTac: The contact point is along the central hole, presenting
+> a hard, flat, reflective, polished, and rigid texture.
+> <Object: CD>
+> User: Describe
+> UniTac: The material at the contact point is soft fabric, with a
+> slightly rough texture, low hardness.
+> <Object: Fabric>
+
+Fig. 4: Object property description of tactile videos across various tactile sensors. UniTac generates object-aware tactile descriptions that align with physical properties of the contacted materials. 
+
+4 Experiments 
+
+4.1 Implementation 
+
+We train UniTac on a large-scale visuo-tactile corpus integrated from five public datasets organized by AnyTouch [12]: Touch and Go [44], Tacquad [12], TVL [13], SSVTP [20], and PHYSICLEAR [46]. Except for SSVTP, all datasets include paired tactile videos and textual descriptions. We preprocess and unify them into a consistent format comprising approximately 400K video clips and 1.6M frames with aligned text annotations. We filter the contact frames with tactile deformations by calculating the difference between each tactile image and the corresponding background frame in these datasets. For tactile feature extraction, the pretrained touch encoder from AnyTouch is adopted to encode both tactile images and videos. The MLLM backbone is based on Qwen-VL 2.5 [38], and the touch decoder is implemented with SANA [40]. Additional implementation details are provided in Appendix A. For tactile understanding, we evaluate simple perceptual recognition through hardness, roughness, and texture classification, and complex reasoning through Property Comparison (PC), Property-Object Matching (POM), and Property Superlative Selection (PSS) on the PHYSICLEAR-Test benchmark [46]. For tac-tile generation, following GVST [44] and TextToucher [36], we evaluate synthesis quality using SSIM and PSNR by randomly sampling 60K generated tactile im-ages and comparing them with their corresponding ground-truth samples. 
+
+4.2 Tactile Understanding 
+
+To evaluate the tactile understanding capability of UniTac, we compare it with advanced multimodal models like Qwen2.5-VL [1] and GPT-4o [16]. We further include representative UMMs that unify understanding and generation. The quantitative results are summarized in Tab. 1. UniTac-7B achieves the high-est overall score of 66.51, surpassing all previous models. Notably, the overall improvement mainly comes from UniTac’s stronger tactile reasoning capabil-ity rather than uniform gains across all tasks. On the three reasoning-oriented 10 Tu et al. Question: Is the object  in the tactile video  <a.mp4> smoother than the one in <b.mp4>  ? Describe both objects before answering. 
+
+UniTac:  First object: The surface feels relatively sturdy, exhibits a notable roughness and there are subtle bumps and ridges. Overall, it presents a rough surface with small bumps. Second object: The surface feels solid and sturdy, lacks noticeable roughness and there are no textural variations or fine ridges. Overall, it presents a smooth surface with no bumps. Conclusion: No, the second object is smoother. 
+
+Property Comparison 
+
+a.mp4 (bath towel) 
+
+Question:  Given three tactile videos: A)  <a.mp4>, B)  <b.mp4>, C)  <c.mp4>.  Describe the object in each video, then match each video to one of the following objects in alphabetical order:  1) the side of a hairbrush's bristles,  2) a bath towel,  3) a hairbrush's handle. 
+
+UniTac:  A) …. B) … C) The surface feels soft, exhibits a notable roughness and there are tiny bumps and ridges present. Overall, it presents a soft and rough surface with small bumps. Conclusion: a) is a microfiber cloth, b) is a hairbrush's handle and c) is the side of a hairbrush's bristles. 
+
+Property Object Match 
+
+Question:  Given three tactile videos: A)  <d.mp4>, B)  <e.mp4>, C)  <f.mp4>.  Describe each object and then select the one covered with the smallest bumps. 
+
+UniTac:  A) The surface feels solid, lacks noticeable roughness and there are no textural variations. Overall, it presents a hard and smooth surface with no bumps. B) The surface feels firm and somewhat flexible, is smooth and there are big bumps and ridges. Overall, it presents a hard and smooth surface with big bumps. C) The surface feels hard and robust, exhibits a prominent roughness and big bumps and irregularities are present. Overall, it presents a hard and rough surface with big bumps.  Conclusion: A) is the one covered with the smallest bumps. 
+
+Property Superlative Selection 
+
+c.mp4 (hairbrush bristles side) 
+
+b.mp4 (hairbrush handle) 
+
+d.mp4 (wood ruler) 
+
+e.mp4 (wires) 
+
+f.mp4 (rice spatula base) 
+
+Fig. 5: Tactile video understanding across various understanding tasks. We evalu-ate UniTac on three representative understanding tasks: Property Comparison, Prop-erty–Object Matching, and Property Superlative Selection. UniTac first provides fine-grained descriptions of surface attributes ( e.g ., roughness, bumps, hardness) and then performs reasoning to derive the final answer. The results show that UniTac can dis-tinguish tactile differences through multi-step tactile reasoning capability. 
+
+tasks, i.e., PC, POM, and PSS, UniTac-7B improves over the strongest UMM baseline Octopi-7B by 11.80, 42.39, and 11.22 points, respectively. These results demonstrate that UniTac can better ground tactile observations into high-level physical and semantic concepts, leading to more reliable reasoning over material properties and tactile interactions. In Fig. 4, we present qualitative results of the object property description (OPD) task, which is explicitly used during training to enhance tactile under-standing. Across diverse tactile sensors, UniTac generates coherent and physi-cally grounded descriptions that align with material properties and sensor con-figurations. For instance, it correctly characterizes the rigid, polished surface of a CD and distinguishes it from the soft, fuzzy texture of a plush toy, reflecting accurate reasoning over hardness and roughness cues. Building upon this capa-bility, Fig. 5 further evaluates UniTac on complex tactile reasoning tasks. Rather than directly predicting answers, the model implicitly relies on fine-grained sur-face attributes, such as roughness, bump distribution, and stiffness, to support comparison, matching, and superlative selection. 
+
+4.3 Tactile Generation Image Generation. We evaluate UniTac’s tactile image generation on four representative sensors: Digit, GelSight, GelSight Mini, and Duragel. As shown in Tab. 2, UniTac achieves the highest average performance of 0.836 SSIM and UniTac 11 
+
+Table 1: Comparing the understanding capability of UniTac with other generative and unified multimodal models. UniTac-7B achieves the best average performance across all metrics, indicating stronger fine-grained tactile reasoning and understanding on PHYSICLEAR-Test benchmark. PC refers to Property Comparison task; POM refers to Property–Object Matching task; PSS refers to Property Superlative Selection task. Type Model Method PC ↑ POM ↑ PSS ↑ Hardness ↑ Roughness ↑ Texture ↑ Average ↑                                                                              
+
+> Und. Only GPT-4o [16] AR 30.87 22.62 38.05 31.37 30.48 36.51 31.65 Qwen2.5-VL-7B [1] AR 21.47 19.92 23.05 25.73 33.33 26.62 25.01 Gemini-2.5-Pro-Exp [9] AR 26.71 23.47 25.06 29.19 28.44 32.18 27.50 LLaVA-OneVision-7B [22] AR 35.42 29.11 28.44 33.33 32.18 36.51 32.49 Octopi-7B [46] AR 45.50 22.22 48.00 64.10 73.92 87.17 57.31 Und. and Gen. TokenFlow-7B [30] AR 38.05 29.48 32.56 47.68 38.70 48.31 39.13 JanusPro-7B [5] AR + Diff 30.18 26.71 38.05 41.63 35.82 45.37 36.29 BLIP3o-3B [3] AR+ Diff 26.71 21.47 32.18 36.51 32.18 48.00 32.84 UniTac-3B(Ours) AR + Diff 54.97 42.13 58.90 51.28 76.92 79.48 60.61 UniTac-7B(Ours) AR + Diff 57.30 64.61 59.22 61.53 74.35 82.05 66.51
+
+Table 2: Comparing the generation capability of UniTac with other generative and unified multimodal models. Results are reported across four tactile sensors (Digit, GelSight, GelSight Mini, and Duragel). UniTac achieves the highest average SSIM and PSNR among unified multimodal models and remains competitive with generation-only methods, demonstrating strong cross-sensor tactile synthesis capability. Type Model Digit Gelsight Gelsight Mini Duragel Average SSIM ↑ PSNR ↑ SSIM ↑ PSNR ↑ SSIM ↑ PSNR ↑ SSIM ↑ PSNR ↑ SSIM ↑ PSNR ↑                                                                                 
+
+> Gen. Only GVST [45] 0.841 18.72 0.655 14.58 0.883 18.90 0.429 14.98 0.762 18.43 UniTouch [43] 0.859 18.17 0.636 14.18 0.851 18.63 0.440 14.31 0.769 17.71 PixArt-α[4] 0.877 18.10 0.641 14.09 0.869 18.77 0.446 14.36 0.785 17.74 TextToucher [36] 0.901 20.90 0.662 15.42 0.896 20.38 0.473 16.36 0.816 18.65 Und. and Gen. TokenFlow-7B [30] 0.834 17.47 0.628 14.04 0.758 15.67 0.431 12.72 0.726 15.35 JanusPro-7B [5] 0.854 20.18 0.653 15.34 0.894 19.67 0.464 17.73 0.753 18.46 BLIP3o-7B [3] 0.821 16.30 0.618 13.46 0.746 14.74 0.405 10.92 0.713 13.66 UniTac 0.915 21.26 0.683 16.28 0.946 24.56 0.472 18.44 0.836 19.93
+
+19.93 PSNR, surpassing all state-of-the-art generative and unified models. We also observe that all models perform relatively lower on Duragel due to unstable acquisition conditions and significant variation in sensor calibration and gel state. The collected tactile images are often blurrier and less consistent in lighting and contact geometry, increasing intra-domain variance and making it harder for models to learn stable patterns between tactile appearance and physical properties, leading to overall lower metrics across all methods. In Fig. 6, UniTac consistently generates realistic and physically coherent tac-tile images across different sensor types and configurations. It can also accurately reflect distinct sensor configuration even the same sensor type, such as the re-sults in Digit-1 and Digit-2. Unlike other UMMs that misrepresent sensor states or lose spatial fidelity, UniTac preserves fine structural and illumination cues, demonstrating robust cross-sensor consistency enabled by its joint modeling of sensor- and object-level information. 
+
+Video Generation. Beyond static image synthesis, we extend UniTac to tac-tile video generation by replacing the touch decoder with Wan v2.2 [37], while 12 Tu et al. Prompt: The tactile sensor is touching the basketball surface. This touch involves textured, granular material, characterized by high roughness and considerable hardness... 
+
+GVST UniTouch PixArt- TextToucher TokenFlow JanusPro BLIP3o UniTac Reference 
+
+> Digit-1 Digit-2
+> Prompt: The tactile sensor is touching a specific point on a flat , smooth , metallic surface with high hardness . The texture is sleek , reflective ...
+> Gelsight mini
+> Gelsight Duragel
+> Prompt: The tactile sensor is touching a carpet. The material is carpet. The surface feels rough , soft and yielding, and there are small prominent bumps present ...
+> Prompt: The tactile contact location is a rough - textured , gray carpet, displaying high roughness with a looped pile. The material feels densely woven and firm ...
+> Prompt: The tactile sensor is touching the corner of white lime plaster wall which feels slightly rough and grainy to the touch. Its texture is uneven, with a matte finish that lacks smoothness ...
+
+Fig. 6: Qualitative comparison of tactile image generation across various tactile sen-sors. UniTac consistently generates realistic and physically coherent tactile images across diverse sensors and configurations. 
+
+keeping the same sensor-aware conditioning mechanism. This design enables tem-porally coherent synthesis without altering the unified multimodal backbone or the sensor-specific conditioning strategy. As shown in Fig. 7, UniTac generates continuous tactile sequences across different sensors, capturing both the onset of contact and the gradual pressure propagation over time. The generated videos preserve fine-grained texture cues ( e.g ., the granular surface of an orange) as well as sensor-specific deformation patterns and illumination dynamics. Besides, UniTac maintains temporal consistency in dot-grid displacement and contact region evolution. These results demonstrate that the proposed framework gen-eralizes naturally from static tactile image synthesis to dynamic tactile video modeling, enabling realistic simulation of contact processes under diverse sensor configurations. More results are provided in Appendix C. 
+
+4.4 Ablation Studies 
+
+To examine the contribution of each component in UniTac, we conduct a series of ablation experiments, as summarized in Tab. 3. More ablation studies are provided in Appendix B. Removing the Sensor Identification objective causes a clear drop on PHYSICLEAR (from 60.61 to 57.38), indicating that explicitly modeling sensor-level configurations substantially enhances the UMM’s ability to interpret tactile data across various tactile sensors. Without the Dual-Level UniTac 13 Reference      
+
+> Video
+> UniT ac
+> Sensor: Duragel .Prompt: The sensor touches the plastic
+> handle of a metallic bowl with some hardness. The contact
+> point is smooth. The texture is sleek with low roughness ...
+> Sensor: Gelsight Mini . Prompt: The sensor is touching an
+> orange. The surface feels moderately firm and unyielding,
+> exhibits a subtle roughness and there are tiny bumps ...
+
+Fig. 7: Cross-sensor tactile video generation results. Left (GelSight Mini, orange): Uni-Tac reproduces the fine, bumpy texture and progressive deformation consistent with the orange peel surface. Right (Duragel, bowl handle): UniTac generates smooth con-tact patterns with localized indentation and realistic dynamic changes throughout the contact process. 
+
+Table 3: Performance impact of different modules in UniTac through ablation study. Component PHYSICLEAR SSIM PSNR UniTac 60.61 0.836 19.93 
+
+w/o Sensor Identification 57.38 0.822 19.91 
+
+w/o Dual-Level Comprehension 26.52 0.758 18.14 
+
+w/o DiT Projector 60.61 0.794 19.25 
+
+w/o Sensor-Prior Sampling 60.61 0.817 19.49 
+
+Comprehension, the performance decreases sharply across all metrics, as the MLLM degenerates into a standard Qwen-VL model lacking tactile understand-ing. This confirms that tactile comprehension not only improves reasoning per-formance but also provides critical semantic priors for generation. In contrast, removing the DiT Projector or Sensor-Prior Sampling, which are trained inde-pendently from the MLLM, has limited impact on understanding but reduces generative fidelity. This reflects that sensor-level representation remains essential for maintaining structural realism and physical consistency in generation. 
+
+4.5 Real-World Deployment and Validation 
+
+To evaluate the practicality of UniTac, we deploy UniTac in a real robotic plat-form and validate both its understanding capability and the utility of generated tactile data. 
+
+Understanding in Real Interaction. We apply UniTac in a real-world grasp-ing scenario involving material selection for delicate skin contact, aiming to iden-tify the fabric most suitable for wiping an infant’s skin. This task requires subtle tactile discrimination beyond visual similarity. As shown in Fig. 8, given two vi-sually similar fabrics with distinct tactile properties, UniTac analyzes the tactile feedback and performs fine-grained comparison of surface attributes. The model identifies the purple towel as exhibiting lower roughness and a smoother texture. Based on this tactile comparison outcome, the robotic system selects and grasps the smoother fabric as the preferred option for baby skin contact. 14 Tu et al. 
+
+Fig. 8: The robot compares two visually similar fabrics through the Property Compar-ison task, identifies the smoother one as more suitable for baby skin contact. Tactile differences between the two materials are magnified for clarity. 
+
+Table 4: Rollout results for language-guided tactile towel selection and grasping. VLA is an RGB-only baseline that maps visual observations, robot state, and language in-structions directly to actions. VTLA-real additionally uses real GelSight tactile ob-servations during rollout. VTLA-pred predicts tactile representations from RGB/state inputs at inference, testing whether tactile-aware control can be achieved without real-time tactile sensing. Implementation details are provided in Appendix B.1. Method Selection Success ↑ Grasping Success ↑ Overall Success ↑         
+
+> VLA 11/20 (55%) 6/20 (30%) 4/20 (20%) VTLA-real 20/20 (100%) 19/20 (95%) 19/20 (95%) VTLA-pred 18/20 (90%) 16/20 (80%) 16/20 (80%)
+
+We further quantify this setting as a language-guided tactile fabric selec-tion and grasping task. A rollout is considered fully successful only when the robot selects the baby-suitable fabric, grasps a single-layer edge or corner, lifts it stably, and avoids visible slipping. As shown in Tab. 4, the RGB-only VLA baseline can often localize the fabric regions visually, but it struggles with tactile-semantic selection and single-layer contact-state estimation. In contrast, VTLA-real achieves the best performance by directly observing tactile cues such as soft-ness, contact area, and slip tendency. VTLA-predict, while not using real-time tactile input during inference, still substantially outperforms VLA, suggesting that predicted tactile representations preserve useful physical cues for contact-aware manipulation. Additional deformation-aware grasping results are provided in Appendix B.1. 
+
+Effectiveness of Generated Tactile Data. Tactile sensing hardware evolves rapidly, making large-scale data recollection for each newly introduced device both costly and time-consuming. This challenge is particularly pronounced in cross-sensor scenarios, where models trained on one sensor often fail to general-ize to another due to differences in illumination patterns, marker layouts, and deformation characteristics. UniTac alleviates this issue by generating sensor-specific tactile data conditioned on object and contact information, enabling efficient cross-domain adaptation without additional real data collection. We evaluate this capability in a cross-sensor grasp classification task. In Tab. 5, UniTac 15 
+
+Table 5: Effectiveness of UniTac-generated GelSight data in improving cross-sensor grasp classification performance. By augmenting with UniTac-generated GelSight data, cross-sensor grasp accuracy improves while maintaining high Digit performance. Data Digit Grasp(%) Gelsight Grasp(%) Digit 98.89 50.00 Digit+UniTac-Gelsight 99.07 99.37 
+
+when trained only on Digit data, the classifier achieves strong in-domain per-formance (98.89%) but suffers a severe drop when tested on GelSight (50.00%), highlighting the substantial sensor gap. By augmenting the training set with UniTac-generated GelSight samples, the GelSight accuracy improves to 99.37%, while Digit performance remains stable (99.07%). This suggests that UniTac can serve as a scalable data generation framework to support rapid adaptation for emerging tactile devices. 
+
+5 Conclusion 
+
+This paper introduces UniTac, the first unified multimodal model (UMM) de-signed for cross-sensor tactile understanding and generation. UniTac bridges the gap between tactile reasoning and synthesis by jointly modeling sensor-level configurations and object-level semantics through a dual-level mixture compre-hension framework. A two-stage aligned generation paradigm with a sensor-prior sampling strategy further ensures physically consistent tactile synthesis. Exten-sive experiments demonstrate that UniTac outperforms existing UMMs and spe-cialized tactile models in both understanding and generation, highlighting its potential to advance unified multimodal modeling. 
+
+Acknowledgments . This work was supported in part by the National Natural Science Foundation of China under Grant No. 62402430. Hanbin Zhao was also partially supported by the Zhejiang Provincial Natural Science Foundation of China under Grant No. LQN25F020008. Alex Wong was supported by the NSF Athena AI Institute under Grant No. 2112562 and by the Global Industrial Technology Cooperation Center (GITCC) through a grant agreement with the Korea Institute for Advancement of Technology (KIAT), Project No. P0028922. 
+
+References 
+
+1. Bai, S., Chen, K., Liu, X., Wang, J., Ge, W., Song, S., Dang, K., Wang, P., Wang, S., Tang, J., et al.: Qwen2. 5-vl technical report. arXiv preprint arXiv:2502.13923 (2025) 2. Baishya, S.S., Bäuml, B.: Robust material classification with a tactile skin using deep learning. In: 2016 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS). pp. 8–15. IEEE (2016) 3. Chen, J., Xu, Z., Pan, X., Hu, Y., Qin, C., Goldstein, T., Huang, L., Zhou, T., Xie, S., Savarese, S., et al.: Blip3-o: A family of fully open unified multimodal models-architecture, training and dataset. arXiv preprint arXiv:2505.09568 (2025) 16 Tu et al. 4. Chen, J., Yu, J., Ge, C., Yao, L., Xie, E., Wu, Y., Wang, Z., Kwok, J., Luo, P., Lu, H., et al.: Pixart-α: Fast training of diffusion transformer for photorealistic text-to-image synthesis. arXiv preprint arXiv:2310.00426 (2023) 5. Chen, X., Wu, Z., Liu, X., Pan, Z., Liu, W., Xie, Z., Yu, X., Ruan, C.: Janus-pro: Unified multimodal understanding and generation with data and model scaling. arXiv preprint arXiv:2501.17811 (2025) 6. Cheng, N., Xu, J., Chen, J., Han, W.: Stola: Self-adaptive touch-language frame-work with tactile commonsense reasoning in open-ended scenarios. arXiv preprint arXiv:2505.04201 (2025) 7. Cheng, N., Xu, J., Guan, C., Gao, J., Wang, W., Li, Y., Meng, F., Zhou, J., Fang, B., Han, W.: Touch100k: A large-scale touch-language-vision dataset for touch-centric multimodal representation. Information Fusion p. 103305 (2025) 8. Cheng, Z., Zhang, Y., Zhang, W., Li, H., Wang, K., Song, L., Zhang, H.: Omnivtla: Vision-tactile-language-action model with semantic-aligned tactile sensing. arXiv preprint arXiv:2508.08706 (2025) 9. Comanici, G., Bieber, E., Schaekermann, M., Pasupat, I., Sachdeva, N., Dhillon, I., Blistein, M., Ram, O., Zhang, D., Rosen, E., et al.: Gemini 2.5: Pushing the frontier with advanced reasoning, multimodality, long context, and next generation agentic capabilities. arXiv preprint arXiv:2507.06261 (2025) 10. Dou, Y., Yang, F., Liu, Y., Loquercio, A., Owens, A.: Tactile-augmented radiance fields. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 26529–26539 (2024) 11. Esser, P., Kulal, S., Blattmann, A., Entezari, R., Müller, J., Saini, H., Levi, Y., Lorenz, D., Sauer, A., Boesel, F., et al.: Scaling rectified flow transformers for high-resolution image synthesis. In: Forty-first international conference on machine learning (2024) 12. Feng, R., Hu, J., Xia, W., Gao, T., Shen, A., Sun, Y., Fang, B., Hu, D.: Any-touch: Learning unified static-dynamic representation across multiple visuo-tactile sensors. arXiv preprint arXiv:2502.12191 (2025) 13. Fu, L., Datta, G., Huang, H., Panitch, W.C.H., Drake, J., Ortiz, J., Mukadam, M., Lambeta, M., Calandra, R., Goldberg, K.: A touch, vision, and language dataset for multimodal alignment. arXiv preprint arXiv:2402.13232 (2024) 14. Gao, R., Deng, K., Yang, G., Yuan, W., Zhu, J.Y.: Tactile dreamfusion: Exploit-ing tactile sensing for 3d generation. Advances in Neural Information Processing Systems 37 , 29839–29863 (2024) 15. Ho, J., Salimans, T.: Classifier-free diffusion guidance. arXiv preprint arXiv:2207.12598 (2022) 16. Hurst, A., Lerer, A., Goucher, A.P., Perelman, A., Ramesh, A., Clark, A., Os-trow, A., Welihinda, A., Hayes, A., Radford, A., et al.: Gpt-4o system card. arXiv preprint arXiv:2410.21276 (2024) 17. Intelligence, P., Black, K., Brown, N., Darpinian, J., Dhabalia, K., Driess, D., Esmail, A., Equi, M., Finn, C., Fusai, N., et al.: π0.5: a vision-language-action model with open-world generalization. arXiv preprint arXiv:2504.16054 (2025) 18. Jamali, N., Sammut, C.: Material classification by tactile sensing using surface textures. In: 2010 IEEE International Conference on Robotics and Automation. pp. 2336–2341. IEEE (2010) 19. Johnson, M.K., Adelson, E.H.: Retrographic sensing for the measurement of surface texture and shape. In: 2009 IEEE Conference on Computer Vision and Pattern Recognition. pp. 1070–1077. IEEE (2009) UniTac 17 20. Kerr, J., Huang, H., Wilcox, A., Hoque, R., Ichnowski, J., Calandra, R., Goldberg, K.: Self-supervised visuo-tactile pretraining to locate and follow garment features. arXiv preprint arXiv:2209.13042 (2022) 21. Lambeta, M., Chou, P.W., Tian, S., Yang, B., Maloon, B., Most, V.R., Stroud, D., Santos, R., Byagowi, A., Kammerer, G., et al.: Digit: A novel design for a low-cost compact high-resolution tactile sensor with application to in-hand manipulation. IEEE Robotics and Automation Letters 5(3), 3838–3845 (2020) 22. Li, B., Zhang, Y., Guo, D., Zhang, R., Li, F., Zhang, H., Zhang, K., Zhang, P., Li, Y., Liu, Z., et al.: Llava-onevision: Easy visual task transfer. arXiv preprint arXiv:2408.03326 (2024) 23. Li, S., Kallidromitis, K., Gokul, A., Liao, Z., Kato, Y., Kozuka, K., Grover, A.: Omniflow: Any-to-any generation with multi-modal rectified flows. In: Proceedings of the Computer Vision and Pattern Recognition Conference. pp. 13178–13188 (2025) 24. Li, Y., Zhu, J.Y., Tedrake, R., Torralba, A.: Connecting touch and vision via cross-modal prediction. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 10609–10618 (2019) 25. Lipman, Y., Chen, R.T., Ben-Hamu, H., Nickel, M., Le, M.: Flow matching for generative modeling. arXiv preprint arXiv:2210.02747 (2022) 26. Luo, D., Yu, K., Shahidzadeh, A.H., Fermüller, C., Aloimonos, Y., Gao, R.: Con-troltac: Force-and position-controlled tactile data augmentation with a single ref-erence image. arXiv preprint arXiv:2505.20498 (2025) 27. Luu, Q.K., Nguyen, N.H., et al.: Simulation, learning, and application of vision-based tactile sensing at large scale. IEEE Transactions on Robotics 39 (3), 2003– 2019 (2023) 28. Ma, W., Cao, X., Zhang, Y., Zhang, C., Yang, S., Hao, P., Fang, B., Cai, Y., Cui, S., Wang, S.: Cltp: Contrastive language-tactile pre-training for 3d contact geometry understanding. arXiv preprint arXiv:2505.08194 (2025) 29. Ma, Y., Liu, X., Chen, X., Liu, W., Wu, C., Wu, Z., Pan, Z., Xie, Z., Zhang, H., Yu, X., et al.: Janusflow: Harmonizing autoregression and rectified flow for unified multimodal understanding and generation. In: Proceedings of the Computer Vision and Pattern Recognition Conference. pp. 7739–7751 (2025) 30. Qu, L., Zhang, H., Liu, Y., Wang, X., Jiang, Y., Gao, Y., Ye, H., Du, D.K., Yuan, Z., Wu, X.: Tokenflow: Unified image tokenizer for multimodal understanding and generation. In: Proceedings of the Computer Vision and Pattern Recognition Con-ference. pp. 2545–2555 (2025) 31. Rodriguez, S., Dou, Y., Oller, M., Owens, A., Fazeli, N.: Touch2touch: Cross-modal tactile generation for object manipulation. arXiv preprint arXiv:2409.08269 (2024) 32. Shi, W., Han, X., Zhou, C., Liang, W., Lin, X.V., Zettlemoyer, L., Yu, L.: Lmfusion: Adapting pretrained language models for multimodal generation. arXiv preprint arXiv:2412.15188 (2024) 33. Stefani, A.L., Bisagno, N., Conci, N., De Natale, F.: Splattouch: Explicit 3d rep-resentation binding vision and touch. In: Proceedings of the Computer Vision and Pattern Recognition Conference. pp. 118–127 (2025) 34. Sun, F., Liu, C., Huang, W., Zhang, J.: Object classification and grasp planning using visual and tactile sensing. IEEE Transactions on Systems, Man, and Cyber-netics: Systems 46 (7), 969–979 (2016) 35. Team, C.: Chameleon: Mixed-modal early-fusion foundation models. arXiv preprint arXiv:2405.09818 (2024) 18 Tu et al. 36. Tu, J., Fu, H., Yang, F., Zhao, H., Zhang, C., Qian, H.: Texttoucher: Fine-grained text-to-touch generation. In: Proceedings of the AAAI Conference on Artificial Intelligence. vol. 39, pp. 7455–7463 (2025) 37. Wan, T., Wang, A., Ai, B., Wen, B., Mao, C., Xie, C.W., Chen, D., Yu, F., Zhao, H., Yang, J., et al.: Wan: Open and advanced large-scale video generative models. arXiv preprint arXiv:2503.20314 (2025) 38. Wang, P., Bai, S., Tan, S., Wang, S., Fan, Z., Bai, J., Chen, K., Liu, X., Wang, J., Ge, W., et al.: Qwen2-vl: Enhancing vision-language model’s perception of the world at any resolution. arXiv preprint arXiv:2409.12191 (2024) 39. Wang, X., Zhang, X., Luo, Z., Sun, Q., Cui, Y., Wang, J., Zhang, F., Wang, Y., Li, Z., Yu, Q., et al.: Emu3: Next-token prediction is all you need. arXiv preprint arXiv:2409.18869 (2024) 40. Xie, E., Chen, J., Chen, J., Cai, H., Tang, H., Lin, Y., Zhang, Z., Li, M., Zhu, L., Lu, Y., et al.: Sana: Efficient high-resolution image synthesis with linear diffusion transformers. arXiv preprint arXiv:2410.10629 (2024) 41. Xie, J., Mao, W., Bai, Z., Zhang, D.J., Wang, W., Lin, K.Q., Gu, Y., Chen, Z., Yang, Z., Shou, M.Z.: Show-o: One single transformer to unify multimodal under-standing and generation. arXiv preprint arXiv:2408.12528 (2024) 42. Xie, Y., Li, M., Li, S., Li, X., Chen, G., Ma, F., Yu, F.R., Ding, W.: Univer-sal visuo-tactile video understanding for embodied interaction. arXiv preprint arXiv:2505.22566 (2025) 43. Yang, F., Feng, C., Chen, Z., Park, H., Wang, D., Dou, Y., Zeng, Z., Chen, X., Gangopadhyay, R., Owens, A., et al.: Binding touch to everything: Learning unified multimodal tactile representations. In: Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition. pp. 26340–26353 (2024) 44. Yang, F., Ma, C., Zhang, J., Zhu, J., Yuan, W., Owens, A.: Touch and go: Learning from human-collected vision and touch. arXiv preprint arXiv:2211.12498 (2022) 45. Yang, F., Zhang, J., Owens, A.: Generating visual scenes from touch. In: Proceed-ings of the IEEE/CVF International Conference on Computer Vision. pp. 22070– 22080 (2023) 46. Yu, S., Lin, K., Xiao, A., Duan, J., Soh, H.: Octopi: Object property reasoning with large tactile-language models. arXiv preprint arXiv:2405.02794 (2024) 47. Yuan, W., Dong, S., Adelson, E.H.: Gelsight: High-resolution robot tactile sensors for estimating geometry and force. Sensors 17 (12), 2762 (2017) 48. Zhang, C., Hao, P., Cao, X., Hao, X., Cui, S., Wang, S.: Vtla: Vision-tactile-language-action model with preference learning for insertion manipulation. arXiv preprint arXiv:2505.09577 (2025) 49. Zhang, S., Yang, Y., Sun, F., Bao, L., Shan, J., Gao, Y., Fang, B.: A compact visuo-tactile robotic skin for micron-level tactile perception. IEEE Sensors Journal 
+
+24 (9), 15273–15282 (2024) 50. Zhou, C., Yu, L., Babu, A., Tirumala, K., Yasunaga, M., Shamis, L., Kahn, J., Ma, X., Zettlemoyer, L., Levy, O.: Transfusion: Predict the next token and diffuse images with one multi-modal model. arXiv preprint arXiv:2408.11039 (2024) 51. Zhuo, L., Du, R., Xiao, H., Li, Y., Liu, D., Huang, R., Liu, W., Zhu, X., Wang, F.Y., Ma, Z., et al.: Lumina-next: Making lumina-t2x stronger and faster with next-dit. Advances in Neural Information Processing Systems 37 , 131278–131315 (2024) UniTac 1
+
+Overview. In this supplementary material, we submit the source code in the “UniTac” folder and provide more experiments about our method. In Section A, we provide the specifics of our experiment setup. We then offer a deeper analysis of the parameter settings and present insightful findings in Section B. More samples of our method are provided in Section C and preliminaries of rectified flow matching are presented in Section D. 
+
+A Implementations Details 
+
+A.1 Model Architecture 
+
+UniTac is composed of four key modules: a Touch Encoder, a Multimodal Large Language Model (MLLM) backbone, a Sensor-Aware DiT Projector, and a Touch Decoder for tactile image and video generation. 
+
+Touch Encoder. The touch encoder adopts the AnyTouch [12] architecture with a ViT-B/16 backbone pretrained on large-scale multi-sensor tactile videos and images. This pretraining allows the encoder to effectively extract both spatial and temporal features that generalize across heterogeneous tactile sensors (e.g., Digit, GelSight, and Duragel). In addition, the encoder incorporates a set of learnable sensor tokens, where each sensor type is associated with five tokens to encode sensor-specific characteristics. The encoder outputs 768-dimensional latent tokens containing object-level semantics and sensor-level configurations. 
+
+MLLM Backbone. We employ two configurations of the MLLM based on Qwen-VL 2.5: a lightweight 3B model and a larger 7B model for tactile understanding. The 3B backbone already achieves strong performance on tactile understanding tasks, offering efficient inference and better generalization. Therefore, we adopt the 3B variant as the backbone for tactile generation to balance quality and com-putational efficiency. And our tactile image generation model comprises approx-imately 5B parameters. In both configurations, the visual projector of Qwen-VL is replaced with a tactile embedding adaptor that seamlessly integrates tactile latent tokens into the textual sequence for joint reasoning. 
+
+Sensor-Aware DiT Projector. For mapping the MLLM textual outputs into the tactile latent space, we employ NextDiT [51], a 24-layer diffusion transformer designed for efficient conditional feature alignment [3]. The projector integrates semantic embeddings from the MLLM with sensor priors extracted by the touch encoder, learning a conditional velocity field that continuously aligns textual and tactile representations. This alignment enables cross-sensor tactile generation that remains physically consistent with real sensor behaviors. 
+
+Touch Decoder. For tactile image generation, we adopt the SANA [40] diffu-sion architecture, capable of synthesizing 512 × 512 high-fidelity tactile images conditioned on sensor-aware latent embeddings. For tactile video generation, 2 Tu et al. 
+
+we replace the image decoder with Wan v2.2 [37], which produces 13-frame se-quences at 448 × 448 resolution while preserving temporal continuity of contact dynamics. 
+
+A.2 Training Setup and Environment 
+
+UniTac training consists of three major stages: reconstruction, dual-level compre-hension, and sensor-aware alignment. The reconstruction and dual-level compre-hension stages are trained in parallel, as the former does not involve the MLLM backbone required by the latter. 
+
+Algorithm 1 Dual-Level Mixture Comprehension (DLMC) Training 
+
+Require: Tactile video Vi, paired text Ti, property prompt Πprop  
+
+> i
+
+, sensor prompt Πsen  
+
+> i
+
+,weighting factor λsen 
+
+1: Zi ← Etouch (Vi) ▷ encode tactile video into token sequence 2: Xprop  
+
+> i
+
+← [<T_VID> , Z i, </T_VID> , Π prop  
+
+> i
+
+, T i]
+
+3: Xsen  
+
+> i
+
+← [<T_VID> , Z i, </T_VID> , Π sen  
+
+> i
+
+, T i]
+
+4: function NextTokenLoss (X, T )5: Identify the starting index ttxt of text tokens T in X
+
+6: L ← 0
+
+7: for t = ttxt to |X| − 1 do 
+
+8: L ← L − log pθ (xt+1 | x≤t) ▷ predict only textual tokens, Eq. (1) 9: end for 
+
+10: return L
+
+11: end function 
+
+12: Lprop ← NextTokenLoss (Xprop  
+
+> i
+
+, T i)
+
+13: Lsen ← NextTokenLoss (Xsen  
+
+> i
+
+, T i)
+
+14: LDLMC ← Lprop + λsen Lsen  ▷ Eq. (2) 15: Update parameters θ by gradient descent on LDLMC 
+
+In the dual-level mixture comprehension (DLMC) stage, the MLLM back-bone is fine-tuned under a next-token prediction objective to jointly reason about object-level and sensor-level tactile information, as detailed in Algorithm 1. Two types of instructional prompts are designed to guide this process. For the ob-ject property description task, the model is instructed to describe the physi-cal attributes of a contacted object—including roughness, hardness, and tex-ture—based on tactile video tokens. A typical training sample follows the for-mat “ <T_VID> [tactile tokens] </T_VID> Describe the physical properties of the contacted surface,” with the expected completion such as “The surface feels soft and slightly rough, with small bumpiness.” For the sensor identification task, the model is trained to recognize the tactile sensor used to capture the data, thereby learning sensor-specific cues such as illumination color, marker layout, and gel elasticity. The corresponding prompt is structured as “ <T_VID> [tactile tokens] </T_VID> Identify which tactile sensor captured this video,” with the ex-pected answer like “Captured by a GelSight Mini sensor.” The overall comprehen-UniTac 3
+
+sion loss combines these two objectives using LDLMC = Lprop + λsen Lsen ,where 
+
+λsen = 0 .1 balances property and sensor supervision. 
+
+Algorithm 2 Two-Stage Aligned Generation: Training 
+
+Require: Pretrained touch encoder Etouch , touch decoder vθ2 (· | t, F ), multimodal encoder EMLLM , DiT Projector vθ1 (· | t, F ), sensor MLP adapter MLP sen ; tactile queries Q; non-contact tactile image V sen 
+
+> i
+
+1: Stage I: Reconstruction 
+
+2: Zsen  
+
+> i
+
+← Etouch (V sen  
+
+> i
+
+) ▷ encode non-contact state 3: Zsen+obj  
+
+> i
+
+← Etouch (V sen+obj  
+
+> i
+
+) ▷ encode contact state 4: if Bernoulli (pdrop ) = 1 then F cond  
+
+> i
+
+← Zsen 
+
+> i
+
+5: else F cond  
+
+> i
+
+← Zobj+sen 
+
+> i
+
+6: Sample t ∼ U (0 , 1) , z ∼ N (0 , I ); xt ← (1 − t)z + tZ i; u∗ 
+
+> t
+
+← Zi − z
+
+7: Minimize decoder flow loss: 8: Lrec = vθ2 (xt | t, F cond  
+
+> i
+
+) − u∗
+
+> t
+> 22
+
+9: Update θ2 ← θ2 − η∇θ2 Lrec 
+
+10: Stage II: Sensor-Aware Alignment 
+
+11: ˆQi ← EMLLM (Ti, Q ) ▷ textual/object-level features 12: S′ ← MLP sen (S) ▷ project sensor tokens 13: F obj+sen  
+
+> i
+
+← [ ˆQi; S′]
+
+14: Sample t ∼ U (0 , 1) , z ∼ N (0 , I )
+
+15: xt ← (1 − t)z + tZ i; u∗ 
+
+> t
+
+← Zi − z
+
+16: Minimize LRF = ∥vθ1 (xt | t, F obj+sen  
+
+> i
+
+) − u∗ 
+
+> t
+
+∥22
+
+17: Update vθ1 by gradient descent on LRF 
+
+In parallel, the reconstruction stage jointly optimizes the touch encoder 
+
+Etouch and decoder Dtouch to reconstruct tactile images and videos from latent features, as described in Stage I of Algorithm 2. This process enables the model to capture both object-level semantics and sensor-level configurations directly from tactile signals. For tactile image reconstruction, training runs for approxi-mately 20 epochs with a batch size of 512 using the ZeRO-1 configuration. The initial learning rate is set to 1e-4, linearly warmed up for 5000 steps and decayed to 1e-5 by a cosine schedule. The optimization follows the standard flow match-ing loss formulation. For tactile video reconstruction, training is conducted with a batch size of 8, gradient accumulation set to 16, and gradient clipping enabled with a maximum norm of 1. This configuration employs the ZeRO-2 strategy for memory-efficient distributed optimization. The learning rate schedule and loss design are consistent with the image reconstruction setup, ensuring stable temporal consistency across consecutive frames. Together, these reconstruction settings allow UniTac to efficiently learn both static and dynamic tactile repre-sentations across multiple sensors while maintaining high-resolution fidelity and stable optimization behavior. After these two stages converge, the NextDiT projector is trained for sensor-aware alignment, as shown in Stage II of Algorithm 2. The projector maps se-mantic embeddings from EMLLM into the tactile latent space produced by Etouch .4 Tu et al. 
+
+This stage runs for 100 epochs with a batch size of 512 and a learning rate of 1e-4, using the same warm-up strategy. The training objective employs the rectified flow matching loss. All stages are trained under bf16 mixed precision. Experiments are conducted on a cluster equipped with 8 × NVIDIA A800 (80 GB) GPUs, managed by Accelerate for distributed optimization. 
+
+A.3 Inference and Sampling 
+
+At inference time, tactile generation proceeds through two sequential processes: the DiT Projector Sampling and the Sensor-Prior Sampling Strategy (SPSS), whose implementations are summarized in Algorithm 3 and Algorithm 4, re-spectively. 
+
+Algorithm 3 DiT Projector Sampling 
+
+Require: Trained DiT Projector vθ1 ; multimodal encoder EMLLM ; sensor MLP 
+
+MLP sen ; text Ti; tactile queries Q; sensor tokens S; number of steps N
+
+1: ˆQi ← EMLLM (Ti, Q )
+
+2: S′ ← MLP sen (S)
+
+3: F obj+sen  
+
+> i
+
+← [ ˆQi; S′]
+
+4: Initialize x(1) 1 ∼ N (0 , I ) ▷ projector latent at t=1 
+
+5: for k = 1 to N do  ▷ standard flow integration for vθ1
+
+6: t ← 1 − k−1  
+
+> N−1
+
+; ∆ ← 1 
+
+> N−1
+
+7: ˆv ← vθ1 (x(1)  
+
+> t
+
+| t, F obj+sen  
+
+> i
+
+)) 
+
+8: x(1)  
+
+> t−∆
+
+← FlowStep (x(1)  
+
+> t
+
+, ˆv, ∆ )
+
+9: end for 
+
+10: ˜Zobj+sen  
+
+> i
+
+← x(1) 0 ▷ projector’s aligned latent 11: return ˜Zobj+sen 
+
+> i
+
+In the projector sampling stage, the trained NextDiT projector vθ1 receives the text prompt Ti and tactile queries Q, producing the aligned latent represen-tation along the rectified-flow path. This step effectively transfers object-level semantics and sensor priors from the MLLM space into the tactile latent space defined by the encoder Etouch . Subsequently, the sensor-prior sampling stage drives the touch decoder vθ2 to synthesize realistic tactile signals that simulate the gradual transition from non-contact to contact. Unlike classifier-free guid-ance, SPSS introduces a sensor-conditioned branch vθ2 (xt | t, Z sen  
+
+> i
+
+) representing the non-contact state, and a contact branch vθ2 (xt | t, Z obj+sen  
+
+> i
+
+) reflecting object interaction. Their difference is scaled by a guidance factor s = 1 .5 according to Eq. (6)–(7), ensuring that the generated touch patterns remain physically consis-tent with real sensor behavior. Each generation trajectory uses 50 rectified-flow steps to progressively denoise the latent variable toward the final tactile frame or video. UniTac 5
+
+Algorithm 4 Touch Decoder with Sensor-Prior Sampling (SPSS) 
+
+Require: Trained touch decoder vθ2 ; touch encoder Etouch ; multimodal encoder 
+
+EMLLM ; sensor MLP MLP sen ; text Ti; non-contact tactile image V sen  
+
+> i
+
+; sensor tokens 
+
+S; guidance scale s; number of steps N ; projector’s aligned latent ˜Zobj+sen 
+
+> i
+
+1: ˆQi ← EMLLM (Ti, Q ); S′ ← MLP sen (S)
+
+2: Zsen  
+
+> i
+
+← Etouch (V sen  
+
+> i
+
+) ▷ encode non-contact state 3: Initialize x(2) 1 ∼ N (0 , I ) ▷ decoder latent at t=1 
+
+4: for k = 1 to N do  ▷ SPSS is applied inside vθ2
+
+5: t ← 1 − k−1  
+
+> N−1
+
+; ∆ ← 1 
+
+> N−1
+
+6: vsen ← vθ2 (x(2)  
+
+> t
+
+| t, Z sen  
+
+> i
+
+)
+
+7: vobj+sen ← vθ2 (x(2)  
+
+> t
+
+| t, Z obj+sen  
+
+> i
+
+)
+
+8: ˆv ← vsen + s · (vobj+sen − vsen ) ▷ sensor-prior guidance (Eq. 6–7) 9: x(2)  
+
+> t−∆
+
+← FlowStep (x(2)  
+
+> t
+
+, ˆv, ∆ )
+
+10: end for 
+
+11: ˆZi ← x(2) 0 ; ˆVi ← vθ2 ( ˆZi | t=0) 
+
+12: return ˆVi
+
+A.4 Real-World Deployment Experiment 
+
+We validate UniTac in a real-world robotic deployment scenario to assess its performance in physical interaction tasks. The system is built upon a Tracer mobile base equipped with dual robotic arms and multi-sensor perception mod-ules, including a tactile sensor Gelsight Mini mounted on the end-effector. All components are managed under the cobot_magic ROS framework and run on an onboard industrial PC using ROS Noetic. During deployment, the robot per-forms grasping on candidate materials, and streams tactile feedback to UniTac for real-time inference. In the fabric selection task, UniTac receives tactile se-quences from two visually similar fabrics and, through its Property Comparison module, correctly infers that the smoother purple towel exhibits lower roughness. The robot then grasps this fabric as the preferred choice for baby skin contact, demonstrating UniTac’s capacity to integrate tactile understanding with physi-cally grounded manipulation in real environments. 
+
+B More Experimental Results 
+
+B.1 Does Tactile Feedback Improve Robotic Manipulation? 
+
+In this part, we evaluate whether tactile representations provide practical bene-fits for robotic manipulation. Rather than claiming that a vision-language-action (VLA) policy cannot solve contact-rich tasks, our goal is to examine whether tac-tile supervision improves contact-aware generalization and sample efficiency. We compare three policy variants: (1) VLA [17], which maps RGB observations, robot state, and language instructions to actions; (2) VTLA-real , which addi-tionally uses real GelSight tactile observations during rollout; and (3) VTLA-pred , which does not use real-time tactile input at inference, but predicts a 6 Tu et al.                 
+
+> Table A: Unseen-size cup deformation grasping. The robot is trained on smaller cups and evaluated on a larger unseen cup. The task is not only to lift the cup but also to compress it to the target deformation. Method Lift Success ↑Target Deform. Success ↑Overall Success ↑
+> VLA 18/20 (90%) 0/20 (0%) 0/20 (0%) VTLA-real 20/20 (100%) 20/20 (100%) 20/20 (100%) VTLA-pred 19/20 (95%) 18/20 (90%) 18/20 (90%)
+
+tactile representation from RGB inputs and conditions action prediction on this tactile latent. All settings are implemented based on π0.5 [17]. 
+
+Unseen-size cup deformation grasping. We first design a target deformation grasping task on paper cups. During training, the robot observes smaller cups with synchronized third-view RGB videos, first-view robot-camera videos, Gel-Sight tactile images, and action trajectories. The task is to grasp each cup and compress it by a fixed target deformation. Specifically, the training cups corre-spond to smaller sizes, while evaluation is conducted on a larger unseen cup. The target deformation is set to 1 cm, and a rollout is considered deformation-successful only when the final cup diameter lies within the target range. This task separates general grasping from deformation-aware grasping. A policy may successfully lift the cup but still fail if it over-compresses or under-compresses the cup. As shown in Tab. A, the RGB-only VLA baseline achieves high lift success, indicating that visual observations are sufficient for localizing and grasping the cup in many cases. However, it fails to achieve the target defor-mation on the unseen larger cup. As shown in Fig. A, the VLA policy applies ex-cessive gripping force on the larger cup, resulting in unrealistic over-compression and undesirable structural deformation. This suggests that the visual policy learns where to grasp but lacks direct access to the contact state needed for accurate force and deformation control. In contrast, VTLA-real achieves the best performance by directly observing GelSight deformation during contact. VTLA-pred is slightly worse than VTLA-real but remains substantially better than VLA, showing that predicted tactile representations preserve most of the contact-aware benefit even without real-time tactile input. 
+
+Discussion. These two experiments demonstrate complementary roles of tactile representations in robotic manipulation. In the cup experiment, tactile obser-vations provide a local deformation cue that is more directly related to contact force than global visual geometry, enabling better deformation control on unseen object sizes. In the towel experiment, tactile representations ground high-level language concepts such as softness and skin-friendliness while also revealing con-tact state, layer thickness, and slip. Overall, VLA primarily learns visual-action correlations, whereas VTLA learns whether the contact state itself is appropri-ate. This contact-aware representation enables more robust behavior under un-seen object size, ambiguous visual appearance, and tactile-property-dependent instructions. UniTac 7 
+
+> Fig. A: Unseen-size target deformation grasping. The robot is trained on smaller cups with synchronized RGB and GelSight tactile observations, and tested on a larger unseen cup. RGB-only VLA can often lift the cup but result in unrealistic over-compression. VTLA with real tactile feedback achieves accurate deformation control, while VTLA with predicted tactile representation remains close to the real tactile condition.
+
+B.2 Effect of λsen .
+
+We further analyze the influence of the weighting factor λsen in the Dual-Level Mixture Comprehension loss, which balances the object-level property descrip-tion and the sensor-level identification objectives. As shown in Tab. B, a small 
+
+λsen (< 0.05 ) weakens the model’s sensitivity to sensor-specific cues, resulting in inconsistent tactile alignment across sensors. Conversely, a large value ( > 0.5)overemphasizes sensor discrimination, slightly degrading object-level property reasoning and reconstruction quality. When λsen = 0 .1, UniTac achieves the best overall performance across PHYSICLEAR, SSIM, and PSNR, indicating an optimal trade-off between cross-sensor consistency and tactile understand-ing. 
+
+B.3 Touch Encoder Choice 
+
+We further investigate which image representation is more suitable for the touch encoder Etouch : a low-level pixel representation extracted from a VAE-based 8 Tu et al. 
+
+Table B: Ablation study on the weighting factor λsen .                  
+
+> λsen PHYSICLEAR SSIM PSNR 0.01 58.27 0.818 19.42 0.05 59.36 0.826 19.71 0.1 60.61 0.836 19.93
+> 0.5 59.84 0.829 19.65 158.12 0.817 19.28
+
+encoder that preserves detailed spatial textures, or a high-level semantic rep-resentation extracted from a CLIP-style vision encoder that captures abstract visual cues. Both variants are trained following the same procedure described in Sec. A.2, using identical decoder and projector settings. 
+
+Table C: Comparison between low-level pixel features and high-level semantic features as tactile image representations. All results are measured under identical training and inference settings. Representation Type Encoder Source PHYSICLEAR SSIM PSNR Low-Level Pixel VAE-based 60.55 0.836 19.95 High-Level Semantic CLIP-based 60.61 0.836 19.93 
+
+Tab. C indicates that both representations achieve comparable tactile recon-struction quality, with only marginal differences across PHYSICLEAR, SSIM, and PSNR metrics. However, the VAE-based pixel encoder produces dense fea-tures and incurs a substantially higher inference latency. In contrast, the CLIP-based semantic encoder yields compact low-Dimension embeddings that are both computationally efficient and semantically aligned with language supervision, which benefits cross-modal reasoning in the Dual-Level Mixture Comprehension stage. Therefore, we adopt the semantic representation as the default encoder input, striking an effective balance between fidelity, efficiency, and multimodal alignment. 
+
+B.4 Number of Queries for EMLLM 
+
+We ablate the number of textual–tactile queries used by the MLLM. All settings follow the same training schedule as described in Sec. A.2 and use the same inference pipeline as in Sec. A.3. As shown in Tab. D, increasing the number of queries from 16 to 64 consistently improves the generation metrics, whereas further scaling to 128 or 256 yields only marginal gains ( ≤ 0.03  PSNR) while in-troducing additional computational overhead. Considering the trade-off between accuracy and efficiency, we adopt 64 queries as the default setting. UniTac 9
+
+Table D: Ablation on the number of queries fed into the MLLM. #Queries SSIM PSNR 16 0.820 19.08 32 0.824 19.76 64 0.836 19.93     
+
+> 128 0.836 19.95 256 0.836 19.96
+
+B.5 Effect of Sensor-prior Sampling 
+
+In Tab. 3, the variant “w/o sensor-prior sampling” degenerates to vanilla classifier-free guidance (CFG), where the unconditional branch is used for guidance. To disentangle the effect of the guidance scale from the proposed sensor-prior sam-pling strategy, we further conduct a guidance-scale ablation in Tab. E. Vanilla CFG achieves its best performance at s = 1 .5, with 0.817 SSIM and 19.49 PSNR. Under the same guidance scale, SPSS improves the results to 0.836 SSIM and 19.93 PSNR. These results indicate that the improvement of SPSS is not merely brought by guidance scaling, but mainly comes from replacing the unconditional branch with the sensor-conditioned prior, which provides more informative tac-tile guidance during generation. 
+
+Table E: Ablation study on the guidance scale s of SPSS. The matched comparison with vanilla CFG is conducted at s = 1 .5, where CFG achieves its best performance. Metric CFG, s = 1 .5 SPSS, s = 1 .0 s = 1 .5 s = 2 .0 s = 3 .0 s = 5 .0 s = 7 .5              
+
+> SSIM 0.817 0.804 0.836 0.830 0.822 0.806 0.791 PSNR 19.49 19.51 19.93 19.82 19.46 19.07 18.54
+
+B.6 Additional Cross-Sensor Grasp Classification Results 
+
+To further examine whether the cross-sensor generalization gain is specific to the Digit →GelSight setting, we conduct additional grasp classification experiments on two transfer directions: GelSight →Duragel and Duragel →Digit. As shown in Tab. F, the source-only classifier performs well on the source sensor but suffers a substantial accuracy drop on the target sensor, indicating a clear sensor-domain shift. By augmenting the source data with UniTac-generated target samples, the target-domain accuracy is greatly improved while the source-domain accuracy is largely preserved. The resulting performance approaches the real-target upper bound, further demonstrating the effectiveness of UniTac for cross-sensor tactile data generation and downstream transfer. 10 Tu et al. 
+
+Table F: Additional cross-sensor grasp classification accuracy with generated target data. For each transfer direction, we report the classification accuracy on both the source and target sensors. Training Data GelSight →Duragel Duragel →Digit GelSight Duragel Duragel Digit Source only 98.84 53.11 97.89 52.46 Source + UniTac target 96.12 94.48 96.02 95.75 Source + Real-target 97.35 96.20 96.73 97.42 Digit-1       
+
+> Digit-2
+> Reference Reconstruction Reference Reconstruction
+> Digit-3
+> Duragel
+> Gelsight
+> Mini
+> Gelsight
+> Reference Reconstruction Reference Reconstruction
+
+Fig. B: Reconstruction results after training the touch decoder reconstruction task. 
+
+C Additional Qualitative Results 
+
+C.1 Reconstruction Results 
+
+Fig. B illustrates the reconstruction quality of UniTac across several tactile sen-sors, including Digit, Duragel, GelSight Mini and GelSight. For the Digit sen-sors, the reconstructed frames remain highly faithful to the reference images, capturing both the characteristic color fringes and the fine-grained deformation patterns. GelSight and GelSight Mini also exhibit strong consistency between reference and reconstruction, with clear preservation of grid alignment, illumi-nation gradients and surface-normal cues. In contrast, the Duragel reconstructions appear less stable. This is consistent with the nature of the original Duragel data, which contains fluctuations during collection and often presents weaker or noisier optical responses. Despite this challenge, the decoder still recovers the main structural patterns, but the results show more variation compared with other sensors. Overall, the reconstruction stage successfully learns a reliable and sensor-aware latent representation. The model performs consistently across most tac-tile modalities, and the reduced performance on Duragel reflects the inherent instability of the raw data rather than limitations of the training framework. UniTac 11 
+
+C.2 Additional Generation and Understanding Results. 
+
+Fig. C presents additional tactile video generation results across Digit, Duragel, GelSight, and GelSight Mini sensors. UniTac produces coherent temporal dy-namics and preserves sensor-specific appearance, such as the characteristic color fringes of Digit and the structured grid patterns of GelSight. The generated contact sequences remain consistent with the textual prompts, demonstrating that the learned cross-sensor latent space effectively supports conditional tactile synthesis. Fig. D provides further qualitative examples for tactile understanding. Given tactile video clips from different materials, UniTac generates concise and se-mantically aligned descriptions that reflect surface hardness, roughness, texture patterns, and deformation behavior. These examples confirm that UniTac gener-alizes well across various material categories and maintains stable understanding performance, complementing the quantitative evaluations reported in the main paper. 
+
+D Preliminaries of Rectified Flow Matching 
+
+Rectified flow models provide an alternative generative formulation that avoids the stochastic noise injection used in diffusion probabilistic models. Instead of constructing a Markov chain that gradually perturbs a data sample with Gaus-sian noise, rectified flow defines a deterministic transport path between a simple prior distribution and the target data distribution and learns a velocity field that moves samples along this path. This results in a simplified training objective and an efficient deterministic sampling procedure. Given a data point x0 ∼ qdata (x) and a noise sample z ∼ N (0 , I ), rectified flow introduces a linear interpolation connecting these two endpoints: 
+
+xt = (1 − t) z + t x0, t ∈ [0 , 1] . (A) The instantaneous velocity along this path is given by 
+
+u∗ 
+
+> t
+
+= dxt
+
+dt = x0 − z. (B) A neural network uθ (xt, t ) is then trained to approximate this ground-truth velocity by minimizing the flow matching loss: 
+
+LFM = Et, x0, z
+
+h
+
+∥uθ (xt, t ) − (x0 − z)∥22
+
+i
+
+. (C) Unlike diffusion models, rectified flow does not require noise schedules or variance-preserving constraints, and the linear path structure makes the training objective straightforward and stable. At inference time, sample generation proceeds by solving a first-order ordi-nary differential equation defined by the learned velocity field: 
+
+dxt
+
+dt = uθ (xt, t ), (D) 12 Tu et al. Sensor: Digit. Prompt: The tactile sensor touches the smooth, reflective, metallic rim of a stainless steel bowl. The contact point is polished, hard, with low roughness ... 
+
+> Reference Video
+> UniTac
+> Reference Video
+> UniTac
+
+Sensor: Gelsight. Prompt: The sensor is in contact with a rough, hard concrete surface embedded with small, smooth pebbles. The touch point is on an irregularly textured curb ... 
+
+Sensor: Digit. Prompt: The tactile sensor is making contact with the rough and hard surface of an orange ; The contact point is firm , with a high roughness level ... 
+
+Sensor: Gelsight. Prompt: The tactile sensor contacts rough soil scattered with hard , irregularly - shaped stones . the soil feels gritty and uneven , while the stones exhibit ... 
+
+> Reference Video
+> UniTac
+
+Sensor: Duragel. Prompt: The tactile sensor is touching a partially foil-covered metal box. Contact point : top - center area of the box. The surface feels slightly wrinkled , smooth foil ... Sensor: Duragel. Prompt: The tactile sensor touches the top center of a rough hard orange . the contact point is relatively hard and firm with roughness and a slightly elastic feel... 
+
+> Reference Video
+> UniTac
+
+Sensor: Gelsight Mini. Prompt: The tactile sensor is touching a tv remote 's buttons. The material is silicone. The surface feels moderately solid and sturdy ... 
+
+Sensor: Gelsight Mini. Prompt: The tactile sensor is touching a rice spatula 's scoop. the material is plastic . the surface feels hard and robust, exhibits... 
+
+Fig. C: More results on generating tactile videos using various tactile sensors. 
+
+initialized from a Gaussian latent x1 ∼ N (0 , I ). A discrete solver with N inte-gration steps applies updates of the form 
+
+xtk+1 = xtk − ∆t · uθ (xtk , t k), (E) where tk = 1 − k−1
+
+N −1 and ∆t = 1
+
+N −1 . This deterministic integration transports the sample smoothly toward the target distribution. To enable conditional generation conditioned on auxiliary inputs c such as textual prompts or sensor-related features, classifier-free guidance is integrated into the rectified flow formulation. Let uθ (xt, t, c) denote the conditional ve-locity and uθ (xt, t, ∅) denote the unconditional velocity. The guided velocity is computed as 
+
+˜uθ (xt, t, c) = s · uθ (xt, t, c) + (1 − s) · uθ (xt, t, ∅), (F) UniTac 13 User: Describe 
+
+UniTac:  The tactile sensor is touching a smooth, rigid surface. the exact touch point is textured, grid-like pattern is felt through uniform deformations. 
+
+User: Describe 
+
+UniTac:  The contact point possesses a fuzzy texture with very low roughness and low hardness. The surface feels slightly ticklish to the touch. <Plush Toy> User: Describe 
+
+UniTac: The texture is rough , with prominent ridges and indentations . the material feels rigid, indicating high hardness. The surface pitting conveys a coarse feel. <Basketball> 
+
+User: Describe 
+
+UniTac: The contact point features rough, uneven texture with high hardness. The material is solid and coarse, featuring a gritty surface due to small embedded pebbles or dirt. <Rock> 
+
+User: Describe 
+
+UniTac: The handheld tactile sensor is touching the soft fabric; The fabric at the contact point is coarse, tightly-woven, slightly rough, moderately soft, and pliable. <Coach Cushion> 
+
+User: Describe 
+
+UniTac: The material is wood . the surface feels solid and sturdy , lacks noticeable roughness and there are no textural variations. <Wood Ruler> 
+
+User: Describe 
+
+UniTac: The surface feels solid and rigid , lacks notable roughness and the surface has a bump. <TSA Lock Base> 
+
+User: Describe 
+
+UniTac:  The tactile sensor touches a rough, uneven stone surface with high hardness. <Stone> 
+
+Fig. D: More results on understanding tactile videos using various tactile sensors. 
+
+where s is the guidance scale. This approach enhances the influence of the con-ditional signal without requiring an explicit classifier and is directly compatible with the ODE-based sampling process. Through this combination of a simple training objective, deterministic sam-pling dynamics, and classifier-free conditioning, rectified flow provides an efficient and flexible framework for generative modeling. In our work, this formulation plays a key role in both the sensor-aware projector and the tactile decoder, enabling stable multimodal alignment and physically coherent tactile synthesis.

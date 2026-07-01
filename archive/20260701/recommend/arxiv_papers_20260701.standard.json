@@ -1,0 +1,615 @@
+{
+  "mode": "standard",
+  "generated_at": "2026-07-01T20:33:35.606502+00:00",
+  "stats": {
+    "mode": "standard",
+    "tag_count": 1,
+    "deep_divecandidates": 9,
+    "deep_cap": 6,
+    "deep_selected": 6,
+    "quick_candidates": 6,
+    "quick_skim_target": 11,
+    "quick_selected": 6
+  },
+  "deep_dive": [
+    {
+      "id": "2606.30319v1",
+      "source": "arxiv",
+      "title": "BrainJanus: A Unified Model for Understanding and Generation across Brain, Vision, and Language",
+      "abstract": "Modeling the bidirectional correspondence between external sensory stimuli and internal neural activity has emerged as a critical frontier in neuroscience. However, existing approaches predominantly treat brain encoding and decoding as isolated tasks, relying heavily on unimodal alignment and external priors while overlooking the brain's intrinsic nature as a multimodal integration system. To address these limitations, we propose BrainJanus, the first unified brain model that integrates brain, vision, and language within a single framework. Specifically, we introduce a Unified Brain Tokenizer to quantize continuous neural dynamics into discrete tokens aligned with visual and linguistic representations in a shared Omni space. Building on this, we utilize an All-in-One autoregressive architecture that leverages next-token prediction to enable seamless any-to-any generation, which encompasses image-to-brain and text-to-brain encoding, and brain-to-image and brain-to-text decoding. Extensive experiments demonstrate that BrainJanus achieves superior performance across diverse benchmarks. Furthermore, our framework exhibits zero-shot generalization and preserves interpretable biological topography, highlighting its potential as a general-purpose brain modeling paradigm. The code is available at \\href{https://github.com/HaitaoWuTJU/BrainJanus}{GitHub}.",
+      "authors": [
+        "Haitao Wu",
+        "Qirui Zhang",
+        "Zhouheng Yao",
+        "Shangquan Sun",
+        "Qihao Zheng",
+        "Mianxin Liu",
+        "Chi Zhang",
+        "Wanli Ouyang",
+        "Chunfeng Song",
+        "Changqing Zhang",
+        "Jiamin Wu"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.LG"
+      ],
+      "published": "2026-06-29T14:02:15+00:00",
+      "link": "https://arxiv.org/pdf/2606.30319v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 10.0,
+      "llm_evidence_en": "First unified model integrating brain, vision, and language understanding and generation",
+      "llm_evidence_cn": "首个整合脑、视觉和语言理解与生成的统一模型",
+      "llm_evidence": "首个整合脑、视觉和语言理解与生成的统一模型",
+      "canonical_evidence": "首个整合脑、视觉和语言理解与生成的统一模型",
+      "llm_tldr_en": "BrainJanus is the first unified model that integrates brain, vision, and language within a single framework using a Unified Brain Tokenizer and shared Omni space.",
+      "llm_tldr_cn": "现有脑编码与解码作为孤立任务，忽略脑的多模态整合本质。BrainJanus提出首个统一脑模型，通过统一脑分词器将连续神经活动离散化为令牌，对齐视觉和语言表示，在一个共享Omni空间中实现脑活动理解与生成，为脑机接口和跨模态研究提供新范式。",
+      "llm_tldr": "现有脑编码与解码作为孤立任务，忽略脑的多模态整合本质。BrainJanus提出首个统一脑模型，通过统一脑分词器将连续神经活动离散化为令牌，对齐视觉和语言表示，在一个共享Omni空间中实现脑活动理解与生成，为脑机接口和跨模态研究提供新范式。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.31093v1",
+      "source": "arxiv",
+      "title": "Omni-Flow: A Unified Workflow Orchestration and Distributed KV Cache Sharing Framework for Multimodal Inference",
+      "abstract": "As large language model (LLM) inference evolves from text-only to multimodal paradigms, inference systems face three challenges: (1) flexible orchestration of multimodal workflows, where heterogeneous computing units exhibit complex dependencies and concurrent control; (2) efficient transmission of massive intermediate data across processes and nodes, with tensors flowing at high speed among heterogeneous roles; and (3) efficient sharing of KV caches and model weights across roles to eliminate redundant GPU memory. Existing solutions deploy LLMs and diffusion models independently, lacking a system-level abstraction for multimodal pipelines; this scatters orchestration logic, tightly couples transmission paths to specific models, and incurs high cost to integrate new models. To address these challenges, we present Omni-Flow, a distributed scheduling framework for multimodal inference through a three-layer abstraction. The Control Flow layer defines workflows via a Python DSL, orchestrating heterogeneous units into a unified dataflow graph that supports static DAGs and dynamic routing, with built-in service discovery and diverse load-balancing strategies. The Data Flow layer provides a distributed KV cache abstraction beyond prefill/decode separation, unifying allocation and enabling direct cross-role transmission across a three-tier paged storage hierarchy (GPU/CPU/SSD) over zero-copy, low-latency channels. The Compute Flow layer supports complex multimodal prefix matching for KV reuse across multi-turn dialogues, and takes over KV cache and sampling logic via a unified SGLang interface, letting diffusion models directly reuse the LLM forward path under unified parallel semantics. We demonstrate that Omni-Flow supports diverse heterogeneous scenarios with a consistent programming model, including omni-modal dialogue (LongCat-Next) and complex image generation pipelines (HunyuanImage-3).",
+      "authors": [
+        "Bin Xiao",
+        "Jingfu Dong",
+        "Changran Wang",
+        "Yitian Chen",
+        "Xiaoyu Zhao",
+        "Yuqi Peng",
+        "Jianping Lin",
+        "Yuchen Xie"
+      ],
+      "primary_category": "cs.DC",
+      "categories": [
+        "cs.DC"
+      ],
+      "published": "2026-06-30T03:29:21+00:00",
+      "link": "https://arxiv.org/pdf/2606.31093v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified workflow orchestration and KV cache sharing framework for multimodal inference",
+      "llm_evidence_cn": "统一工作流编排和KV缓存共享框架用于多模态推理",
+      "llm_evidence": "统一工作流编排和KV缓存共享框架用于多模态推理",
+      "canonical_evidence": "统一工作流编排和KV缓存共享框架用于多模态推理",
+      "llm_tldr_en": "Proposes Omni-Flow, a unified framework for orchestrating multimodal inference workflows and sharing KV caches across roles.",
+      "llm_tldr_cn": "多模态推理系统面临工作流编排复杂、中间数据传输低效、KV缓存冗余等挑战。本文提出Omni-Flow，一个统一的系统级框架，通过抽象多模态流水线实现灵活编排，并支持分布式KV缓存共享。该框架显著减少了GPU内存占用并提升了推理吞吐量。为构建大规模统一多模态推理系统提供了关键基础设施。",
+      "llm_tldr": "多模态推理系统面临工作流编排复杂、中间数据传输低效、KV缓存冗余等挑战。本文提出Omni-Flow，一个统一的系统级框架，通过抽象多模态流水线实现灵活编排，并支持分布式KV缓存共享。该框架显著减少了GPU内存占用并提升了推理吞吐量。为构建大规模统一多模态推理系统提供了关键基础设施。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.31326v1",
+      "source": "arxiv",
+      "title": "Bridging Video Understanding and Generation in a Unified Framework",
+      "abstract": "Recently, unified image generation and understanding have been extensively explored. However, extending such unified modeling paradigms to the video domain remains largely underexplored. A central challenge is that video understanding favors compact, discriminative semantic representations, whereas video generation requires dense signals that preserve visual details and temporal coherence. Videos naturally capture both spatial semantics and temporal dynamics, making them a more suitable modality for unified multimodal modeling compared to static images. In this paper, we propose Vega, a unified framework that bridges video understanding and generation. Vega leverages a shared vocabulary to jointly model text and visual representations and employs a hybrid architecture combining autoregressive (AR) prediction with diffusion-based rendering. Specifically, the AR model focuses on predicting semantically meaningful visual tokens for keyframes, providing a structured representation that guides the diffusion module in rendering dense, high-resolution video frames. Extensive experiments demonstrate that Vega achieves strong performance on video generation benchmarks such as VBench and video understanding benchmarks like VideoMME.",
+      "authors": [
+        "Yuqi Wang",
+        "Runyi Li",
+        "Ruoyu Feng",
+        "Renjie Chen",
+        "Wenfeng Lin",
+        "Mingyu Guo"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-30T08:29:29+00:00",
+      "link": "https://arxiv.org/pdf/2606.31326v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "unified framework bridging video understanding and generation",
+      "llm_evidence_cn": "桥接视频理解与生成的统一框架",
+      "llm_evidence": "桥接视频理解与生成的统一框架",
+      "canonical_evidence": "桥接视频理解与生成的统一框架",
+      "llm_tldr_en": "Vega is a unified framework that bridges video understanding and generation using a shared vocabulary and hybrid modeling, extending unified multimodal modeling to the video domain.",
+      "llm_tldr_cn": "图像领域的统一生成与理解已广泛探索，但视频领域尚未充分开展。Vega提出统一框架，使用共享词汇表联合建模文本和视觉表示，并采用混合方式桥接视频理解与生成。实验证明该框架在视频任务上有效，为视频多模态统一建模开辟了新路径。",
+      "llm_tldr": "图像领域的统一生成与理解已广泛探索，但视频领域尚未充分开展。Vega提出统一框架，使用共享词汇表联合建模文本和视觉表示，并采用混合方式桥接视频理解与生成。实验证明该框架在视频任务上有效，为视频多模态统一建模开辟了新路径。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.31383v1",
+      "source": "arxiv",
+      "title": "MS-Resampler: Multi-Scope Visual Resampling for Efficient Multimodal LLMs",
+      "abstract": "Multimodal large language models (MLLMs) typically employ resampling-based projectors to transform dense visual features into a compact token sequence for language modeling. Most existing resamplers adopt a single, fixed aggregation scope via global cross-attention, which can blur fine-grained local evidence and limit the ability to capture both local details and global context within a fixed token budget. In this work, we propose MS-Resampler, a multi-scope visual resampling framework for MLLMs. MS-Resampler instantiates multiple scope-specific resamplers by injecting explicit spatial scope priors into the resampling attention, enabling each branch to aggregate visual information at a particular granularity from local to global. The outputs of these scope-specific resamplers are then adaptively fused to produce the final visual representations for language modeling. Extensive experiments on ten public multimodal benchmarks show that MS-Resampler consistently improves visual understanding and multimodal reasoning over conventional single-scope resamplers, while introducing only minimal computational overhead.",
+      "authors": [
+        "Zhongyang Li",
+        "Yaqian Li",
+        "Faming Fang",
+        "Rinyoichi Takezoe",
+        "Zi-Hao Bo",
+        "Cheng Qian",
+        "Mo Guang",
+        "Guixu Zhang",
+        "Kaiwen Long"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-30T09:11:50+00:00",
+      "link": "https://arxiv.org/pdf/2606.31383v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "proposes a multi-scope visual resampling framework for multimodal LLMs, directly improving unified multimodal architecture",
+      "llm_evidence_cn": "提出多范围视觉重采样框架，直接改进统一多模态架构",
+      "llm_evidence": "提出多范围视觉重采样框架，直接改进统一多模态架构",
+      "canonical_evidence": "提出多范围视觉重采样框架，直接改进统一多模态架构",
+      "llm_tldr_en": "MS-Resampler introduces multi-scope visual resampling with explicit spatial priors to aggregate local and global visual features, enhancing multimodal LLM efficiency and detail preservation.",
+      "llm_tldr_cn": "针对多模态大语言模型中现有视觉重采样器只能以固定范围聚合特征、导致局部细节丢失的问题，本文提出MS-Resampler，通过注入空间先验实现多范围注意力机制，每个分支聚焦不同粒度，从而在固定token预算下同时保留局部细节和全局上下文。实验表明该方法在多个基准上取得更优性能，为高效多模态融合提供了新思路。",
+      "llm_tldr": "针对多模态大语言模型中现有视觉重采样器只能以固定范围聚合特征、导致局部细节丢失的问题，本文提出MS-Resampler，通过注入空间先验实现多范围注意力机制，每个分支聚焦不同粒度，从而在固定token预算下同时保留局部细节和全局上下文。实验表明该方法在多个基准上取得更优性能，为高效多模态融合提供了新思路。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.31451v1",
+      "source": "arxiv",
+      "title": "UniTac: A Unified Multimodal Model for Cross-Sensor Tactile Understanding and Generation",
+      "abstract": "Unified multimodal models (UMMs) have shown great promise in integrating understanding and generation across diverse modalities. However, existing research rarely extends this paradigm to the tactile domain, where both object-level semantics and sensor-level configurations jointly determine the meaning of touch. To address this gap, we propose UniTac, the first UMM designed for tactile understanding and generation. UniTac models the tactile process as a transition from non-contact to contact, capturing the physical interaction between sensors and objects through a dual-level representation that encodes both sensor and object attributes. For tactile understanding, UniTac introduces two tasks, object property description and sensor identification, to enhance reasoning over physical and cross-sensor information. For tactile generation, we design a two-stage training paradigm consisting of reconstruction and alignment, together with a sensor-prior-based sampling strategy that simulates realistic tactile contact. Trained on large-scale multi-sensor datasets, UniTac achieves state-of-the-art performance in tactile understanding and generates realistic tactile signals across sensors.",
+      "authors": [
+        "Jiahang Tu",
+        "Fengyu Yang",
+        "Chenyang Ma",
+        "Xihang Yu",
+        "Ziyao Zeng",
+        "Shaokai Wu",
+        "Hanbin Zhao",
+        "Zhi Tao",
+        "Chao Zhang",
+        "Hui Qian",
+        "Alex Wong"
+      ],
+      "primary_category": "cs.RO",
+      "categories": [
+        "cs.RO",
+        "cs.AI"
+      ],
+      "published": "2026-06-30T10:25:46+00:00",
+      "link": "https://arxiv.org/pdf/2606.31451v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 9.0,
+      "llm_evidence_en": "First unified multimodal model for tactile understanding and generation",
+      "llm_evidence_cn": "首个用于触觉理解和生成的统一多模态模型",
+      "llm_evidence": "首个用于触觉理解和生成的统一多模态模型",
+      "canonical_evidence": "首个用于触觉理解和生成的统一多模态模型",
+      "llm_tldr_en": "UniTac is the first UMM for tactile understanding and generation, modeling tactile process as non-contact to contact with dual-level representations.",
+      "llm_tldr_cn": "触觉理解与生成在统一多模态模型中鲜有探索，UniTac提出首个触觉统一多模态模型，将触觉过程建模为非接触到接触的物理交互，通过双层级表示编码传感器和物体属性，支持物体属性描述和传感器识别，拓展了UMM在触觉领域的应用。",
+      "llm_tldr": "触觉理解与生成在统一多模态模型中鲜有探索，UniTac提出首个触觉统一多模态模型，将触觉过程建模为非接触到接触的物理交互，通过双层级表示编码传感器和物体属性，支持物体属性描述和传感器识别，拓展了UMM在触觉领域的应用。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    },
+    {
+      "id": "2606.27313v2",
+      "source": "arxiv",
+      "title": "ViQ: Text-Aligned Visual Quantized Representations at Any Resolution",
+      "abstract": "A unified representation for text and vision is a natural pursuit, as it enables simpler multimodal modeling and more efficient training. However, representing images as discrete signals in the same way as text inevitably introduces severe information loss. Existing work struggles to balance low-level details and high-level semantics in discrete representations: reconstruction-oriented representations often lack semantic information, whereas semantically stronger features typically suffer from severe loss of detail. We present ViQ, a Visual Quantized Representations framework, which is designed to balance semantics and details in discrete representations while supporting inputs at native resolutions, thereby enabling it to serve as a unified and general discrete representation for arbitrary visual inputs. Our approach structures quantization learning into two stages: text-aligned pre-training and feature discretization. With text-aligned pre-training, we enhance the visual encoder semantic-rich supervision from the pretrained language model and enable it to process native-resolution visual inputs. During discretization, we propose a proximal representation learning strategy to progressively compact the feature space, along with a position-aware head-wise quantization mechanism that enables flexible processing of arbitrary resolutions. Extensive experiments on multimodal tasks demonstrate that ViQ achieves competitive performance compared to state-of-the-art multimodal vision encoders with continuous and high-dimensional visual features, while maintaining high precision in low-level reconstruction. We also show that multimodal training with visual quantized representations largely improves efficiency, yielding up to 20\\%-70\\% acceleration with different base LLMs and training recipes.",
+      "authors": [
+        "Xumin Yu",
+        "Zuyan Liu",
+        "Zhenyu Yang",
+        "Yuhao Dong",
+        "Shengsheng Qian",
+        "Jiwen Lu",
+        "Han Hu",
+        "Yongming Rao"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-25T17:29:27+00:00",
+      "link": "https://arxiv.org/pdf/2606.27313v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified visual quantized representation aligned with text for multimodal modeling",
+      "llm_evidence_cn": "统一视觉量化表示以对齐文本，支持多模态建模",
+      "llm_evidence": "统一视觉量化表示以对齐文本，支持多模态建模",
+      "canonical_evidence": "统一视觉量化表示以对齐文本，支持多模态建模",
+      "llm_tldr_en": "ViQ introduces a visual quantized representation framework that balances semantics and details at any resolution, serving as a unified representation for vision and text.",
+      "llm_tldr_cn": "统一文本和视觉的表示是多模态模型的关键目标。ViQ提出视觉量化表示框架，在离散表示中平衡低层细节和高层语义，支持任意分辨率输入，可作为文本和视觉的统一表示基础，简化多模态建模。",
+      "llm_tldr": "统一文本和视觉的表示是多模态模型的关键目标。ViQ提出视觉量化表示框架，在离散表示中平衡低层细节和高层语义，支持任意分辨率输入，可作为文本和视觉的统一表示基础，简化多模态建模。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch"
+    }
+  ],
+  "quick_skim": [
+    {
+      "id": "2606.30534v1",
+      "source": "arxiv",
+      "title": "Orca: The World is in Your Mind",
+      "abstract": "We introduce Orca, an initial instantiation of a general world foundation model. Orca learns a unified world latent space from multimodal world signals and exposes it through multimodal readout interfaces. Rather than optimizing isolated next-token, next-frame, or next-action prediction, we are centered on Next-State-Prediction modeling, offering a unified state-transition modeling route toward understanding, predicting, and acting upon the world. Orca learns through two complementary paradigms: unconscious learning captures dense natural state transitions from continuous videos, and conscious learning models sparse meaningful state transitions by language-described events and VQA supervision. For pre-training, we construct a large-scale world-learning inventory data, including 125K hours of video data and 160M event annotations. After pre-training, Orca learns a unified world latent space. To examine whether the learned latent supports downstream, we evaluate it by three representative downstream readouts: text generation, image prediction, and embodied action generation. Orca's backbone is frozen, and only the lightweight modality-specific decoders are trainable. Experiments show the scalability of the proposed paradigm and verify that stronger world latent enables stronger downstream readouts. Orca outperforms similar-sized specialized baselines. These results show that Orca, as a general world foundation model, presents a promising approach to understanding, predicting, and acting upon the world. Finally, we discuss the current limitations, aiming to provide useful insights and inspiration for the community.",
+      "authors": [
+        "Yihao Wang",
+        "Yuheng Ji",
+        "Mingyu Cao",
+        "Yanqing Shen",
+        "Runze Xiao",
+        "Huaihai Lyu",
+        "Senwei Xie",
+        "Euan Liu",
+        "Klara Tian",
+        "Tianfeng Long",
+        "Yichi Zhang",
+        "Zhengliang Cai",
+        "Ruike Chen",
+        "Jifan Zhao",
+        "Ruochuan Shi",
+        "Zihan Tang",
+        "Jing Lyu",
+        "Wenxing Tan",
+        "Ningbo Zhang",
+        "Yangtao Hu",
+        "Yuming Gao",
+        "Xiansheng Chen",
+        "Junkai Zhao",
+        "Congsheng Xu",
+        "Boan Zhu",
+        "Ziqi Wang",
+        "Yupu Feng",
+        "Qiongqiong Zhang",
+        "Yingli Zhao",
+        "Yulong Ao",
+        "Shaoxuan Xie",
+        "You Liu",
+        "Guocai Yao",
+        "Leiduo Zhang",
+        "Xiaodan Liu",
+        "Yunyan Zhang",
+        "Yance Jiao",
+        "Xinyan Yang",
+        "Jiaxing Wei",
+        "Xu Liu",
+        "Tengfei Pan",
+        "Shaokai Nie",
+        "Chunlei Men",
+        "Sen Cui",
+        "Xiaojie Jin",
+        "Hongyang Li",
+        "Jianlan Luo",
+        "Yao Mu",
+        "Yunchao Wei",
+        "Jun Yan",
+        "Hang Zhao",
+        "Xiaolong Zheng",
+        "Jiaming Li",
+        "Yonghua Lin",
+        "Tiejun Huang",
+        "Zhongyuan Wang",
+        "Pengwei Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-29T16:36:10+00:00",
+      "link": "https://arxiv.org/pdf/2606.30534v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified world latent space from multimodal world signals",
+      "llm_evidence_cn": "从多模态世界信号学习统一世界隐空间",
+      "llm_evidence": "从多模态世界信号学习统一世界隐空间",
+      "canonical_evidence": "从多模态世界信号学习统一世界隐空间",
+      "llm_tldr_en": "Orca learns a unified world latent space from multimodal signals via Next-State-Prediction, enabling understanding, prediction, and action in a unified framework.",
+      "llm_tldr_cn": "现有模型孤立优化不同预测任务，缺乏统一的世界建模。Orca提出Next-State-Prediction范式，从多模态世界信号中学习统一世界隐空间，通过无意识学习（连续视频）和有意识学习（语言事件和VQA）互补协同。模型支持理解、预测和行动，在大规模数据上预训练。",
+      "llm_tldr": "现有模型孤立优化不同预测任务，缺乏统一的世界建模。Orca提出Next-State-Prediction范式，从多模态世界信号中学习统一世界隐空间，通过无意识学习（连续视频）和有意识学习（语言事件和VQA）互补协同。模型支持理解、预测和行动，在大规模数据上预训练。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2606.28546v1",
+      "source": "arxiv",
+      "title": "NIVA: A Multimodal Foundation Model for Actionable Earth System Intelligence",
+      "abstract": "Recent advances in AI-driven weather and climate modeling have improved forecast skill while reducing computational cost. However, existing data-driven approaches are limited in their ability to model coupled Earth system dynamics, which is required for extending predictability beyond the ~2-week horizon. To address this, we introduce NIVA, a multimodal foundation model designed to learn unified representations across Earth system components. While the full framework targets atmosphere, ocean, ice, and land interactions, we focus here on a two-modality setting (ocean and atmosphere) as a controlled proof of concept to evaluate whether foundation models can learn coupled dynamics. Trained on large-scale Earth system simulations, NIVA learns physically meaningful cross-modal structure, providing a foundation for subseasonal-to-seasonal prediction. As initial validation, we show that NIVA captures key modes of climate variability through accurate prediction of major climate indices.",
+      "authors": [
+        "Anisha Pal",
+        "Aodhan Sweeney",
+        "Kyle Heyblom",
+        "Kalai Ramea"
+      ],
+      "primary_category": "cs.LG",
+      "categories": [
+        "cs.LG"
+      ],
+      "published": "2026-06-26T19:01:41+00:00",
+      "link": "https://arxiv.org/pdf/2606.28546v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 7.0,
+      "llm_evidence_en": "presents a multimodal foundation model for unified Earth system representations, aligning with unified multimodal architectures",
+      "llm_evidence_cn": "提出面向地球系统统一表示的多模态基础模型，符合统一多模态架构",
+      "llm_evidence": "提出面向地球系统统一表示的多模态基础模型，符合统一多模态架构",
+      "canonical_evidence": "提出面向地球系统统一表示的多模态基础模型，符合统一多模态架构",
+      "llm_tldr_en": "NIVA is a multimodal foundation model that learns unified representations across Earth system components (ocean, atmosphere), demonstrating that foundation models can capture coupled dynamics.",
+      "llm_tldr_cn": "针对现有数据驱动方法难以建模地球系统耦合动态的问题，本文提出NIVA多模态基础模型，通过统一表示学习海洋与大气等不同模态的相互作用。在双模态设置下的概念验证表明，该模型能够学习到物理耦合关系，为扩展天气预报可预测性提供了新途径，显示了多模态基础模型在科学领域的潜力。",
+      "llm_tldr": "针对现有数据驱动方法难以建模地球系统耦合动态的问题，本文提出NIVA多模态基础模型，通过统一表示学习海洋与大气等不同模态的相互作用。在双模态设置下的概念验证表明，该模型能够学习到物理耦合关系，为扩展天气预报可预测性提供了新途径，显示了多模态基础模型在科学领域的潜力。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "7"
+    },
+    {
+      "id": "2606.30682v1",
+      "source": "arxiv",
+      "title": "ALM2Vec: Learning Audio Embeddings for Universal Audio Retrieval with Large Audio-Language Models",
+      "abstract": "Recent advances in language--audio retrieval have been largely driven by contrastive dual-encoder architectures that align audio and text in a shared embedding space. While effective, existing retrieval embeddings are primarily optimized for audio--caption matching, limiting their ability to support diverse retrieval objectives and controllable retrieval behaviors. We present ALM2Vec, a universal audio embedding framework derived from pretrained large audio--language models (LALMs). By transferring the audio understanding, instruction-following, and reasoning capabilities acquired through large-scale multimodal training, ALM2Vec learns a unified embedding space for retrieval across audio domains and task types. Beyond conventional text--audio retrieval, ALM2Vec incorporates natural-language instructions into the embedding process, enabling instruction-aware retrieval for scenarios such as audio question answering and aspect-conditioned retrieval. Experimental results show that ALM2Vec achieves competitive performance on standard audio and speech retrieval benchmarks while exhibiting promising compositional and controllable retrieval capabilities, highlighting its potential as a unified audio embedding model for retrieval across domains, tasks, and user intents.",
+      "authors": [
+        "Fengjie Lu",
+        "Chenang Jiang",
+        "Jiarui Hai",
+        "Helin Wang",
+        "Aaron Yee"
+      ],
+      "primary_category": "cs.SD",
+      "categories": [
+        "cs.SD",
+        "cs.AI",
+        "eess.AS"
+      ],
+      "published": "2026-06-27T03:56:57+00:00",
+      "link": "https://arxiv.org/pdf/2606.30682v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified audio embedding framework from large audio-language models",
+      "llm_evidence_cn": "基于大型音频语言模型的统一音频嵌入框架",
+      "llm_evidence": "基于大型音频语言模型的统一音频嵌入框架",
+      "canonical_evidence": "基于大型音频语言模型的统一音频嵌入框架",
+      "llm_tldr_en": "ALM2Vec learns a universal audio embedding space from pretrained large audio-language models, enabling unified retrieval across diverse audio domains and task types.",
+      "llm_tldr_cn": "现有音频检索嵌入主要针对音频-文本匹配优化，限制了多样化检索任务。ALM2Vec从预训练大型音频语言模型中提取通用音频嵌入，学习统一嵌入空间，支持跨域和跨任务类型的音频检索。该方法利用音频理解、指令遵循和推理能力，实现了通用音频检索。",
+      "llm_tldr": "现有音频检索嵌入主要针对音频-文本匹配优化，限制了多样化检索任务。ALM2Vec从预训练大型音频语言模型中提取通用音频嵌入，学习统一嵌入空间，支持跨域和跨任务类型的音频检索。该方法利用音频理解、指令遵循和推理能力，实现了通用音频检索。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.30534v2",
+      "source": "arxiv",
+      "title": "Orca: The World is in Your Mind",
+      "abstract": "We introduce Orca, an initial instantiation of a general world foundation model. Orca learns a unified world latent space from multimodal world signals and exposes it through multimodal readout interfaces. Rather than optimizing isolated next-token, next-frame, or next-action prediction, we are centered on Next-State-Prediction modeling, offering a unified state-transition modeling route toward understanding, predicting, and acting upon the world. Orca learns through two complementary paradigms: unconscious learning captures dense natural state transitions from continuous videos, and conscious learning models sparse meaningful state transitions by language-described events and VQA supervision. For pre-training, we construct a large-scale world-learning inventory data, including 125K hours of video data and 160M event annotations. After pre-training, Orca learns a unified world latent space. To examine whether the learned latent supports downstream, we evaluate it by three representative downstream readouts: text generation, image prediction, and embodied action generation. Orca's backbone is frozen, and only the lightweight modality-specific decoders are trainable. Experiments show the scalability of the proposed paradigm and verify that stronger world latent enables stronger downstream readouts. Orca outperforms similar-sized specialized baselines. These results show that Orca, as a general world foundation model, presents a promising approach to understanding, predicting, and acting upon the world. Finally, we discuss the current limitations, aiming to provide useful insights and inspiration for the community.",
+      "authors": [
+        "Yihao Wang",
+        "Yuheng Ji",
+        "Mingyu Cao",
+        "Yanqing Shen",
+        "Runze Xiao",
+        "Huaihai Lyu",
+        "Senwei Xie",
+        "Euan Liu",
+        "Klara Tian",
+        "Tianfeng Long",
+        "Yichi Zhang",
+        "Zhengliang Cai",
+        "Ruike Chen",
+        "Jifan Zhao",
+        "Ruochuan Shi",
+        "Zihan Tang",
+        "Jing Lyu",
+        "Wenxing Tan",
+        "Ningbo Zhang",
+        "Yangtao Hu",
+        "Yuming Gao",
+        "Xiansheng Chen",
+        "Junkai Zhao",
+        "Congsheng Xu",
+        "Boan Zhu",
+        "Ziqi Wang",
+        "Yupu Feng",
+        "Qiongqiong Zhang",
+        "Yingli Zhao",
+        "Yulong Ao",
+        "Shaoxuan Xie",
+        "You Liu",
+        "Guocai Yao",
+        "Leiduo Zhang",
+        "Xiaodan Liu",
+        "Yunyan Zhang",
+        "Yance Jiao",
+        "Xinyan Yang",
+        "Jiaxing Wei",
+        "Xu Liu",
+        "Tengfei Pan",
+        "Shaokai Nie",
+        "Chunlei Men",
+        "Sen Cui",
+        "Xiaojie Jin",
+        "Hongyang Li",
+        "Jianlan Luo",
+        "Yao Mu",
+        "Yunchao Wei",
+        "Jun Yan",
+        "Hang Zhao",
+        "Xiaolong Zheng",
+        "Jiaming Li",
+        "Yonghua Lin",
+        "Tiejun Huang",
+        "Zhongyuan Wang",
+        "Pengwei Wang"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-29T16:36:10+00:00",
+      "link": "https://arxiv.org/pdf/2606.30534v2",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "unified world latent space from multimodal world signals",
+      "llm_evidence_cn": "从多模态世界信号学习统一世界隐空间",
+      "llm_evidence": "从多模态世界信号学习统一世界隐空间",
+      "canonical_evidence": "从多模态世界信号学习统一世界隐空间",
+      "llm_tldr_en": "Orca learns a unified world latent space from multimodal signals via Next-State-Prediction, enabling understanding, prediction, and action in a unified framework.",
+      "llm_tldr_cn": "现有模型孤立优化不同预测任务，缺乏统一的世界建模。Orca提出Next-State-Prediction范式，从多模态世界信号中学习统一世界隐空间，通过无意识学习（连续视频）和有意识学习（语言事件和VQA）互补协同。模型支持理解、预测和行动，在大规模数据上预训练。",
+      "llm_tldr": "现有模型孤立优化不同预测任务，缺乏统一的世界建模。Orca提出Next-State-Prediction范式，从多模态世界信号中学习统一世界隐空间，通过无意识学习（连续视频）和有意识学习（语言事件和VQA）互补协同。模型支持理解、预测和行动，在大规模数据上预训练。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    },
+    {
+      "id": "2606.31732v1",
+      "source": "arxiv",
+      "title": "UniCoder: Unified Visual-to-Code Generation via Symbolic Rewards and Reference-Guided Code Optimization",
+      "abstract": "Visual-to-Code generation, which transforms scientific plots, vector graphics, and webpages into executable scripts, demands a level of pixel-precise alignment that standard Multimodal Large Language Models (MLLMs) fail to achieve through Supervised Fine-Tuning (SFT) alone. While Reinforcement Learning (RL) offers a theoretical pathway to bridge this gap, its application is hindered by two fundamental obstacles: (1) \\textit{Reward Coarseness}, where semantic metrics like CLIP scores fail to penalize fine-grained element deviations, and (2) \\textit{Exploration Stagnation}, where the sparse, heterogeneous code search space prevents the policy from bootstrapping valid trajectories. To overcome these limitations, we introduce UniCoder, a unified RL framework that integrates two novel mechanisms. First, we propose \\textbf{Symbolic Attribute Alignment}, which employs a lightweight auxiliary LLM to parse generated code into discrete visual attributes (e.g., hex colors, coordinate limits), enabling dense, element-wise reward computation. Second, to escape local optima, we devise \\textbf{Reference-Guided Code Optimization}, a strategy that dynamically injects ground-truth trajectories into low-performing rollout groups, transforming blind exploration into guided policy improvement. Extensive experiments on ChartMimic, UniSVG, Design2Code and ScreenBench benchmarks demonstrate that our 8B-parameter model not only surpasses all open-source baselines but also achieves state-of-the-art performance comparable to proprietary models, establishing a new paradigm for generalized visual-to-code synthesis.",
+      "authors": [
+        "Yaozhi Zheng",
+        "Yilei Jiang",
+        "Manyuan Zhang",
+        "Yuxuan Wan",
+        "Kaituo Feng",
+        "Tianshuo Peng",
+        "Bo Zhang",
+        "Xiangyu Yue"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV"
+      ],
+      "published": "2026-06-30T14:29:48+00:00",
+      "link": "https://arxiv.org/pdf/2606.31732v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 6.0,
+      "llm_evidence_en": "unified visual-to-code generation via symbolic rewards",
+      "llm_evidence_cn": "通过符号奖励实现统一的视觉到代码生成",
+      "llm_evidence": "通过符号奖励实现统一的视觉到代码生成",
+      "canonical_evidence": "通过符号奖励实现统一的视觉到代码生成",
+      "llm_tldr_en": "Introduces UniCoder for unified visual-to-code generation using symbolic rewards and reference-guided optimization.",
+      "llm_tldr_cn": "视觉到代码生成要求像素级对齐，标准MLLM微调难以达到。本文提出UniCoder，通过符号奖励（如结构差异奖励）和参考引导的代码优化，弥合生成与目标之间的差距。实验表明UniCoder在科学绘图、矢量图形等多种视觉到代码任务上显著优于基线。该工作为统一的多模态代码生成提供了有效方法。",
+      "llm_tldr": "视觉到代码生成要求像素级对齐，标准MLLM微调难以达到。本文提出UniCoder，通过符号奖励（如结构差异奖励）和参考引导的代码优化，弥合生成与目标之间的差距。实验表明UniCoder在科学绘图、矢量图形等多种视觉到代码任务上显著优于基线。该工作为统一的多模态代码生成提供了有效方法。",
+      "llm_tags": [
+        "query:um:composite"
+      ],
+      "matched_query_tag": "query:um:composite",
+      "matched_query_text": "Papers central to 统一多模态相关论文，也可以包括理解、生成、编辑, especially work that connects or combines: unified multimodal model architectures and frameworks; transformer models for multimodal data fusion; Unified Multimodal.",
+      "matched_requirement_id": "req-composite-um",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "6"
+    },
+    {
+      "id": "2606.30811v1",
+      "source": "arxiv",
+      "title": "AVTok: 1D Unified Tokenization for Holistic Audio-Video Generation",
+      "abstract": "Audio-video generation has recently gained unprecedented research attention, aiming to synthesize high-quality sounding video content with fine-grained synchronization and semantic alignment between the auditory and visual components. The preceding methods predominantly adopt a dual-branch design with separate tokenization and generation modules per modality, neglecting the representation gap while necessitating intensive computational resources for proper training. Inspired by recent advancements in one-dimensional visual tokenization, we present \\textbf{AVTok}, a novel unified tokenizer designated for holistic audio-video generation. AVTok features a dual-stream transformer-based architecture with shared encoder-decoder and modal-specific learnable queries to efficiently and effectively encode an audio-video pair into a compact one-dimensional latent representation with a unified codebook. To cope with the heterogeneous information imbalance that hinders AVTok from exploiting aligned audio-visual information, we devise a hierarchical training strategy to progressively realize reconstruction capabilities for each modality. Extensive experiments demonstrate that AVTok excels both in audio-video reconstruction and when integrated into downstream pipelines for audio-to-video, video-to-audio, and class-conditional joint audio-video generation. AVTok paves the way for the challenge of joint audio-video tokenization and provides a potential direction to build unified large multimodal models for audio-video generation.",
+      "authors": [
+        "Kien T. Pham",
+        "I Chieh Chen",
+        "Qifeng Chen",
+        "Long Chen"
+      ],
+      "primary_category": "cs.CV",
+      "categories": [
+        "cs.CV",
+        "cs.MM",
+        "cs.SD",
+        "eess.AS"
+      ],
+      "published": "2026-06-29T18:35:17+00:00",
+      "link": "https://arxiv.org/pdf/2606.30811v1",
+      "tags": [
+        "keyword:um",
+        "query:um"
+      ],
+      "llm_score": 8.0,
+      "llm_evidence_en": "Unified tokenizer for audio-video generation with shared encoder-decoder",
+      "llm_evidence_cn": "音频-视频生成的统一标记化，共享编码器-解码器",
+      "llm_evidence": "音频-视频生成的统一标记化，共享编码器-解码器",
+      "canonical_evidence": "音频-视频生成的统一标记化，共享编码器-解码器",
+      "llm_tldr_en": "AVTok proposes a unified tokenizer for holistic audio-video generation using a dual-stream transformer with shared encoder-decoder and modal-specific queries.",
+      "llm_tldr_cn": "现有音频-视频生成采用双分支分别标记化，忽略表示间隙且计算密集。AVTok提出统一标记器，采用双流Transformer架构，共享编码器-解码器，模态特定可学习查询，实现端到端生成，在同步和语义对齐上取得更好效果。",
+      "llm_tldr": "现有音频-视频生成采用双分支分别标记化，忽略表示间隙且计算密集。AVTok提出统一标记器，采用双流Transformer架构，共享编码器-解码器，模态特定可学习查询，实现端到端生成，在同步和语义对齐上取得更好效果。",
+      "llm_tags": [
+        "query:um"
+      ],
+      "matched_query_tag": "query:um",
+      "matched_query_text": "unified multimodal model architectures and frameworks",
+      "matched_requirement_id": "req-1",
+      "selection_source": "fresh_fetch",
+      "quick_tier": "8plus"
+    }
+  ]
+}

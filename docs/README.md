@@ -6,35 +6,58 @@
 </div>
 
 ## 每次日报
-- 最新运行日期：2026-06-30
-- 运行时间：2026-06-30 20:48:09 UTC
+- 最新运行日期：2026-07-01
+- 运行时间：2026-07-01 20:43:14 UTC
 - 运行状态：成功
-- 本次总论文数：5
-- 精读区：4
-- 速读区：1
+- 本次总论文数：12
+- 精读区：6
+- 速读区：6
 
 ### 今日简报（AI）
-今日推荐5篇论文，精读2篇高分统一多模态模型研究，满分工作聚焦自由形式图文交错生成。最值得关注《Illuminating》的跨模态生成创新与《COMPASS》的组合意图引导机制。建议优先精读满分论文，把握多模态模型前沿方向。
-- 详情：[/202606/30/README](/202606/30/README)
+今日精读两篇高分论文，聚焦脑视觉语言统一模型与多模态推理框架优化。  
+最值得关注的方向：多模态统一建模（BrainJanus）和分布式KV缓存共享（Omni-Flow）。  
+普通读者可速读《Orca》（智能感知）和《AVTok》（音视频生成），了解前沿方向。
+- 详情：[/202607/01/README](/202607/01/README)
 
 ### 精读区论文标签
-1. [Illuminating Unified Multimodal Model for Free-form Interleaved Text-Image Generation](/202606/30/2606.30054v1-illuminating-unified-multimodal-model-for-free-form-interleaved-text-image-generation)  
+1. [BrainJanus: A Unified Model for Understanding and Generation across Brain, Vision, and Language](/202607/01/2606.30319v1-brainjanus-a-unified-model-for-understanding-and-generation-across-brain-vision-and-language)  
    标签：评分：10.0/10、query:um
-   evidence：统一的交错文本-图像生成模型ILLUME-X
-2. [COMPASS: Grounding Composition-Intent Guidance in Unified Multimodal Models](/202606/30/2606.28696v1-compass-grounding-composition-intent-guidance-in-unified-multimodal-models)  
+   evidence：首个整合脑、视觉和语言理解与生成的统一模型
+2. [Omni-Flow: A Unified Workflow Orchestration and Distributed KV Cache Sharing Framework for Multimodal Inference](/202607/01/2606.31093v1-omni-flow-a-unified-workflow-orchestration-and-distributed-kv-cache-sharing-framework-for-multimodal-inference)  
    标签：评分：9.0/10、query:um
-   evidence：统一多模态框架实现构图感知与生成
-3. [EVLA: An Electro-Aware Multimodal Assistant for Physically-Grounded Driving Reasoning and Control](/202606/30/2606.28938v1-evla-an-electro-aware-multimodal-assistant-for-physically-grounded-driving-reasoning-and-control)  
+   evidence：统一工作流编排和KV缓存共享框架用于多模态推理
+3. [Bridging Video Understanding and Generation in a Unified Framework](/202607/01/2606.31326v1-bridging-video-understanding-and-generation-in-a-unified-framework)  
+   标签：评分：9.0/10、query:um
+   evidence：桥接视频理解与生成的统一框架
+4. [MS-Resampler: Multi-Scope Visual Resampling for Efficient Multimodal LLMs](/202607/01/2606.31383v1-ms-resampler-multi-scope-visual-resampling-for-efficient-multimodal-llms)  
+   标签：评分：9.0/10、query:um
+   evidence：提出多范围视觉重采样框架，直接改进统一多模态架构
+5. [UniTac: A Unified Multimodal Model for Cross-Sensor Tactile Understanding and Generation](/202607/01/2606.31451v1-unitac-a-unified-multimodal-model-for-cross-sensor-tactile-understanding-and-generation)  
+   标签：评分：9.0/10、query:um
+   evidence：首个用于触觉理解和生成的统一多模态模型
+6. [ViQ: Text-Aligned Visual Quantized Representations at Any Resolution](/202607/01/2606.27313v2-viq-text-aligned-visual-quantized-representations-at-any-resolution)  
    标签：评分：8.0/10、query:um
-   evidence：提出统一共态编码器融合视觉、文本和车辆状态
-4. [CMTFormer: Marrying Transformer with Hierarchical Information Interaction for RGB-Event Object Detection](/202606/30/2606.29136v1-cmtformer-marrying-transformer-with-hierarchical-information-interaction-for-rgb-event-object-detection)  
-   标签：评分：8.0/10、query:um
-   evidence：用于RGB-事件目标检测的跨模态Transformer
+   evidence：统一视觉量化表示以对齐文本，支持多模态建模
 
 ### 速读区论文标签
-1. [Multi-modality Image Fusion under Adverse Weather: Mask-Guided Feature Restoration and Interaction](/202606/30/2606.26812v1-multi-modality-image-fusion-under-adverse-weather-mask-guided-feature-restoration-and-interaction)  
+1. [Orca: The World is in Your Mind](/202607/01/2606.30534v1-orca-the-world-is-in-your-mind)  
+   标签：评分：8.0/10、query:um
+   evidence：从多模态世界信号学习统一世界隐空间
+2. [Orca: The World is in Your Mind](/202607/01/2606.30534v2-orca-the-world-is-in-your-mind)  
+   标签：评分：8.0/10、query:um
+   evidence：从多模态世界信号学习统一世界隐空间
+3. [AVTok: 1D Unified Tokenization for Holistic Audio-Video Generation](/202607/01/2606.30811v1-avtok-1d-unified-tokenization-for-holistic-audio-video-generation)  
+   标签：评分：8.0/10、query:um
+   evidence：音频-视频生成的统一标记化，共享编码器-解码器
+4. [NIVA: A Multimodal Foundation Model for Actionable Earth System Intelligence](/202607/01/2606.28546v1-niva-a-multimodal-foundation-model-for-actionable-earth-system-intelligence)  
+   标签：评分：7.0/10、query:um
+   evidence：提出面向地球系统统一表示的多模态基础模型，符合统一多模态架构
+5. [ALM2Vec: Learning Audio Embeddings for Universal Audio Retrieval with Large Audio-Language Models](/202607/01/2606.30682v1-alm2vec-learning-audio-embeddings-for-universal-audio-retrieval-with-large-audio-language-models)  
    标签：评分：6.0/10、query:um
-   evidence：恶劣天气下的多模态图像融合，特征恢复与交互
+   evidence：基于大型音频语言模型的统一音频嵌入框架
+6. [UniCoder: Unified Visual-to-Code Generation via Symbolic Rewards and Reference-Guided Code Optimization](/202607/01/2606.31732v1-unicoder-unified-visual-to-code-generation-via-symbolic-rewards-and-reference-guided-code-optimization)  
+   标签：评分：6.0/10、query:um
+   evidence：通过符号奖励实现统一的视觉到代码生成
 
 
 <div class="dpr-home-promo-card">
